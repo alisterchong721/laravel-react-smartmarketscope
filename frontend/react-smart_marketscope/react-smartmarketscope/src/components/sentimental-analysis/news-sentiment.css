@@ -1,0 +1,116 @@
+.news-sentiment-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.news-sentiment-loading {
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-sentiment-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 34%),
+    linear-gradient(135deg, #071b2f 0%, #103454 55%, #6f8dab 100%);
+  color: #ffffff;
+}
+
+.news-sentiment-hero .ant-typography,
+.news-sentiment-hero .ant-typography-secondary,
+.news-sentiment-hero .ant-segmented-item-label {
+  color: inherit;
+}
+
+.news-sentiment-hero__text {
+  max-width: 720px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.news-sentiment-score {
+  min-width: 280px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.2));
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.news-sentiment-score__ring .ant-progress-text {
+  color: #0f172a !important;
+  font-weight: 700;
+}
+
+.news-sentiment-score__label {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.news-sentiment-score__meta {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.news-sentiment-alert {
+  border-radius: 14px;
+}
+
+.news-sentiment-stat {
+  border-radius: 16px;
+}
+
+.news-sentiment-pulse {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.news-sentiment-pulse__item {
+  padding: 14px;
+  border: 1px solid #eef2f7;
+  border-radius: 14px;
+  background: #fbfdff;
+}
+
+.news-sentiment-pulse__head,
+.news-sentiment-theme__head,
+.news-sentiment-article__footer,
+.news-sentiment-article__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.news-sentiment-article {
+  height: 100%;
+  padding: 18px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+  border: 1px solid #e5eef7;
+}
+
+.news-sentiment-row--active td {
+  background: #f0fdf4 !important;
+}
+
+@media (max-width: 992px) {
+  .news-sentiment-hero {
+    flex-direction: column;
+  }
+
+  .news-sentiment-score {
+    min-width: 0;
+  }
+}

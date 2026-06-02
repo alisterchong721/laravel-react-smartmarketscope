@@ -1,0 +1,73 @@
+.idle-session-modal {
+  align-items: center;
+  background: rgba(15, 23, 42, 0.58);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 24px;
+  position: fixed;
+  z-index: 2000;
+}
+
+.idle-session-panel {
+  background: #ffffff;
+  border: 1px solid #d6dde8;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.24);
+  color: #172033;
+  max-width: 440px;
+  padding: 24px;
+  width: min(100%, 440px);
+}
+
+.idle-session-panel h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 10px;
+}
+
+.idle-session-panel p {
+  color: #4b5565;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+
+.idle-session-countdown strong {
+  color: #b42318;
+  font-variant-numeric: tabular-nums;
+}
+
+.idle-session-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 22px;
+}
+
+.idle-session-actions button {
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  min-height: 42px;
+  padding: 0 16px;
+}
+
+.idle-session-actions button:first-child {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+}
+
+.idle-session-actions button:last-child {
+  background: #126e82;
+  color: #ffffff;
+}
+
+@media (max-width: 520px) {
+  .idle-session-actions {
+    flex-direction: column-reverse;
+  }
+}

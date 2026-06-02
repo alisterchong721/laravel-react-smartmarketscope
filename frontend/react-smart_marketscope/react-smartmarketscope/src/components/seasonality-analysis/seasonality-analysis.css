@@ -1,0 +1,50 @@
+.seasonality-page {
+  width: 100%;
+}
+
+.seasonality-toolbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.seasonality-control-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.seasonality-select {
+  min-width: 150px;
+}
+
+.seasonality-chart-card {
+  margin-top: 18px;
+}
+
+.seasonality-summary-grid {
+  margin-top: 18px;
+}
+
+.seasonality-month-table {
+  margin-top: 18px;
+}
+
+.seasonality-positive {
+  color: #16a34a;
+}
+
+.seasonality-negative {
+  color: #dc2626;
+}
+
+@media (max-width: 575px) {
+  .seasonality-toolbar,
+  .seasonality-control-group,
+  .seasonality-toolbar .ant-btn,
+  .seasonality-select {
+    width: 100%;
+  }
+}

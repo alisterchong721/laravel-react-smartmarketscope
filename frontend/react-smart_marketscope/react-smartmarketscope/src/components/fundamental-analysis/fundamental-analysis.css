@@ -1,0 +1,65 @@
+.fundamental-calendar-page {
+  width: 100%;
+}
+
+.fundamental-calendar-title {
+  margin-bottom: 4px !important;
+}
+
+.fundamental-calendar-actions {
+  display: flex;
+  width: 100%;
+}
+
+.fundamental-calendar-select {
+  min-width: 150px;
+}
+
+.fundamental-calendar-week-label {
+  min-width: 180px;
+  text-align: center;
+  font-weight: 600;
+  color: #1f2933;
+}
+
+.fundamental-calendar-actual {
+  font-weight: 600;
+}
+
+.fundamental-calendar-actual-green {
+  color: #1f8f2e;
+}
+
+.fundamental-calendar-actual-red {
+  color: #d32029;
+}
+
+.fundamental-calendar-actual-default {
+  color: inherit;
+}
+
+.fundamental-calendar-summary {
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+.fundamental-calendar-alert {
+  margin-top: 16px;
+}
+
+.fundamental-calendar-table-card {
+  margin-top: 16px;
+}
+
+.fundamental-calendar-table-card .ant-table-cell {
+  vertical-align: middle;
+}
+
+@media (max-width: 575px) {
+  .fundamental-calendar-actions .ant-space-item,
+  .fundamental-calendar-actions .ant-btn,
+  .fundamental-calendar-week-label,
+  .fundamental-calendar-select {
+    width: 100%;
+  }
+}

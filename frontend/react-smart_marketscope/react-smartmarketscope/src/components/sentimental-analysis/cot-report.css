@@ -1,0 +1,88 @@
+.cot-report-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cot-report-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.cot-report-summary-card {
+  height: 100%;
+  border-radius: 16px;
+}
+
+.cot-report-summary-card .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cot-report-summary-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8c8c8c;
+}
+
+.cot-report-stat {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.cot-report-stat--positive {
+  color: #16a34a;
+}
+
+.cot-report-stat--negative {
+  color: #dc2626;
+}
+
+.cot-report-progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.cot-report-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.cot-report-category-card {
+  padding: 16px;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+}
+
+.cot-report-category-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.cot-report-empty-block {
+  padding: 32px 0;
+}
+
+@media (max-width: 768px) {
+  .cot-report-toolbar {
+    justify-content: stretch;
+  }
+
+  .cot-report-toolbar > * {
+    width: 100%;
+  }
+}
