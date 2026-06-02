@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.idle-session-modal {
+    align-items: center;
+    background: rgba(15, 23, 42, 0.58);
+    display: none;
+    inset: 0;
+    justify-content: center;
+    padding: 24px;
+    position: fixed;
+    z-index: 9999;
+}
+
+.idle-session-modal.is-visible {
+    display: flex;
+}
+
+.idle-session-panel {
+    background: #ffffff;
+    border: 1px solid #d6dde8;
+    border-radius: 8px;
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.24);
+    color: #172033;
+    max-width: 440px;
+    padding: 24px;
+    width: min(100%, 440px);
+}
+
+.idle-session-panel h2 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 10px;
+}
+
+.idle-session-panel p {
+    color: #4b5565;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 0 14px;
+}
+
+.idle-session-countdown strong {
+    color: #b42318;
+    font-variant-numeric: tabular-nums;
+}
+
+.idle-session-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 22px;
+}
+
+.idle-session-actions button {
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    min-height: 42px;
+    padding: 0 16px;
+}
+
+.idle-session-actions button:first-child {
+    border: 1px solid #cbd5e1;
+    color: #334155;
+}
+
+.idle-session-actions button:last-child {
+    background: #126e82;
+    color: #ffffff;
+}
