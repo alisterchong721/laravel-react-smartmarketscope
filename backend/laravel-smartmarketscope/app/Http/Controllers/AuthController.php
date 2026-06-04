@@ -246,7 +246,7 @@ class AuthController extends Controller
             $this->logRegistrationMailFailure($e, $email, $context);
 
             if (config('mail.default') === 'log') {
-                Log::warning('Registration verification email preserved through log mailer fallback.', [
+                $this->writeLogSafely('warning', 'Registration verification email preserved through log mailer fallback.', [
                     'email' => $email,
                     'context' => $context,
                     'code' => $code,
@@ -262,7 +262,7 @@ class AuthController extends Controller
 
     private function logRegistrationMailFailure(Throwable $e, string $email, string $context): void
     {
-        Log::error('Verification email failed', [
+        $this->writeLogSafely('error', 'Verification email failed', [
             'email' => $email,
             'context' => $context,
             'message' => $e->getMessage(),
@@ -270,6 +270,22 @@ class AuthController extends Controller
             'line' => $e->getLine(),
             'trace' => $e->getTraceAsString(),
         ]);
+    }
+
+    private function writeLogSafely(string $level, string $message, array $context = []): void
+    {
+        try {
+            Log::log($level, $message, $context);
+        } catch (Throwable $loggingException) {
+            error_log($message . ' ' . json_encode([
+                'context' => $context,
+                'logging_exception' => [
+                    'message' => $loggingException->getMessage(),
+                    'file' => $loggingException->getFile(),
+                    'line' => $loggingException->getLine(),
+                ],
+            ]));
+        }
     }
 
     public function updateProfile(Request $request)
