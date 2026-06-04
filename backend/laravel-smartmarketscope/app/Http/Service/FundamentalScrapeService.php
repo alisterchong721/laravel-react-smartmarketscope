@@ -12,6 +12,8 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class FundamentalScrapeService
 {
+    private const INVESTING_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
+
     private $client;
     private $apiKey;
 
@@ -21,8 +23,9 @@ class FundamentalScrapeService
             'timeout' => (int) config('services.forex_factory.timeout', 20),
             'verify' => true,
             'headers' => [
-                'User-Agent' => 'SmartMarketScope/1.0 (+economic-calendar-sync)',
+                'User-Agent' => self::INVESTING_USER_AGENT,
                 'Accept' => 'application/json,text/html;q=0.9,*/*;q=0.8',
+                'Accept-Language' => 'en-US,en;q=0.9',
             ],
         ]);
 
@@ -692,9 +695,10 @@ class FundamentalScrapeService
         $response = $this->client->get($url, [
             'timeout' => (int) config('services.investing_calendar.timeout', 20),
             'headers' => [
-                'User-Agent' => 'Mozilla/5.0 SmartMarketScope/1.0',
+                'User-Agent' => self::INVESTING_USER_AGENT,
                 'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Referer' => 'https://www.investing.com/economic-calendar/',
+                'Accept-Language' => 'en-US,en;q=0.9',
+                'Referer' => 'https://www.investing.com/economic-calendar',
             ],
         ]);
 
@@ -856,12 +860,13 @@ class FundamentalScrapeService
             $response = $this->client->post((string) config('services.investing_calendar.endpoint'), [
                 'timeout' => (int) config('services.investing_calendar.timeout', 20),
                 'headers' => [
-                    'User-Agent' => 'Mozilla/5.0 SmartMarketScope/1.0',
-                    'Accept' => 'application/json,text/javascript,*/*;q=0.01',
-                    'Content-Type' => 'application/x-www-form-urlencoded',
+                    'User-Agent' => self::INVESTING_USER_AGENT,
+                    'Accept' => 'application/json, text/javascript, */*; q=0.01',
+                    'Accept-Language' => 'en-US,en;q=0.9',
+                    'Content-Type' => 'application/x-www-form-urlencoded; charset=UTF-8',
                     'X-Requested-With' => 'XMLHttpRequest',
                     'Origin' => 'https://www.investing.com',
-                    'Referer' => 'https://www.investing.com/economic-calendar/',
+                    'Referer' => 'https://www.investing.com/economic-calendar',
                 ],
                 'form_params' => [
                     'importance[]' => (int) $importance,
