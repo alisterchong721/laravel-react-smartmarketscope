@@ -857,29 +857,9 @@ class FundamentalScrapeService
         $importances = config('services.investing_calendar.importances', [1, 2, 3]);
 
         foreach ($importances as $importance) {
-            $response = $this->client->post((string) config('services.investing_calendar.endpoint'), [
-                'timeout' => (int) config('services.investing_calendar.timeout', 20),
-                'headers' => [
-                    'User-Agent' => self::INVESTING_USER_AGENT,
-                    'Accept' => 'application/json, text/javascript, */*; q=0.01',
-                    'Accept-Language' => 'en-US,en;q=0.9',
-                    'Content-Type' => 'application/x-www-form-urlencoded; charset=UTF-8',
-                    'X-Requested-With' => 'XMLHttpRequest',
-                    'Origin' => 'https://www.investing.com',
-                    'Referer' => 'https://www.investing.com/economic-calendar',
-                ],
-                'form_params' => [
-                    'importance[]' => (int) $importance,
-                    'timeZone' => (int) config('services.investing_calendar.timezone', 8),
-                    'timeFilter' => 'timeRemain',
-                    'currentTab' => 'custom',
-                    'dateFrom' => $startDate->format('Y-m-d'),
-                    'dateTo' => $endDate->format('Y-m-d'),
-                    'limit_from' => 0,
-                ],
-            ]);
+            $responseBody = $this->postInvestingCalendarRequest((int) $importance, $startDate, $endDate);
 
-            $payload = json_decode((string) $response->getBody(), true);
+            $payload = json_decode($responseBody, true);
 
             if (!is_array($payload) || !isset($payload['data'])) {
                 throw new \RuntimeException('Investing.com returned invalid calendar data.');
@@ -905,6 +885,108 @@ class FundamentalScrapeService
         }
 
         return $events;
+    }
+
+    private function postInvestingCalendarRequest(int $importance, Carbon $startDate, Carbon $endDate): string
+    {
+        $endpoint = (string) config('services.investing_calendar.endpoint');
+        $timeout = (int) config('services.investing_calendar.timeout', 20);
+        $formParams = $this->investingCalendarFormParams($importance, $startDate, $endDate);
+
+        try {
+            $response = $this->client->post($endpoint, [
+                'timeout' => $timeout,
+                'headers' => $this->investingCalendarHeaders(),
+                'form_params' => $formParams,
+                'curl' => [
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_2_0,
+                ],
+            ]);
+
+            $responseBody = (string) $response->getBody();
+
+            Log::info('Investing response', [
+                'status' => $response->getStatusCode(),
+                'body' => substr($responseBody, 0, 500),
+            ]);
+
+            return $responseBody;
+        } catch (ClientException $exception) {
+            if ($exception->getResponse()?->getStatusCode() !== 403) {
+                throw $exception;
+            }
+
+            Log::warning('Investing Guzzle request blocked; retrying with native cURL', [
+                'status' => $exception->getResponse()?->getStatusCode(),
+                'body' => substr((string) $exception->getResponse()?->getBody(), 0, 500),
+            ]);
+
+            return $this->postInvestingCalendarWithCurl($endpoint, $timeout, $formParams);
+        }
+    }
+
+    private function postInvestingCalendarWithCurl(string $endpoint, int $timeout, array $formParams): string
+    {
+        $handle = curl_init($endpoint);
+
+        if ($handle === false) {
+            throw new \RuntimeException('Unable to initialize Investing.com cURL request.');
+        }
+
+        curl_setopt_array($handle, [
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => http_build_query($formParams),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => $timeout,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_2_0,
+            CURLOPT_HTTPHEADER => array_map(
+                fn(string $name, string $value) => "{$name}: {$value}",
+                array_keys($this->investingCalendarHeaders()),
+                $this->investingCalendarHeaders()
+            ),
+        ]);
+
+        $responseBody = curl_exec($handle);
+        $statusCode = (int) curl_getinfo($handle, CURLINFO_RESPONSE_CODE);
+        $error = curl_error($handle);
+        curl_close($handle);
+
+        Log::info('Investing response', [
+            'status' => $statusCode,
+            'body' => substr((string) $responseBody, 0, 500),
+        ]);
+
+        if ($responseBody === false || $statusCode >= 400) {
+            throw new \RuntimeException("Investing.com cURL request failed with status {$statusCode}: {$error}");
+        }
+
+        return (string) $responseBody;
+    }
+
+    private function investingCalendarHeaders(): array
+    {
+        return [
+            'User-Agent' => self::INVESTING_USER_AGENT,
+            'Accept' => 'application/json, text/javascript, */*; q=0.01',
+            'Accept-Language' => 'en-US,en;q=0.9',
+            'Content-Type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+            'X-Requested-With' => 'XMLHttpRequest',
+            'Origin' => 'https://www.investing.com',
+            'Referer' => 'https://www.investing.com/economic-calendar',
+        ];
+    }
+
+    private function investingCalendarFormParams(int $importance, Carbon $startDate, Carbon $endDate): array
+    {
+        return [
+            'importance[]' => $importance,
+            'timeZone' => (int) config('services.investing_calendar.timezone', 8),
+            'timeFilter' => 'timeRemain',
+            'currentTab' => 'custom',
+            'dateFrom' => $startDate->format('Y-m-d'),
+            'dateTo' => $endDate->format('Y-m-d'),
+            'limit_from' => 0,
+        ];
     }
 
     private function parseInvestingCalendarRows(string $html, ?int $importance = null): array
