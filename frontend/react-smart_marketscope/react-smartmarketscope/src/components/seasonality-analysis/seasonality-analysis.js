@@ -19,11 +19,10 @@ import {
 } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 import Sidebar from '../sidebar';
+import { API_URL } from '../../config/api';
 import './seasonality-analysis.css';
 
 const { Title, Text } = Typography;
-
-const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 const DEFAULT_ASSETS = ['EURUSD', 'GBPUSD', 'AUDUSD', 'USDCAD', 'USDJPY'];
 const MONTHS = [

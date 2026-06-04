@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { API_URL } from '../config/api';
 import {
   FETCH_TRADES_REQUEST,
   fetchTradesSuccess,
@@ -16,7 +17,6 @@ import {
 } from '../actions/tradingJounalActions';
 
 // API URL
-const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 // get user from localStorage
 const getUser = () => {

@@ -1,5 +1,6 @@
 import { call, put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+import { API_URL } from '../config/api';
 import {
   REGISTER_REQUEST,
   registerSuccess,
@@ -16,7 +17,6 @@ import {
   LOGOUT_REQUEST,
 } from '../actions/authActions';
 
-const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 // Set up axios defaults
 axios.defaults.baseURL = API_URL;

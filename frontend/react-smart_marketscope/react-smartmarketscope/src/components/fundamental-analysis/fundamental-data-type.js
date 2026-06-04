@@ -18,10 +18,10 @@ import {
 } from 'antd';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Sidebar from '../sidebar';
+import { API_URL } from '../../config/api';
 import './fundamental-analysis.css';
 
 const { Title, Text } = Typography;
-const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 const currencyOptions = [
   { label: 'All currencies', value: 'ALL' },

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Row, Col, Input, Card, Button, Form, message, Typography } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
+import { API_URL } from '../config/api';
 
 const { Text, Paragraph } = Typography;
-const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 const ForgotPassword = () => {
   const [emailForm] = Form.useForm();

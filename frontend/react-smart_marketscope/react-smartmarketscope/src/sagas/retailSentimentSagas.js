@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_URL } from '../config/api';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   FETCH_RETAIL_SENTIMENT_FILTERS_REQUEST,
@@ -9,7 +10,6 @@ import {
   fetchRetailSentimentSuccess,
 } from '../actions/retailSentimentActions';
 
-const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 const buildQueryParams = (query = {}) => {
   const params = {};

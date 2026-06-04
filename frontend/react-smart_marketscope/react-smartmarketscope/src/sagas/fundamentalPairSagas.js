@@ -1,12 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { API_URL } from '../config/api';
 import {
   FETCH_CURRENCY_PAIR_REQUEST,
   fetchCurrencyPairSuccess,
   fetchCurrencyPairFailure,
 } from '../actions/fundamentalPairActions';
 
-const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 function* fetchCurrencyPairSaga(action) {
   console.log('🔥 Saga: Fetching currency pair:', action.payload.pair);
