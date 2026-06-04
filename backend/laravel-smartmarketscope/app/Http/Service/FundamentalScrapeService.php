@@ -553,9 +553,11 @@ class FundamentalScrapeService
     {
         $startDate = $startDate ?: now()->subDays(7);
         $endDate = $endDate ?: now()->addDays(2);
+        $fetchStartDate = $startDate->copy()->subDay();
+        $fetchEndDate = $endDate->copy()->addDay();
 
         try {
-            $events = $this->fetchInvestingCalendar($startDate, $endDate);
+            $events = $this->fetchInvestingCalendar($fetchStartDate, $fetchEndDate);
         } catch (ClientException $exception) {
             if (in_array($exception->getResponse()?->getStatusCode(), [403, 429], true)) {
                 return [
@@ -1009,18 +1011,10 @@ class FundamentalScrapeService
             return false;
         }
 
-        $row = FundamentalData::where('source', 'Forex Factory')
-            ->where('country', $event['country'])
-            ->whereDate('date', $event['date'])
-            ->get()
-            ->first(fn(FundamentalData $row) => $this->canonicalCalendarEventKey($row->event) === $eventKey);
+        $row = $this->findCalendarActualTargetRow('Forex Factory', (string) $event['country'], (string) $event['date'], $eventKey);
 
         if (!$row) {
-            $row = FundamentalData::where('source', $actualSource)
-                ->where('country', $event['country'])
-                ->whereDate('date', $event['date'])
-                ->get()
-                ->first(fn(FundamentalData $row) => $this->canonicalCalendarEventKey($row->event) === $eventKey);
+            $row = $this->findCalendarActualTargetRow($actualSource, (string) $event['country'], (string) $event['date'], $eventKey);
         }
 
         if (!$row) {
@@ -1124,6 +1118,40 @@ class FundamentalScrapeService
         $row->save();
 
         return 'updated';
+    }
+
+    private function findCalendarActualTargetRow(string $source, string $country, string $date, string $eventKey): ?FundamentalData
+    {
+        $exact = FundamentalData::where('source', $source)
+            ->where('country', $country)
+            ->whereDate('date', $date)
+            ->get()
+            ->first(fn(FundamentalData $row) => $this->canonicalCalendarEventKey($row->event) === $eventKey);
+
+        if ($exact) {
+            return $exact;
+        }
+
+        $targetDate = Carbon::parse($date);
+        $candidates = FundamentalData::where('source', $source)
+            ->where('country', $country)
+            ->whereBetween('date', [
+                $targetDate->copy()->subDay()->toDateString(),
+                $targetDate->copy()->addDay()->toDateString(),
+            ])
+            ->get()
+            ->filter(fn(FundamentalData $row) => $this->canonicalCalendarEventKey($row->event) === $eventKey)
+            ->values();
+
+        if ($candidates->count() === 1) {
+            return $candidates->first();
+        }
+
+        $pending = $candidates
+            ->filter(fn(FundamentalData $row) => $row->actual === null && $row->actual_raw === null)
+            ->values();
+
+        return $pending->count() === 1 ? $pending->first() : null;
     }
 
     private function fetchTradingEconomicsCalendar(string $country, string $apiKey, Carbon $startDate, Carbon $endDate): array
