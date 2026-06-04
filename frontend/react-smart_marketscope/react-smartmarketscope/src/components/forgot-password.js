@@ -4,7 +4,7 @@ import { Row, Col, Input, Card, Button, Form, message, Typography } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 
 const { Text, Paragraph } = Typography;
-const API_URL = 'http://127.0.0.1:8000/api';
+const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 const ForgotPassword = () => {
   const [emailForm] = Form.useForm();

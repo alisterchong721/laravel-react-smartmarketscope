@@ -21,7 +21,7 @@ import Sidebar from '../sidebar';
 import './fundamental-analysis.css';
 
 const { Title, Text } = Typography;
-const API_URL = 'http://127.0.0.1:8000/api';
+const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 const currencyOptions = [
   { label: 'All currencies', value: 'ALL' },

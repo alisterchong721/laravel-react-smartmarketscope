@@ -38,6 +38,27 @@ class RegistrationVerificationTest extends TestCase
         Mail::assertSent(RegistrationVerificationMail::class);
     }
 
+    public function test_register_with_log_mailer_does_not_fail_when_mail_send_throws(): void
+    {
+        config([
+            'mail.default' => 'log',
+            'mail.mailers.log.channel' => 'missing-mail-log-channel',
+        ]);
+
+        $response = $this->postJson('/api/register', [
+            'email' => 'logmailer@example.com',
+            'password' => 'password123',
+            'password_confirmation' => 'password123',
+        ]);
+
+        $response->assertAccepted()
+            ->assertJsonPath('message', 'Verification code sent to your email');
+
+        $this->assertDatabaseHas('pending_user_registrations', [
+            'email' => 'logmailer@example.com',
+        ]);
+    }
+
     public function test_verify_registration_creates_user_and_returns_token(): void
     {
         Mail::fake();

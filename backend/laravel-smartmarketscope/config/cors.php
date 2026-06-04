@@ -15,7 +15,14 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000'],
+    'allowed_origins' => (function () {
+        $origins = env('CORS_ALLOWED_ORIGINS')
+            ?: env('FRONTEND_URL')
+            ?: env('APP_URL')
+            ?: 'https://smartmarketscope.xyz';
+
+        return array_values(array_filter(array_map('trim', explode(',', $origins))));
+    })(),
 
     'allowed_origins_patterns' => [],
 

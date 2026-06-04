@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './chatbot-widget.css';
 
-const API_URL = 'http://127.0.0.1:8000/api';
+const API_URL = process.env.REACT_APP_API_URL || '/api';
 const SESSION_STORAGE_KEY = 'smartmarketscope_chat_session_id';
 
 const starterPrompts = [

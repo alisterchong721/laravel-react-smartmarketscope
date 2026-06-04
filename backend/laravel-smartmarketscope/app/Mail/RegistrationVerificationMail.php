@@ -19,7 +19,11 @@ class RegistrationVerificationMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Verify Your Smart Market Scope Account')
+        $fromAddress = config('mail.from.address') ?: 'no-reply@smartmarketscope.xyz';
+        $fromName = config('mail.from.name') ?: config('app.name', 'Smart Market Scope');
+
+        return $this->from($fromAddress, $fromName)
+            ->subject('Verify Your Smart Market Scope Account')
             ->view('emails.registration-verification')
             ->with([
                 'code' => $this->code,

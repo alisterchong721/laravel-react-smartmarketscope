@@ -8,7 +8,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class AuthController extends Controller
 {
@@ -27,9 +29,7 @@ class AuthController extends Controller
             $code
         );
 
-        try {
-            Mail::to($validated['email'])->send(new RegistrationVerificationMail($code));
-        } catch (\Exception $e) {
+        if (!$this->sendRegistrationVerificationMail($validated['email'], $code, 'registration')) {
             PendingUserRegistration::where('email', $validated['email'])->delete();
 
             return response()->json([
@@ -155,9 +155,7 @@ class AuthController extends Controller
         $code = (string) random_int(100000, 999999);
         $pendingRegistration->refreshCode($code);
 
-        try {
-            Mail::to($pendingRegistration->email)->send(new RegistrationVerificationMail($code));
-        } catch (\Exception $e) {
+        if (!$this->sendRegistrationVerificationMail($pendingRegistration->email, $code, 'registration_resend')) {
             return response()->json([
                 'message' => 'Failed to send verification email'
             ], 500);
@@ -235,6 +233,42 @@ class AuthController extends Controller
                 'grace_minutes' => config('idle_session.grace_minutes'),
                 'expires_at' => $request->user()?->currentAccessToken()?->expires_at,
             ],
+        ]);
+    }
+
+    private function sendRegistrationVerificationMail(string $email, string $code, string $context): bool
+    {
+        try {
+            Mail::to($email)->send(new RegistrationVerificationMail($code));
+
+            return true;
+        } catch (Throwable $e) {
+            $this->logRegistrationMailFailure($e, $email, $context);
+
+            if (config('mail.default') === 'log') {
+                Log::warning('Registration verification email preserved through log mailer fallback.', [
+                    'email' => $email,
+                    'context' => $context,
+                    'code' => $code,
+                    'expires_in_minutes' => 10,
+                ]);
+
+                return true;
+            }
+
+            return false;
+        }
+    }
+
+    private function logRegistrationMailFailure(Throwable $e, string $email, string $context): void
+    {
+        Log::error('Verification email failed', [
+            'email' => $email,
+            'context' => $context,
+            'message' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'trace' => $e->getTraceAsString(),
         ]);
     }
 

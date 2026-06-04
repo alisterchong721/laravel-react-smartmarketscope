@@ -16,10 +16,39 @@ import {
   LOGOUT_REQUEST,
 } from '../actions/authActions';
 
-const API_URL = 'http://127.0.0.1:8000/api';
+const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 // Set up axios defaults
 axios.defaults.baseURL = API_URL;
+axios.defaults.headers.common.Accept = 'application/json';
+
+const getAxiosErrorMessage = (error, fallbackMessage) => {
+  if (process.env.NODE_ENV !== 'production') {
+    console.error('Axios response error:', error.response);
+    console.error('Axios request error:', error.request);
+    console.error('Axios error message:', error.message);
+  }
+
+  if (error.response) {
+    const responseData = error.response.data;
+
+    if (responseData?.message) {
+      return responseData.message;
+    }
+
+    if (responseData?.errors) {
+      return Object.values(responseData.errors).flat().join(' ');
+    }
+
+    if (typeof responseData === 'string') {
+      return responseData;
+    }
+
+    return fallbackMessage;
+  }
+
+  return error.message || fallbackMessage;
+};
 
 // Store token in localStorage and axios headers
 function setAuthToken(token) {
@@ -68,15 +97,15 @@ function* loadTokenOnStartup() {
 }
 
 function registerApi(payload) {
-  return axios.post(`${API_URL}/register`, payload, { withCredentials: false });
+  return axios.post('/register', payload, { withCredentials: false });
 }
 
 function verifyRegisterApi(payload) {
-  return axios.post(`${API_URL}/register/verify`, payload, { withCredentials: false });
+  return axios.post('/register/verify', payload, { withCredentials: false });
 }
 
 function resendRegisterCodeApi(payload) {
-  return axios.post(`${API_URL}/register/resend`, payload, { withCredentials: false });
+  return axios.post('/register/resend', payload, { withCredentials: false });
 }
 
 function loginApi(payload) {
@@ -102,11 +131,7 @@ function* registerSaga(action) {
     console.log('✅ Verification code sent');
   } catch (error) {
     console.error('🔍 Registration error:', error);
-    const errorMessage =
-      error.response?.data?.message ||
-      error.response?.data?.errors ||
-      error.message ||
-      'Registration failed';
+    const errorMessage = getAxiosErrorMessage(error, 'Registration failed');
     yield put(registerFailure(errorMessage));
     console.log('❌ Registration failed');
   }
@@ -122,11 +147,7 @@ function* resendRegisterCodeSaga(action) {
       retryAfterSeconds: response.data.data?.retry_after_seconds || 300,
     }));
   } catch (error) {
-    const errorMessage =
-      error.response?.data?.message ||
-      error.response?.data?.errors ||
-      error.message ||
-      'Failed to resend verification code';
+    const errorMessage = getAxiosErrorMessage(error, 'Failed to resend verification code');
 
     yield put(resendRegisterCodeFailure({
       message: errorMessage,
@@ -156,11 +177,7 @@ function* verifyRegisterSaga(action) {
     console.log('✅ Registration verified and user authenticated');
   } catch (error) {
     console.error('🔍 Verify registration error:', error);
-    const errorMessage =
-      error.response?.data?.message ||
-      error.response?.data?.errors ||
-      error.message ||
-      'Verification failed';
+    const errorMessage = getAxiosErrorMessage(error, 'Verification failed');
     yield put(verifyRegisterFailure(errorMessage));
   }
 }
@@ -210,7 +227,7 @@ function* loginSaga(action) {
     console.log('🔍 login success - dispatched loginSuccess');
   } catch (error) {
     console.error('🔍 Login error:', error);
-    yield put(loginFailure(error.response?.data || error.message));
+    yield put(loginFailure(getAxiosErrorMessage(error, 'Login failed')));
     console.log('login failed');
   }
 }
