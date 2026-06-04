@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import { API_URL } from '../../config/api';
+import { apiPath } from '../../config/api';
 import './chatbot-widget.css';
 
 const SESSION_STORAGE_KEY = 'smartmarketscope_chat_session_id';
@@ -60,7 +60,7 @@ const ChatbotWidget = () => {
 
     try {
       const response = await axios.post(
-        `${API_URL}/chatbot/message`,
+        apiPath('/chatbot/message'),
         {
           message: trimmed,
           session_id: sessionId,

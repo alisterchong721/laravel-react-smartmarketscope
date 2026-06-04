@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Row, Col, Input, Card, Button, Form, message, Typography } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-import { API_URL } from '../config/api';
+import { apiPath } from '../config/api';
 
 const { Text, Paragraph } = Typography;
 
@@ -29,7 +29,7 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(`${API_URL}/password/forgot`, {
+      const response = await axios.post(apiPath('/password/forgot'), {
         email: values.email,
       });
 
@@ -47,7 +47,7 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      await axios.post(`${API_URL}/password/validate-token`, {
+      await axios.post(apiPath('/password/validate-token'), {
         email,
         code: values.code,
       });
@@ -66,7 +66,7 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      await axios.post(`${API_URL}/password/reset`, {
+      await axios.post(apiPath('/password/reset'), {
         email,
         code,
         password: values.password,

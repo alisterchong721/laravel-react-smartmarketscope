@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '../config/api';
+import { apiPath } from '../config/api';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   FETCH_OVERVIEW_DASHBOARD_FILTERS_REQUEST,
@@ -37,7 +37,7 @@ function* fetchOverviewDashboardFiltersSaga() {
   try {
     const response = yield call(
       axios.get,
-      `${API_URL}/overview-dashboard/filters`
+      apiPath('/overview-dashboard/filters')
     );
     const payload = response.data?.data || response.data;
 
@@ -55,7 +55,7 @@ function* fetchOverviewDashboardFiltersSaga() {
 
 function* fetchOverviewDashboardSaga(action) {
   try {
-    const response = yield call(axios.get, `${API_URL}/overview-dashboard`, {
+    const response = yield call(axios.get, apiPath('/overview-dashboard'), {
       params: buildQueryParams(action.payload),
     });
     const payload = response.data?.data || response.data;

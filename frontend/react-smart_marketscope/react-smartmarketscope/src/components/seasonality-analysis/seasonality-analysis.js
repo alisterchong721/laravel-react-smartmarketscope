@@ -19,7 +19,7 @@ import {
 } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 import Sidebar from '../sidebar';
-import { API_URL } from '../../config/api';
+import { apiPath } from '../../config/api';
 import './seasonality-analysis.css';
 
 const { Title, Text } = Typography;
@@ -69,7 +69,7 @@ const SeasonalityAnalysis = () => {
     setError(null);
 
     try {
-      const response = await axios.get(`${API_URL}/seasonality`, {
+      const response = await axios.get(apiPath('/seasonality'), {
         params: {
           assets: selectedAsset,
           period: 'monthly',

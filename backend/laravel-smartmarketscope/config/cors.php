@@ -16,12 +16,27 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => (function () {
-        $origins = env('CORS_ALLOWED_ORIGINS')
-            ?: env('FRONTEND_URL')
-            ?: env('APP_URL')
-            ?: 'https://smartmarketscope.xyz';
+        $originSources = [
+            env('CORS_ALLOWED_ORIGINS'),
+            env('FRONTEND_URL'),
+            env('APP_URL'),
+            'https://smartmarketscope.xyz',
+            'https://www.smartmarketscope.xyz',
+        ];
 
-        return array_values(array_filter(array_map('trim', explode(',', $origins))));
+        $origins = [];
+
+        foreach ($originSources as $originSource) {
+            foreach (explode(',', (string) $originSource) as $origin) {
+                $origin = trim($origin);
+
+                if ($origin !== '') {
+                    $origins[] = $origin;
+                }
+            }
+        }
+
+        return array_values(array_unique($origins));
     })(),
 
     'allowed_origins_patterns' => [],

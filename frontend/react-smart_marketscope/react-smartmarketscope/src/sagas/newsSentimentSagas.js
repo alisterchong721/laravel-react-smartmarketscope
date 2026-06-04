@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '../config/api';
+import { apiPath } from '../config/api';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   FETCH_NEWS_SENTIMENT_FILTERS_REQUEST,
@@ -35,7 +35,7 @@ const buildQueryParams = (query = {}) => {
 
 function* fetchNewsSentimentFiltersSaga() {
   try {
-    const response = yield call(axios.get, `${API_URL}/news-sentiment/filters`);
+    const response = yield call(axios.get, apiPath('/news-sentiment/filters'));
     const payload = response.data?.data || response.data;
 
     yield put(fetchNewsSentimentFiltersSuccess(payload));
@@ -52,7 +52,7 @@ function* fetchNewsSentimentFiltersSaga() {
 
 function* fetchNewsSentimentSaga(action) {
   try {
-    const response = yield call(axios.get, `${API_URL}/news-sentiment`, {
+    const response = yield call(axios.get, apiPath('/news-sentiment'), {
       params: buildQueryParams(action.payload),
     });
     const payload = response.data?.data || response.data;

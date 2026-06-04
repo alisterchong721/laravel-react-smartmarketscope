@@ -903,14 +903,7 @@ class FundamentalScrapeService
                 ],
             ]);
 
-            $responseBody = (string) $response->getBody();
-
-            Log::info('Investing response', [
-                'status' => $response->getStatusCode(),
-                'body' => substr($responseBody, 0, 500),
-            ]);
-
-            return $responseBody;
+            return (string) $response->getBody();
         } catch (ClientException $exception) {
             if ($exception->getResponse()?->getStatusCode() !== 403) {
                 throw $exception;
@@ -950,11 +943,6 @@ class FundamentalScrapeService
         $statusCode = (int) curl_getinfo($handle, CURLINFO_RESPONSE_CODE);
         $error = curl_error($handle);
         curl_close($handle);
-
-        Log::info('Investing response', [
-            'status' => $statusCode,
-            'body' => substr((string) $responseBody, 0, 500),
-        ]);
 
         if ($responseBody === false || $statusCode >= 400) {
             throw new \RuntimeException("Investing.com cURL request failed with status {$statusCode}: {$error}");

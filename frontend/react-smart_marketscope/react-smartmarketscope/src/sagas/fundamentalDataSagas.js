@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-import { API_URL } from '../config/api';
+import { apiPath } from '../config/api';
 import {
   FETCH_FUNDAMENTAL_COUNTRY_REQUEST,
   fetchFundamentalCountrySuccess,
@@ -25,7 +25,7 @@ function* fetchFundamentalCountrySaga(action) {
     
     const response = yield call(
       axios.get,
-      `${API_URL}/fundamental/view-country-data`,
+      apiPath('/fundamental/view-country-data'),
       {
         params: {
           country: normalizedCountry

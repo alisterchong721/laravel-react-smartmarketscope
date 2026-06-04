@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '../config/api';
+import { apiPath } from '../config/api';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   FETCH_RETAIL_SENTIMENT_FILTERS_REQUEST,
@@ -43,7 +43,7 @@ const buildQueryParams = (query = {}) => {
 
 function* fetchRetailSentimentFiltersSaga() {
   try {
-    const response = yield call(axios.get, `${API_URL}/retail-sentiment/filters`);
+    const response = yield call(axios.get, apiPath('/retail-sentiment/filters'));
     const payload = response.data?.data || response.data;
 
     yield put(fetchRetailSentimentFiltersSuccess(payload));
@@ -60,7 +60,7 @@ function* fetchRetailSentimentFiltersSaga() {
 
 function* fetchRetailSentimentSaga(action) {
   try {
-    const response = yield call(axios.get, `${API_URL}/retail-sentiment`, {
+    const response = yield call(axios.get, apiPath('/retail-sentiment'), {
       params: buildQueryParams(action.payload),
     });
 

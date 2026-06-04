@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '../config/api';
+import { apiPath } from '../config/api';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   FETCH_COT_REPORT_FILTERS_REQUEST,
@@ -31,7 +31,7 @@ const buildQueryParams = (query = {}) => {
 
 function* fetchCotReportFiltersSaga() {
   try {
-    const response = yield call(axios.get, `${API_URL}/cot-sentiment/filters`);
+    const response = yield call(axios.get, apiPath('/cot-sentiment/filters'));
     const payload = response.data?.data || response.data;
 
     yield put(fetchCotReportFiltersSuccess(payload));
@@ -48,7 +48,7 @@ function* fetchCotReportFiltersSaga() {
 
 function* fetchCotReportSaga(action) {
   try {
-    const response = yield call(axios.get, `${API_URL}/cot-sentiment`, {
+    const response = yield call(axios.get, apiPath('/cot-sentiment'), {
       params: buildQueryParams(action.payload),
     });
 

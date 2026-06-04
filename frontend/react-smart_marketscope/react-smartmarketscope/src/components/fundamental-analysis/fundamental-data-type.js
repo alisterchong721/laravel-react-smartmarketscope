@@ -18,7 +18,7 @@ import {
 } from 'antd';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Sidebar from '../sidebar';
-import { API_URL } from '../../config/api';
+import { apiPath } from '../../config/api';
 import './fundamental-analysis.css';
 
 const { Title, Text } = Typography;
@@ -104,7 +104,7 @@ const FundamentalDataType = () => {
     setError(null);
 
     try {
-      const response = await axios.get(`${API_URL}/fundamental/calendar`, {
+      const response = await axios.get(apiPath('/fundamental/calendar'), {
         params: {
           currency: currency === 'ALL' ? undefined : currency,
           importance: 'High',

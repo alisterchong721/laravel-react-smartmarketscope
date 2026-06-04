@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-import { API_URL } from '../config/api';
+import { apiPath } from '../config/api';
 import {
   FETCH_TRADES_REQUEST,
   fetchTradesSuccess,
@@ -31,7 +31,7 @@ function* fetchTradeSaga() {
 
     const response = yield call(
       axios.get,
-      `${API_URL}/tradeRecords/get-by-user`,
+      apiPath('/tradeRecords/get-by-user'),
       { params: { user_id: userId } }
     );
 
@@ -59,7 +59,7 @@ function* createTradeSaga(action) {
 
     const response = yield call(
       axios.post,
-      `${API_URL}/tradeRecords/create`,
+      apiPath('/tradeRecords/create'),
       tradeData
     );
 
@@ -95,7 +95,7 @@ function* deleteTradeSaga(action) {
 
     const response = yield call(
       axios.post,
-      `${API_URL}/tradeRecords/delete?${params.toString()}`
+      apiPath(`/tradeRecords/delete?${params.toString()}`)
     );
 
     console.log('Delete response:', response.data);
@@ -143,13 +143,13 @@ function* updateTradeSaga(action) {
 
     console.log(
       'Making API call to:',
-      `${API_URL}/tradeRecords/update?${params.toString()}`
+      apiPath(`/tradeRecords/update?${params.toString()}`)
     );
     console.log('With data:', tradeData);
 
     const response = yield call(
       axios.post,
-      `${API_URL}/tradeRecords/update?${params.toString()}`,
+      apiPath(`/tradeRecords/update?${params.toString()}`),
       tradeData
     );
 
