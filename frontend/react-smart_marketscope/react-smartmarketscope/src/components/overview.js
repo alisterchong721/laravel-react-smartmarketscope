@@ -61,7 +61,26 @@ const titleCase = (value) =>
     .replace(/\b\w/g, (character) => character.toUpperCase());
 
 const normalizeBias = (bias) =>
-  (bias || '').toString().trim().toLowerCase().replace(/\s+/g, '_');
+  (bias || '')
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+
+const getBiasDirection = (bias) => {
+  const normalizedBias = normalizeBias(bias);
+
+  if (normalizedBias.includes('bearish')) {
+    return 'bearish';
+  }
+
+  if (normalizedBias.includes('bullish')) {
+    return 'bullish';
+  }
+
+  return normalizedBias === 'neutral' ? 'neutral' : null;
+};
 
 const formatBiasLabel = (bias) => {
   const normalizedBias = normalizeBias(bias);
@@ -92,21 +111,13 @@ const getScoreColor = (score) => {
 };
 
 const getBiasColor = (bias) => {
-  const normalizedBias = normalizeBias(bias);
+  const direction = getBiasDirection(bias);
 
-  if (
-    normalizedBias === 'strong_bullish' ||
-    normalizedBias === 'very_bullish' ||
-    normalizedBias === 'bullish'
-  ) {
+  if (direction === 'bullish') {
     return 'green';
   }
 
-  if (
-    normalizedBias === 'strong_bearish' ||
-    normalizedBias === 'very_bearish' ||
-    normalizedBias === 'bearish'
-  ) {
+  if (direction === 'bearish') {
     return 'red';
   }
 
@@ -114,7 +125,9 @@ const getBiasColor = (bias) => {
 };
 
 const getBiasTagStyle = (bias) => {
-  if (isBullishBias(bias)) {
+  const direction = getBiasDirection(bias);
+
+  if (direction === 'bullish') {
     return {
       color: '#15803d',
       backgroundColor: '#f0fdf4',
@@ -122,7 +135,7 @@ const getBiasTagStyle = (bias) => {
     };
   }
 
-  if (isBearishBias(bias)) {
+  if (direction === 'bearish') {
     return {
       color: '#dc2626',
       backgroundColor: '#fef2f2',
@@ -133,27 +146,16 @@ const getBiasTagStyle = (bias) => {
   return undefined;
 };
 
-const isBullishBias = (bias) => {
-  const normalizedBias = normalizeBias(bias);
+const getBiasTagClassName = (bias) => {
+  const direction = getBiasDirection(bias);
 
-  return (
-    normalizedBias === 'strong_bullish' ||
-    normalizedBias === 'very_bullish' ||
-    normalizedBias === 'bullish'
-  );
+  return direction ? `overview-bias-tag overview-bias-tag--${direction}` : undefined;
 };
 
-const isBearishBias = (bias) => {
-  const normalizedBias = normalizeBias(bias);
+const isBullishBias = (bias) => getBiasDirection(bias) === 'bullish';
+const isBearishBias = (bias) => getBiasDirection(bias) === 'bearish';
 
-  return (
-    normalizedBias === 'strong_bearish' ||
-    normalizedBias === 'very_bearish' ||
-    normalizedBias === 'bearish'
-  );
-};
-
-const isNeutralBias = (bias) => normalizeBias(bias) === 'neutral';
+const isNeutralBias = (bias) => getBiasDirection(bias) === 'neutral';
 
 const sortPairs = (items) =>
   [...items].sort((left, right) => {
@@ -326,6 +328,7 @@ const Overview = () => {
       render: (_, record) => (
         <Tag
           color={getBiasColor(record?.overall?.bias)}
+          className={getBiasTagClassName(record?.overall?.bias)}
           style={getBiasTagStyle(record?.overall?.bias)}
         >
           {formatBiasLabel(record?.overall?.bias)}
@@ -472,6 +475,7 @@ const Overview = () => {
                   </Title>
                   <Tag
                     color={getBiasColor(selectedRow?.overall?.bias)}
+                    className={getBiasTagClassName(selectedRow?.overall?.bias)}
                     style={getBiasTagStyle(selectedRow?.overall?.bias)}
                   >
                     {formatBiasLabel(selectedRow?.overall?.bias)}
@@ -498,6 +502,7 @@ const Overview = () => {
                       <Text strong>{item.label}</Text>
                       <Tag
                         color={getBiasColor(item.component?.bias)}
+                        className={getBiasTagClassName(item.component?.bias)}
                         style={getBiasTagStyle(item.component?.bias)}
                       >
                         {formatBiasLabel(item.component?.bias)}

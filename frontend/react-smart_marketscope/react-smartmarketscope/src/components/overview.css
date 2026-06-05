@@ -48,6 +48,18 @@
   margin-bottom: 8px;
 }
 
+.overview-bias-tag--bullish {
+  color: #15803d !important;
+  border-color: #bbf7d0 !important;
+  background: #f0fdf4 !important;
+}
+
+.overview-bias-tag--bearish {
+  color: #dc2626 !important;
+  border-color: #fecaca !important;
+  background: #fef2f2 !important;
+}
+
 .overview-quick-link {
   height: 44px;
   border-left-width: 4px;
