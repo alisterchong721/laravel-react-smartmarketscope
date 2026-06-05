@@ -186,18 +186,19 @@ class OverviewDashboardService
                 continue;
             }
 
-            $score = $this->clampScore(
+            $score = $this->clampDecimalScore(
                 ((float) ($category['long_percentage'] ?? 0)) - ((float) ($category['short_percentage'] ?? 0))
             );
+            $netPosition = (int) ($category['net_position'] ?? 0);
 
             $items[$item['asset_symbol']] = [
                 'available' => true,
                 'score' => $score,
-                'bias' => $this->biasFromScore($score),
+                'bias' => $this->biasFromNetPosition($netPosition),
                 'report_date' => $item['report_date'] ?? null,
                 'long_percentage' => round((float) ($category['long_percentage'] ?? 0), 2),
                 'short_percentage' => round((float) ($category['short_percentage'] ?? 0), 2),
-                'net_position' => (int) ($category['net_position'] ?? 0),
+                'net_position' => $netPosition,
                 'sentiment_bias' => $category['sentiment_bias'] ?? null,
             ];
         }
@@ -461,6 +462,15 @@ class OverviewDashboardService
         return (int) round(max(-100, min(100, $score)));
     }
 
+    private function clampDecimalScore(float $score): float|int
+    {
+        $rounded = round(max(-100, min(100, $score)), 2);
+
+        return fmod($rounded, 1.0) === 0.0
+            ? (int) $rounded
+            : $rounded;
+    }
+
     private function clampWeightedScore(float $score): float|int|string
     {
         $rounded = round(max(-100, min(100, $score)), 1);
@@ -473,7 +483,7 @@ class OverviewDashboardService
     private function biasFromScore(float|int $score): string
     {
         if ($score >= 60) {
-            return 'very_bullish';
+            return 'strong_bullish';
         }
 
         if ($score > 0) {
@@ -488,17 +498,38 @@ class OverviewDashboardService
             return 'bearish';
         }
 
-        return 'very_bearish';
+        return 'strong_bearish';
+    }
+
+    private function biasFromNetPosition(int $netPosition): string
+    {
+        if ($netPosition >= 60000) {
+            return 'strong_bullish';
+        }
+
+        if ($netPosition > 0) {
+            return 'bullish';
+        }
+
+        if ($netPosition === 0) {
+            return 'neutral';
+        }
+
+        if ($netPosition > -60000) {
+            return 'bearish';
+        }
+
+        return 'strong_bearish';
     }
 
     private function biasScale(): array
     {
         return [
-            'very_bullish' => ['min' => 60, 'max' => 100],
+            'strong_bullish' => ['min' => 60, 'max' => 100],
             'bullish' => ['min' => 0.1, 'max' => 59.9],
             'neutral' => ['min' => 0, 'max' => 0],
             'bearish' => ['min' => -59.9, 'max' => -0.1],
-            'very_bearish' => ['min' => -100, 'max' => -60],
+            'strong_bearish' => ['min' => -100, 'max' => -60],
         ];
     }
 }

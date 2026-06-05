@@ -60,6 +60,17 @@ const titleCase = (value) =>
     .replace(/_/g, ' ')
     .replace(/\b\w/g, (character) => character.toUpperCase());
 
+const formatBiasLabel = (bias) => {
+  const labels = {
+    strong_bullish: 'Strong Bullish',
+    strong_bearish: 'Strong Bearish',
+    very_bullish: 'Strong Bullish',
+    very_bearish: 'Strong Bearish',
+  };
+
+  return labels[bias] || titleCase(bias);
+};
+
 const getScoreColor = (score) => {
   if (score === null || score === undefined) {
     return '#8c8c8c';
@@ -77,19 +88,21 @@ const getScoreColor = (score) => {
 };
 
 const getBiasColor = (bias) => {
-  if (bias === 'very_bullish' || bias === 'bullish') {
+  if (bias === 'strong_bullish' || bias === 'very_bullish' || bias === 'bullish') {
     return 'green';
   }
 
-  if (bias === 'very_bearish' || bias === 'bearish') {
+  if (bias === 'strong_bearish' || bias === 'very_bearish' || bias === 'bearish') {
     return 'red';
   }
 
   return 'gold';
 };
 
-const isBullishBias = (bias) => bias === 'very_bullish' || bias === 'bullish';
-const isBearishBias = (bias) => bias === 'very_bearish' || bias === 'bearish';
+const isBullishBias = (bias) =>
+  bias === 'strong_bullish' || bias === 'very_bullish' || bias === 'bullish';
+const isBearishBias = (bias) =>
+  bias === 'strong_bearish' || bias === 'very_bearish' || bias === 'bearish';
 const isNeutralBias = (bias) => bias === 'neutral';
 
 const sortPairs = (items) =>
@@ -262,7 +275,7 @@ const Overview = () => {
       key: 'bias',
       render: (_, record) => (
         <Tag color={getBiasColor(record?.overall?.bias)}>
-          {titleCase(record?.overall?.bias)}
+          {formatBiasLabel(record?.overall?.bias)}
         </Tag>
       ),
     },
@@ -405,7 +418,7 @@ const Overview = () => {
                     {formatPair(selectedRow.asset_symbol)}
                   </Title>
                   <Tag color={getBiasColor(selectedRow?.overall?.bias)}>
-                    {titleCase(selectedRow?.overall?.bias)}
+                    {formatBiasLabel(selectedRow?.overall?.bias)}
                   </Tag>
                 </div>
                 <Text type="secondary">
@@ -428,7 +441,7 @@ const Overview = () => {
                     <div className="overview-drawer-stat-title">
                       <Text strong>{item.label}</Text>
                       <Tag color={getBiasColor(item.component?.bias)}>
-                        {titleCase(item.component?.bias)}
+                        {formatBiasLabel(item.component?.bias)}
                       </Tag>
                     </div>
                     <Text strong style={{ color: getScoreColor(item.component?.score) }}>

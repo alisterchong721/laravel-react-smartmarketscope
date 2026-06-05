@@ -92,6 +92,9 @@ const getBiasMeta = (netPosition) => {
   };
 };
 
+const getNonCommercialNetPosition = (item) =>
+  Number(item?.categories?.non_commercial?.net_position || 0);
+
 const toCategoryCards = (categories = {}) =>
   Object.entries(categories).map(([key, category]) => ({
     key,
@@ -172,13 +175,15 @@ const CotReport = () => {
       };
     }
 
-    const bullish = nonCommercialItems[0];
-    const bearish = nonCommercialItems[nonCommercialItems.length - 1];
+    const rankedByNetPosition = [...nonCommercialItems].sort(
+      (left, right) =>
+        getNonCommercialNetPosition(right) - getNonCommercialNetPosition(left)
+    );
+    const bullish = rankedByNetPosition[0];
+    const bearish = rankedByNetPosition[rankedByNetPosition.length - 1];
     const neutral = [...nonCommercialItems].sort((left, right) => {
-      const leftNet = Math.abs(left?.categories?.non_commercial?.net_position || 0);
-      const rightNet = Math.abs(
-        right?.categories?.non_commercial?.net_position || 0
-      );
+      const leftNet = Math.abs(getNonCommercialNetPosition(left));
+      const rightNet = Math.abs(getNonCommercialNetPosition(right));
 
       return leftNet - rightNet;
     })[0];
