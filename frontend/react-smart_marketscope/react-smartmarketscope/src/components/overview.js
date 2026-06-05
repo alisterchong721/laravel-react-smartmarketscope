@@ -60,7 +60,11 @@ const titleCase = (value) =>
     .replace(/_/g, ' ')
     .replace(/\b\w/g, (character) => character.toUpperCase());
 
+const normalizeBias = (bias) =>
+  (bias || '').toString().trim().toLowerCase().replace(/\s+/g, '_');
+
 const formatBiasLabel = (bias) => {
+  const normalizedBias = normalizeBias(bias);
   const labels = {
     strong_bullish: 'Strong Bullish',
     strong_bearish: 'Strong Bearish',
@@ -68,7 +72,7 @@ const formatBiasLabel = (bias) => {
     very_bearish: 'Strong Bearish',
   };
 
-  return labels[bias] || titleCase(bias);
+  return labels[normalizedBias] || titleCase(normalizedBias || bias);
 };
 
 const getScoreColor = (score) => {
@@ -88,22 +92,68 @@ const getScoreColor = (score) => {
 };
 
 const getBiasColor = (bias) => {
-  if (bias === 'strong_bullish' || bias === 'very_bullish' || bias === 'bullish') {
+  const normalizedBias = normalizeBias(bias);
+
+  if (
+    normalizedBias === 'strong_bullish' ||
+    normalizedBias === 'very_bullish' ||
+    normalizedBias === 'bullish'
+  ) {
     return 'green';
   }
 
-  if (bias === 'strong_bearish' || bias === 'very_bearish' || bias === 'bearish') {
+  if (
+    normalizedBias === 'strong_bearish' ||
+    normalizedBias === 'very_bearish' ||
+    normalizedBias === 'bearish'
+  ) {
     return 'red';
   }
 
   return 'gold';
 };
 
-const isBullishBias = (bias) =>
-  bias === 'strong_bullish' || bias === 'very_bullish' || bias === 'bullish';
-const isBearishBias = (bias) =>
-  bias === 'strong_bearish' || bias === 'very_bearish' || bias === 'bearish';
-const isNeutralBias = (bias) => bias === 'neutral';
+const getBiasTagStyle = (bias) => {
+  if (isBullishBias(bias)) {
+    return {
+      color: '#15803d',
+      backgroundColor: '#f0fdf4',
+      borderColor: '#bbf7d0',
+    };
+  }
+
+  if (isBearishBias(bias)) {
+    return {
+      color: '#dc2626',
+      backgroundColor: '#fef2f2',
+      borderColor: '#fecaca',
+    };
+  }
+
+  return undefined;
+};
+
+const isBullishBias = (bias) => {
+  const normalizedBias = normalizeBias(bias);
+
+  return (
+    normalizedBias === 'strong_bullish' ||
+    normalizedBias === 'very_bullish' ||
+    normalizedBias === 'bullish'
+  );
+};
+
+const isBearishBias = (bias) => {
+  const normalizedBias = normalizeBias(bias);
+
+  return (
+    normalizedBias === 'strong_bearish' ||
+    normalizedBias === 'very_bearish' ||
+    normalizedBias === 'bearish'
+  );
+};
+
+const isNeutralBias = (bias) => normalizeBias(bias) === 'neutral';
 
 const sortPairs = (items) =>
   [...items].sort((left, right) => {
@@ -274,7 +324,10 @@ const Overview = () => {
       title: 'Bias',
       key: 'bias',
       render: (_, record) => (
-        <Tag color={getBiasColor(record?.overall?.bias)}>
+        <Tag
+          color={getBiasColor(record?.overall?.bias)}
+          style={getBiasTagStyle(record?.overall?.bias)}
+        >
           {formatBiasLabel(record?.overall?.bias)}
         </Tag>
       ),
@@ -417,7 +470,10 @@ const Overview = () => {
                   <Title level={3} style={{ margin: 0 }}>
                     {formatPair(selectedRow.asset_symbol)}
                   </Title>
-                  <Tag color={getBiasColor(selectedRow?.overall?.bias)}>
+                  <Tag
+                    color={getBiasColor(selectedRow?.overall?.bias)}
+                    style={getBiasTagStyle(selectedRow?.overall?.bias)}
+                  >
                     {formatBiasLabel(selectedRow?.overall?.bias)}
                   </Tag>
                 </div>
@@ -440,7 +496,10 @@ const Overview = () => {
                   <div className="overview-drawer-stat" key={item.label}>
                     <div className="overview-drawer-stat-title">
                       <Text strong>{item.label}</Text>
-                      <Tag color={getBiasColor(item.component?.bias)}>
+                      <Tag
+                        color={getBiasColor(item.component?.bias)}
+                        style={getBiasTagStyle(item.component?.bias)}
+                      >
                         {formatBiasLabel(item.component?.bias)}
                       </Tag>
                     </div>

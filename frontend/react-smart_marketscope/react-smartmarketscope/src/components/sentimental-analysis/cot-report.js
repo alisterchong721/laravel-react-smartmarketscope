@@ -171,27 +171,25 @@ const CotReport = () => {
       return {
         mostBullish: null,
         mostBearish: null,
-        mostNeutral: null,
       };
     }
 
-    const rankedByNetPosition = [...nonCommercialItems].sort(
-      (left, right) =>
-        getNonCommercialNetPosition(right) - getNonCommercialNetPosition(left)
-    );
-    const bullish = rankedByNetPosition[0];
-    const bearish = rankedByNetPosition[rankedByNetPosition.length - 1];
-    const neutral = [...nonCommercialItems].sort((left, right) => {
-      const leftNet = Math.abs(getNonCommercialNetPosition(left));
-      const rightNet = Math.abs(getNonCommercialNetPosition(right));
-
-      return leftNet - rightNet;
-    })[0];
+    const rankedBullish = nonCommercialItems
+      .filter((item) => getNonCommercialNetPosition(item) > 0)
+      .sort(
+        (left, right) =>
+          getNonCommercialNetPosition(right) - getNonCommercialNetPosition(left)
+      );
+    const rankedBearish = nonCommercialItems
+      .filter((item) => getNonCommercialNetPosition(item) < 0)
+      .sort(
+        (left, right) =>
+          getNonCommercialNetPosition(left) - getNonCommercialNetPosition(right)
+      );
 
     return {
-      mostBullish: bullish,
-      mostBearish: bearish,
-      mostNeutral: neutral,
+      mostBullish: rankedBullish[0] || null,
+      mostBearish: rankedBearish[0] || null,
     };
   }, [nonCommercialItems]);
 
@@ -572,7 +570,7 @@ const CotReport = () => {
         ) : (
           <>
             <Row gutter={[16, 16]}>
-              <Col xs={24} md={8}>
+              <Col xs={24} md={12}>
                 <Card className="cot-report-summary-card">
                   <span className="cot-report-summary-label">Most Bullish</span>
                   <span className="cot-report-stat cot-report-stat--positive">
@@ -590,7 +588,7 @@ const CotReport = () => {
                 </Card>
               </Col>
 
-              <Col xs={24} md={8}>
+              <Col xs={24} md={12}>
                 <Card className="cot-report-summary-card">
                   <span className="cot-report-summary-label">Most Bearish</span>
                   <span className="cot-report-stat cot-report-stat--negative">
@@ -602,24 +600,6 @@ const CotReport = () => {
                     Net position:{' '}
                     {formatNumber(
                       overviewSummary.mostBearish?.categories?.non_commercial
-                        ?.net_position
-                    )}
-                  </Text>
-                </Card>
-              </Col>
-
-              <Col xs={24} md={8}>
-                <Card className="cot-report-summary-card">
-                  <span className="cot-report-summary-label">Closest To Neutral</span>
-                  <span className="cot-report-stat">
-                    {overviewSummary.mostNeutral
-                      ? formatPair(overviewSummary.mostNeutral.asset_symbol)
-                      : '-'}
-                  </span>
-                  <Text type="secondary">
-                    Net position:{' '}
-                    {formatNumber(
-                      overviewSummary.mostNeutral?.categories?.non_commercial
                         ?.net_position
                     )}
                   </Text>
