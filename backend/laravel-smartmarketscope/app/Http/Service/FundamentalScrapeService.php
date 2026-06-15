@@ -386,11 +386,14 @@ class FundamentalScrapeService
                     ->first();
 
                 if ($existing) {
-                    if ($normalized['actual'] === null && $existing->actual !== null) {
+                    if ($normalized['actual'] === null && $existing->actual !== null && $this->calendarPayloadHasReleased($normalized)) {
                         $normalized['actual'] = $existing->actual;
                         $normalized['actual_raw'] = $existing->actual_raw;
                         $normalized['actual_source'] = $existing->actual_source;
                         $normalized['actual_synced_at'] = $existing->actual_synced_at;
+                    } elseif ($normalized['actual'] === null) {
+                        $normalized['actual_source'] = null;
+                        $normalized['actual_synced_at'] = null;
                     }
 
                     $normalized['impact'] = $this->calculateCalendarImpact(
@@ -658,8 +661,13 @@ class FundamentalScrapeService
 
                 $stats['fetched']++;
 
+                if (!$this->calendarRowHasReleased($row)) {
+                    $stats['skipped']++;
+                    continue;
+                }
+
                 try {
-                    $event = $this->fetchInvestingEventPageActual((string) $url, $country, $row->event, $row->date->toDateString());
+                    $event = $this->fetchInvestingEventPageActual((string) $url, $country, $row->event, $row->date->toDateString(), $row->time);
                 } catch (\Throwable $exception) {
                     Log::warning('Investing.com event page actual fallback failed', [
                         'country' => $country,
@@ -690,7 +698,7 @@ class FundamentalScrapeService
         return $stats;
     }
 
-    private function fetchInvestingEventPageActual(string $url, string $country, string $event, string $date): ?array
+    private function fetchInvestingEventPageActual(string $url, string $country, string $event, string $date, ?string $time = null): ?array
     {
         $response = $this->client->get($url, [
             'timeout' => (int) config('services.investing_calendar.timeout', 20),
@@ -706,7 +714,8 @@ class FundamentalScrapeService
             (string) $response->getBody(),
             $country,
             $event,
-            $date
+            $date,
+            $time
         );
     }
 
@@ -1022,6 +1031,7 @@ class FundamentalScrapeService
                 'previous' => $previous,
                 'importance' => $this->calendarImportanceLabel($importance),
                 'date' => Carbon::parse((string) $row->attr('data-event-datetime'))->toDateString(),
+                'time' => Carbon::parse((string) $row->attr('data-event-datetime'))->format('H:i:s'),
                 'current_date' => $currentDate,
             ];
         });
@@ -1029,8 +1039,12 @@ class FundamentalScrapeService
         return $events;
     }
 
-    private function parseInvestingEventPageActual(string $html, string $country, string $event, string $date): ?array
+    private function parseInvestingEventPageActual(string $html, string $country, string $event, string $date, ?string $time = null): ?array
     {
+        if ($time !== null && !$this->calendarDateTimeHasReleased($date, $time)) {
+            return null;
+        }
+
         $crawler = new Crawler($html);
         $text = preg_replace('/\s+/', ' ', $crawler->filter('body')->text('', false));
         $targetDate = Carbon::parse($date);
@@ -1067,6 +1081,7 @@ class FundamentalScrapeService
             'previous' => $this->parseCalendarNumber($previousRaw),
             'importance' => 'High',
             'date' => $targetDate->toDateString(),
+            'time' => $time,
         ];
     }
 
@@ -1152,14 +1167,19 @@ class FundamentalScrapeService
                 ),
                 'importance' => $event['importance'] ?? 'High',
                 'date' => $event['date'],
-                'time' => Carbon::parse((string) $event['date'])->format('H:i:s'),
+                'time' => empty($event['time'])
+                    ? Carbon::parse((string) $event['date'])->format('H:i:s')
+                    : (string) $event['time'],
                 'source' => $actualSource,
             ]);
 
             return 'created';
         }
 
-        $actual = ($event['actual'] ?? null) === null ? ($row->actual === null ? null : (float) $row->actual) : (float) $event['actual'];
+        $hasReleased = $this->calendarRowHasReleased($row);
+        $actual = ($event['actual'] ?? null) === null
+            ? ($hasReleased && $row->actual !== null ? (float) $row->actual : null)
+            : (float) $event['actual'];
         $forecast = ($event['forecast'] ?? null) === null ? ($row->forecast === null ? null : (float) $row->forecast) : (float) $event['forecast'];
         $previous = ($event['previous'] ?? null) === null ? ($row->previous === null ? null : (float) $row->previous) : (float) $event['previous'];
 
@@ -1177,6 +1197,11 @@ class FundamentalScrapeService
             $updates['actual_raw'] = $this->normalizeRawCalendarValue($event['actual_raw'] ?? $event['actual']);
             $updates['actual_source'] = $actualSource;
             $updates['actual_synced_at'] = now();
+        } elseif (!$hasReleased) {
+            $updates['actual'] = null;
+            $updates['actual_raw'] = null;
+            $updates['actual_source'] = null;
+            $updates['actual_synced_at'] = null;
         }
 
         if (($event['forecast'] ?? null) !== null) {
@@ -1390,6 +1415,39 @@ class FundamentalScrapeService
         ];
     }
 
+    private function calendarPayloadHasReleased(array $event): bool
+    {
+        if (empty($event['date'])) {
+            return false;
+        }
+
+        return $this->calendarDateTimeHasReleased(
+            (string) $event['date'],
+            empty($event['time']) ? '00:00:00' : (string) $event['time']
+        );
+    }
+
+    private function calendarRowHasReleased(FundamentalData $row): bool
+    {
+        if (!$row->date) {
+            return false;
+        }
+
+        return $this->calendarDateTimeHasReleased(
+            $row->date->toDateString(),
+            empty($row->time) ? '00:00:00' : (string) $row->time
+        );
+    }
+
+    private function calendarDateTimeHasReleased(string $date, string $time): bool
+    {
+        $timezone = config('services.forex_factory.timezone', 'Asia/Kuala_Lumpur');
+        $time = trim($time) === '' ? '00:00:00' : trim($time);
+        $releasedAt = Carbon::parse(trim($date) . ' ' . $time, $timezone);
+
+        return now($timezone)->greaterThanOrEqualTo($releasedAt);
+    }
+
     private function normalizeRawCalendarValue($value): ?string
     {
         if ($value === null) {
@@ -1526,6 +1584,8 @@ class FundamentalScrapeService
         $aliases = [
             'cash rate' => 'interest rate',
             'official cash rate' => 'interest rate',
+            'overnight rate' => 'interest rate',
+            'target overnight rate' => 'interest rate',
             'rba interest rate decision' => 'interest rate',
             'rba interest rate decision may' => 'interest rate',
             'interest rate decision' => 'interest rate',

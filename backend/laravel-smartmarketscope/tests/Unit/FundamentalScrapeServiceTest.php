@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Http\Service\FundamentalScrapeService;
+use Carbon\Carbon;
 use PHPUnit\Framework\Attributes\DataProvider;
 use ReflectionClass;
 use Tests\TestCase;
@@ -70,6 +71,40 @@ class FundamentalScrapeServiceTest extends TestCase
         $this->assertSame('4.3%', $event['previous_raw']);
     }
 
+    public function test_investing_event_page_actual_parser_ignores_rows_before_release_time(): void
+    {
+        Carbon::setTestNow(Carbon::parse('2026-06-15 20:00:00', 'Asia/Kuala_Lumpur'));
+
+        try {
+            $service = new FundamentalScrapeService();
+            $reflection = new ReflectionClass($service);
+            $method = $reflection->getMethod('parseInvestingEventPageActual');
+            $method->setAccessible(true);
+
+            $html = <<<'HTML'
+                <html><body>
+                    Release date Time Actual Forecast Previous
+                    Jun 15, 2026 (Jun)21:30 4.35%4.35%
+                    May 05, 2026 (May)21:30 4.35%4.35%
+
+                    4.10%
+                    Show More
+                </body></html>
+            HTML;
+
+            $this->assertNull($method->invoke(
+                $service,
+                $html,
+                'Australia',
+                'Australia Cash Rate',
+                '2026-06-15',
+                '21:30:00'
+            ));
+        } finally {
+            Carbon::setTestNow();
+        }
+    }
+
     public static function investingAndForexFactoryEventNameProvider(): array
     {
         return [
@@ -96,6 +131,8 @@ class FundamentalScrapeServiceTest extends TestCase
             'canada gdp monthly' => ['Canada GDP m/m', 'GDP (MoM) (Mar)'],
             'us adp employment change' => ['US ADP Non-Farm Employment Change', 'ADP Nonfarm Employment Change (May)'],
             'nzd official cash rate' => ['New Zealand Official Cash Rate', 'Interest Rate Decision'],
+            'australia cash rate' => ['Australia Cash Rate', 'Interest Rate Decision'],
+            'canada overnight rate' => ['Canada Overnight Rate', 'Interest Rate Decision'],
         ];
     }
 }
