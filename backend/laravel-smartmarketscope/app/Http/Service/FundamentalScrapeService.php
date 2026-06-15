@@ -1050,7 +1050,7 @@ class FundamentalScrapeService
         $targetDate = Carbon::parse($date);
         $dateLabel = $targetDate->format('M j, Y');
 
-        if (!preg_match('/' . preg_quote($dateLabel, '/') . '\s*\([^)]*\)\s*\d{2}:\d{2}\s*(.*?)(?=\s+[A-Z][a-z]{2}\s+\d{1,2},\s+\d{4}\s*\(|\s+Show More|\z)/', (string) $text, $match)) {
+        if (!preg_match('/' . preg_quote($dateLabel, '/') . '\s*(?:\([^)]*\))?\s*\d{2}:\d{2}\s*(.*?)(?=\s+[A-Z][a-z]{2}\s+\d{1,2},\s+\d{4}\s*(?:\(|\d{2}:\d{2})|\s+Show More|\z)/', (string) $text, $match)) {
             return null;
         }
 

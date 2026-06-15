@@ -105,6 +105,41 @@ class FundamentalScrapeServiceTest extends TestCase
         }
     }
 
+    public function test_investing_event_page_actual_parser_handles_rows_without_period_label(): void
+    {
+        $service = new FundamentalScrapeService();
+        $reflection = new ReflectionClass($service);
+        $method = $reflection->getMethod('parseInvestingEventPageActual');
+        $method->setAccessible(true);
+
+        $html = <<<'HTML'
+            <html><body>
+                Release date Time Actual Forecast Previous
+                Jul 15, 2026 13:45 2.25%
+                Jun 10, 2026 13:45 2.25%2.25%
+
+                2.25%
+                Apr 29, 2026 13:45 2.25%2.25%
+
+                2.25%
+                Show More
+            </body></html>
+        HTML;
+
+        $event = $method->invoke(
+            $service,
+            $html,
+            'Canada',
+            'Canada Overnight Rate',
+            '2026-06-10'
+        );
+
+        $this->assertSame('2.25%', $event['actual_raw']);
+        $this->assertSame(2.25, $event['actual']);
+        $this->assertSame('2.25%', $event['forecast_raw']);
+        $this->assertSame('2.25%', $event['previous_raw']);
+    }
+
     public static function investingAndForexFactoryEventNameProvider(): array
     {
         return [
