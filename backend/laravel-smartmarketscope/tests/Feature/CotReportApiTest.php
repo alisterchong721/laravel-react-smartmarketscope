@@ -14,7 +14,7 @@ class CotReportApiTest extends TestCase
     public function test_it_syncs_latest_cot_data_and_returns_all_three_categories(): void
     {
         Http::fake([
-            'https://publicreporting.cftc.gov/resource/jun7-fc8e.json*' => Http::sequence()
+            'https://publicreporting.cftc.gov/resource/6dca-aqww.json*' => Http::sequence()
                 ->push([
                     ['report_date_as_yyyy_mm_dd' => '2026-03-24T00:00:00.000'],
                 ], 200)
@@ -128,7 +128,7 @@ class CotReportApiTest extends TestCase
         ]);
 
         Http::fake([
-            'https://publicreporting.cftc.gov/resource/jun7-fc8e.json*' => Http::response([
+            'https://publicreporting.cftc.gov/resource/6dca-aqww.json*' => Http::response([
                 ['report_date_as_yyyy_mm_dd' => '2026-03-24T00:00:00.000'],
             ], 200),
         ]);
@@ -140,5 +140,91 @@ class CotReportApiTest extends TestCase
             ->assertJsonPath('data.synced_from_source', false)
             ->assertJsonPath('data.sync_mode', 'database_only')
             ->assertJsonPath('data.items.0.asset_symbol', 'EURUSD');
+    }
+
+    public function test_force_refresh_reimports_latest_stored_report_date(): void
+    {
+        CotReport::query()->create([
+            'asset_symbol' => 'EURUSD',
+            'report_date' => '2026-06-09',
+            'source_market_name' => 'EURO FX - CHICAGO MERCANTILE EXCHANGE',
+            'source_contract_market_name' => 'EURO FX',
+            'source_report_id' => 'old-combined-row',
+            'source_contract_code' => '099741',
+            'pair_is_inverse' => false,
+            'open_interest_all' => 1015246,
+            'non_commercial_long' => 199791,
+            'non_commercial_short' => 218136,
+            'non_commercial_change_long' => -10655,
+            'non_commercial_change_short' => 23418,
+            'non_commercial_long_pct' => 19.7,
+            'non_commercial_short_pct' => 21.5,
+            'commercial_long' => 606982,
+            'commercial_short' => 613929,
+            'commercial_change_long' => 32629,
+            'commercial_change_short' => 1882,
+            'commercial_long_pct' => 59.8,
+            'commercial_short_pct' => 60.5,
+            'nonreportable_long' => 94784,
+            'nonreportable_short' => 69492,
+            'nonreportable_change_long' => 3883,
+            'nonreportable_change_short' => 556,
+            'nonreportable_long_pct' => 9.3,
+            'nonreportable_short_pct' => 6.8,
+            'source_payload' => [],
+        ]);
+
+        Http::fake([
+            'https://publicreporting.cftc.gov/resource/6dca-aqww.json*' => Http::sequence()
+                ->push([
+                    ['report_date_as_yyyy_mm_dd' => '2026-06-09T00:00:00.000'],
+                ], 200)
+                ->push([
+                    [
+                        'id' => '260609099741F',
+                        'market_and_exchange_names' => 'EURO FX - CHICAGO MERCANTILE EXCHANGE',
+                        'contract_market_name' => 'EURO FX',
+                        'cftc_contract_market_code' => '099741',
+                        'report_date_as_yyyy_mm_dd' => '2026-06-09T00:00:00.000',
+                        'open_interest_all' => '871507',
+                        'noncomm_positions_long_all' => '219564',
+                        'noncomm_positions_short_all' => '205632',
+                        'comm_positions_long_all' => '511359',
+                        'comm_positions_short_all' => '549444',
+                        'nonrept_positions_long_all' => '90399',
+                        'nonrept_positions_short_all' => '66246',
+                        'change_in_noncomm_long_all' => '-15878',
+                        'change_in_noncomm_short_all' => '19056',
+                        'change_in_comm_long_all' => '31675',
+                        'change_in_comm_short_all' => '364',
+                        'change_in_nonrept_long_all' => '3860',
+                        'change_in_nonrept_short_all' => '237',
+                        'pct_of_oi_noncomm_long_all' => '25.2',
+                        'pct_of_oi_noncomm_short_all' => '23.6',
+                        'pct_of_oi_comm_long_all' => '58.7',
+                        'pct_of_oi_comm_short_all' => '63.0',
+                        'pct_of_oi_nonrept_long_all' => '10.4',
+                        'pct_of_oi_nonrept_short_all' => '7.6',
+                    ],
+                ], 200)
+                ->push([], 200),
+        ]);
+
+        $response = $this->getJson('/api/cot-sentiment?asset=EURUSD&refresh=1');
+
+        $response->assertOk()
+            ->assertJsonPath('data.synced_from_source', true)
+            ->assertJsonPath('data.items.0.open_interest_all', 871507)
+            ->assertJsonPath('data.items.0.categories.non_commercial.long_contracts', 219564)
+            ->assertJsonPath('data.items.0.categories.non_commercial.short_contracts', 205632);
+
+        $this->assertDatabaseHas('cot_reports', [
+            'asset_symbol' => 'EURUSD',
+            'report_date' => '2026-06-09',
+            'open_interest_all' => 871507,
+            'non_commercial_long' => 219564,
+            'non_commercial_short' => 205632,
+            'source_report_id' => '260609099741F',
+        ]);
     }
 }

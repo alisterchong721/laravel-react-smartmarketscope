@@ -51,7 +51,7 @@ class CotReportService
             'available_filters' => $this->getFiltersMeta(),
             'source' => [
                 'provider' => 'CFTC',
-                'dataset' => 'Legacy Combined Commitments of Traders',
+                'dataset' => 'Legacy Futures Only Commitments of Traders',
                 'endpoint' => config('services.cot_report.endpoint'),
                 'latest_source_report_date' => $syncStatus['latest_source_report_date'],
                 'latest_stored_report_date' => $latestDbDate ? Carbon::parse($latestDbDate)->toDateString() : null,
@@ -94,7 +94,10 @@ class CotReportService
             ];
         }
 
-        $this->syncMissingReports($latestStoredDate ? Carbon::parse($latestStoredDate) : null);
+        $this->syncMissingReports(
+            $latestStoredDate ? Carbon::parse($latestStoredDate) : null,
+            $forceRefresh
+        );
 
         return [
             'synced' => true,
@@ -103,13 +106,13 @@ class CotReportService
         ];
     }
 
-    private function syncMissingReports(?Carbon $latestStoredDate = null): void
+    private function syncMissingReports(?Carbon $latestStoredDate = null, bool $includeLatestStoredDate = false): void
     {
         $offset = 0;
         $limit = (int) config('services.cot_report.page_size', 1000);
 
         do {
-            $rows = $this->requestSourceRows($latestStoredDate, $limit, $offset);
+            $rows = $this->requestSourceRows($latestStoredDate, $limit, $offset, $includeLatestStoredDate);
 
             if (empty($rows)) {
                 break;
@@ -166,7 +169,7 @@ class CotReportService
         } while (count($rows) === $limit);
     }
 
-    private function requestSourceRows(?Carbon $latestStoredDate, int $limit, int $offset): array
+    private function requestSourceRows(?Carbon $latestStoredDate, int $limit, int $offset, bool $includeLatestStoredDate = false): array
     {
         $response = Http::acceptJson()
             ->timeout((int) config('services.cot_report.timeout', 20))
@@ -197,7 +200,7 @@ class CotReportService
                     'pct_of_oi_nonrept_long_all',
                     'pct_of_oi_nonrept_short_all',
                 ]),
-                '$where' => $this->buildWhereClause($latestStoredDate),
+                '$where' => $this->buildWhereClause($latestStoredDate, $includeLatestStoredDate),
                 '$order' => 'report_date_as_yyyy_mm_dd ASC, market_and_exchange_names ASC',
                 '$limit' => $limit,
                 '$offset' => $offset,
@@ -240,7 +243,7 @@ class CotReportService
         return Carbon::parse($rawDate)->startOfDay();
     }
 
-    private function buildWhereClause(?Carbon $latestStoredDate): string
+    private function buildWhereClause(?Carbon $latestStoredDate, bool $includeLatestStoredDate = false): string
     {
         $quotedMarkets = array_map(
             fn(string $market) => "'" . str_replace("'", "\\'", $market) . "'",
@@ -253,7 +256,8 @@ class CotReportService
         ];
 
         if ($latestStoredDate) {
-            $conditions[] = "report_date_as_yyyy_mm_dd > '" . $latestStoredDate->toDateString() . "T00:00:00.000'";
+            $operator = $includeLatestStoredDate ? '>=' : '>';
+            $conditions[] = "report_date_as_yyyy_mm_dd {$operator} '" . $latestStoredDate->toDateString() . "T00:00:00.000'";
         }
 
         return implode(' AND ', $conditions);

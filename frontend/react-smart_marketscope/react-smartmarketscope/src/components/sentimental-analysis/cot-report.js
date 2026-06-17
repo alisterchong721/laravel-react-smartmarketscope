@@ -529,9 +529,6 @@ const CotReport = () => {
                   <span className="cot-report-stat">
                     {lastUpdated ? new Date(lastUpdated).toLocaleTimeString() : '-'}
                   </span>
-                  <Text type="secondary">
-                    Sync mode: {reportData.sync_mode || 'unknown'}
-                  </Text>
                 </Card>
               </Col>
             </Row>

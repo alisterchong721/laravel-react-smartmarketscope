@@ -42,7 +42,7 @@ return [
     ],
 
     'cot_report' => [
-        'endpoint' => env('COT_REPORT_ENDPOINT', 'https://publicreporting.cftc.gov/resource/jun7-fc8e.json'),
+        'endpoint' => env('COT_REPORT_ENDPOINT', 'https://publicreporting.cftc.gov/resource/6dca-aqww.json'),
         'timeout' => env('COT_REPORT_TIMEOUT', 20),
         'page_size' => env('COT_REPORT_PAGE_SIZE', 1000),
         'upsert_batch_size' => env('COT_REPORT_UPSERT_BATCH_SIZE', 100),
