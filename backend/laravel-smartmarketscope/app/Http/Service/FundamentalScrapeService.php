@@ -1048,14 +1048,34 @@ class FundamentalScrapeService
         $crawler = new Crawler($html);
         $text = preg_replace('/\s+/', ' ', $crawler->filter('body')->text('', false));
         $targetDate = Carbon::parse($date);
-        $dateLabel = $targetDate->format('M j, Y');
+        $dateLabels = array_values(array_unique([
+            $targetDate->format('M j, Y'),
+            $targetDate->copy()->subDay()->format('M j, Y'),
+        ]));
+        $values = null;
 
-        if (!preg_match('/' . preg_quote($dateLabel, '/') . '\s*(?:\([^)]*\))?\s*\d{2}:\d{2}\s*(.*?)(?=\s+[A-Z][a-z]{2}\s+\d{1,2},\s+\d{4}\s*(?:\(|\d{2}:\d{2})|\s+Show More|\z)/', (string) $text, $match)) {
-            return null;
+        foreach ($dateLabels as $dateLabel) {
+            if (!preg_match('/' . preg_quote($dateLabel, '/') . '\s*(?:\([^)]*\))?\s*\d{2}:\d{2}\s*(.*?)(?=\s+[A-Z][a-z]{2}\s+\d{1,2},\s+\d{4}\s*(?:\(|\d{2}:\d{2})|\s+Show More|\z)/', (string) $text, $match)) {
+                continue;
+            }
+
+            preg_match_all('/[-+]?\d+(?:[.,]\d+)?(?:[KMBT%])?/i', $match[1], $matchedValues);
+            $values = $matchedValues[0] ?? [];
+            break;
         }
 
-        preg_match_all('/[-+]?\d+(?:[.,]\d+)?(?:[KMBT%])?/i', $match[1], $values);
-        $values = $values[0] ?? [];
+        if ($values === null) {
+            foreach ($dateLabels as $dateLabel) {
+                if (!preg_match('/Latest Release\s*' . preg_quote($dateLabel, '/') . '.*?Actual\s*([-+]?\d+(?:[.,]\d+)?(?:[KMBT%])?).*?Forecast\s*([-+]?\d+(?:[.,]\d+)?(?:[KMBT%])?).*?Previous\s*([-+]?\d+(?:[.,]\d+)?(?:[KMBT%])?)/i', (string) $text, $summaryMatch)) {
+                    continue;
+                }
+
+                $values = array_slice($summaryMatch, 1, 3);
+                break;
+            }
+        }
+
+        $values = $values ?? [];
 
         if (count($values) < 3) {
             return null;

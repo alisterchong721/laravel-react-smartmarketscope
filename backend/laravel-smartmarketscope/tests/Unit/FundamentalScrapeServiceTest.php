@@ -140,6 +140,39 @@ class FundamentalScrapeServiceTest extends TestCase
         $this->assertSame('2.25%', $event['previous_raw']);
     }
 
+    public function test_investing_event_page_actual_parser_handles_previous_day_summary_release(): void
+    {
+        $service = new FundamentalScrapeService();
+        $reflection = new ReflectionClass($service);
+        $method = $reflection->getMethod('parseInvestingEventPageActual');
+        $method->setAccessible(true);
+
+        $html = <<<'HTML'
+            <html><body>
+                Latest Release Jun 17, 2026
+                Actual 3.75%
+                Forecast 3.75%
+                Previous 3.75%
+                Importance: Country: Currency: Source: USD Federal Reserve
+            </body></html>
+        HTML;
+
+        $event = $method->invoke(
+            $service,
+            $html,
+            'US',
+            'US Federal Funds Rate',
+            '2026-06-18',
+            '02:00:00'
+        );
+
+        $this->assertSame('3.75%', $event['actual_raw']);
+        $this->assertSame(3.75, $event['actual']);
+        $this->assertSame('3.75%', $event['forecast_raw']);
+        $this->assertSame('3.75%', $event['previous_raw']);
+        $this->assertSame('2026-06-18', $event['date']);
+    }
+
     public static function investingAndForexFactoryEventNameProvider(): array
     {
         return [
