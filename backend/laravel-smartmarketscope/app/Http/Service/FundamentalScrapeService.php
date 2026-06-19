@@ -464,7 +464,9 @@ class FundamentalScrapeService
 
         $limit = min(max((int) ($filters['limit'] ?? 100), 1), 500);
 
-        return $query->limit($limit)->get()->map(fn(FundamentalData $row) => [
+        return $query->limit($limit)->get()
+            ->reject(fn(FundamentalData $row) => $this->isHiddenCalendarEvent($row->event))
+            ->map(fn(FundamentalData $row) => [
             'id' => $row->id,
             'country' => $row->country,
             'currency' => $row->currency,
@@ -485,7 +487,7 @@ class FundamentalScrapeService
             'time' => $row->time,
             'source' => $row->source,
             'updated_at' => $row->updated_at?->toIso8601String(),
-        ])->all();
+        ])->values()->all();
     }
 
     private function withDefaultCalendarDateRange(array $filters): array
@@ -530,9 +532,17 @@ class FundamentalScrapeService
         return str_contains($event, 'speaks')
             || str_contains($event, 'meeting minutes')
             || str_contains($event, 'nomination vote')
+            || str_contains($event, 'official bank rate votes')
             || str_contains($event, 'rate statement')
             || str_contains($event, 'monetary policy statement')
             || str_contains($event, 'press conference');
+    }
+
+    private function isHiddenCalendarEvent(string $event): bool
+    {
+        $event = strtolower($event);
+
+        return str_contains($event, 'official bank rate votes');
     }
 
     public function syncCalendarActuals(?array $countries = null, ?Carbon $startDate = null, ?Carbon $endDate = null): array

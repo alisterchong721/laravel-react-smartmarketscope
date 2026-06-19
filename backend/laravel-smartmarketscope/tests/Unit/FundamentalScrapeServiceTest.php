@@ -37,6 +37,21 @@ class FundamentalScrapeServiceTest extends TestCase
         );
     }
 
+    public function test_policy_vote_rows_are_hidden_from_calendar_display(): void
+    {
+        $service = new FundamentalScrapeService();
+        $reflection = new ReflectionClass($service);
+
+        $hiddenMethod = $reflection->getMethod('isHiddenCalendarEvent');
+        $hiddenMethod->setAccessible(true);
+        $nonNumericMethod = $reflection->getMethod('isNonNumericCalendarEvent');
+        $nonNumericMethod->setAccessible(true);
+
+        $this->assertTrue($hiddenMethod->invoke($service, 'UK MPC Official Bank Rate Votes'));
+        $this->assertTrue($nonNumericMethod->invoke($service, 'UK MPC Official Bank Rate Votes'));
+        $this->assertFalse($hiddenMethod->invoke($service, 'UK Official Bank Rate'));
+    }
+
     public function test_investing_event_page_actual_parser_handles_compact_history_rows(): void
     {
         $service = new FundamentalScrapeService();
