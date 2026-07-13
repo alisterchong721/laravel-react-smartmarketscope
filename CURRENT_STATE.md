@@ -1,5 +1,48 @@
 # Current State
 
+## Macro Regime Program — Database Architecture (Role 4)
+
+Role 4 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with an
+architecture-only `PASS` and decision
+`BUILD_SEPARATE_VERSIONED_MACRO_SCHEMA_REUSE_LINEAGE_PATTERNS`.
+
+- The existing Laravel `fundamental_data` table/model/collector is rejected for
+  research reuse because it is mutable, surprise-oriented, and lacks immutable
+  source-run, raw-body, vintage, supersession, availability, and hash lineage.
+  The `research_news_*` implementation is reused only as a pattern for UUIDs,
+  redaction, transactions, locks, revision chains, and hash-rich lineage.
+- The frozen proof defines 11 separate macro tables for providers, terminal
+  source attempts, raw artifacts, observations, four levels of derived state,
+  the event ledger, technical links, and terminal backtest runs. All 11 are
+  append-only.
+- The strengthened SQLite proof contains 28 database triggers: 22 UPDATE/DELETE
+  vetoes and six lineage triggers. Sixteen negative gates reject duplicate
+  idempotency, invalid categories/hashes/timing/FKs, cross-identity revisions,
+  cross-wired snapshots, mismatched event states, copied technical values that
+  differ from their snapshot, and evidence mutation/deletion.
+- The disposable import preserves the complete Role 2 boundary: 25 source-run
+  identities, 25 raw-artifact identities, 23 distinct payload hashes, five
+  observation-bearing runs, and all 1,730 immutable versions. It also binds the
+  exact 34-route Role 3 decision census.
+- Independent review found and corrected missing cross-table enforcement in the
+  initial 27-trigger proof. The failed-first 27-versus-28 trigger test and the
+  earlier five-versus-25 source-lineage correction remain disclosed.
+- Role 4 rehashes 11 repository inputs and seven allowlisted non-secret Laravel
+  source files. It passes 9/9 focused tests, 207/207 research tests, and the
+  unchanged Laravel backend passes 65/65 tests with 257 assertions. The earlier
+  clean disposable SQLite baseline passed all 20 existing Laravel migrations.
+- No Laravel file, user database, raw dataset, registry, observation source,
+  score, technical link, PnL, holdout, broker, deployment, or paper/live state
+  changed. The sibling Laravel backend still has no Git rollback baseline and
+  the target MySQL/MariaDB engine/version remains unresolved.
+
+The next sequential role is Historical Macro Data Collector. Before collection,
+it must establish a versioned patch/rollback boundary for the sibling backend,
+translate and test the frozen 28-trigger contract against the actual target
+driver, and preserve private raw storage. It must then begin with the approved
+dated H.6 M2 archive and proceed only through the Role 3 allowlist. See
+`MACRO_REGIME_DATABASE_ARCHITECTURE.md` and `NEXT_TASK.md`.
+
 ## Macro Regime Program — Official Source and Coverage Audit (Role 3)
 
 Role 3 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with
@@ -30,11 +73,9 @@ Role 3 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with
   prospective routes, year/series/category coverage matrices, limitations, and
   hashes are frozen in `MACRO_REGIME_SOURCE_AUDIT.md` and its three CSV outputs.
 
-The next sequential role is Smart MarketScope Macro Database Architect. It must
-first inspect and document reuse of existing Laravel macro structures, then bind
-the verified 1,730-row evidence contract and frozen 34-route decision to an
-immutable append-only schema. It must not collect observations, score regimes,
-join technical setups, inspect PnL, or start Roles 5–11. See `NEXT_TASK.md`.
+Role 4 has now frozen and validated the separate immutable macro schema. Role 5
+is next; see `MACRO_REGIME_SOURCE_AUDIT.md`,
+`MACRO_REGIME_DATABASE_ARCHITECTURE.md`, and `NEXT_TASK.md`.
 
 ## Macro Regime Program — Existing ALFRED Salvage (Role 2)
 
@@ -97,8 +138,8 @@ status `INCONCLUSIVE / REGISTRY_CHRONOLOGY_UNRESOLVED`.
   setup/trade, broker, paper, or live path was touched in R0.
 
 This disclosed chronology defect does not block read-only macro dataset
-construction. It remains a final-champion veto. Roles 1–3 have completed; Roles
-4–11 have not started. See `REGISTRY_CHRONOLOGY_RECONCILIATION.md` and
+construction. It remains a final-champion veto. Roles 1–4 have completed; Roles
+5–11 have not started. See `REGISTRY_CHRONOLOGY_RECONCILIATION.md` and
 `NEXT_TASK.md`.
 
 ## MLR Technical Economic Continuation - 2026-07-13

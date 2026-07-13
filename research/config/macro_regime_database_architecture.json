@@ -1,0 +1,292 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-DATABASE-ARCHITECTURE-CONTRACT-001",
+  "request_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001-ROLE-4",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "protocol_id": "MACRO_REGIME_DAILY_H4_V1",
+  "created_at_utc": "2026-07-13T07:44:33Z",
+  "decision_timestamp": "2026-07-13T15:44:33+08:00",
+  "created_by": "Smart MarketScope Macro Database Architect",
+  "git_commit_before_role": "db0670af9d1227346b94018b78211906ac6815ae",
+  "status": "PASS",
+  "decision": "BUILD_SEPARATE_VERSIONED_MACRO_SCHEMA_REUSE_LINEAGE_PATTERNS",
+  "instrument": {
+    "identity": "NAS100_CFD_SOURCE_LABEL_NOT_BROKER_CONFIRMED",
+    "use_in_role": "NOT_APPLICABLE_ARCHITECTURE_ONLY",
+    "technical_source_timezone": "UNRESOLVED"
+  },
+  "scope": {
+    "role": 4,
+    "empirical_experiment": false,
+    "experiment_id": null,
+    "experiment_trials_created": 0,
+    "final_holdout_access_count": 0,
+    "protected_forward_access_count": 0,
+    "post_2026_06_28_market_outcome_access_count": 0,
+    "network_requests": 0,
+    "macro_observations_collected": 0,
+    "database_rows_written_outside_disposable_validation": 0,
+    "live_or_paper_actions": 0
+  },
+  "frozen_contracts": {
+    "categories": [
+      "INFLATION",
+      "LABOUR",
+      "GROWTH",
+      "MONETARY_POLICY",
+      "LIQUIDITY"
+    ],
+    "availability_rules": [
+      "J0_CONSERVATIVE_36H",
+      "J1_NEXT_SOURCE_TRADING_DAY",
+      "J2_TWO_SOURCE_TRADING_DAYS"
+    ],
+    "role_2": {
+      "batch_id": "QRP2-ALFRED-20260713T070000Z",
+      "source_run_count": 25,
+      "raw_artifact_count": 25,
+      "distinct_raw_payload_sha256_count": 23,
+      "eligible_observation_source_run_count": 5,
+      "observation_version_count": 1730,
+      "first_print_count": 456,
+      "revision_count": 1274,
+      "eligible_count": 1730,
+      "ineligible_count": 0,
+      "classification": "VINTAGE_SAFE_WITH_DELAY",
+      "primary_effective_rule": "J0_CONSERVATIVE_36H",
+      "category_counts": {
+        "INFLATION": 489,
+        "LABOUR": 921,
+        "GROWTH": 214,
+        "MONETARY_POLICY": 106,
+        "LIQUIDITY": 0
+      }
+    },
+    "role_3": {
+      "candidate_route_count": 34,
+      "approved_existing_evidence_route_count": 5,
+      "approved_bounded_collection_route_count": 19,
+      "availability_or_version_unresolved_route_count": 2,
+      "current_revised_history_only_route_count": 1,
+      "requires_key_or_license_review_route_count": 4,
+      "rejected_route_count": 3,
+      "collection_allowlist_decision": "APPROVED_FOR_BOUNDED_COLLECTION",
+      "reconciliation_only_decisions": [
+        "CURRENT_REVISED_HISTORY_ONLY",
+        "REQUIRES_KEY_OR_LICENSE_REVIEW"
+      ]
+    }
+  },
+  "repository_inputs": {
+    "directive": {
+      "path": "/Users/alisterchong/.codex/attachments/7df06f50-f36c-4f67-ba5c-f70071c426f6/pasted-text-1.txt",
+      "sha256": "13abac33865b02502cdea7dc4ef4bde27d15127cda764d4965df79db11611601"
+    },
+    "source_audit": {
+      "path": "MACRO_REGIME_SOURCE_AUDIT.md",
+      "sha256": "95672249e1ae345b1c9b1c3e6e8da77f50cd59c8c6529c6039d65b1a23fb6054"
+    },
+    "coverage_by_series": {
+      "path": "MACRO_REGIME_COVERAGE_BY_SERIES.csv",
+      "sha256": "f3953b70536b0ba9a2bb56fcb30ba9441389ae0122744baab695f7133faff730"
+    },
+    "coverage_by_year": {
+      "path": "MACRO_REGIME_COVERAGE_BY_YEAR.csv",
+      "sha256": "8fa0a5d9985a64e780eb0e8a9f28d15ac07d56692ae7aed719a12facf3a58464"
+    },
+    "coverage_by_category": {
+      "path": "MACRO_REGIME_COVERAGE_BY_CATEGORY.csv",
+      "sha256": "4b0b3721a57ee7b867189d4c369a6547ac06fff38e47102335f53b7664260228"
+    },
+    "salvage_audit": {
+      "path": "ALFRED_MACRO_REGIME_SALVAGE_AUDIT.md",
+      "sha256": "ed2c9765498d4b28e4683a5202010ac794d15eb1442f7dacc17fa646d4f66bc7"
+    },
+    "eligible_observations": {
+      "path": "ALFRED_REGIME_ELIGIBLE_OBSERVATIONS.csv",
+      "sha256": "9240a65211b8efc2954adace8ef8a17150bc370ad8677b7db4295d2f5aa38f31"
+    },
+    "role2_provider_bundle": {
+      "path": "research/artifacts/program2/alfred/QRP2-ALFRED-20260713T070000Z/bundle.json",
+      "sha256": "6a33f296268652d6402cc09d300278545b47d309d78e27f7d4564e71ca366d57"
+    },
+    "experiment_registry": {
+      "path": "EXPERIMENT_REGISTRY.jsonl",
+      "sha256": "b7cb999912aed3108d12fcdb62c079d3c51610214a419a3b5fc72ac19c65d044"
+    },
+    "governance": {
+      "path": "config/governance.default.yaml",
+      "sha256": "aa8e1f35491550d66e1e210189cc9f4e383a83d088513fb5bb3176cab5a9bb9f"
+    },
+    "sqlite_schema": {
+      "path": "research/schemas/macro_regime_schema_v1.sqlite.sql",
+      "sha256": "d76d9eccb141bf90c6c02d11a401661be5e51150598718c9399a871ba0513e02"
+    }
+  },
+  "laravel_inventory_inputs": {
+    "root": "/Applications/XAMPP/xamppfiles/htdocs/laravel-smartmarketscope",
+    "git_repository": false,
+    "framework": "Laravel Framework 12.39.0",
+    "php": "8.2.4",
+    "files": {
+      "composer_lock": {
+        "path": "composer.lock",
+        "sha256": "8837d67b8b9cfddfd337f7a0f9eab2754708778cc70a8ba6d586e035710e9002"
+      },
+      "fundamental_data_migration": {
+        "path": "database/migrations/2025_12_26_152031_create_fundamental_data_table.php",
+        "sha256": "60f705f7a5fe67440d00730e956fd9136152411a4c87b8287a08f79c94129479"
+      },
+      "fundamental_data_model": {
+        "path": "app/Models/FundamentalData.php",
+        "sha256": "4280465584a033ea964f5ee4b2b2c33b074103f5092ee27a628d9b92ca89ca31"
+      },
+      "research_news_lineage_migration": {
+        "path": "database/migrations/2026_07_13_010000_create_research_news_lineage_tables.php",
+        "sha256": "c44facdf8dac093e7c2c590f7bd3aafdfcb13d2e619a97d9b098251c2026ffbe"
+      },
+      "research_news_lineage_service": {
+        "path": "app/Http/Service/ResearchNewsLineageService.php",
+        "sha256": "6a26e1c78f029e77bc28a5a5df05215fcd1a00f8538585315f361fa8fd4d1567"
+      },
+      "api_routes": {
+        "path": "routes/api.php",
+        "sha256": "0760fefe2788d60c151b5031c4185c371c5b8481e432d17bd3a41730b15e0ff9"
+      },
+      "phpunit_config": {
+        "path": "phpunit.xml",
+        "sha256": "cdb0cb728fc010b1590629c9664796b496540cb22d3b54c78b69ce5980cab61f"
+      }
+    }
+  },
+  "schema": {
+    "sql_dialect_for_proof": "SQLite 3 disposable in-memory database",
+    "target_translation": "Laravel 12 Schema Builder plus driver-specific append-only triggers",
+    "table_count": 11,
+    "trigger_count": 28,
+    "negative_schema_gate_count": 16,
+    "tables": [
+      "macro_source_providers",
+      "macro_source_runs",
+      "macro_raw_artifacts",
+      "macro_observations",
+      "macro_indicator_states",
+      "macro_release_bundle_states",
+      "macro_category_states",
+      "macro_regime_snapshots",
+      "macro_event_update_ledger",
+      "macro_technical_links",
+      "macro_backtest_runs"
+    ],
+    "append_only_tables": [
+      "macro_source_providers",
+      "macro_source_runs",
+      "macro_raw_artifacts",
+      "macro_observations",
+      "macro_indicator_states",
+      "macro_release_bundle_states",
+      "macro_category_states",
+      "macro_regime_snapshots",
+      "macro_event_update_ledger",
+      "macro_technical_links",
+      "macro_backtest_runs"
+    ],
+    "required_hash_algorithm": "SHA-256 lowercase hexadecimal",
+    "canonical_timestamp_storage": "UTC ISO-8601 text in proof; UTC DATETIME(6) in Laravel translation",
+    "original_time_retention": "source_timestamp_raw plus source_timezone",
+    "malaysia_time_retention": "conservative_effective_at_asia_kuala_lumpur",
+    "raw_body_contract": "Private immutable filesystem/object storage bytes are authoritative; database rows store path, length, media metadata, source reference, and verified SHA-256",
+    "foreign_keys": "RESTRICT; no evidence cascade deletes",
+    "provider_versioning": "Provider changes append a new provider_version row; existing evidence never changes provider metadata",
+    "source_run_lifecycle": "Insert one terminal immutable attempt row after each completed, failed, or partial attempt; a resume is a new row linked by parent_resume_run_id",
+    "observation_versioning": "Every revision appends a row with revision_number+1 and a same-identity supersedes_observation_id",
+    "derived_versioning": "Every score, bundle, category, snapshot, link, and backtest row is keyed by its calculation/scoring/config lineage and never updated"
+  },
+  "transaction_protocol": [
+    "Write response bytes to a private same-filesystem temporary path while hashing; fsync and atomically rename before opening the database transaction.",
+    "Within one transaction insert the terminal source-run row, raw-artifact metadata, immutable observations, and the collection checkpoint declaration.",
+    "Use deterministic idempotency keys and unique constraints. A duplicate with identical hashes is a no-op; a duplicate identity with different bytes creates a new run/artifact version or fails closed.",
+    "Use a per-route advisory lock or distributed mutex and SELECT FOR UPDATE on the latest observation revision before assigning revision_number.",
+    "On deadlock or transient connection failure retry the whole transaction with bounded exponential backoff and jitter. Never retry parser/semantic/hash failures as transient.",
+    "If the database transaction fails after raw rename, quarantine the orphan by hash; the next run may attach it only after byte revalidation.",
+    "A crash or partial traversal appends a PARTIAL run. Resume creates a new run linked to parent_resume_run_id and starts from the last independently verified checkpoint."
+  ],
+  "access_control": {
+    "collection_surface": "CLI/worker only; no caller-supplied URL and no public ingestion route",
+    "writers": {
+      "macro_collector": [
+        "INSERT macro_source_runs",
+        "INSERT macro_raw_artifacts",
+        "INSERT macro_observations"
+      ],
+      "macro_scorer": [
+        "SELECT source tables",
+        "INSERT macro_indicator_states",
+        "INSERT macro_release_bundle_states",
+        "INSERT macro_category_states",
+        "INSERT macro_regime_snapshots",
+        "INSERT macro_event_update_ledger"
+      ],
+      "macro_aligner": [
+        "SELECT snapshots",
+        "INSERT macro_technical_links"
+      ],
+      "macro_backtester": [
+        "SELECT links",
+        "INSERT macro_backtest_runs"
+      ]
+    },
+    "prohibited_for_runtime_roles": [
+      "UPDATE any macro table",
+      "DELETE any macro table",
+      "ALTER or DROP schema",
+      "read credentials",
+      "write raw artifacts beneath a web-accessible directory"
+    ],
+    "read_api": "Future authenticated read-only endpoint with explicit policy and negative IDOR tests; no endpoint is added in Role 4"
+  },
+  "retention_and_export": {
+    "evidence_retention": "Indefinite for source runs, raw artifacts, observations, derived states, snapshots, event ledger, links, and backtest lineage unless a prospective governance policy authorizes archival.",
+    "archive_move": "Allowed only as copy-verify-manifest-switch; the content hash and old path remain in an append-only relocation ledger before old storage is removed.",
+    "deterministic_export_order": {
+      "macro_source_runs": ["provider_id", "route_id", "source_series_id", "retrieval_completed_at_utc", "source_run_id"],
+      "macro_raw_artifacts": ["source_run_id", "artifact_ordinal", "raw_artifact_id"],
+      "macro_observations": ["internal_indicator_id", "reference_date", "vintage_date", "revision_number", "observation_id"],
+      "macro_indicator_states": ["internal_indicator_id", "calculated_at_utc", "indicator_state_id"],
+      "macro_release_bundle_states": ["release_bundle", "effective_at_utc", "release_bundle_state_id"],
+      "macro_category_states": ["category", "effective_at_utc", "category_state_id"],
+      "macro_regime_snapshots": ["effective_at_utc", "macro_snapshot_id"],
+      "macro_event_update_ledger": ["effective_at_utc", "event_update_id"],
+      "macro_technical_links": ["technical_actionable_at_utc", "technical_setup_id", "macro_technical_link_id"],
+      "macro_backtest_runs": ["start_date", "comparison_variant", "macro_backtest_run_id"]
+    },
+    "export_manifest": "Canonical UTF-8/ASCII-safe CSV or JSONL files, row counts, ordered SHA-256 per file, schema/config/code/registry hashes, and raw-artifact existence/hash reconciliation"
+  },
+  "rollback": {
+    "role_4": "Delete only the new version-controlled architecture artifacts; no Laravel or user database state was changed.",
+    "future_migration_before_collection": "Driver-specific down migration may drop all 11 empty tables in reverse foreign-key order after schema hash verification.",
+    "future_migration_after_any_evidence": "Destructive down migration is prohibited. Quiesce writers, export and independently verify every table and raw body, create a replacement schema version, migrate by append/copy, switch readers, and retain the old schema read-only.",
+    "production_database": "Not touched or inspected by Role 4"
+  },
+  "assumptions": [
+    "Laravel source files and migration history are the authorized inventory boundary; no production database contents were inspected.",
+    "The sibling Laravel directory has no Git metadata, so Role 4 does not place unreviewed executable files there.",
+    "SQLite is used only for deterministic schema behavior proof. MySQL/MariaDB append-only trigger syntax must be separately generated and tested before integration.",
+    "Role 5 will collect only routes whose frozen source_decision is APPROVED_FOR_BOUNDED_COLLECTION and will treat current/revised endpoints as reconciliation-only."
+  ],
+  "warnings": [
+    "REGISTRY_CHRONOLOGY_UNRESOLVED_FINAL_CHAMPION_VETO",
+    "LIQUIDITY_VERIFIED_OBSERVATION_COUNT_ZERO",
+    "PRE_2017_COVERAGE_PROSPECTIVE_ONLY",
+    "LARAVEL_SIBLING_HAS_NO_GIT_ROLLBACK",
+    "MYSQL_OR_MARIADB_TRANSLATION_NOT_YET_EXECUTED",
+    "EXISTING_PUBLIC_FUNDAMENTAL_ROUTES_NOT_AUTHORIZED_FOR_MACRO_RESEARCH_WRITES"
+  ],
+  "failure_codes": [],
+  "unresolved_questions": [
+    "Which MySQL or MariaDB engine/version is the eventual deployment target?",
+    "Which private raw-storage backend and retention authority will be approved before Role 5 collection?",
+    "Will the Laravel sibling be placed under version control before executable migration integration?"
+  ],
+  "next_permitted_action": "Role 5 may implement a bounded collector against the frozen contract, beginning with H.6 M2 and then H.4.1 liquidity routes, only after translating and independently testing the schema in an isolated Laravel database."
+}

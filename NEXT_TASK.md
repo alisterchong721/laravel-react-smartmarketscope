@@ -1,6 +1,6 @@
 # Next Task
 
-## Macro Regime Program — Role 4 Smart MarketScope Macro Database Architecture
+## Macro Regime Program — Role 5 Historical Macro Data Collection
 
 Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
 
@@ -8,53 +8,59 @@ Current status: `REGISTRY_CHRONOLOGY_UNRESOLVED` with append-only disclosure.
 This caveat permits read-only macro dataset construction but prohibits any final
 champion claim.
 
-Roles 2 and 3 are complete. The only verified macro evidence is the retained
-1,730-version ALFRED batch under conservative J0 delay semantics. Role 3 froze
-34 source decisions, including 19 keyless official routes approved only for
-future bounded collection. LIQUIDITY still has zero verified observations and
-all pre-2017 coverage remains prospective.
+Roles 2–4 are complete. The only verified observations remain the 1,730 retained
+ALFRED versions; Role 3 froze 19 keyless official routes for bounded collection;
+Role 4 froze an 11-table, 28-trigger append-only contract and proved the full
+25-run/25-artifact/1,730-observation import in disposable SQLite. LIQUIDITY still
+has zero verified observations and all pre-2017 coverage remains prospective.
 
-Run exactly one next sequential role: Smart MarketScope Macro Database Architect.
-Inspect the sibling Laravel backend, its framework/dependencies, migrations,
-models, existing macro/calendar tables, tests, configuration, conventions,
-security boundaries, dirty state, and rollback path before proposing or making
-schema changes. Reuse existing structures where their contracts are sufficient;
-document every reuse, extension, adaptation, or new-table decision.
+Run exactly one next sequential role: Historical Macro Data Collector.
 
-The architecture must support the program directive's immutable concepts:
+Before any network collection or non-disposable database write:
 
-- `macro_source_providers`
-- append-only `macro_source_runs`
-- immutable `macro_raw_artifacts`
-- versioned, never-overwritten `macro_observations`
-- `macro_indicator_states`
-- `macro_release_bundle_states`
-- `macro_category_states`
-- `macro_regime_snapshots`
-- append-only `macro_event_update_ledger`
-- `macro_technical_links`
-- `macro_backtest_runs`
+1. Establish a versioned patch and rollback baseline for the non-Git Laravel
+   sibling without changing unrelated user files.
+2. Identify the actual local target database driver/version using non-secret
+   configuration and executable metadata only; do not display credentials or
+   inspect a user/production database.
+3. Translate the frozen 11-table schema, 22 append-only triggers, and six lineage
+   triggers into a reviewed Laravel/target-driver migration contract.
+4. Pass clean disposable target-driver migration, empty-only rollback,
+   authorization, idempotency, full supersession identity, snapshot lineage,
+   event lineage, technical copied-value, timing, hash, and append-only tests.
+5. Approve a private raw-storage namespace, capacity/checkpoint policy, atomic
+   write/hash/rename protocol, orphan quarantine, and deterministic manifest.
 
-Bind the schema to the exact Role 2 and Role 3 contracts, including source and
-raw-body hashes, source-run lineage, observation supersession, reference/vintage/
-availability/conservative-effective timestamps, point-in-time classification,
-release bundles, five exact categories, scoring/config/code/registry hashes, and
-idempotent uniqueness rules. Preserve raw bodies rather than only DOM hashes.
-Define foreign keys, indexes, checks, append-only enforcement, transaction and
-retry semantics, resumable collection boundaries, access control, retention,
-rollback, and deterministic export/validation contracts.
+If those preconditions cannot be proved, stop Role 5 as `BLOCKED` with the exact
+missing evidence; do not weaken the contract or collect into an ungoverned store.
 
-Required Role 4 evidence includes a database inventory and reuse decision, the
-target schema/data-flow/contract specification, migration and rollback design,
-risk-appropriate schema tests or migration proof, exact commands and exit
-results, and the exact next permitted Role 5 collection action. Any executable
-migration/model work must be bounded to this architecture and remain compatible
-with the existing Laravel application.
+Collection may then use only routes frozen as
+`APPROVED_FOR_BOUNDED_COLLECTION`. Begin with a bounded, resumable H.6 M2 dated-
+release traversal to establish LIQUIDITY from 2000. Preserve each permitted raw
+HTML/PDF/ASCII body, source URL/reference, release and retrieval timestamps,
+HTTP/file metadata, bytes, SHA-256, request/parser/config/code versions, source
+run, checkpoint, and every parsed immutable observation version. Validate format,
+units, definitions, release dates, revision behavior, exact coverage, and J0
+availability semantics before expanding to H.4.1 total assets, reserve balances,
+and TGA. Stop on unresolved source identity, methodology, unit, timestamp,
+licensing, parser, or revision semantics.
 
-Do not collect or download macro observations, populate production tables,
-modify raw `dataset/` files, calculate indicator/bundle/category/regime scores,
-join technical setups, inspect strategy PnL, run an economic backtest, connect a
-broker, deploy, or start Roles 5–11. Role 4 is architecture and schema only.
+Reuse the 25 retained Role 2 source runs/raw artifacts and 1,730 observations by
+exact identity and hash; do not download them again or collapse identical payload
+hashes into one artifact. Current-revised, unresolved, key-review, and rejected
+routes remain non-collectible. Record every failed or partial attempt, gaps,
+format transitions, discontinued concepts, and exact commands/exit results.
+
+Required Role 5 outputs include the versioned migration/rollback patch, private
+raw and normalized manifests, append-only source-run/raw-artifact/observation
+registries or deterministic exports, coverage by route/series/category/year,
+collection and parser validation reports, tests, hashes, request counts, failures,
+and the exact next permitted Role 6 scoring action.
+
+Do not calculate indicator, bundle, category, interaction, regime, or bias
+scores; do not join technical setups; do not inspect PnL or run an economic
+backtest; do not add public write routes; do not deploy or connect a broker; do
+not access protected/final-holdout paths; and do not start Roles 6–11.
 
 ## Macro Liquidity Reversal Gate
 
