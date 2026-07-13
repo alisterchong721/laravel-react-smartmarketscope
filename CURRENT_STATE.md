@@ -1,5 +1,40 @@
 # Current State
 
+## Macro Regime Program — Existing ALFRED Salvage (Role 2)
+
+Role 2 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with
+`PASS_1730_VINTAGE_SAFE_WITH_DELAY`.
+
+- The retained batch `QRP2-ALFRED-20260713T070000Z` reconciles 25 immutable
+  source runs/raw artifacts and 1,730 observation versions: 456 first prints and
+  1,274 revisions.
+- All 1,730 rows are newly classified `VINTAGE_SAFE_WITH_DELAY`; zero are
+  ineligible. The old Program 2 `NOT_PIT_SAFE` classification and null old
+  availability fields remain unchanged.
+- Each row's ALFRED `output_type=3` vintage date is present in the retained
+  series release-date payload. J0 activates the version 36 hours after
+  date-local midnight in `America/New_York`, with date-aware UTC and
+  `Asia/Kuala_Lumpur` timestamps. This is a conservative protocol convention,
+  not a claimed release minute or historical first-receipt time.
+- Actual reference coverage is `2017-08-01` through `2026-05-01`; vintage/
+  availability coverage is `2017-09-01` through `2026-06-25`.
+- Observation-version coverage is INFLATION 489, LABOUR 921, GROWTH 214,
+  MONETARY_POLICY 106, and LIQUIDITY 0. The existing evidence therefore covers
+  four of five required categories and does not supply the requested pre-2017
+  warm-up history.
+- No consensus, surprise, forecast-as-published, previous-as-published, exact
+  release clock, or same-minute reaction was reconstructed or required.
+- The deterministic generator/validator, exhaustive row partition, raw hashes,
+  revision chains, DST conversions, and output hashes pass. The integrated
+  research suite passes 190/190 tests. Protected/final-holdout access remains
+  0/0; Role 2 created no network request or experiment trial.
+
+The next sequential role is Official Macro Source and Coverage Auditor. It must
+reuse these 1,730 rows, audit defensible official coverage needed for missing
+history and categories—especially LIQUIDITY—and must not begin collection,
+database writes, scoring, technical joins, or economic backtests. See
+`ALFRED_MACRO_REGIME_SALVAGE_AUDIT.md` and `NEXT_TASK.md`.
+
 ## Macro Regime Program — Registry Chronology Reconciliation (R0)
 
 Program `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is active. Required Role 1,
@@ -27,9 +62,9 @@ status `INCONCLUSIVE / REGISTRY_CHRONOLOGY_UNRESOLVED`.
   setup/trade, broker, paper, or live path was touched in R0.
 
 This disclosed chronology defect does not block read-only macro dataset
-construction. It remains a final-champion veto. The next sequential role is the
-Existing Macro Evidence and ALFRED Salvage Auditor; Roles 3–11 have not started.
-See `REGISTRY_CHRONOLOGY_RECONCILIATION.md` and `NEXT_TASK.md`.
+construction. It remains a final-champion veto. Role 2 has completed; Roles
+3–11 have not started. See `REGISTRY_CHRONOLOGY_RECONCILIATION.md` and
+`NEXT_TASK.md`.
 
 ## MLR Technical Economic Continuation - 2026-07-13
 
