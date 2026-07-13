@@ -1,0 +1,76 @@
+category,indicator,field,classification,evidence_note
+INFLATION,INFLATION_RATE_YOY,stable_event_identity,PARTIALLY_AVAILABLE,Stable indicator URL and name; no immutable release-instance ID
+INFLATION,INFLATION_RATE_YOY,indicator_name,AVAILABLE_AND_STABLE,United States Inflation Rate
+INFLATION,INFLATION_RATE_YOY,category,NOT_AVAILABLE,INFLATION is the research taxonomy mapping not a source field
+INFLATION,INFLATION_RATE_YOY,reference_period,PARTIALLY_AVAILABLE,Recent rows show Apr and May; older release rows not reached
+INFLATION,INFLATION_RATE_YOY,scheduled_release_timestamp,AVAILABLE_BUT_UNVERSIONED,Recent rows show GMT calendar date and time
+INFLATION,INFLATION_RATE_YOY,actual_release_timestamp,NOT_AVAILABLE,No separate actual publication timestamp
+INFLATION,INFLATION_RATE_YOY,Actual,PARTIALLY_AVAILABLE,Recent rows only; long-run series is current history
+INFLATION,INFLATION_RATE_YOY,Forecast_or_Consensus,PARTIALLY_AVAILABLE,Recent Consensus only; historical Consensus not reached
+INFLATION,INFLATION_RATE_YOY,Previous,PARTIALLY_AVAILABLE,Recent Previous only; as-published semantics unresolved
+INFLATION,INFLATION_RATE_YOY,Revised_value,SEMANTICS_UNRESOLVED,No explicit revision version field
+INFLATION,INFLATION_RATE_YOY,unit,AVAILABLE_AND_STABLE,Percent monthly NSA series metadata
+INFLATION,INFLATION_RATE_YOY,importance,NOT_AVAILABLE,Not exposed in sampled indicator release rows
+INFLATION,INFLATION_RATE_YOY,source,AVAILABLE_AND_STABLE,U.S. Bureau of Labor Statistics link shown
+INFLATION,INFLATION_RATE_YOY,revision_metadata,SEMANTICS_UNRESOLVED,No immutable supersession or as-published archive
+INFLATION,INFLATION_RATE_YOY,historical_navigation,PARTIALLY_AVAILABLE,MAX chart range exists; release-ledger navigation not demonstrated
+GROWTH,GDP_GROWTH_RATE,stable_event_identity,PARTIALLY_AVAILABLE,Stable indicator URL and name; no immutable release-instance ID
+GROWTH,GDP_GROWTH_RATE,indicator_name,AVAILABLE_AND_STABLE,United States GDP Growth Rate
+GROWTH,GDP_GROWTH_RATE,category,NOT_AVAILABLE,GROWTH is the research taxonomy mapping not a source field
+GROWTH,GDP_GROWTH_RATE,reference_period,PARTIALLY_AVAILABLE,Recent rows show Q1; older release rows not reached
+GROWTH,GDP_GROWTH_RATE,scheduled_release_timestamp,AVAILABLE_BUT_UNVERSIONED,Recent rows show GMT calendar date and time
+GROWTH,GDP_GROWTH_RATE,actual_release_timestamp,NOT_AVAILABLE,No separate actual publication timestamp
+GROWTH,GDP_GROWTH_RATE,Actual,PARTIALLY_AVAILABLE,Recent successive Q1 estimates only; older releases not reached
+GROWTH,GDP_GROWTH_RATE,Forecast_or_Consensus,PARTIALLY_AVAILABLE,Recent Consensus only; historical Consensus not reached
+GROWTH,GDP_GROWTH_RATE,Previous,PARTIALLY_AVAILABLE,Recent Previous only; as-published semantics unresolved
+GROWTH,GDP_GROWTH_RATE,Revised_value,AVAILABLE_BUT_UNVERSIONED,Successive 1.6 and 2.1 Q1 estimates visible without version IDs
+GROWTH,GDP_GROWTH_RATE,unit,AVAILABLE_AND_STABLE,Percent quarterly SA series metadata
+GROWTH,GDP_GROWTH_RATE,importance,NOT_AVAILABLE,Not exposed in sampled indicator release rows
+GROWTH,GDP_GROWTH_RATE,source,AVAILABLE_AND_STABLE,U.S. Bureau of Economic Analysis link shown
+GROWTH,GDP_GROWTH_RATE,revision_metadata,SEMANTICS_UNRESOLVED,Revision sequence visible but supersession lineage absent
+GROWTH,GDP_GROWTH_RATE,historical_navigation,PARTIALLY_AVAILABLE,MAX chart range exists; release-ledger navigation not demonstrated
+LABOUR,NON_FARM_PAYROLLS,stable_event_identity,PARTIALLY_AVAILABLE,Stable indicator URL and name; no immutable release-instance ID
+LABOUR,NON_FARM_PAYROLLS,indicator_name,AVAILABLE_AND_STABLE,United States Non Farm Payrolls
+LABOUR,NON_FARM_PAYROLLS,category,NOT_AVAILABLE,LABOUR is the research taxonomy mapping not a source field
+LABOUR,NON_FARM_PAYROLLS,reference_period,PARTIALLY_AVAILABLE,Recent rows show May and Jun; older release rows not reached
+LABOUR,NON_FARM_PAYROLLS,scheduled_release_timestamp,AVAILABLE_BUT_UNVERSIONED,Recent rows show GMT calendar date and time
+LABOUR,NON_FARM_PAYROLLS,actual_release_timestamp,NOT_AVAILABLE,No separate actual publication timestamp
+LABOUR,NON_FARM_PAYROLLS,Actual,PARTIALLY_AVAILABLE,Recent rows only; later revision described
+LABOUR,NON_FARM_PAYROLLS,Forecast_or_Consensus,PARTIALLY_AVAILABLE,Recent Consensus only; historical Consensus not reached
+LABOUR,NON_FARM_PAYROLLS,Previous,PARTIALLY_AVAILABLE,Recent Previous only; current page reflects later revisions
+LABOUR,NON_FARM_PAYROLLS,Revised_value,AVAILABLE_BUT_UNVERSIONED,Narrative identifies downward revision to 129K
+LABOUR,NON_FARM_PAYROLLS,unit,AVAILABLE_AND_STABLE,Thousand monthly SA series metadata
+LABOUR,NON_FARM_PAYROLLS,importance,NOT_AVAILABLE,Not exposed in sampled indicator release rows
+LABOUR,NON_FARM_PAYROLLS,source,AVAILABLE_AND_STABLE,U.S. Bureau of Labor Statistics link shown
+LABOUR,NON_FARM_PAYROLLS,revision_metadata,SEMANTICS_UNRESOLVED,Revision described without immutable old/new observation links
+LABOUR,NON_FARM_PAYROLLS,historical_navigation,PARTIALLY_AVAILABLE,MAX chart range exists; release-ledger navigation not demonstrated
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,stable_event_identity,PARTIALLY_AVAILABLE,Stable indicator URL and name; no immutable decision-instance ID
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,indicator_name,AVAILABLE_AND_STABLE,United States Fed Funds Interest Rate
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,category,NOT_AVAILABLE,MONETARY_POLICY is the research taxonomy mapping not a source field
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,reference_period,PARTIALLY_AVAILABLE,Recent row names Fed Interest Rate Decision; older decisions not reached
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,scheduled_release_timestamp,AVAILABLE_BUT_UNVERSIONED,Recent rows show GMT calendar date and time
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,actual_release_timestamp,NOT_AVAILABLE,No separate actual publication timestamp
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,Actual,PARTIALLY_AVAILABLE,Recent decision Actual only; long-run series is current history
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,Forecast_or_Consensus,PARTIALLY_AVAILABLE,Recent decision Consensus only; historical Consensus not reached
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,Previous,PARTIALLY_AVAILABLE,Recent Previous only; as-published semantics unresolved
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,Revised_value,SEMANTICS_UNRESOLVED,No explicit revision version field
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,unit,AVAILABLE_AND_STABLE,Percent daily series metadata
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,importance,NOT_AVAILABLE,Not exposed in sampled indicator release rows
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,source,AVAILABLE_AND_STABLE,Federal Reserve link shown
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,revision_metadata,SEMANTICS_UNRESOLVED,No immutable decision supersession or target-range history
+MONETARY_POLICY,FED_FUNDS_INTEREST_RATE,historical_navigation,PARTIALLY_AVAILABLE,MAX chart range exists; release-ledger navigation not demonstrated
+LIQUIDITY,FED_BALANCE_SHEET,stable_event_identity,PARTIALLY_AVAILABLE,Stable indicator URL and name; no immutable release-instance ID
+LIQUIDITY,FED_BALANCE_SHEET,indicator_name,AVAILABLE_AND_STABLE,United States Central Bank Balance Sheet
+LIQUIDITY,FED_BALANCE_SHEET,category,NOT_AVAILABLE,LIQUIDITY is the research taxonomy mapping not a source field
+LIQUIDITY,FED_BALANCE_SHEET,reference_period,PARTIALLY_AVAILABLE,Recent post-cutoff rows show weekly reference date; older rows not reached
+LIQUIDITY,FED_BALANCE_SHEET,scheduled_release_timestamp,PARTIALLY_AVAILABLE,Post-cutoff rows show GMT calendar time; no cutoff-eligible recent row
+LIQUIDITY,FED_BALANCE_SHEET,actual_release_timestamp,NOT_AVAILABLE,No separate actual publication timestamp
+LIQUIDITY,FED_BALANCE_SHEET,Actual,AVAILABLE_CURRENT_REVISED_ONLY,Current weekly history only for target use
+LIQUIDITY,FED_BALANCE_SHEET,Forecast_or_Consensus,NOT_AVAILABLE,Consensus cells blank in visible recent rows
+LIQUIDITY,FED_BALANCE_SHEET,Previous,PARTIALLY_AVAILABLE,Visible post-cutoff Previous only; historical as-published value unavailable
+LIQUIDITY,FED_BALANCE_SHEET,Revised_value,SEMANTICS_UNRESOLVED,No explicit revision version field
+LIQUIDITY,FED_BALANCE_SHEET,unit,AVAILABLE_AND_STABLE,USD Million weekly current-prices NSA metadata
+LIQUIDITY,FED_BALANCE_SHEET,importance,NOT_AVAILABLE,Not exposed in sampled indicator release rows
+LIQUIDITY,FED_BALANCE_SHEET,source,AVAILABLE_AND_STABLE,Federal Reserve link shown
+LIQUIDITY,FED_BALANCE_SHEET,revision_metadata,SEMANTICS_UNRESOLVED,No immutable supersession or as-published archive
+LIQUIDITY,FED_BALANCE_SHEET,historical_navigation,PARTIALLY_AVAILABLE,MAX chart range exists; release-ledger navigation not demonstrated

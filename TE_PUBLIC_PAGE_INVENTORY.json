@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "SMART-MARKETSCOPE-PUBLIC-MACRO-BIAS-001",
+  "role": "PUBLIC_MACRO_ACCESS_AND_PROVENANCE_AUDITOR",
+  "generated_at_utc": "2026-07-13T05:49:42Z",
+  "technical_baseline_commit": "48ca2bdb1c44ad05f5207a3d33144a839185bfed",
+  "access_outcome": "PUBLIC_ACCESS_PARTIAL",
+  "primary_terminal_outcome": "PUBLIC_HISTORY_NOT_POINT_IN_TIME_SAFE",
+  "secondary_limitation": "PUBLIC_CONSENSUS_HISTORY_UNAVAILABLE",
+  "pilot_budget": {
+    "maximum_pages": 120,
+    "maximum_concurrent_requests": 1,
+    "page_or_request_interactions_used": 8,
+    "unique_successful_html_urls": 6,
+    "raw_pages_persisted": 0,
+    "normalized_observations": 0,
+    "http_403_count": 0,
+    "captcha_count": 0,
+    "http_429_count": 0
+  },
+  "hash_semantics": {
+    "browser_pages": "SHA-256 of the complete browser DOM snapshot string, not raw response HTML",
+    "robots_txt": "SHA-256 of the exact 49-byte HTTP response body"
+  },
+  "pages": [
+    {
+      "page_id": "TE-P1-001",
+      "category": "CROSS_CATEGORY",
+      "indicator": "UNITED_STATES_CALENDAR",
+      "url": "https://tradingeconomics.com/united-states/calendar",
+      "access_method": "APPROVED_BROWSER",
+      "retrieved_at_utc": "2026-07-13T05:42:41.864Z",
+      "http_status": null,
+      "access_status": "PUBLIC_RENDER_SUCCESS",
+      "title": "United States Calendar",
+      "dom_snapshot_chars": 289356,
+      "dom_snapshot_sha256": "3cdbd4b0b009c353b69b764b926419e9c2339245b1f401d97119ef7ae0e87354",
+      "sample_years": [2026],
+      "facts": [
+        "Current calendar table exposed Actual, Previous, Consensus and Forecast columns.",
+        "Displayed timezone was selectable and set to UTC +8 on this page."
+      ],
+      "limitations": [
+        "Page displayed post-cutoff content that was excluded from historical evidence.",
+        "Browser control did not expose raw HTTP status or raw response bytes."
+      ]
+    },
+    {
+      "page_id": "TE-P1-002",
+      "category": "CROSS_CATEGORY",
+      "indicator": "CUSTOM_DATE_2005_ATTEMPT",
+      "url": "https://tradingeconomics.com/united-states/calendar",
+      "access_method": "APPROVED_BROWSER_UI",
+      "retrieved_at_utc": "2026-07-13T05:44:01.692Z",
+      "http_status": null,
+      "access_status": "PUBLIC_CUSTOM_DATE_NO_HISTORICAL_TRANSITION",
+      "title": "United States Calendar",
+      "dom_snapshot_chars": 305419,
+      "dom_snapshot_sha256": "8eacaaf3872c848caff718188193ba6bba3e694a21444925d35da76318a52724",
+      "sample_years": [2005],
+      "facts": [
+        "Visible controls contained start 2005-01-01 00:00 and end 2005-01-31 23:59 after submission.",
+        "Rendered release table remained on July 2026 rows."
+      ],
+      "limitations": [
+        "No historical 2005 release rows were obtained.",
+        "No retry or alternate URL guessing was attempted."
+      ]
+    },
+    {
+      "page_id": "TE-P1-003",
+      "category": "INFLATION",
+      "indicator": "INFLATION_RATE_YOY",
+      "url": "https://tradingeconomics.com/united-states/inflation-cpi",
+      "access_method": "APPROVED_BROWSER",
+      "retrieved_at_utc": "2026-07-13T05:44:38.472Z",
+      "http_status": null,
+      "access_status": "PUBLIC_RENDER_SUCCESS",
+      "title": "United States Inflation Rate",
+      "dom_snapshot_chars": 29773,
+      "dom_snapshot_sha256": "81ad6fcd6cde34f46e468f88f591453b93e71a72d69e7e5de546f4578348e0e7",
+      "sample_years": [2005, 2010, 2015, 2020, 2024, 2026],
+      "source_series_range": "1914-2026",
+      "source": "U.S. Bureau of Labor Statistics",
+      "pre_cutoff_recent_release_rows": ["2026-05-12", "2026-06-10"],
+      "facts": [
+        "Recent table exposed GMT, Reference, Actual, Previous, Consensus and TEForecast.",
+        "Stats page described a monthly NSA series from 1914 through 2026.",
+        "A later same-page Download Data interaction opened a subscription/login notice."
+      ],
+      "limitations": [
+        "Long-run chart did not expose an as-published release ledger.",
+        "Historical Forecast and revision versions were not reachable.",
+        "The snapshot hash binds the initial render; the later subscription notice UI state was observed but not separately hash-bound."
+      ]
+    },
+    {
+      "page_id": "TE-P1-004",
+      "category": "GROWTH",
+      "indicator": "GDP_GROWTH_RATE",
+      "url": "https://tradingeconomics.com/united-states/gdp-growth",
+      "access_method": "APPROVED_BROWSER",
+      "retrieved_at_utc": "2026-07-13T05:46:13.053Z",
+      "http_status": null,
+      "access_status": "PUBLIC_RENDER_SUCCESS",
+      "title": "United States GDP Growth Rate",
+      "dom_snapshot_chars": 41864,
+      "dom_snapshot_sha256": "84a90b8a2f8c8e0efe90afb45f6930dd309d8b3ce4a8158d8ccfc6a611c57bd2",
+      "sample_years": [2005, 2010, 2015, 2020, 2024, 2026],
+      "source_series_range": "1947-2026",
+      "source": "U.S. Bureau of Economic Analysis",
+      "pre_cutoff_recent_release_rows": ["2026-05-28", "2026-06-25"],
+      "facts": [
+        "Recent Q1 rows exposed successive estimates of 1.6% and 2.1%.",
+        "Recent table exposed GMT, Reference, Actual, Previous, Consensus and TEForecast.",
+        "Stats page described a quarterly SA series from 1947 through 2026."
+      ],
+      "limitations": [
+        "Successive estimates lacked immutable release-version and supersession IDs.",
+        "Older release rows and historical Consensus were not reachable."
+      ]
+    },
+    {
+      "page_id": "TE-P1-005",
+      "category": "LABOUR",
+      "indicator": "NON_FARM_PAYROLLS",
+      "url": "https://tradingeconomics.com/united-states/non-farm-payrolls",
+      "access_method": "APPROVED_BROWSER",
+      "retrieved_at_utc": "2026-07-13T05:47:09.379Z",
+      "http_status": null,
+      "access_status": "PUBLIC_RENDER_SUCCESS",
+      "title": "United States Non Farm Payrolls",
+      "dom_snapshot_chars": 31560,
+      "dom_snapshot_sha256": "e8e514839a57e015662a826dfdeafe56307a65e81edf2f8ea8b2048eaa1aad83",
+      "sample_years": [2005, 2010, 2015, 2020, 2024, 2026],
+      "source_series_range": "1939-2026",
+      "source": "U.S. Bureau of Labor Statistics",
+      "pre_cutoff_recent_release_rows": ["2026-06-05"],
+      "facts": [
+        "Recent table exposed GMT, Reference, Actual, Previous, Consensus and TEForecast.",
+        "Page narrative stated that May payrolls were later downwardly revised to 129K.",
+        "Stats page described a monthly SA series from 1939 through 2026."
+      ],
+      "limitations": [
+        "The current Previous field cannot be assumed to be previous-as-published.",
+        "Older release rows and historical Consensus were not reachable."
+      ]
+    },
+    {
+      "page_id": "TE-P1-006",
+      "category": "MONETARY_POLICY",
+      "indicator": "FED_FUNDS_INTEREST_RATE",
+      "url": "https://tradingeconomics.com/united-states/interest-rate",
+      "access_method": "APPROVED_BROWSER",
+      "retrieved_at_utc": "2026-07-13T05:47:18.121Z",
+      "http_status": null,
+      "access_status": "PUBLIC_RENDER_SUCCESS",
+      "title": "United States Fed Funds Interest Rate",
+      "dom_snapshot_chars": 23762,
+      "dom_snapshot_sha256": "de9471713f272d6a83c63520799dc4030c6fc4f5cb638f158842b85a992b246a",
+      "sample_years": [2005, 2010, 2015, 2020, 2024, 2026],
+      "source_series_range": "1971-2026",
+      "source": "Federal Reserve",
+      "pre_cutoff_recent_release_rows": ["2026-06-17"],
+      "facts": [
+        "Fed decision row exposed GMT, Actual, Previous, Consensus and TEForecast.",
+        "Stats page described a daily series from 1971 through 2026."
+      ],
+      "limitations": [
+        "Historical decision-release rows were not reachable.",
+        "Target-range changes and revisions lacked immutable release identities."
+      ]
+    },
+    {
+      "page_id": "TE-P1-007",
+      "category": "LIQUIDITY",
+      "indicator": "FED_BALANCE_SHEET",
+      "url": "https://tradingeconomics.com/united-states/central-bank-balance-sheet",
+      "access_method": "APPROVED_BROWSER",
+      "retrieved_at_utc": "2026-07-13T05:47:25.612Z",
+      "http_status": null,
+      "access_status": "PUBLIC_RENDER_SUCCESS_NO_PRE_CUTOFF_RECENT_ROW",
+      "title": "United States Central Bank Balance Sheet",
+      "dom_snapshot_chars": 20866,
+      "dom_snapshot_sha256": "0e43ba9c7384569256e98f7cbd25760ca30f5384dba341059a944c73817e57f7",
+      "sample_years": [2005, 2010, 2015, 2020, 2024, 2026],
+      "source_series_range": "2002-2026",
+      "source": "Federal Reserve",
+      "pre_cutoff_recent_release_rows": [],
+      "facts": [
+        "Visible recent release rows began after the 2026-06-28 target cutoff.",
+        "Visible recent rows had blank Consensus cells.",
+        "Stats page described a weekly current-prices NSA series from 2002 through 2026."
+      ],
+      "limitations": [
+        "No cutoff-eligible recent release row was accepted.",
+        "Historical release rows, Consensus, and revision lineage were not reachable."
+      ]
+    },
+    {
+      "page_id": "TE-P1-008",
+      "category": "ACCESS_RULES",
+      "indicator": "ROBOTS_TXT",
+      "url": "https://tradingeconomics.com/robots.txt",
+      "access_method": "ORDINARY_HTTP_GET",
+      "retrieved_at_utc": "2026-07-13T05:48:10Z",
+      "retrieval_timestamp_certainty": "DERIVED_FROM_HTTP_DATE_PLUS_AGE_SECONDS",
+      "http_status": 200,
+      "content_type": "text/plain",
+      "content_length": 49,
+      "etag": "\"f0a9bc1b7e7dc1:0\"",
+      "last_modified": "Tue, 19 May 2026 17:48:51 GMT",
+      "body_sha256": "18dfb6a8e149b57bd97aa8de405979d91567a5016a725185388bd851921d0322",
+      "access_status": "PUBLIC_HTTP_SUCCESS",
+      "facts": [
+        "Body contained only Sitemap: https://tradingeconomics.com/sitemap.xml.",
+        "No user-agent directives were present in the retrieved body."
+      ],
+      "limitations": [
+        "robots.txt is not a license grant and does not override subscription controls."
+      ]
+    }
+  ]
+}
