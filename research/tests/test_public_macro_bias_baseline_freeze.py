@@ -5,11 +5,13 @@ import hashlib
 import json
 import tempfile
 import unittest
+from datetime import datetime
 from pathlib import Path
 
 from smartmarketscope_quant.public_macro_bias.baseline_freeze import (
     BaselineFreezeError,
     canonical_hash,
+    build_frozen_rows,
     read_csv,
     validate_final_manifest,
 )
@@ -48,6 +50,25 @@ class PublicMacroBaselineFreezeTests(unittest.TestCase):
             artifact.write_text("changed", encoding="ascii")
             with self.assertRaisesRegex(BaselineFreezeError, "TECHNICAL_FINAL_MANIFEST_MISMATCH"):
                 validate_final_manifest(root)
+
+    def test_repository_baseline_rows_are_complete_and_hash_unique(self) -> None:
+        repo_root = Path(__file__).resolve().parents[2]
+        rows = build_frozen_rows(repo_root)
+        self.assertEqual(len(rows), 1362)
+        self.assertEqual(len({row["setup_id"] for row in rows}), 454)
+        self.assertEqual(len({row["setup_hash"] for row in rows}), 1362)
+        self.assertEqual(len({row["trade_hash"] for row in rows}), 1362)
+        for row in rows:
+            self.assertTrue(row["planned_entry_points"])
+            self.assertTrue(row["stop_reference_points"])
+            self.assertTrue(row["target_2r_reference_points"])
+            self.assertLessEqual(
+                datetime.fromisoformat(row["source_actionable_timestamp"]),
+                datetime.fromisoformat(row["technical_decision_timestamp"]),
+            )
+            if row["outcome"] == "NO_FILL":
+                self.assertEqual(row["gross_r"], "")
+                self.assertEqual(row["net_r"], "")
 
 
 if __name__ == "__main__":

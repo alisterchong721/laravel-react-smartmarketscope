@@ -75,6 +75,12 @@ REGISTRY_FIELDS = (
     "gross_r",
     "net_r",
     "ambiguity_flag",
+    "actual_entry_fill_points",
+    "actual_exit_fill_points",
+    "spread_cost_points",
+    "slippage_cost_points",
+    "commission_cost_points",
+    "financing_cost_points",
     "cost_scenario",
     "setup_hash",
     "trade_hash",
@@ -352,6 +358,12 @@ def build_frozen_rows(repo_root: Path) -> list[dict[str, str]]:
                 "gross_r": row["gross_r"],
                 "net_r": row["net_r"],
                 "ambiguity_flag": _text(row["ambiguous_adverse_first"].lower() == "true"),
+                "actual_entry_fill_points": row["actual_entry_fill_points"],
+                "actual_exit_fill_points": row["actual_exit_fill_points"],
+                "spread_cost_points": row["spread_cost_points"],
+                "slippage_cost_points": row["slippage_cost_points"],
+                "commission_cost_points": row["commission_cost_points"],
+                "financing_cost_points": row["financing_cost_points"],
                 "setup_hash": setup_hash,
                 "trade_hash": canonical_hash(trade_payload),
             }
@@ -429,7 +441,7 @@ def build_baseline_freeze(repo_root: Path, code_commit: str | None = None) -> di
     technical_manifest, technical_manifest_sha = validate_final_manifest(repo_root)
     registry_rows, completed = primary_completion_event(repo_root)
     reproduction = verify_clean_reproduction(repo_root)
-    commit = code_commit or git_output(repo_root, "rev-parse", "HEAD")
+    commit = git_output(repo_root, "rev-parse", code_commit or "HEAD")
     commit_files = git_output(repo_root, "show", "--pretty=", "--name-only", commit).splitlines()
     required_committed = {
         TECHNICAL_CODE.as_posix(),
@@ -470,6 +482,7 @@ def build_baseline_freeze(repo_root: Path, code_commit: str | None = None) -> di
             "path": BASELINE_REGISTRY.as_posix(),
             "sha256": sha256_file(repo_root / BASELINE_REGISTRY),
             "row_count": len(rows),
+            "unique_setup_ids": len({row["setup_id"] for row in rows}),
             "unique_setup_hashes": len({row["setup_hash"] for row in rows}),
             "unique_trade_hashes": len({row["trade_hash"] for row in rows}),
         },
@@ -510,14 +523,119 @@ def build_baseline_freeze(repo_root: Path, code_commit: str | None = None) -> di
     return manifest
 
 
+def validate_baseline_freeze(repo_root: Path) -> dict[str, Any]:
+    repo_root = repo_root.resolve()
+    manifest_path = repo_root / FREEZE_MANIFEST
+    if not manifest_path.exists():
+        raise BaselineFreezeError("BASELINE_FREEZE_MANIFEST_MISSING")
+    manifest = json.loads(manifest_path.read_text(encoding="ascii"))
+    if manifest.get("status") != "PASS_TECHNICAL_BASELINE_FROZEN":
+        raise BaselineFreezeError("BASELINE_FREEZE_STATUS_INVALID")
+    for relative, expected in manifest["source_artifact_sha256"].items():
+        if sha256_file(repo_root / relative) != expected:
+            raise BaselineFreezeError(f"BASELINE_SOURCE_HASH_MISMATCH:{relative}")
+    registry_path = repo_root / manifest["baseline_registry"]["path"]
+    if sha256_file(registry_path) != manifest["baseline_registry"]["sha256"]:
+        raise BaselineFreezeError("BASELINE_REGISTRY_HASH_MISMATCH")
+    commit = manifest["lineage"]["code_commit"]
+    if len(commit) != 40 or git_output(repo_root, "cat-file", "-t", commit) != "commit":
+        raise BaselineFreezeError("BASELINE_CODE_COMMIT_INVALID")
+    for relative, hash_key in (
+        (TECHNICAL_CODE, "technical_code_sha256"),
+        (DETECTOR_CODE, "detector_sha256"),
+        (STRATEGY_CONFIG, "strategy_config_sha256"),
+    ):
+        committed = subprocess.run(
+            ["git", "show", f"{commit}:{relative.as_posix()}"],
+            cwd=repo_root,
+            check=True,
+            capture_output=True,
+        ).stdout
+        if hashlib.sha256(committed).hexdigest() != manifest["lineage"][hash_key]:
+            raise BaselineFreezeError(f"COMMITTED_LINEAGE_MISMATCH:{relative.as_posix()}")
+    rows = read_csv(registry_path)
+    if len(rows) != 1362 or len({row["setup_id"] for row in rows}) != 454:
+        raise BaselineFreezeError("BASELINE_REGISTRY_COUNT_MISMATCH")
+    for row in rows:
+        if not all(
+            row[field]
+            for field in (
+                "source_actionable_timestamp",
+                "technical_decision_timestamp",
+                "planned_entry_points",
+                "stop_reference_points",
+                "target_2r_reference_points",
+                "expiry_timestamp",
+            )
+        ):
+            raise BaselineFreezeError(f"BASELINE_REQUIRED_FIELD_BLANK:{row['setup_id']}")
+        if not (
+            datetime.fromisoformat(row["source_actionable_timestamp"])
+            <= datetime.fromisoformat(row["technical_decision_timestamp"])
+            <= datetime.fromisoformat(row["expiry_timestamp"])
+        ):
+            raise BaselineFreezeError(f"BASELINE_TIMESTAMP_ORDER_INVALID:{row['setup_id']}")
+        setup_payload = {
+            "source_program_id": row["source_program_id"],
+            "setup_id": row["setup_id"],
+            "scenario_id": row["scenario_id"],
+            "event_id": row["event_id"],
+            "source_actionable_timestamp": row["source_actionable_timestamp"],
+            "technical_decision_timestamp": row["technical_decision_timestamp"],
+            "direction": row["direction"],
+            "entry_timeframe": row["entry_timeframe"],
+            "confluence_family": row["confluence_family"],
+            "planned_entry_points": row["planned_entry_points"],
+            "stop_reference_points": row["stop_reference_points"],
+            "target_2r_reference_points": row["target_2r_reference_points"],
+            "expiry_timestamp": row["expiry_timestamp"],
+            "cost_scenario": row["cost_scenario"],
+        }
+        if canonical_hash(setup_payload) != row["setup_hash"]:
+            raise BaselineFreezeError(f"SETUP_HASH_INVALID:{row['setup_id']}:{row['scenario_id']}")
+        trade_payload = {
+            **setup_payload,
+            "setup_hash": row["setup_hash"],
+            "fill_status": row["fill_status"],
+            "outcome": row["outcome"],
+            "gross_r": row["gross_r"] or None,
+            "net_r": row["net_r"] or None,
+            "ambiguity_flag": row["ambiguity_flag"] == "true",
+            "actual_entry_fill_points": row["actual_entry_fill_points"] or None,
+            "actual_exit_fill_points": row["actual_exit_fill_points"] or None,
+            "spread_cost_points": row["spread_cost_points"],
+            "slippage_cost_points": row["slippage_cost_points"],
+            "commission_cost_points": row["commission_cost_points"],
+            "financing_cost_points": row["financing_cost_points"],
+        }
+        if canonical_hash(trade_payload) != row["trade_hash"]:
+            raise BaselineFreezeError(f"TRADE_HASH_INVALID:{row['setup_id']}:{row['scenario_id']}")
+        if row["outcome"] in {"NO_FILL", "INVALID_DATA"} and (row["gross_r"] or row["net_r"]):
+            raise BaselineFreezeError(f"UNFILLED_ROW_HAS_REALIZED_ECONOMICS:{row['setup_id']}")
+    return {
+        "status": "PASS_TECHNICAL_BASELINE_FROZEN",
+        "rows": len(rows),
+        "unique_setup_ids": len({row["setup_id"] for row in rows}),
+        "unique_setup_hashes": len({row["setup_hash"] for row in rows}),
+        "unique_trade_hashes": len({row["trade_hash"] for row in rows}),
+        "code_commit": commit,
+        "protected_data_accesses": 0,
+        "final_holdout_accesses": 0,
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Freeze the exact MLR technical baseline for public macro comparison")
     parser.add_argument("--repo-root", type=Path, required=True)
     parser.add_argument("--verify-reproduction-only", action="store_true")
+    parser.add_argument("--validate-only", action="store_true")
     parser.add_argument("--code-commit")
     args = parser.parse_args()
     if args.verify_reproduction_only:
         print(json.dumps(asdict(verify_clean_reproduction(args.repo_root)), indent=2, ensure_ascii=True))
+        return 0
+    if args.validate_only:
+        print(json.dumps(validate_baseline_freeze(args.repo_root), indent=2, ensure_ascii=True))
         return 0
     result = build_baseline_freeze(args.repo_root, args.code_commit)
     print(json.dumps({"status": result["status"], **result["baseline_registry"]}, indent=2))

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-TECHNICAL-BASELINE-MANIFEST-001",
+  "program_id": "SMART-MARKETSCOPE-PUBLIC-MACRO-BIAS-001",
+  "source_program_id": "QRP-MACRO-LIQUIDITY-REVERSAL-001",
+  "created_at_utc": "2026-07-13T05:31:15.854311+00:00",
+  "status": "PASS_TECHNICAL_BASELINE_FROZEN",
+  "instrument": "PEPPERSTONE_MT5_NAS100_CFD_SOURCE_LABEL_NOT_BROKER_CONFIRMED",
+  "source_timezone": "UNRESOLVED",
+  "historical_exposure": "PREVIOUSLY_EXPOSED_WINDOW",
+  "lineage": {
+    "code_commit": "231e27c55017e67e02872115cce4f1ab1e4e42da",
+    "technical_code_sha256": "d52897249424484f83aea9fbd9ed0fac9a6d33208d6682c37406ecd066c8bee3",
+    "detector_sha256": "0e5af7d33c09f76e72802fd17cb9421bce03cb3d9aaea16b6dcc917ce523d297",
+    "strategy_config_sha256": "800b6fe27da064ad952d87b8fee4e7bad96a28dba67176e7597e852540808124",
+    "execution_config_sha256": "52ccc8167142e34e17ab2e140d3870398a6bfe86e2131e6d417337e5ee1c251d",
+    "technical_final_manifest_sha256": "2a4b06cbfea9cc2a222670269f82e628e9e629dcb85046403a19ec190f96127c",
+    "technical_registry_head": "b725575b0759a9f91cc9708ffab345335b8c753e5ee0e388c51838679a13ed76",
+    "primary_completion_event_hash": "3effe8c42943fc43d7723799512eb61bfad1c7f4efcc3ee839cc977e737a6f6a"
+  },
+  "source_artifact_sha256": {
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PRIMARY_TRADES.csv": "a9cf589273faed4bd965a1a84162c1c33288265b8634b7f8f5984b50cb66d8dd",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PRIMARY_SUMMARY.json": "272009ab3f41b25cfe00c68e0f3e3f64f2ae412429227614dbd07fe5146cbc71",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PRIMARY_BACKTEST.md": "4fd066f3826d3c4088d4566060ac4b7862de3cc43070f8c483f82f5bffb07b72",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_CONTROL_COMPARISON.md": "bde6544e44ca5b4c2061a3f4d5f5e5c4019d00d6c50e0ae78bb05a210611c86f",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PATH_AMBIGUITIES.csv": "75b4e5eefa470f8305f1e214ef6decbdddf32166f2c595daec2c0f8c629ba5cb"
+  },
+  "reproduction": {
+    "status": "PASS_BYTE_IDENTICAL_REPRODUCTION",
+    "compared_artifacts": 6,
+    "artifact_sha256": {
+      "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PRIMARY_TRADES.csv": "a9cf589273faed4bd965a1a84162c1c33288265b8634b7f8f5984b50cb66d8dd",
+      "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PRIMARY_SUMMARY.json": "272009ab3f41b25cfe00c68e0f3e3f64f2ae412429227614dbd07fe5146cbc71",
+      "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PRIMARY_BACKTEST.md": "4fd066f3826d3c4088d4566060ac4b7862de3cc43070f8c483f82f5bffb07b72",
+      "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_CONTROL_COMPARISON.md": "bde6544e44ca5b4c2061a3f4d5f5e5c4019d00d6c50e0ae78bb05a210611c86f",
+      "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PATH_AMBIGUITIES.csv": "75b4e5eefa470f8305f1e214ef6decbdddf32166f2c595daec2c0f8c629ba5cb",
+      "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_CONTROL_TRADES.csv": "faa90c9f71dd46de6bac5cae8626541d220e8db4efbc4fef50092940263e2375"
+    },
+    "source_registry_event_hash": "9dc280dfbb8d2aa2e070062284ca02ccd495442aac7f585617978de340b552d8"
+  },
+  "baseline_registry": {
+    "path": "research/artifacts/public_macro_bias/MACRO_TECHNICAL_BASELINE_REGISTRY.csv",
+    "sha256": "b5784ce9ab7311063b21eb33bdaf9c4218a5ade730624c00a3ddb50e468b7db7",
+    "row_count": 1362,
+    "unique_setup_ids": 454,
+    "unique_setup_hashes": 1362,
+    "unique_trade_hashes": 1362
+  },
+  "technical_baseline": {
+    "unique_setups": 454,
+    "trade_rows": 1362,
+    "medium_cost": {
+      "filled_trades": 306,
+      "no_fills": 148,
+      "wins": 52,
+      "losses": 246,
+      "timeouts": 2,
+      "ambiguous_adverse_first": 6,
+      "average_net_r": "-0.5668557855313225551546933291",
+      "total_net_r": "-173.4578703725847018773361587"
+    },
+    "worst_strategy_drawdown_r": "52.72435033062773699774507294"
+  },
+  "invariants": {
+    "technical_outcomes_modified": false,
+    "post_2026_06_28_market_data_accessed": false,
+    "protected_data_accesses": 0,
+    "final_holdout_accesses": 0,
+    "broker_or_paper_action": "NONE"
+  },
+  "technical_final_manifest_status": "TECHNICAL_EDGE_NOT_FOUND"
+}
