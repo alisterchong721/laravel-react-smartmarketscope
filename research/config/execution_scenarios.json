@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "request_id": "QRP-20260711-141225Z",
+  "status": "HYPOTHETICAL_SCENARIOS_NOT_BROKER_FACTS",
+  "purpose": "Engine verification and later labeled sensitivity analysis only",
+  "scenarios": [
+    {
+      "scenario_id": "NORMALIZED_LOW_COST",
+      "evidence_class": "HYPOTHETICAL_SCENARIO_NOT_BROKER_FACT",
+      "currency": "USD",
+      "point_value_usd_per_unit": "1",
+      "contract_size_per_unit": "1",
+      "min_quantity": "0.1",
+      "quantity_step": "0.1",
+      "max_quantity": "100",
+      "leverage": "10",
+      "spread_points": "1",
+      "slippage_points_per_side": "0.25",
+      "commission_usd_per_unit_per_side": "0.5",
+      "financing_usd_per_unit_per_bar": "0"
+    },
+    {
+      "scenario_id": "NORMALIZED_MEDIUM_COST",
+      "evidence_class": "HYPOTHETICAL_SCENARIO_NOT_BROKER_FACT",
+      "currency": "USD",
+      "point_value_usd_per_unit": "1",
+      "contract_size_per_unit": "1",
+      "min_quantity": "0.1",
+      "quantity_step": "0.1",
+      "max_quantity": "100",
+      "leverage": "10",
+      "spread_points": "2",
+      "slippage_points_per_side": "0.5",
+      "commission_usd_per_unit_per_side": "1",
+      "financing_usd_per_unit_per_bar": "0.1"
+    },
+    {
+      "scenario_id": "NORMALIZED_HIGH_COST",
+      "evidence_class": "HYPOTHETICAL_SCENARIO_NOT_BROKER_FACT",
+      "currency": "USD",
+      "point_value_usd_per_unit": "1",
+      "contract_size_per_unit": "1",
+      "min_quantity": "0.1",
+      "quantity_step": "0.1",
+      "max_quantity": "100",
+      "leverage": "10",
+      "spread_points": "6",
+      "slippage_points_per_side": "1.5",
+      "commission_usd_per_unit_per_side": "2",
+      "financing_usd_per_unit_per_bar": "0.25"
+    }
+  ],
+  "prohibitions": [
+    "Do not call any scenario a broker quote or contract specification",
+    "Do not infer spread points from the raw SPREAD column",
+    "Do not claim prop-firm pass probability without rule and contract sensitivity"
+  ]
+}

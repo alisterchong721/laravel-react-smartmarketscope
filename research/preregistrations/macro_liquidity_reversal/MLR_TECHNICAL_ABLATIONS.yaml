@@ -1,0 +1,44 @@
+schema_version: "1.0.0"
+program_id: "QRP-MACRO-LIQUIDITY-REVERSAL-001"
+locked_before_run: true
+locked_at: "2026-07-13T08:03:02+08:00"
+mode: "TECHNICAL_ONLY_ABLATION"
+economic_outcomes: "PROHIBITED"
+experiments:
+  - experiment_id: "MLR-TECH-001"
+    primary_change: "D1_AND_H4_SMALL_BODY_RATIO"
+    variants: [0.25, 0.50, 0.75]
+    metric: "D1_TREND_SWEEPS_AND_D1_H4_CONFIRMATIONS"
+  - experiment_id: "MLR-TECH-002"
+    primary_change: "SWEEP_CLOSE_RULE"
+    variants: ["CLOSE_ONLY_PRIMARY", "FULL_BODY_ACROSS_LEVEL"]
+    fixed_ratio: 0.50
+    metric: "D1_TREND_SWEEPS_AND_D1_H4_CONFIRMATIONS"
+  - experiment_id: "MLR-TECH-003"
+    primary_change: "TREND_FILTER"
+    variants: ["EMA20_EMA50_PRIMARY", "NO_TREND_FILTER"]
+    fixed_ratio: 0.50
+    metric: "D1_SWEEPS_AND_D1_H4_CONFIRMATIONS"
+  - experiment_id: "MLR-TECH-004"
+    primary_change: "H4_SEARCH_WINDOW"
+    variants: ["CONTAINED_D1_CANDLE_2", "TWO_POST_CLOSE_H4", "THREE_POST_CLOSE_H4_PRIMARY", "THROUGH_D1_CANDLE_3_CLOSE"]
+    fixed_ratio: 0.50
+    metric: "D1_H4_CONFIRMATIONS"
+  - experiment_id: "MLR-TECH-005"
+    preregistered_at: "2026-07-13T12:11:08+08:00"
+    primary_change: "OB_STRUCTURE_LOOKBACK"
+    variants: [5, 10, 20]
+    fixed_displacement_atr: 1.0
+    metric: "DIRECTIONAL_OB_COUNT_IN_PRIMARY_D1_H4_WINDOWS_BY_LTF"
+  - experiment_id: "MLR-TECH-006"
+    preregistered_at: "2026-07-13T12:11:08+08:00"
+    primary_change: "OB_DISPLACEMENT_THRESHOLD_ATR"
+    variants: [0.0, 0.5, 1.0]
+    fixed_structure_lookback: 10
+    metric: "DIRECTIONAL_OB_COUNT_IN_PRIMARY_D1_H4_WINDOWS_BY_LTF"
+controls:
+  final_holdout_access: false
+  post_2026_06_28_access: false
+  selection_from_results: false
+  model_training: false
+  strategy_claim: false

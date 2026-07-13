@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "QRP-MACRO-LIQUIDITY-REVERSAL-001",
+  "status": "BLOCKED_BY_UNCERTIFIED_MACRO_BIAS",
+  "skill_set_sha256": "83d2e96e8435398571814b340fb5c181f42361ec790c239d7337b3668c1eb050",
+  "implementation_hash_method": "sha256_paths_relative_to_repository_root",
+  "implementation_files": [
+    "research/src/smartmarketscope_quant/macro_liquidity_reversal/__init__.py",
+    "research/src/smartmarketscope_quant/macro_liquidity_reversal/ablation.py",
+    "research/src/smartmarketscope_quant/macro_liquidity_reversal/detectors.py",
+    "research/src/smartmarketscope_quant/macro_liquidity_reversal/frequency.py",
+    "research/src/smartmarketscope_quant/macro_liquidity_reversal/models.py",
+    "research/tests/test_macro_liquidity_reversal.py"
+  ],
+  "implementation_sha256": "4b4b24370e2cfb9537d118fa971eabca03c5f671446aa0ca07d55500a8e241df",
+  "configuration_sha256": "800b6fe27da064ad952d87b8fee4e7bad96a28dba67176e7597e852540808124",
+  "preregistration_sha256": {
+    "master": "0e1a34801f660c9fe360fc5a11ae4b593b665b74846590cd9425e314c6f39264",
+    "technical_ablations": "7e1448a97f1ac21ca43ca6daf1429dcbba92485d7526cddbe4ea1caa412e31de"
+  },
+  "source_sha256": {
+    "M1": "9ca414716a7c30b20006052af651d1f06f77ce23f62e7072feebd79896567f65",
+    "M5": "e1adb261b67c1150eced5ac180146b2df4804bec8a93e8b00a5b779353c196a3",
+    "M15": "17d03a842464b2fbd774ad653a882a45e1ee0593bdf1ce0594784e14721d8bbe",
+    "H4": "ec22ae4610645f87c1e2cbe32a35f0e4a1f1ed9b4973cce01004c2c713180a91",
+    "D1": "2de323fa640b3afef2f32c4aad69309e6583848ab938e3920619bd1242510a75"
+  },
+  "canonical_sha256": {
+    "M5": "13463d5e890e60c3b07e8b2946aa40a3327e79fd5d8892978ea83500f41b9f17",
+    "M15": "910f29bfa08733a95832ee42c6903f2c23d647de9adea2ada905d541508c5ee7",
+    "H4": "e96b16aab5a3c6209d9c8e27a494f29abd98b2a438d651dff02821210c95b013",
+    "D1": "45123acab32679cb426e283ddaae560c6d3b86ca04ba71599d207c14a8ad2bff"
+  },
+  "artifact_sha256": {
+    "macro_bias_registry": "ac9754f49bccda022baaf347ba81714d5278fc7e2c9e9c571774b4d3802c3413",
+    "event_registry": "f44f50ec7ade6ad2aaf951bc9fce9ed0259d09cba4d4251b0989b71c73f57996",
+    "setup_registry": "d2d69eae8c2f42a8b040b463b4bb749702798ec7af82ccdd4dffc8996a9b3093",
+    "zone_registry": "3492d5f9d17f0ebc2a3c56d7520951a426d80ac8ab3011c0fcc3a969ce084680",
+    "fvg_registry": "c5899afe12acb7e0045cc85a1af3999fd1d7c1d615a775366c55af1674b6152b",
+    "ob_registry": "e297b7bdd62ce9b161219cb584daf1c115d7aacf76c118ab15c9c72048b5b89e",
+    "breaker_registry": "4a7a30ac6bcd734ace2374f6e1d2e1786368b5bc9e9b240f93ffa464a89f403a",
+    "confluence_registry": "1b7d9dfa061e85300ab7cce117336c46745d68f34efe77b2d4d44024d42cd6f6",
+    "technical_layer_registry": "b1c2ee798946a02acb11365c19a8caa20a1a8d26b7fe2ce8e1228c0146762cb3",
+    "split_manifest": "5cbe9201fe51853848943b193f4a05ab2712952410127dc2fa7cfb2c536c5605",
+    "predictions": "a25928952c56cc130953728258d7bedc451a44260fd8a858ef78ebfe9fa218b7",
+    "trade_log": "a25928952c56cc130953728258d7bedc451a44260fd8a858ef78ebfe9fa218b7",
+    "frequency_summary": "c2dcbc0ee5886b6030c837d85df964d0334bcc86a894e57a8b746a758ad12918",
+    "technical_ablations": "9d08efeb84edae5843ba6a3a9db55aebe2322e895a4a55a4da44f0159cda72aa",
+    "program_registry": "bbd72c8d9fa2eec0fee4835458a7f74aab8c5975ff8067edf8919f8d7460d436"
+  },
+  "counts": {
+    "full_strategy_runs": 0,
+    "economic_backtests": 0,
+    "model_trials": 0,
+    "technical_experiments": 6,
+    "technical_variant_exposures": 17,
+    "focused_detector_artifact_tests": 43,
+    "protected_data_accesses": 0,
+    "final_holdout_accesses": 0
+  }
+}

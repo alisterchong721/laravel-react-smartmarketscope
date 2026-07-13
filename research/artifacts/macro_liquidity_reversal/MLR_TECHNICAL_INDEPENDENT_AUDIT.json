@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "QRP-MACRO-LIQUIDITY-REVERSAL-001",
+  "status": "PASS_PROCESS_TECHNICAL_EDGE_NOT_FOUND",
+  "mode": "TECHNICAL_ONLY_ABLATION",
+  "checks": {
+    "primary_rows": 1362,
+    "unique_setups": 454,
+    "filled_scenario_rows": 918,
+    "no_fill_or_invalid_scenario_rows": 444,
+    "ambiguous_scenario_rows": 20
+  },
+  "registry_events_validated": 14,
+  "split_manifest_sha256": "8f007fa6310f5eeb3b09c178d0621fe425c9b7850bdcbd0b926308a631cc65bc",
+  "primary_strategies_negative_medium_cost": 7,
+  "diagnostic_strategies_negative_medium_cost": 7,
+  "candidate": "NONE",
+  "machine_learning": "PROHIBITED_MAXIMUM_EFFECTIVE_SAMPLE_BELOW_100",
+  "full_macro_strategy_status": "BLOCKED_BY_UNCERTIFIED_MACRO_BIAS",
+  "protected_data_accesses": 0,
+  "final_holdout_accesses": 0
+}

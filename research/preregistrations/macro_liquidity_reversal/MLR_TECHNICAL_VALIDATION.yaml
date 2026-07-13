@@ -1,0 +1,49 @@
+schema_version: "1.0.0"
+program_id: "QRP-MACRO-LIQUIDITY-REVERSAL-001"
+experiment_id: "MLR-TECH-VAL-001"
+created_at: "2026-07-13T12:58:30+08:00"
+status: "LOCKED_BEFORE_VALIDATION_EXECUTION"
+mode: "TECHNICAL_ONLY_ABLATION"
+input:
+  primary_summary_sha256: "272009ab3f41b25cfe00c68e0f3e3f64f2ae412429227614dbd07fe5146cbc71"
+  primary_trades_sha256: "a9cf589273faed4bd965a1a84162c1c33288265b8634b7f8f5984b50cb66d8dd"
+  scenario: "NORMALIZED_MEDIUM_COST"
+  exposure_label: "PREVIOUSLY_EXPOSED_WINDOW"
+  full_strategy_status: "BLOCKED_BY_UNCERTIFIED_MACRO_BIAS"
+sample_policy:
+  filled_outcomes: ["WIN_2R", "LOSS_1R", "TIMEOUT", "AMBIGUOUS_ADVERSE_FIRST"]
+  exclude: ["NO_FILL", "INVALID_DATA"]
+  effective_sample: "Chronological one-trade-per-event rows with entry strictly after the previous selected exit."
+  interval: "D1 candle-1 information start through realized exit; closed-interval overlap is purged."
+permissions:
+  cpcv_and_walk_forward:
+    - "M15_C2_FVG_BREAKER"
+    - "M1_C1_OB_FVG"
+    - "M1_C2_FVG_BREAKER"
+    - "M5_C2_FVG_BREAKER"
+  insufficient_for_reliable_model_selection:
+    - "HIERARCHICAL_M15_M5_M1"
+    - "M15_C1_OB_FVG"
+    - "M5_C1_OB_FVG"
+  machine_learning: "PROHIBITED_MAXIMUM_EFFECTIVE_SAMPLE_BELOW_100"
+cpcv:
+  groups: 6
+  test_groups: 2
+  embargo_mode: "BARS"
+  embargo_events_after_each_test_block: 1
+  selection: "NONE_FIXED_RULE_DIAGNOSTIC"
+  report: ["split_count", "positive_split_fraction", "median_test_net_r_per_trade", "lower_quartile_test_net_r_per_trade", "worst_split_net_r_per_trade"]
+outer_walk_forward:
+  minimum_train_trades: 30
+  test_trades: 10
+  retraining_delay: "ZERO_FIXED_RULE_NO_MODEL_RETRAINING; prior labels must close before test start"
+  selection: "NONE_FIXED_RULE_DIAGNOSTIC"
+  report: ["fold_count", "positive_fold_fraction", "median_fold_net_r_per_trade", "lower_quartile_fold_net_r_per_trade", "worst_fold_net_r_per_trade", "train_to_test_decay_not_applicable_fixed_rule"]
+decision:
+  automatic_promotion: false
+  validation_cannot_override_primary_candidate_gates: true
+governance:
+  post_2026_06_28_access: false
+  protected_data_accesses: 0
+  final_holdout_accesses: 0
+  dollar_pnl_claim: false

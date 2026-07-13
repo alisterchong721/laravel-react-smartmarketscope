@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "QRP-MACRO-LIQUIDITY-REVERSAL-001",
+  "status": "BLOCKED_BY_UNCERTIFIED_MACRO_BIAS",
+  "certified_macro_bias_days": 0,
+  "trend_context_days": {
+    "BULLISH": 370,
+    "BEARISH": 1333
+  },
+  "d1_sweep_counts_unfiltered": {
+    "BULLISH": 144,
+    "BEARISH": 203
+  },
+  "d1_trend_sweep_counts": {
+    "BULLISH": 38,
+    "BEARISH": 145
+  },
+  "d1_h4_confirmation_counts": {
+    "BULLISH": 18,
+    "BEARISH": 71
+  },
+  "d1_sweeps_matching_certified_macro_bias": {
+    "BULLISH": 0,
+    "BEARISH": 0
+  },
+  "actionable_delay_hours": {
+    "average": 5.078651685393258,
+    "maximum": 60.0
+  },
+  "per_timeframe": {
+    "M15": {
+      "d1_h4_windows": 89,
+      "fvg_count": 741,
+      "ob_count": 129,
+      "breaker_count": 80,
+      "c1_midpoint_reaches": 32,
+      "c2_midpoint_reaches": 43,
+      "technical_complete_setups": 54,
+      "effective_nonoverlapping_setups": 54,
+      "technical_complete_by_year": {
+        "2017": 1,
+        "2018": 5,
+        "2019": 4,
+        "2020": 7,
+        "2021": 3,
+        "2022": 7,
+        "2023": 11,
+        "2024": 6,
+        "2025": 8,
+        "2026": 2
+      },
+      "technical_complete_by_direction": {
+        "BULLISH": 10,
+        "BEARISH": 44
+      },
+      "frequency_permission": "RULE_BASED_ONLY_ML_PROHIBITED",
+      "average_gap_hours": 1415.6792452830189,
+      "maximum_gap_hours": 5454.5,
+      "overlapping_cluster_count": 0,
+      "setups_in_overlapping_clusters": 0
+    },
+    "M5": {
+      "d1_h4_windows": 89,
+      "fvg_count": 2231,
+      "ob_count": 445,
+      "breaker_count": 239,
+      "c1_midpoint_reaches": 70,
+      "c2_midpoint_reaches": 78,
+      "technical_complete_setups": 85,
+      "effective_nonoverlapping_setups": 85,
+      "technical_complete_by_year": {
+        "2017": 3,
+        "2018": 8,
+        "2019": 9,
+        "2020": 12,
+        "2021": 5,
+        "2022": 12,
+        "2023": 15,
+        "2024": 7,
+        "2025": 9,
+        "2026": 5
+      },
+      "technical_complete_by_direction": {
+        "BULLISH": 18,
+        "BEARISH": 67
+      },
+      "frequency_permission": "RULE_BASED_ONLY_ML_PROHIBITED",
+      "average_gap_hours": 900.1091269841274,
+      "maximum_gap_hours": 3750.75,
+      "overlapping_cluster_count": 0,
+      "setups_in_overlapping_clusters": 0
+    },
+    "M1": {
+      "d1_h4_windows": 89,
+      "fvg_count": 12596,
+      "ob_count": 2352,
+      "breaker_count": 1465,
+      "c1_midpoint_reaches": 89,
+      "c2_midpoint_reaches": 89,
+      "technical_complete_setups": 89,
+      "effective_nonoverlapping_setups": 89,
+      "technical_complete_by_year": {
+        "2017": 4,
+        "2018": 8,
+        "2019": 9,
+        "2020": 13,
+        "2021": 6,
+        "2022": 12,
+        "2023": 15,
+        "2024": 8,
+        "2025": 9,
+        "2026": 5
+      },
+      "technical_complete_by_direction": {
+        "BULLISH": 18,
+        "BEARISH": 71
+      },
+      "frequency_permission": "RULE_BASED_ONLY_ML_PROHIBITED",
+      "average_gap_hours": 860.1431818181817,
+      "maximum_gap_hours": 3734.1666666666665,
+      "overlapping_cluster_count": 0,
+      "setups_in_overlapping_clusters": 0
+    },
+    "HIERARCHICAL_M15_M5_M1": {
+      "d1_h4_windows": 89,
+      "fvg_count": 0,
+      "ob_count": 0,
+      "breaker_count": 0,
+      "c1_midpoint_reaches": 0,
+      "c2_midpoint_reaches": 12,
+      "technical_complete_setups": 12,
+      "effective_nonoverlapping_setups": 12,
+      "technical_complete_by_year": {
+        "2019": 1,
+        "2020": 2,
+        "2021": 1,
+        "2022": 1,
+        "2023": 2,
+        "2024": 3,
+        "2025": 1,
+        "2026": 1
+      },
+      "technical_complete_by_direction": {
+        "BULLISH": 2,
+        "BEARISH": 10
+      },
+      "frequency_permission": "INSUFFICIENT_COMPLETE_SETUP_FREQUENCY",
+      "average_gap_hours": 5495.878787878788,
+      "maximum_gap_hours": 10578.45,
+      "overlapping_cluster_count": 0,
+      "setups_in_overlapping_clusters": 0
+    }
+  },
+  "full_strategy_complete_setups": 0,
+  "setups_blocked_by_missing_macro_bias": 89,
+  "setups_blocked_by_stale_macro_bias": 0,
+  "d1_sweeps_without_h4_pattern": 94,
+  "setups_blocked_by_incomplete_higher_timeframe_data": 0,
+  "full_strategy_frequency_permission": "INSUFFICIENT_COMPLETE_SETUP_FREQUENCY",
+  "economic_results": "NOT_RUN",
+  "m1_rows_loaded_in_setup_windows": 111326,
+  "limitations": [
+    "Macro coverage is uncertified and contributes no eligible strategy day.",
+    "Midpoint reach is a technical diagnostic, not proof of limit fill.",
+    "Source timezone, broker identity, and spread units are unresolved.",
+    "No economic outcome, target/stop result, or model was computed."
+  ]
+}

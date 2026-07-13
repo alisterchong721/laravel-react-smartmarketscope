@@ -1,0 +1,67 @@
+schema_version: "1.0.0"
+program_id: "QRP-MACRO-LIQUIDITY-REVERSAL-001"
+registry_namespace: "macro_liquidity_reversal"
+created_at: "2026-07-13T07:53:53+08:00"
+timestamp_reconciled_at: "2026-07-13T08:04:00+08:00"
+timestamp_reconciliation: "Metadata-only correction from the filesystem creation evidence; no rule, variant, gate, or budget changed."
+status: "LOCKED_BLOCKED_BY_UNCERTIFIED_MACRO_BIAS"
+mechanical_source_of_truth:
+  skill: "multi-timeframe-macro-liquidity-reversal"
+  sha256: "83d2e96e8435398571814b340fb5c181f42361ec790c239d7337b3668c1eb050"
+instrument:
+  requested: "Pepperstone MT5 NAS100 CFD"
+  evidenced: "NAS100_LABELED_PROBABLE_CFD_POST_2017_NOT_BROKER_CONFIRMED"
+  canonical_execution_timeframe: "M5"
+  auxiliary_path_timeframe: "M1"
+  source_timezone: "UNKNOWN"
+  spread_units: "UNKNOWN"
+historical_boundary:
+  research_pool_through_source_label: "2026-06-28"
+  prospective_data_access_for_tuning: false
+  final_holdout_access: false
+dependency_gates:
+  skill_installation: "PASS"
+  critical_idor_ssrf_remediation: "PASS"
+  immutable_macro_source_run_and_observation_contract: "FAIL"
+  full_strategy_status: "BLOCKED_BY_UNCERTIFIED_MACRO_BIAS"
+permitted_scope:
+  - "DETECTOR_CORRECTNESS"
+  - "TECHNICAL_FREQUENCY_STUDY"
+  - "TECHNICAL_ONLY_ABLATION"
+prohibited_scope:
+  - "FULL_MACRO_GATED_STRATEGY"
+  - "ECONOMIC_BACKTEST"
+  - "MODEL_TRAINING"
+  - "PARAMETER_OPTIMIZATION"
+  - "CPCV_SELECTION"
+  - "OUTER_WALK_FORWARD"
+  - "ROBUSTNESS_PROMOTION"
+  - "LUCIDFLEX_ANALYSIS"
+  - "FTMO_OR_BROKER_OPERATION"
+primary_rules:
+  macro_required: true
+  trend_filter: "EMA20_EMA50_COMPLETED_D1"
+  small_body_ratio: 0.50
+  sweep_close_rule: "CLOSE_ONLY"
+  h4_extension_completed_bars: 3
+  order_block_structure_lookback: 10
+  order_block_displacement_atr: 1.0
+  entry_depth: "CONFLUENCE_MIDPOINT"
+  target_r: 2.0
+  one_trade_per_d1_setup: true
+  same_bar_policy: "ADVERSE_FIRST_UNLESS_VALID_M1_PATH"
+  expiry: "NATIVE_D1_CANDLE_3_CLOSE"
+budgets:
+  maximum_research_cycles: 2
+  maximum_experiments_per_cycle: 15
+  maximum_rule_variants_per_experiment: 6
+  maximum_ml_trials_per_experiment: 100
+  maximum_new_features_per_ml_experiment: 3
+  maximum_primary_changes_per_experiment: 1
+  automatic_champion_replacement: false
+  failed_experiments_must_be_logged: true
+  independent_audit_required: true
+stop_conditions:
+  uncertified_macro: "BLOCKED_BY_UNCERTIFIED_MACRO_BIAS"
+  fewer_than_30_effective_complete_setups: "INSUFFICIENT_COMPLETE_SETUP_FREQUENCY"
+  no_acceptable_evidence: "NO_ACCEPTABLE_STRATEGY_FOUND"

@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "QRP-MACRO-LIQUIDITY-REVERSAL-001",
+  "registry_namespace": "macro_liquidity_reversal",
+  "parent_registry_snapshot": {
+    "events": 57,
+    "terminal_experiments": 19,
+    "last_event_hash": "c1d19f46dffbbcf62fb1197f3b42aa646f260171660f490ae680cb02d7365c4f"
+  },
+  "status": "BLOCKED_BY_UNCERTIFIED_MACRO_BIAS",
+  "experiments": [
+    {"experiment_id": "MLR-TECH-001", "primary_change": "D1_AND_H4_SMALL_BODY_RATIO", "status": "COMPLETED_TECHNICAL_ONLY", "variant_count": 3},
+    {"experiment_id": "MLR-TECH-002", "primary_change": "SWEEP_CLOSE_RULE", "status": "COMPLETED_TECHNICAL_ONLY", "variant_count": 2},
+    {"experiment_id": "MLR-TECH-003", "primary_change": "TREND_FILTER", "status": "COMPLETED_TECHNICAL_ONLY", "variant_count": 2},
+    {"experiment_id": "MLR-TECH-004", "primary_change": "H4_SEARCH_WINDOW", "status": "COMPLETED_TECHNICAL_ONLY", "variant_count": 4},
+    {"experiment_id": "MLR-TECH-005", "primary_change": "OB_STRUCTURE_LOOKBACK", "status": "COMPLETED_TECHNICAL_ONLY", "variant_count": 3},
+    {"experiment_id": "MLR-TECH-006", "primary_change": "OB_DISPLACEMENT_THRESHOLD_ATR", "status": "COMPLETED_TECHNICAL_ONLY", "variant_count": 3}
+  ],
+  "trials": [
+    "MLR-TECH-001:RATIO_0_25",
+    "MLR-TECH-001:RATIO_0_50_PRIMARY",
+    "MLR-TECH-001:RATIO_0_75",
+    "MLR-TECH-002:CLOSE_ONLY_PRIMARY",
+    "MLR-TECH-002:FULL_BODY_ACROSS_LEVEL",
+    "MLR-TECH-003:EMA20_EMA50_PRIMARY",
+    "MLR-TECH-003:NO_TREND_FILTER",
+    "MLR-TECH-004:CONTAINED_D1_CANDLE_2",
+    "MLR-TECH-004:TWO_POST_CLOSE_H4",
+    "MLR-TECH-004:THREE_POST_CLOSE_H4_PRIMARY",
+    "MLR-TECH-004:THROUGH_D1_CANDLE_3_CLOSE",
+    "MLR-TECH-005:OB_LOOKBACK_5",
+    "MLR-TECH-005:OB_LOOKBACK_10_PRIMARY",
+    "MLR-TECH-005:OB_LOOKBACK_20",
+    "MLR-TECH-006:OB_DISPLACEMENT_0_ATR",
+    "MLR-TECH-006:OB_DISPLACEMENT_0_5_ATR",
+    "MLR-TECH-006:OB_DISPLACEMENT_1_ATR_PRIMARY"
+  ],
+  "full_strategy_runs": 0,
+  "economic_backtests": 0,
+  "model_trials": 0,
+  "protected_data_accesses": 0,
+  "final_holdout_accesses": 0
+}

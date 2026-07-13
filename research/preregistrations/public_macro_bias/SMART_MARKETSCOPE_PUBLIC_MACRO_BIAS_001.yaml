@@ -1,0 +1,34 @@
+schema_version: "1.0.0"
+program_id: "SMART-MARKETSCOPE-PUBLIC-MACRO-BIAS-001"
+status: "PROSPECTIVE_PHASE_P0_ONLY"
+decision_timezone: "Asia/Kuala_Lumpur"
+instrument: "PEPPERSTONE_MT5_NAS100_CFD_SOURCE_LABEL_NOT_BROKER_CONFIRMED"
+historical_exposure: "PREVIOUSLY_EXPOSED_WINDOW"
+authorized_phase: "P0_TECHNICAL_BASELINE_FREEZE"
+technical_source_program: "QRP-MACRO-LIQUIDITY-REVERSAL-001"
+technical_outcome: "TECHNICAL_EDGE_NOT_FOUND"
+requirements:
+  byte_identical_reproduction: true
+  immutable_setup_hash: true
+  immutable_trade_hash: true
+  code_commit_binding: true
+  strategy_config_hash: true
+  detector_hash: true
+  final_holdout_access: "PROHIBITED"
+  post_2026_06_28_market_data_access: "PROHIBITED"
+next_phase_gate:
+  required_status: "PASS_TECHNICAL_BASELINE_FROZEN"
+  public_macro_access_before_pass: "PROHIBITED"
+budgets:
+  macro_scoring_versions: 1
+  legitimate_threshold_variants: 4
+  time_join_modes: 3
+  category_diagnostics: 5
+  maximum_concurrent_public_requests: 1
+  maximum_pilot_pages: 120
+  automatic_promotion: false
+prohibitions:
+  - "Do not modify technical setup or trade outcomes."
+  - "Do not access a final holdout."
+  - "Do not connect a broker or paper/live system."
+  - "Do not start public macro collection before Phase P0 independently passes."

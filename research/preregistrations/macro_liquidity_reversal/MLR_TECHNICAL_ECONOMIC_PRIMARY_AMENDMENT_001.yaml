@@ -1,0 +1,26 @@
+schema_version: "1.0.0"
+program_id: "QRP-MACRO-LIQUIDITY-REVERSAL-001"
+experiment_id: "MLR-TECH-ECO-001"
+amendment_id: "MLR-TECH-ECO-001-AMENDMENT-001"
+created_at: "2026-07-13T12:52:05+08:00"
+status: "LOCKED_AFTER_FAILED_IMPLEMENTATION_BEFORE_COMPLETED_PASS"
+supersedes: null
+supplements:
+  path: "research/preregistrations/macro_liquidity_reversal/MLR_TECHNICAL_ECONOMIC_PRIMARY.yaml"
+  sha256: "22138955db91922ec9e34f5c65b73b299137611aecb7b46a9f6358081186a3bf"
+trigger:
+  failed_registry_event: "MLR-TECH-ECO-001-FAILED-ATTEMPT-1"
+  failure_code: "MLR_INVALID_LONG_BARRIERS"
+  result_artifacts_written: false
+  outcome_metrics_inspected: false
+scope:
+  applies_only_to: ["CONTROL_DIRECTION_GENERIC", "CONTROL_D1_ONLY_GENERIC", "CONTROL_D1_H4_GENERIC"]
+  rule: "If the first subsequent M1 market-control entry is already at or beyond the frozen protective stop, do not force an invalid trade. Classify that scenario row as NO_FILL with PROTECTIVE_STOP_BREACHED_BEFORE_CONTROL_ENTRY."
+  primary_technical_rules_changed: false
+  detector_or_frequency_rules_changed: false
+  target_or_stop_definition_changed: false
+governance:
+  historical_pool_exposure_attempts_before_lock: 1
+  protected_data_accesses: 0
+  final_holdout_accesses: 0
+  automatic_promotion: false

@@ -1,0 +1,2 @@
+certification_status,coverage_end,coverage_start,eligible_bias_days,failure_code,registry_id,state
+NOT_CERTIFIED,,,0,BLOCKED_BY_UNCERTIFIED_MACRO_BIAS,MLR-MACRO-GATE-001,UNKNOWN

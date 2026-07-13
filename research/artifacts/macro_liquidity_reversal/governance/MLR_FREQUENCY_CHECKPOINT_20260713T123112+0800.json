@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "QRP-MACRO-LIQUIDITY-REVERSAL-001",
+  "checkpoint_id": "MLR-FREQUENCY-CHECKPOINT-20260713T123112+0800",
+  "created_at": "2026-07-13T12:31:12+08:00",
+  "status": "FROZEN_PRE_ECONOMIC_CONTINUATION",
+  "preservation_rule": "The listed files must remain byte-identical during the technical-economic continuation.",
+  "verified_counts": {
+    "trend_matched_d1_sweeps": 183,
+    "d1_h4_confirmations": 89,
+    "m15_midpoint_reach_diagnostics": 54,
+    "m5_midpoint_reach_diagnostics": 85,
+    "m1_midpoint_reach_diagnostics": 89,
+    "hierarchical_midpoint_reach_diagnostics": 12,
+    "focused_detector_artifact_tests": 43
+  },
+  "sha256": {
+    "research/artifacts/macro_liquidity_reversal/MLR_EVENT_REGISTRY.csv": "f44f50ec7ade6ad2aaf951bc9fce9ed0259d09cba4d4251b0989b71c73f57996",
+    "research/artifacts/macro_liquidity_reversal/MLR_SETUP_REGISTRY.csv": "d2d69eae8c2f42a8b040b463b4bb749702798ec7af82ccdd4dffc8996a9b3093",
+    "research/artifacts/macro_liquidity_reversal/MLR_FVG_REGISTRY.csv": "c5899afe12acb7e0045cc85a1af3999fd1d7c1d615a775366c55af1674b6152b",
+    "research/artifacts/macro_liquidity_reversal/MLR_OB_REGISTRY.csv": "e297b7bdd62ce9b161219cb584daf1c115d7aacf76c118ab15c9c72048b5b89e",
+    "research/artifacts/macro_liquidity_reversal/MLR_BREAKER_REGISTRY.csv": "4a7a30ac6bcd734ace2374f6e1d2e1786368b5bc9e9b240f93ffa464a89f403a",
+    "research/artifacts/macro_liquidity_reversal/MLR_CONFLUENCE_REGISTRY.csv": "1b7d9dfa061e85300ab7cce117336c46745d68f34efe77b2d4d44024d42cd6f6",
+    "research/artifacts/macro_liquidity_reversal/MLR_ZONE_REGISTRY.csv": "3492d5f9d17f0ebc2a3c56d7520951a426d80ac8ab3011c0fcc3a969ce084680",
+    "research/artifacts/macro_liquidity_reversal/frequency_summary.json": "c2dcbc0ee5886b6030c837d85df964d0334bcc86a894e57a8b746a758ad12918",
+    "research/artifacts/macro_liquidity_reversal/artifact_manifest.json": "88cfe9a0c601a7211b344aa939cb6ebfac915d15f0ed1db8af54fe683c2e1c95",
+    "research/artifacts/macro_liquidity_reversal/program_registry.json": "bbd72c8d9fa2eec0fee4835458a7f74aab8c5975ff8067edf8919f8d7460d436",
+    "research/config/macro_liquidity_reversal_primary.json": "800b6fe27da064ad952d87b8fee4e7bad96a28dba67176e7597e852540808124",
+    "research/preregistrations/macro_liquidity_reversal/MLR_PREREGISTRATION_MASTER.yaml": "0e1a34801f660c9fe360fc5a11ae4b593b665b74846590cd9425e314c6f39264",
+    "research/preregistrations/macro_liquidity_reversal/MLR_TECHNICAL_ABLATIONS.yaml": "7e1448a97f1ac21ca43ca6daf1429dcbba92485d7526cddbe4ea1caa412e31de"
+  },
+  "raw_m1_price_quantum_audit": {
+    "source_sha256": "9ca414716a7c30b20006052af651d1f06f77ce23f62e7072feebd79896567f65",
+    "rows": 3180929,
+    "ohlc_cells": 12723716,
+    "non_0_1_quantum_cells": 0,
+    "interpretation": "0.1 is a source-file price quantum, not a verified Pepperstone tick size."
+  },
+  "protected_data_accesses": 0,
+  "final_holdout_accesses": 0
+}

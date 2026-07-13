@@ -1,0 +1,952 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "QRP-MACRO-LIQUIDITY-REVERSAL-001",
+  "experiment_id": "MLR-TECH-VAL-001",
+  "mode": "TECHNICAL_ONLY_ABLATION",
+  "historical_exposure": "PREVIOUSLY_EXPOSED_WINDOW",
+  "full_macro_strategy_status": "BLOCKED_BY_UNCERTIFIED_MACRO_BIAS",
+  "input_artifact_sha256": {
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_CONTROL_COMPARISON.md": "bde6544e44ca5b4c2061a3f4d5f5e5c4019d00d6c50e0ae78bb05a210611c86f",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_CONTROL_TRADES.csv": "faa90c9f71dd46de6bac5cae8626541d220e8db4efbc4fef50092940263e2375",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PATH_AMBIGUITIES.csv": "75b4e5eefa470f8305f1e214ef6decbdddf32166f2c595daec2c0f8c629ba5cb",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PRIMARY_BACKTEST.md": "4fd066f3826d3c4088d4566060ac4b7862de3cc43070f8c483f82f5bffb07b72",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PRIMARY_SUMMARY.json": "272009ab3f41b25cfe00c68e0f3e3f64f2ae412429227614dbd07fe5146cbc71",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PRIMARY_TRADES.csv": "a9cf589273faed4bd965a1a84162c1c33288265b8634b7f8f5984b50cb66d8dd"
+  },
+  "machine_learning_permission": "PROHIBITED_MAXIMUM_EFFECTIVE_SAMPLE_BELOW_100",
+  "strategy_results": {
+    "HIERARCHICAL_M15_M5_M1": {
+      "effective_filled_trades": 13,
+      "status": "INSUFFICIENT_FOR_RELIABLE_MODEL_SELECTION",
+      "cpcv": null,
+      "outer_walk_forward": null
+    },
+    "M15_C1_OB_FVG": {
+      "effective_filled_trades": 13,
+      "status": "INSUFFICIENT_FOR_RELIABLE_MODEL_SELECTION",
+      "cpcv": null,
+      "outer_walk_forward": null
+    },
+    "M15_C2_FVG_BREAKER": {
+      "effective_filled_trades": 42,
+      "status": "RULE_BASED_VALIDATION_PERMITTED",
+      "cpcv": {
+        "status": "DESCRIPTIVE_FIXED_RULE_NO_SELECTION",
+        "split_count": 15,
+        "path_count": 5,
+        "positive_split_fraction": "0",
+        "median_test_net_r_per_trade": "-0.5915088370425120025282685661",
+        "lower_quartile_test_net_r_per_trade": "-0.7122634062222966824372657872",
+        "worst_split_net_r_per_trade": "-0.83497536945812807881773399",
+        "splits": [
+          {
+            "split_id": "CPCV-000",
+            "train_count": 26,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 14,
+            "total_net_r": "-10.59146854618137493194748406",
+            "average_net_r": "-0.7565334675843839237105345757",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-001",
+            "train_count": 26,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 14,
+            "total_net_r": "-11.68965517241379310344827586",
+            "average_net_r": "-0.83497536945812807881773399",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-002",
+            "train_count": 26,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 14,
+            "total_net_r": "-11.17543859649122807017543860",
+            "average_net_r": "-0.7982456140350877192982456143",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-003",
+            "train_count": 26,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 14,
+            "total_net_r": "-8.247526269031645375731397237",
+            "average_net_r": "-0.5891090192165460982665283741",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-004",
+            "train_count": 27,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 14,
+            "total_net_r": "-11.66225165562913907284768212",
+            "average_net_r": "-0.8330179754020813623462630086",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-005",
+            "train_count": 26,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 14,
+            "total_net_r": "-8.281123718595168035395759925",
+            "average_net_r": "-0.5915088370425120025282685661",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-006",
+            "train_count": 26,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 14,
+            "total_net_r": "-7.766907142672603002122922659",
+            "average_net_r": "-0.5547790816194716430087801899",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-007",
+            "train_count": 26,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 14,
+            "total_net_r": "-4.838994815213020307678881300",
+            "average_net_r": "-0.345642486800930021977062950",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-008",
+            "train_count": 27,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 14,
+            "total_net_r": "-8.253720201810514004795166182",
+            "average_net_r": "-0.5895514429864652860567975844",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-009",
+            "train_count": 26,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 14,
+            "total_net_r": "-8.865093768905021173623714456",
+            "average_net_r": "-0.633220983493215798115979604",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-010",
+            "train_count": 26,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 14,
+            "total_net_r": "-5.937181441445438479179673099",
+            "average_net_r": "-0.4240843886746741770842623642",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-011",
+            "train_count": 27,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 14,
+            "total_net_r": "-9.351906828042932176295957981",
+            "average_net_r": "-0.6679933448602094411639969986",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-012",
+            "train_count": 26,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 14,
+            "total_net_r": "-5.422964865522873445906835833",
+            "average_net_r": "-0.3873546332516338175647739881",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-013",
+            "train_count": 27,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 14,
+            "total_net_r": "-8.837690252120367143023120715",
+            "average_net_r": "-0.6312635894371690816445086225",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-014",
+            "train_count": 28,
+            "test_count": 14,
+            "purged_count": 0,
+            "embargoed_count": 0,
+            "trades": 14,
+            "total_net_r": "-5.909777924660784448579079356",
+            "average_net_r": "-0.4221269946186274606127913826",
+            "positive": false
+          }
+        ]
+      },
+      "outer_walk_forward": {
+        "status": "DESCRIPTIVE_FIXED_RULE_NO_RETRAINING",
+        "fold_count": 2,
+        "positive_fold_fraction": "0",
+        "median_fold_net_r_per_trade": "-0.595488896233039222428953968",
+        "lower_quartile_fold_net_r_per_trade": "-0.7977444481165196112144769839",
+        "worst_fold_net_r_per_trade": "-1",
+        "folds": [
+          {
+            "fold_id": "WF-000",
+            "train_count": 30,
+            "test_count": 10,
+            "purged_count": 0,
+            "trades": 10,
+            "total_net_r": "-1.909777924660784448579079356",
+            "average_net_r": "-0.1909777924660784448579079356",
+            "positive": false
+          },
+          {
+            "fold_id": "WF-001",
+            "train_count": 40,
+            "test_count": 2,
+            "purged_count": 0,
+            "trades": 2,
+            "total_net_r": "-2",
+            "average_net_r": "-1",
+            "positive": false
+          }
+        ]
+      }
+    },
+    "M1_C1_OB_FVG": {
+      "effective_filled_trades": 49,
+      "status": "RULE_BASED_VALIDATION_PERMITTED",
+      "cpcv": {
+        "status": "DESCRIPTIVE_FIXED_RULE_NO_SELECTION",
+        "split_count": 15,
+        "path_count": 5,
+        "positive_split_fraction": "0",
+        "median_test_net_r_per_trade": "-0.6952335858585858585858585856",
+        "lower_quartile_test_net_r_per_trade": "-0.7224881183016856641145066191",
+        "worst_split_net_r_per_trade": "-0.8646647470176881941587823941",
+        "splits": [
+          {
+            "split_id": "CPCV-000",
+            "train_count": 30,
+            "test_count": 17,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 17,
+            "total_net_r": "-12.22013403263403263403263403",
+            "average_net_r": "-0.7188314136843548608254490606",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-001",
+            "train_count": 30,
+            "test_count": 17,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 17,
+            "total_net_r": "-9.823038073038073038073038073",
+            "average_net_r": "-0.5778257690022395904748845925",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-002",
+            "train_count": 30,
+            "test_count": 17,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 17,
+            "total_net_r": "-12.34446198962327994586059102",
+            "average_net_r": "-0.7261448229190164674035641776",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-003",
+            "train_count": 30,
+            "test_count": 17,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 17,
+            "total_net_r": "-14.69930069930069930069930070",
+            "average_net_r": "-0.8646647470176881941587823941",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-004",
+            "train_count": 31,
+            "test_count": 17,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 17,
+            "total_net_r": "-9.86777896017026451809060505",
+            "average_net_r": "-0.5804575858923685010641532382",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-005",
+            "train_count": 31,
+            "test_count": 16,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 16,
+            "total_net_r": "-8.644570707070707070707070707",
+            "average_net_r": "-0.5402856691919191919191919192",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-006",
+            "train_count": 31,
+            "test_count": 16,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 16,
+            "total_net_r": "-11.16599462365591397849462366",
+            "average_net_r": "-0.6978746639784946236559139788",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-007",
+            "train_count": 31,
+            "test_count": 16,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 16,
+            "total_net_r": "-13.52083333333333333333333333",
+            "average_net_r": "-0.8450520833333333333333333331",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-008",
+            "train_count": 32,
+            "test_count": 16,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 16,
+            "total_net_r": "-8.689311594202898550724637681",
+            "average_net_r": "-0.5430819746376811594202898551",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-009",
+            "train_count": 31,
+            "test_count": 16,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 16,
+            "total_net_r": "-8.768898664059954382535027697",
+            "average_net_r": "-0.5480561665037471489084392311",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-010",
+            "train_count": 31,
+            "test_count": 16,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 16,
+            "total_net_r": "-11.12373737373737373737373737",
+            "average_net_r": "-0.6952335858585858585858585856",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-011",
+            "train_count": 32,
+            "test_count": 16,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 16,
+            "total_net_r": "-6.292215634606938954765041722",
+            "average_net_r": "-0.3932634771629336846728151076",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-012",
+            "train_count": 31,
+            "test_count": 16,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 16,
+            "total_net_r": "-13.64516129032258064516129032",
+            "average_net_r": "-0.852822580645161290322580645",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-013",
+            "train_count": 32,
+            "test_count": 16,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 16,
+            "total_net_r": "-8.813639551192145862552594671",
+            "average_net_r": "-0.5508524719495091164095371669",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-014",
+            "train_count": 33,
+            "test_count": 16,
+            "purged_count": 0,
+            "embargoed_count": 0,
+            "trades": 16,
+            "total_net_r": "-11.16847826086956521739130435",
+            "average_net_r": "-0.6980298913043478260869565219",
+            "positive": false
+          }
+        ]
+      },
+      "outer_walk_forward": {
+        "status": "DESCRIPTIVE_FIXED_RULE_NO_RETRAINING",
+        "fold_count": 2,
+        "positive_fold_fraction": "0",
+        "median_fold_net_r_per_trade": "-0.731582125603864734299516908",
+        "lower_quartile_fold_net_r_per_trade": "-0.8657910628019323671497584541",
+        "worst_fold_net_r_per_trade": "-1",
+        "folds": [
+          {
+            "fold_id": "WF-000",
+            "train_count": 30,
+            "test_count": 10,
+            "purged_count": 0,
+            "trades": 10,
+            "total_net_r": "-10",
+            "average_net_r": "-1",
+            "positive": false
+          },
+          {
+            "fold_id": "WF-001",
+            "train_count": 40,
+            "test_count": 9,
+            "purged_count": 0,
+            "trades": 9,
+            "total_net_r": "-4.168478260869565217391304348",
+            "average_net_r": "-0.4631642512077294685990338164",
+            "positive": false
+          }
+        ]
+      }
+    },
+    "M1_C2_FVG_BREAKER": {
+      "effective_filled_trades": 89,
+      "status": "RULE_BASED_VALIDATION_PERMITTED",
+      "cpcv": {
+        "status": "DESCRIPTIVE_FIXED_RULE_NO_SELECTION",
+        "split_count": 15,
+        "path_count": 5,
+        "positive_split_fraction": "0",
+        "median_test_net_r_per_trade": "-0.6023856829590600326921695533",
+        "lower_quartile_test_net_r_per_trade": "-0.6768043059714945669345745207",
+        "worst_split_net_r_per_trade": "-0.8375264373967616429675786823",
+        "splits": [
+          {
+            "split_id": "CPCV-000",
+            "train_count": 57,
+            "test_count": 30,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 30,
+            "total_net_r": "-22.82092847301654697917785504",
+            "average_net_r": "-0.7606976157672182326392618347",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-001",
+            "train_count": 57,
+            "test_count": 30,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 30,
+            "total_net_r": "-18.07157048877180098076508660",
+            "average_net_r": "-0.6023856829590600326921695533",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-002",
+            "train_count": 57,
+            "test_count": 30,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 30,
+            "total_net_r": "-22.96554039004307954433256785",
+            "average_net_r": "-0.765518013001435984811085595",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-003",
+            "train_count": 57,
+            "test_count": 30,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 30,
+            "total_net_r": "-13.28873045900828203710382383",
+            "average_net_r": "-0.442957681966942734570127461",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-004",
+            "train_count": 59,
+            "test_count": 29,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 29,
+            "total_net_r": "-16.89893200210158192533186447",
+            "average_net_r": "-0.5827217931759166181148918783",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-005",
+            "train_count": 57,
+            "test_count": 30,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 30,
+            "total_net_r": "-20.23182322063157072545987922",
+            "average_net_r": "-0.6743941073543856908486626407",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-006",
+            "train_count": 57,
+            "test_count": 30,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 30,
+            "total_net_r": "-25.12579312190284928902736047",
+            "average_net_r": "-0.8375264373967616429675786823",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-007",
+            "train_count": 57,
+            "test_count": 30,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 30,
+            "total_net_r": "-15.44898319086805178179861645",
+            "average_net_r": "-0.5149661063622683927266205483",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-008",
+            "train_count": 59,
+            "test_count": 29,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 29,
+            "total_net_r": "-19.05918473396135167002665709",
+            "average_net_r": "-0.6572132666883224713802295548",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-009",
+            "train_count": 57,
+            "test_count": 30,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 30,
+            "total_net_r": "-20.37643513765810329061459202",
+            "average_net_r": "-0.6792145045886034430204864007",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-010",
+            "train_count": 57,
+            "test_count": 30,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 30,
+            "total_net_r": "-10.69962520662330578338584800",
+            "average_net_r": "-0.3566541735541101927795282667",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-011",
+            "train_count": 59,
+            "test_count": 29,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 29,
+            "total_net_r": "-14.30982674971660567161388864",
+            "average_net_r": "-0.4934423017143657128142720221",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-012",
+            "train_count": 57,
+            "test_count": 30,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 30,
+            "total_net_r": "-15.59359510789458434695332926",
+            "average_net_r": "-0.5197865035964861448984443087",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-013",
+            "train_count": 59,
+            "test_count": 29,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 29,
+            "total_net_r": "-19.20379665098788423518136990",
+            "average_net_r": "-0.6621998845168235943165989621",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-014",
+            "train_count": 60,
+            "test_count": 29,
+            "purged_count": 0,
+            "embargoed_count": 0,
+            "trades": 29,
+            "total_net_r": "-9.526986719953086727952625879",
+            "average_net_r": "-0.3285167834466581630328491682",
+            "positive": false
+          }
+        ]
+      },
+      "outer_walk_forward": {
+        "status": "DESCRIPTIVE_FIXED_RULE_NO_RETRAINING",
+        "fold_count": 6,
+        "positive_fold_fraction": "0",
+        "median_fold_net_r_per_trade": "-0.4988906576031387812787915727",
+        "lower_quartile_fold_net_r_per_trade": "-0.5265521906260235988479170717",
+        "worst_fold_net_r_per_trade": "-1",
+        "folds": [
+          {
+            "fold_id": "WF-000",
+            "train_count": 30,
+            "test_count": 10,
+            "purged_count": 0,
+            "trades": 10,
+            "total_net_r": "-5.342826243691420331651045422",
+            "average_net_r": "-0.5342826243691420331651045422",
+            "positive": false
+          },
+          {
+            "fold_id": "WF-001",
+            "train_count": 40,
+            "test_count": 10,
+            "purged_count": 0,
+            "trades": 10,
+            "total_net_r": "-5.033608893966682958963546602",
+            "average_net_r": "-0.5033608893966682958963546602",
+            "positive": false
+          },
+          {
+            "fold_id": "WF-002",
+            "train_count": 50,
+            "test_count": 10,
+            "purged_count": 0,
+            "trades": 10,
+            "total_net_r": "-10",
+            "average_net_r": "-1",
+            "positive": false
+          },
+          {
+            "fold_id": "WF-003",
+            "train_count": 60,
+            "test_count": 10,
+            "purged_count": 0,
+            "trades": 10,
+            "total_net_r": "-0.348636490868917810106195056",
+            "average_net_r": "-0.0348636490868917810106195056",
+            "positive": false
+          },
+          {
+            "fold_id": "WF-004",
+            "train_count": 70,
+            "test_count": 10,
+            "purged_count": 0,
+            "trades": 10,
+            "total_net_r": "-4.944204258096092666612284852",
+            "average_net_r": "-0.4944204258096092666612284852",
+            "positive": false
+          },
+          {
+            "fold_id": "WF-005",
+            "train_count": 80,
+            "test_count": 9,
+            "purged_count": 0,
+            "trades": 9,
+            "total_net_r": "-4.234145970988076251234145971",
+            "average_net_r": "-0.4704606634431195834704606634",
+            "positive": false
+          }
+        ]
+      }
+    },
+    "M5_C1_OB_FVG": {
+      "effective_filled_trades": 24,
+      "status": "INSUFFICIENT_FOR_RELIABLE_MODEL_SELECTION",
+      "cpcv": null,
+      "outer_walk_forward": null
+    },
+    "M5_C2_FVG_BREAKER": {
+      "effective_filled_trades": 76,
+      "status": "RULE_BASED_VALIDATION_PERMITTED",
+      "cpcv": {
+        "status": "DESCRIPTIVE_FIXED_RULE_NO_SELECTION",
+        "split_count": 15,
+        "path_count": 5,
+        "positive_split_fraction": "0",
+        "median_test_net_r_per_trade": "-0.5071587034392494134529039331",
+        "lower_quartile_test_net_r_per_trade": "-0.5802249854189812770599406894",
+        "worst_split_net_r_per_trade": "-0.6171562013948072307403169081",
+        "splits": [
+          {
+            "split_id": "CPCV-000",
+            "train_count": 48,
+            "test_count": 26,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 26,
+            "total_net_r": "-13.70793005682387532719637491",
+            "average_net_r": "-0.5272280791086105895075528812",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-001",
+            "train_count": 48,
+            "test_count": 26,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 26,
+            "total_net_r": "-12.11829097202749480852849185",
+            "average_net_r": "-0.4660881143087498003280189173",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-002",
+            "train_count": 48,
+            "test_count": 26,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 26,
+            "total_net_r": "-16.04606123626498799924823961",
+            "average_net_r": "-0.6171562013948072307403169081",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-003",
+            "train_count": 49,
+            "test_count": 25,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 25,
+            "total_net_r": "-14.95883280065368186329507333",
+            "average_net_r": "-0.5983533120261472745318029332",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-004",
+            "train_count": 50,
+            "test_count": 25,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 25,
+            "total_net_r": "-15.09602400510216314454370645",
+            "average_net_r": "-0.603840960204086525781748258",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-005",
+            "train_count": 48,
+            "test_count": 26,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 26,
+            "total_net_r": "-9.258356025182991559055754512",
+            "average_net_r": "-0.3560906163531919830406059428",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-006",
+            "train_count": 48,
+            "test_count": 26,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 26,
+            "total_net_r": "-13.18612628942048474977550226",
+            "average_net_r": "-0.5071587034392494134529039331",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-007",
+            "train_count": 49,
+            "test_count": 25,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 25,
+            "total_net_r": "-12.09889785380917861382233597",
+            "average_net_r": "-0.4839559141523671445528934388",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-008",
+            "train_count": 50,
+            "test_count": 25,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 25,
+            "total_net_r": "-12.23608905825765989507096911",
+            "average_net_r": "-0.4894435623303063958028387644",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-009",
+            "train_count": 48,
+            "test_count": 26,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 26,
+            "total_net_r": "-11.59648720462410423110761920",
+            "average_net_r": "-0.4460187386393886242733699692",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-010",
+            "train_count": 49,
+            "test_count": 25,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 25,
+            "total_net_r": "-10.50925876901279809515445293",
+            "average_net_r": "-0.4203703507605119238061781172",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-011",
+            "train_count": 50,
+            "test_count": 25,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 25,
+            "total_net_r": "-10.64644997346127937640308605",
+            "average_net_r": "-0.425857998938451175056123442",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-012",
+            "train_count": 49,
+            "test_count": 25,
+            "purged_count": 0,
+            "embargoed_count": 2,
+            "trades": 25,
+            "total_net_r": "-14.43702903325029128587420067",
+            "average_net_r": "-0.5774811613300116514349680268",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-013",
+            "train_count": 50,
+            "test_count": 25,
+            "purged_count": 0,
+            "embargoed_count": 1,
+            "trades": 25,
+            "total_net_r": "-14.57422023769877256712283380",
+            "average_net_r": "-0.582968809507950902684913352",
+            "positive": false
+          },
+          {
+            "split_id": "CPCV-014",
+            "train_count": 52,
+            "test_count": 24,
+            "purged_count": 0,
+            "embargoed_count": 0,
+            "trades": 24,
+            "total_net_r": "-13.48699180208746643116966752",
+            "average_net_r": "-0.56195799175364443463206948",
+            "positive": false
+          }
+        ]
+      },
+      "outer_walk_forward": {
+        "status": "DESCRIPTIVE_FIXED_RULE_NO_RETRAINING",
+        "fold_count": 5,
+        "positive_fold_fraction": "0.2",
+        "median_fold_net_r_per_trade": "-0.4762128734430798710913683477",
+        "lower_quartile_fold_net_r_per_trade": "-1.000000000000000000000000000",
+        "worst_fold_net_r_per_trade": "-1",
+        "folds": [
+          {
+            "fold_id": "WF-000",
+            "train_count": 30,
+            "test_count": 10,
+            "purged_count": 0,
+            "trades": 10,
+            "total_net_r": "-3.321537957372792699681115214",
+            "average_net_r": "-0.3321537957372792699681115214",
+            "positive": false
+          },
+          {
+            "fold_id": "WF-001",
+            "train_count": 39,
+            "test_count": 10,
+            "purged_count": 1,
+            "trades": 10,
+            "total_net_r": "-4.762128734430798710913683477",
+            "average_net_r": "-0.4762128734430798710913683477",
+            "positive": false
+          },
+          {
+            "fold_id": "WF-002",
+            "train_count": 50,
+            "test_count": 10,
+            "purged_count": 0,
+            "trades": 10,
+            "total_net_r": "-10",
+            "average_net_r": "-1",
+            "positive": false
+          },
+          {
+            "fold_id": "WF-003",
+            "train_count": 60,
+            "test_count": 10,
+            "purged_count": 0,
+            "trades": 10,
+            "total_net_r": "0.513008197912533568830332478",
+            "average_net_r": "0.0513008197912533568830332478",
+            "positive": true
+          },
+          {
+            "fold_id": "WF-004",
+            "train_count": 70,
+            "test_count": 6,
+            "purged_count": 0,
+            "trades": 6,
+            "total_net_r": "-6",
+            "average_net_r": "-1",
+            "positive": false
+          }
+        ]
+      }
+    }
+  },
+  "prohibitions": {
+    "post_2026_06_28_access": false,
+    "final_holdout_access": false,
+    "automatic_promotion": false
+  }
+}

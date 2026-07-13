@@ -1,0 +1,136 @@
+schema_version: "1.0.0"
+program_id: "QRP-MACRO-LIQUIDITY-REVERSAL-001"
+experiment_id: "MLR-TECH-ECO-001"
+mode: "TECHNICAL_ONLY_ABLATION"
+created_at: "2026-07-13T12:31:12+08:00"
+status: "LOCKED_BEFORE_ECONOMIC_IMPLEMENTATION"
+authorization:
+  directive_sha256: "38867fcc659ad1b04b2c9ca8279323c0049ca8bb63f7e81ed3b990595b6a225d"
+  scope_change: "Technical-only economic simulation is prospectively authorized; the full macro-first strategy remains blocked."
+  prior_preregistration_preserved: true
+  frequency_checkpoint: "research/artifacts/macro_liquidity_reversal/governance/MLR_FREQUENCY_CHECKPOINT_20260713T123112+0800.json"
+labels:
+  result_label: "TECHNICAL_ONLY_ABLATION"
+  exposed_history_label: "PREVIOUSLY_EXPOSED_WINDOW"
+  full_strategy_status: "BLOCKED_BY_UNCERTIFIED_MACRO_BIAS"
+  cost_evidence_class: "HYPOTHETICAL_SCENARIO_NOT_BROKER_FACT"
+data:
+  event_source: "FROZEN_MLR_EVENT_REGISTRY"
+  eligible_events: "trend_context=true AND d1_sweep=true AND h4_sweep=true"
+  expected_d1_h4_events: 89
+  tuning_cutoff_source_label: "2026-06-28"
+  canonical_detection_sources: ["M15", "M5", "M1"]
+  path_resolution_order:
+    M15: ["M1", "M5", "M15_ADVERSE_FIRST"]
+    M5: ["M1", "M5_ADVERSE_FIRST"]
+    M1: ["M1_ADVERSE_FIRST"]
+  source_timezone: "UNKNOWN_NO_SESSION_FILTER"
+  source_price_quantum: 0.1
+  source_price_quantum_evidence: "All 12,723,716 raw M1 OHLC cells are integer multiples of 0.1; this is not a broker tick-size claim."
+  raw_spread_column_used: false
+primary_rules:
+  body_ratio: 0.50
+  sweep_rule: "CLOSE_ONLY"
+  trend_filter: "COMPLETED_D1_EMA20_EMA50"
+  h4_window: "THREE_POST_D1_CLOSE_NATIVE_H4_BARS"
+  ob_structure_lookback: 10
+  ob_candidate_window: 3
+  ob_displacement_atr: 1.0
+  confluence_families: ["C1_OB_FVG", "C2_FVG_BREAKER"]
+  architectures: ["M15", "M5", "M1", "HIERARCHICAL_M15_M5_M1"]
+  first_confirmed_confluence_only_per_event_family_architecture: true
+  one_filled_trade_maximum_per_event_family_architecture: true
+  entry: "50_PERCENT_STRICT_POSITIVE_OVERLAP_MIDPOINT"
+  entry_activation: "STRICTLY_AFTER_ALL_COMPONENTS_AVAILABLE"
+  conservative_limit_fill:
+    equality_only: "NO_FILL"
+    strict_child_bar_penetration: "FILL_AT_LIMIT_WITH_NO_FAVORABLE_IMPROVEMENT"
+    no_finer_M1_data: "STRICT_M1_PENETRATION_PROVES_LIMIT_REACH; ENTRY_BAR_TARGET_IS_IGNORED; ENTRY_BAR_STOP_IS_ADVERSE"
+    prior_C1_ob_touch_before_midpoint: "NO_FILL_BLOCK_MITIGATED"
+  stop:
+    C1: "BEYOND_SELECTED_OB"
+    C2: "BEYOND_SELECTED_BREAKER"
+    hierarchical: "BEYOND_FINAL_M1_STAGE_BLOCK"
+    buffer: "max(0.1 source-file quantum, scenario spread_points)"
+  target:
+    intended_r: 2.0
+    formula: "exact_target(entry_reference, stop_reference, known_round_trip_nonfinancing_cost_points)"
+    known_cost_points: "spread + 2*slippage_per_side + 2*commission_per_side/point_value"
+    path_dependent_financing: "reported in realized net points/R but cannot move the frozen ex-ante barrier"
+  expiry: "NATIVE_D1_CANDLE_3_CLOSE"
+  expiry_exit: "LAST_M1_CLOSE_STRICTLY_BEFORE_OR_AT_EXPIRY_WITH_FULL_SCENARIO_EXIT_COSTS"
+  gap_stop: "ADVERSE_GAP_OPEN"
+  same_M1_bar_stop_and_target: "AMBIGUOUS_ADVERSE_FIRST"
+outcomes:
+  allowed: ["WIN_2R", "LOSS_1R", "TIMEOUT", "NO_FILL", "AMBIGUOUS_ADVERSE_FIRST", "INVALID_DATA"]
+  no_fill_is_loss: false
+  invalid_data_is_loss: false
+  timeout_exit: "CONSERVATIVE_EXPIRY_REFERENCE_CLOSE"
+costs:
+  config: "research/config/execution_scenarios.json"
+  scenario_ids: ["NORMALIZED_LOW_COST", "NORMALIZED_MEDIUM_COST", "NORMALIZED_HIGH_COST"]
+  quantity_units: 1
+  primary_reporting_units: ["SOURCE_PRICE_POINTS", "NORMALIZED_R"]
+  dollar_pnl_claim: false
+  financing_interval: "ONE_HYPOTHETICAL_ACCRUAL_PER_FULL_24_SOURCE_CLOCK_HOURS_HELD"
+strategies:
+  - "M15_C1_OB_FVG"
+  - "M5_C1_OB_FVG"
+  - "M1_C1_OB_FVG"
+  - "M15_C2_FVG_BREAKER"
+  - "M5_C2_FVG_BREAKER"
+  - "M1_C2_FVG_BREAKER"
+  - "HIERARCHICAL_M15_M5_M1"
+controls:
+  no_trade: "ZERO_TRADES_ZERO_RETURN"
+  direction_matched_generic: "For each selected technical setup, enter at the first subsequent M1 open after confluence availability; retain that setup block, stop, target, expiry, and costs."
+  d1_only: "For each frozen trend-matched D1 sweep, enter at first subsequent M1 open after D1 confirmation; stop beyond D1 candle-2 reversal extreme; target/expiry/cost rules unchanged."
+  d1_h4: "For each frozen D1+H4 event, enter at first subsequent M1 open after actionable time; stop beyond D1 candle-2 reversal extreme; target/expiry/cost rules unchanged."
+metrics:
+  required: ["eligible_setups", "filled_trades", "no_fills", "wins", "losses", "timeouts", "ambiguous_adverse_first", "win_rate_resolved", "target_before_stop_rate", "average_gross_r", "average_net_r", "median_net_r", "expectancy_net_r", "profit_factor", "total_net_r", "maximum_closed_equity_drawdown_r", "longest_losing_streak", "average_holding_hours", "profitable_year_fraction", "direction_performance", "years_without_trades", "break_even_win_rate"]
+  primary_cost_scenario: "NORMALIZED_MEDIUM_COST"
+  ambiguous_accounting: "Retain separate outcome class and adverse stop economics; include in resolved denominator."
+  timeout_accounting: "Include realized expiry net R in economic totals; exclude from target-before-stop denominator."
+validation:
+  first_pass_has_no_optimization: true
+  effective_sample_gate_uses_filled_nonoverlapping_trades: true
+  cpcv_minimum_effective_filled_trades: 30
+  cpcv_groups: 6
+  cpcv_test_groups: 2
+  cpcv_embargo_events: 1
+  outer_walk_forward_minimum_train_trades: 30
+  outer_walk_forward_test_trades: 10
+  model_permissions:
+    below_100: "NO_ML"
+    100_to_249: "LOGISTIC_AND_SHALLOW_TREE_ONLY"
+    250_or_more: "XGBOOST_MAY_BE_CONSIDERED"
+candidate_gate:
+  minimum_effective_filled_trades: 30
+  medium_average_net_r_minimum_exclusive: 0.0
+  high_cost_average_net_r_minimum_exclusive: 0.0
+  maximum_closed_equity_drawdown_r: 10.0
+  minimum_profitable_year_fraction: 0.60
+  minimum_positive_outer_fold_fraction: 0.60
+  minimum_outer_fold_net_r_per_trade_median_exclusive: 0.0
+  minimum_outer_fold_net_r_per_trade_lower_quartile: 0.0
+  direction_requirement: "Both directions positive average medium net R when each has at least 10 filled trades."
+  control_requirement: "Average medium net R must exceed its matched direction-generic control."
+  automatic_promotion: false
+primary_outputs:
+  - "MLR_TECHNICAL_PRIMARY_BACKTEST.md"
+  - "MLR_TECHNICAL_PRIMARY_TRADES.csv"
+  - "MLR_TECHNICAL_PRIMARY_SUMMARY.json"
+  - "MLR_TECHNICAL_CONTROL_COMPARISON.md"
+  - "MLR_TECHNICAL_PATH_AMBIGUITIES.csv"
+budgets:
+  maximum_cycles: 2
+  maximum_experiments_per_cycle: 10
+  maximum_primary_changes_per_experiment: 1
+  maximum_rule_variants_per_experiment: 4
+  automatic_promotion: false
+prohibitions:
+  - "Do not call this the complete macro-first strategy."
+  - "Do not modify the frozen detector/frequency checkpoint."
+  - "Do not use post-2026-06-28 data for tuning."
+  - "Do not call the historical pool pristine."
+  - "Do not claim Pepperstone dollar PnL, FTMO readiness, Lucid readiness, or final validation."

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "QRP-MACRO-LIQUIDITY-REVERSAL-001",
+  "mode": "TECHNICAL_ONLY_ABLATION",
+  "full_strategy_enabled": false,
+  "block_reason": "BLOCKED_BY_UNCERTIFIED_MACRO_BIAS",
+  "body_ratio": 0.5,
+  "trend": {"ema_fast": 20, "ema_slow": 50},
+  "h4_extension_bars": 3,
+  "atr_period": 14,
+  "ob": {"structure_lookback": 10, "displacement_window": 3, "displacement_atr": 1.0},
+  "entry": "CONFLUENCE_MIDPOINT",
+  "target_r": 2.0,
+  "expiry": "D1_CANDLE_3_CLOSE",
+  "one_trade_per_d1_setup": true,
+  "same_bar": "ADVERSE_FIRST_UNLESS_VALID_M1_PATH",
+  "source_timezone": "UNKNOWN",
+  "spread_units": "UNKNOWN"
+}
+
