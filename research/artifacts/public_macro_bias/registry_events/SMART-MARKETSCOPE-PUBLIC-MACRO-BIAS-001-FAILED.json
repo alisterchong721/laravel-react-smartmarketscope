@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "event_id": "SMART-MARKETSCOPE-PUBLIC-MACRO-BIAS-001-FAILED",
+  "experiment_id": "SMART-MARKETSCOPE-PUBLIC-MACRO-BIAS-001",
+  "parent_experiment": "MLR-TECH-ECO-001",
+  "event_type": "FAILED",
+  "event_time_utc": "2026-07-13T05:49:42Z",
+  "git_commit": "46b993c7b11b99f5f216b790c446bea42d541694",
+  "dataset_checksum": "b5784ce9ab7311063b21eb33bdaf9c4218a5ade730624c00a3ddb50e468b7db7",
+  "code_version": "PUBLIC_MACRO_ACCESS_AUDIT_V1",
+  "feature_version": "NOT_APPLICABLE_GATE_FAILED_BEFORE_FEATURES",
+  "model_version": "NOT_APPLICABLE_RULE_BASED_SCORING_NOT_STARTED",
+  "parameters_hash": "de39cb4e8cd2bd34966c18d602e48c37e979043ea9c97ab94f73982bad206de5",
+  "number_of_trials": 0,
+  "training_metrics": "NOT_APPLICABLE_NO_MODEL",
+  "validation_metrics": {
+    "access_outcome": "PUBLIC_ACCESS_PARTIAL",
+    "collection_gates_passed": 1,
+    "collection_gates_total": 10,
+    "pilot_interactions": 8,
+    "successful_html_urls": 6,
+    "raw_pages_persisted": 0,
+    "normalized_observations": 0,
+    "http_403_count": 0,
+    "captcha_count": 0,
+    "http_429_count": 0,
+    "protected_data_accesses": 0,
+    "final_holdout_accesses": 0
+  },
+  "robustness_metrics": "NOT_APPLICABLE_GATE_FAILED_BEFORE_COLLECTION",
+  "prop_metrics": "NOT_APPLICABLE_NO_MACRO_CANDIDATE",
+  "decision": "PUBLIC_HISTORY_NOT_POINT_IN_TIME_SAFE",
+  "rejection_reason": [
+    "PUBLIC_HISTORY_NOT_POINT_IN_TIME_SAFE",
+    "PUBLIC_CONSENSUS_HISTORY_UNAVAILABLE"
+  ],
+  "auditor_comments": "Public pages were reachable without bypass, but historical as-published Actual, Consensus, Previous, exact release clocks, and immutable revision lineage were not demonstrated. Roles 3-7, full collection, scoring, alignment, PnL comparison, paper trading, and deployment were not run.",
+  "status": "FAILED",
+  "preregistration_hash": "de39cb4e8cd2bd34966c18d602e48c37e979043ea9c97ab94f73982bad206de5",
+  "config_checksum": "aa8e1f35491550d66e1e210189cc9f4e383a83d088513fb5bb3176cab5a9bb9f"
+}

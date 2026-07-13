@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "event_id": "SMART-MARKETSCOPE-PUBLIC-MACRO-BIAS-001-STARTED",
+  "experiment_id": "SMART-MARKETSCOPE-PUBLIC-MACRO-BIAS-001",
+  "parent_experiment": "MLR-TECH-ECO-001",
+  "event_type": "STARTED",
+  "event_time_utc": "2026-07-13T05:28:29Z",
+  "git_commit": "231e27c55017e67e02872115cce4f1ab1e4e42da",
+  "dataset_checksum": "b5784ce9ab7311063b21eb33bdaf9c4218a5ade730624c00a3ddb50e468b7db7",
+  "code_version": "PUBLIC_MACRO_TECHNICAL_BASELINE_FREEZE_V1",
+  "feature_version": "NOT_APPLICABLE_NO_MACRO_FEATURES",
+  "model_version": "NOT_APPLICABLE_RULE_BASED_PROGRAM",
+  "parameters_hash": "de39cb4e8cd2bd34966c18d602e48c37e979043ea9c97ab94f73982bad206de5",
+  "number_of_trials": 0,
+  "training_metrics": "NOT_APPLICABLE_NO_MODEL",
+  "validation_metrics": {
+    "technical_baseline_status": "PASS_TECHNICAL_BASELINE_FROZEN",
+    "frozen_setup_ids": 454,
+    "frozen_scenario_rows": 1362,
+    "protected_data_accesses": 0,
+    "final_holdout_accesses": 0
+  },
+  "robustness_metrics": "NOT_RUN_PUBLIC_ACCESS_GATE_PENDING",
+  "prop_metrics": "NOT_APPLICABLE_NO_CANDIDATE",
+  "decision": "START_PUBLIC_ACCESS_FEASIBILITY_AUDIT_ONLY",
+  "rejection_reason": [],
+  "auditor_comments": "Phase P0 was independently reconciled before public macro access. Full collection, scoring, and economic comparison remained gated.",
+  "status": "STARTED",
+  "preregistration_hash": "de39cb4e8cd2bd34966c18d602e48c37e979043ea9c97ab94f73982bad206de5",
+  "config_checksum": "aa8e1f35491550d66e1e210189cc9f4e383a83d088513fb5bb3176cab5a9bb9f"
+}
