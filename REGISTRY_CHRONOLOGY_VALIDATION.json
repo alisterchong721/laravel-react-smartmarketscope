@@ -1,0 +1,421 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "REGISTRY-CHRONOLOGY-VALIDATION-R0-001",
+  "request_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001-R0",
+  "experiment_id": null,
+  "created_at_utc": "2026-07-13T06:51:33Z",
+  "created_by": "registry-chronology-reconciliation-auditor",
+  "git_commit": "e23578de32a38881a23695fe225d9c63541628f8",
+  "code_version": {
+    "registry_py_sha256": "ed6933bd166a76789e37ccade406bc65bcb72918ac33f20b644aa42e789b9cfa",
+    "test_governance_py_sha256": "cd493e7d7c00bc9826f34780449cb8d6e406b36cd0b8015c69d02c27432fbfab",
+    "test_cycle2_governance_py_sha256": "5797cc3816cfe3dee38f8bbc91fe0c53cd738c59d4f554438a57052e4c77f3e9",
+    "phase_j_registry_py_sha256": "5997c5f9d63899f9a82cd70a43e499cc6ea3ebc3e4beae217d7c2df3cae61514",
+    "cycle2_registry_py_sha256": "fc5d44b6e33523ca87b17679e3195876cb64341c7958e4b5ca0ab63fee325019",
+    "append_event_recorded_registry_code_sha256": "1ec786487f452bb1e0a059647a7c17d44ded6dd438eb246b4bc928f9caf6e29d"
+  },
+  "config_checksum": "aa8e1f35491550d66e1e210189cc9f4e383a83d088513fb5bb3176cab5a9bb9f",
+  "random_seed": "NOT_APPLICABLE_DETERMINISTIC_VALIDATION",
+  "source_artifact_ids": [
+    "EXPERIMENT_REGISTRY.jsonl",
+    "EXPERIMENT_REGISTRY.csv",
+    "REGISTRY-CHRONOLOGY-RECONCILIATION-R0-001",
+    "MACRO-INDEPENDENT-AUDIT-001"
+  ],
+  "status": "INCONCLUSIVE",
+  "decision": "REGISTRY_CHRONOLOGY_UNRESOLVED",
+  "warnings": [
+    "Exact corrected completion timestamps remain unproven and were not invented."
+  ],
+  "failure_codes": [
+    "EVENT_ORDER_INVALID",
+    "EXPERIMENT_REGISTRY_TIMING_INVALID"
+  ],
+  "registry_validation": {
+    "status": "INCONCLUSIVE",
+    "decision": "REGISTRY_CHRONOLOGY_UNRESOLVED",
+    "hash_chain_status": "PASS",
+    "chronology_status": "UNRESOLVED_DISCLOSED",
+    "failure_codes": [
+      "EVENT_ORDER_INVALID",
+      "EXPERIMENT_REGISTRY_TIMING_INVALID"
+    ],
+    "event_count": 61,
+    "lifecycle_event_count": 60,
+    "reconciliation_event_count": 1,
+    "experiment_count": 20,
+    "last_event_hash": "29e88a1577792dd450732bf53b5fcf35a5fc319a2bed978b97282569e6680e69",
+    "states": {
+      "QRP-C1-BL001": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-BL002": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-BL003": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-ML001": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-ML002": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-ML003": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-J001": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-J002": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-J003": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-J004": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-J005": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-J006": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C1-J007": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C2-J001": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C2-J002": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C2-J003": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C2-J004": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C2-J005": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "QRP-C2-J006": [
+        "PREREGISTERED",
+        "STARTED",
+        "COMPLETED"
+      ],
+      "SMART-MARKETSCOPE-PUBLIC-MACRO-BIAS-001": [
+        "PREREGISTERED",
+        "STARTED",
+        "FAILED"
+      ]
+    },
+    "chronology_issues": [
+      {
+        "experiment_id": "QRP-C1-ML001",
+        "original_events": [
+          {
+            "event_id": "QRP-C1-ML001-PREREGISTERED",
+            "event_type": "PREREGISTERED",
+            "event_time_utc": "2026-07-12T01:48:32Z",
+            "event_hash": "283927432cc51b4b0914e23e28744884bff23952033ad554909796b3146c3606",
+            "previous_event_hash": "3bd0d89a5a828851c1a0c1faeab3e330d576b96e74ac9b5f87b84d61bdb3d03e",
+            "payload_sha256": "1a750cb7fa2e94a42ab76b12a796fa70b8cf0dd3fed92d7ff7c7f41c01076e86"
+          },
+          {
+            "event_id": "QRP-C1-ML001-STARTED",
+            "event_type": "STARTED",
+            "event_time_utc": "2026-07-12T01:48:35Z",
+            "event_hash": "f71577bd7d0b52230ab15995a261ee8a13a25263bc613b8b63500b7ddbdb9a38",
+            "previous_event_hash": "12610fd51bf09a1793704fff8691c112da0c52b3ab3bbc75261a521941334c39",
+            "payload_sha256": "bd372543f4d680c70a96d2f85a553339b6f3d3ff868c5e2b58a17ace285678b9"
+          },
+          {
+            "event_id": "QRP-C1-ML001-COMPLETED",
+            "event_type": "COMPLETED",
+            "event_time_utc": "2026-07-12T01:25:43Z",
+            "event_hash": "fd7ec61f5b7f531b456fdebe5adf58e97eb0e54432cb3214e7351468bc0cf629",
+            "previous_event_hash": "a4b67c450c5e06fdcaabf4ff76df18db0013dd677302edaa772f25b9176a2965",
+            "payload_sha256": "0f53acde6ef1bf50706aad086ec10873ad0c7ed43b47577630112607f693ed09"
+          }
+        ],
+        "violations": [
+          {
+            "earlier_event_id": "QRP-C1-ML001-PREREGISTERED",
+            "earlier_event_time_utc": "2026-07-12T01:48:32Z",
+            "later_event_id": "QRP-C1-ML001-COMPLETED",
+            "later_event_time_utc": "2026-07-12T01:25:43Z"
+          },
+          {
+            "earlier_event_id": "QRP-C1-ML001-STARTED",
+            "earlier_event_time_utc": "2026-07-12T01:48:35Z",
+            "later_event_id": "QRP-C1-ML001-COMPLETED",
+            "later_event_time_utc": "2026-07-12T01:25:43Z"
+          }
+        ]
+      },
+      {
+        "experiment_id": "QRP-C1-ML002",
+        "original_events": [
+          {
+            "event_id": "QRP-C1-ML002-PREREGISTERED",
+            "event_type": "PREREGISTERED",
+            "event_time_utc": "2026-07-12T01:48:33Z",
+            "event_hash": "07866d4d5db452017970c2236fc5f40147df9d229bebaf29ff58a7f23290b788",
+            "previous_event_hash": "283927432cc51b4b0914e23e28744884bff23952033ad554909796b3146c3606",
+            "payload_sha256": "17af8616728647d9b75fb2e25bb841dcfa9aaf27d956893f8272f63766246a50"
+          },
+          {
+            "event_id": "QRP-C1-ML002-STARTED",
+            "event_type": "STARTED",
+            "event_time_utc": "2026-07-12T01:48:36Z",
+            "event_hash": "f37270604c6e05a5263d1da3fe1a1520a103ff095327351447d36c3ca3412eb8",
+            "previous_event_hash": "f71577bd7d0b52230ab15995a261ee8a13a25263bc613b8b63500b7ddbdb9a38",
+            "payload_sha256": "a121316760e2458d27c23f854d34b6862bcd55f501e794a476ec0eb18fc80a63"
+          },
+          {
+            "event_id": "QRP-C1-ML002-COMPLETED",
+            "event_type": "COMPLETED",
+            "event_time_utc": "2026-07-12T01:25:43Z",
+            "event_hash": "5b5258538fb2f9c9d0a622637d4ca171137ce4407364d43e1eab9f1d0e6e4428",
+            "previous_event_hash": "fd7ec61f5b7f531b456fdebe5adf58e97eb0e54432cb3214e7351468bc0cf629",
+            "payload_sha256": "193f5d5d19c500c0cd6d6a467b24f6f5140369b0caaf992b970fa5f305332205"
+          }
+        ],
+        "violations": [
+          {
+            "earlier_event_id": "QRP-C1-ML002-PREREGISTERED",
+            "earlier_event_time_utc": "2026-07-12T01:48:33Z",
+            "later_event_id": "QRP-C1-ML002-COMPLETED",
+            "later_event_time_utc": "2026-07-12T01:25:43Z"
+          },
+          {
+            "earlier_event_id": "QRP-C1-ML002-STARTED",
+            "earlier_event_time_utc": "2026-07-12T01:48:36Z",
+            "later_event_id": "QRP-C1-ML002-COMPLETED",
+            "later_event_time_utc": "2026-07-12T01:25:43Z"
+          }
+        ]
+      },
+      {
+        "experiment_id": "QRP-C1-ML003",
+        "original_events": [
+          {
+            "event_id": "QRP-C1-ML003-PREREGISTERED",
+            "event_type": "PREREGISTERED",
+            "event_time_utc": "2026-07-12T01:48:34Z",
+            "event_hash": "12610fd51bf09a1793704fff8691c112da0c52b3ab3bbc75261a521941334c39",
+            "previous_event_hash": "07866d4d5db452017970c2236fc5f40147df9d229bebaf29ff58a7f23290b788",
+            "payload_sha256": "c289ccd6eeb68126f6ab9823d1682f44c97cfac642985034a950ed928b139573"
+          },
+          {
+            "event_id": "QRP-C1-ML003-STARTED",
+            "event_type": "STARTED",
+            "event_time_utc": "2026-07-12T01:48:37Z",
+            "event_hash": "a4b67c450c5e06fdcaabf4ff76df18db0013dd677302edaa772f25b9176a2965",
+            "previous_event_hash": "f37270604c6e05a5263d1da3fe1a1520a103ff095327351447d36c3ca3412eb8",
+            "payload_sha256": "cd62b3ee907ad757cd03b4b162f1f15eed8a931261f6b323bcf859e023e86c57"
+          },
+          {
+            "event_id": "QRP-C1-ML003-COMPLETED",
+            "event_type": "COMPLETED",
+            "event_time_utc": "2026-07-12T01:25:43Z",
+            "event_hash": "abeb54c886a6e55663aec2fe099c3e3429ceb184a565ed1e71fe3a0570d8d5b9",
+            "previous_event_hash": "5b5258538fb2f9c9d0a622637d4ca171137ce4407364d43e1eab9f1d0e6e4428",
+            "payload_sha256": "474e70be4a2db5c96e1909cbdbf3caf9ce31b565d5afcad49931f532e0100044"
+          }
+        ],
+        "violations": [
+          {
+            "earlier_event_id": "QRP-C1-ML003-PREREGISTERED",
+            "earlier_event_time_utc": "2026-07-12T01:48:34Z",
+            "later_event_id": "QRP-C1-ML003-COMPLETED",
+            "later_event_time_utc": "2026-07-12T01:25:43Z"
+          },
+          {
+            "earlier_event_id": "QRP-C1-ML003-STARTED",
+            "earlier_event_time_utc": "2026-07-12T01:48:37Z",
+            "later_event_id": "QRP-C1-ML003-COMPLETED",
+            "later_event_time_utc": "2026-07-12T01:25:43Z"
+          }
+        ]
+      }
+    ],
+    "reconciled_experiments": [
+      "QRP-C1-ML001",
+      "QRP-C1-ML002",
+      "QRP-C1-ML003"
+    ],
+    "unreconciled_experiments": []
+  },
+  "append_only_integrity": {
+    "original_prefix_event_count": 60,
+    "original_prefix_byte_length": 123799,
+    "original_prefix_sha256": "55ef403baeab74c033015ee4bea3659a1639b56b58618ecff96cc4c956c1947b",
+    "original_prefix_last_event_hash": "4078a29b2e15bc782b553436054e7448a65884d18b588df61669eeb651f33f68",
+    "current_registry_byte_length": 137149,
+    "current_registry_sha256": "b7cb999912aed3108d12fcdb62c079d3c51610214a419a3b5fc72ac19c65d044",
+    "current_registry_last_event_hash": "29e88a1577792dd450732bf53b5fcf35a5fc319a2bed978b97282569e6680e69",
+    "original_prefix_is_exact_current_prefix": true,
+    "original_event_hashes_preserved": true,
+    "historical_event_update_count": 0,
+    "historical_event_delete_count": 0,
+    "appended_event_count": 1,
+    "reconciliation_event_id": "REGISTRY-CHRONOLOGY-RECONCILIATION-R0-001",
+    "reconciliation_event_hash": "29e88a1577792dd450732bf53b5fcf35a5fc319a2bed978b97282569e6680e69",
+    "reconciliation_payload_sha256": "25b19752e69f18769d7c3c68417d4f6ac4adf73211cf09eb15128f2140e33083"
+  },
+  "projection_validation": {
+    "row_count": 20,
+    "experiment_id_count": 20,
+    "current_sha256": "eaa310a101f02fbd0682a1864a77665f1ef15338c809baedfffff198a383d57a",
+    "pre_reconciliation_sha256": "eaa310a101f02fbd0682a1864a77665f1ef15338c809baedfffff198a383d57a",
+    "bytes_unchanged_by_reconciliation": true,
+    "regenerated_sha256": "eaa310a101f02fbd0682a1864a77665f1ef15338c809baedfffff198a383d57a",
+    "regenerates_byte_identically": true,
+    "supplemental_event_projected_as_experiment": false,
+    "affected_experiment_metrics_changed": false
+  },
+  "result_content_validation": {
+    "affected_experiment_count": 3,
+    "generated_terminal_payloads_match_registry_payloads": true,
+    "decisions_match_phase_i_summary": true,
+    "probability_metrics_match_phase_i_summary": true,
+    "threshold_metrics_match_phase_i_summary": true,
+    "phase_i_summary_sha256": "f57e4613865e82dae21bc6213cc5f3602f2c899280f40216c8edb962e8c7dfb7"
+  },
+  "test_results": [
+    {
+      "stage": "RETAINED_FAILED_FIRST_BEFORE_CYCLE2_CHECKPOINT_TEST_CORRECTION",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m unittest discover -s research/tests",
+      "exit_code": 1,
+      "result": "183_TESTS_1_STALE_GLOBAL_COUNT_ASSERTION",
+      "failure": "test_cycle_two_registry_is_terminal_after_independent_validation treated the frozen Cycle 2 checkpoint count (57 lifecycle events/19 experiments) as the current global registry count; the audited pre-R0 registry already contained 60 lifecycle events/20 experiments and R0 added one supplemental governance event.",
+      "resolution": "The test now recomputes the complete frozen 57-event prefix hash chain, verifies its 19 experiments and expected terminal hash, and permits later append-only experiment and supplemental governance events."
+    },
+    {
+      "stage": "FINAL",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m unittest research.tests.test_cycle2_governance.Cycle2GovernanceTest.test_cycle_two_registry_is_terminal_after_independent_validation -v",
+      "exit_code": 0,
+      "result": "PASS_1_TEST",
+      "coverage": [
+        "frozen Cycle 2 57-event lifecycle prefix",
+        "19 frozen prefix experiments",
+        "complete prefix hash-chain recomputation",
+        "expected Cycle 2 prefix terminal hash",
+        "later append-only event compatibility"
+      ]
+    },
+    {
+      "stage": "FINAL",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m unittest research.tests.test_governance -v",
+      "exit_code": 0,
+      "result": "PASS_11_TESTS",
+      "coverage": [
+        "valid chronology",
+        "invalid order",
+        "hash chain",
+        "append-only reconciliation",
+        "duplicate reconciliation",
+        "malformed reconciliation",
+        "projection consistency",
+        "no historical rewrite"
+      ]
+    },
+    {
+      "stage": "PRIOR_COMPATIBILITY_VERIFICATION",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m unittest research.tests.test_governance research.tests.test_ml_baseline research.tests.test_nested_research research.tests.test_cycle2_implementation -v",
+      "exit_code": 0,
+      "result": "PASS_38_TESTS",
+      "coverage": [
+        "registry",
+        "Phase I compatibility",
+        "Phase J compatibility",
+        "Cycle 2 implementation compatibility"
+      ]
+    },
+    {
+      "stage": "FINAL",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m unittest discover -s research/tests",
+      "exit_code": 0,
+      "result": "PASS_183_TESTS",
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "stage": "FINAL",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "label": "FACT",
+      "statement": "The original 60-event registry prefix is byte-identical and its cryptographic chain remains intact."
+    },
+    {
+      "label": "FACT",
+      "statement": "Three Phase I experiments contain terminal lifecycle metadata earlier than preregistration and start metadata."
+    },
+    {
+      "label": "CALCULATION",
+      "statement": "The final validator reports 61 total events, 60 lifecycle events, 20 experiments, one supplemental reconciliation event, and three disclosed unresolved chronology issues."
+    },
+    {
+      "label": "INTERPRETATION",
+      "statement": "Repository code and configuration support static artifact-time reuse as the likely metadata cause; mutable filesystem metadata supports only a partial ordering, not an exact corrected completion time."
+    }
+  ],
+  "limitations": [
+    "No immutable contemporaneous completion receipt proves exact corrected completion times.",
+    "Filesystem birth and modification timestamps are supporting evidence only and remain mutable."
+  ],
+  "unresolved_questions": [
+    "The exact UTC completion time for QRP-C1-ML001, QRP-C1-ML002, and QRP-C1-ML003 remains unknown."
+  ],
+  "gates": {
+    "read_only_macro_dataset_construction_blocked_by_this_caveat": false,
+    "final_champion_claim_permitted": false,
+    "automatic_promotion_permitted": false,
+    "paper_or_live_action_permitted": false
+  },
+  "next_permitted_action": "Proceed sequentially to existing macro evidence and ALFRED salvage audit while retaining REGISTRY_CHRONOLOGY_UNRESOLVED as a champion veto."
+}

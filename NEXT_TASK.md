@@ -1,5 +1,46 @@
 # Next Task
 
+## Macro Regime Program — Role 2 ALFRED Salvage
+
+Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
+
+Current status: `REGISTRY_CHRONOLOGY_UNRESOLVED` with append-only disclosure.
+This caveat permits read-only macro dataset construction but prohibits any final
+champion claim.
+
+Run exactly one next sequential role: Existing Macro Evidence and ALFRED Salvage
+Auditor. Reassess batch `QRP2-ALFRED-20260713T070000Z`—25 source runs, 1,730
+versioned observations, and five frozen series—under the daily macro-regime
+protocol rather than the superseded release-surprise protocol.
+
+Required outputs:
+
+- `ALFRED_MACRO_REGIME_SALVAGE_AUDIT.md`
+- `ALFRED_SERIES_RECLASSIFICATION.csv`
+- `ALFRED_REGIME_ELIGIBLE_OBSERVATIONS.csv`
+- `ALFRED_REGIME_INELIGIBLE_OBSERVATIONS.csv`
+
+Classify every series and observation using only:
+
+- `VINTAGE_SAFE_FOR_DAILY_REGIME`
+- `VINTAGE_SAFE_WITH_DELAY`
+- `CURRENT_REVISED_HISTORY_ONLY`
+- `AVAILABILITY_DATE_UNRESOLVED`
+- `SOURCE_VERSION_UNRESOLVED`
+- `UNUSABLE`
+
+Do not mutate the old Program 2 classification. Append a protocol-specific
+classification and preserve every source-run, raw-payload, code, config, and
+observation hash. A row is daily-regime eligible only when its historical vintage
+and availability date are known, later revisions cannot overwrite it, its raw
+source hash is retained, and it activates only after the frozen conservative
+delay.
+
+Do not restart public Trading Economics scraping, collect new sources, design the
+database, score macro states, align technical setups, inspect PnL, or start Roles
+3–11 during this role. The Role 2 audit must end with exact eligible/ineligible
+counts and the next permitted action.
+
 ## Macro Liquidity Reversal Gate
 
 The authorized technical economic continuation is terminal with

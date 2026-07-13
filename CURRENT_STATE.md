@@ -1,5 +1,36 @@
 # Current State
 
+## Macro Regime Program — Registry Chronology Reconciliation (R0)
+
+Program `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is active. Required Role 1,
+Registry Chronology Reconciliation Auditor, is complete with terminal-caveated
+status `INCONCLUSIVE / REGISTRY_CHRONOLOGY_UNRESOLVED`.
+
+- The original 60-event lifecycle registry prefix remains byte-for-byte intact.
+- One hash-linked supplemental `CHRONOLOGY_RECONCILIATION` event was appended;
+  the registry now contains 61 total events, 60 lifecycle events, one
+  reconciliation event, and 20 experiments.
+- The hash chain and 20-row CSV projection pass. The CSV remains byte-identical
+  because supplemental governance events are not experiment lifecycle rows.
+- `QRP-C1-ML001`, `QRP-C1-ML002`, and `QRP-C1-ML003` retain their original
+  completion metadata, which predates their preregistration/start metadata. The
+  likely cause is reuse of a static artifact-creation timestamp. Result content
+  and metrics reconcile, but exact corrected completion instants are not proven
+  and were not invented.
+- The validator now enforces nondecreasing lifecycle timestamps and returns
+  `UNRESOLVED_DISCLOSED` for this append-only reconciliation rather than a clean
+  pass.
+- The research suite passes 183/183 tests. The Cycle 2 governance regression now
+  validates the immutable 57-event/19-experiment prefix and terminal hash without
+  treating that historical checkpoint as the current global registry.
+- Protected/final-holdout access remains 0/0. No macro observation, technical
+  setup/trade, broker, paper, or live path was touched in R0.
+
+This disclosed chronology defect does not block read-only macro dataset
+construction. It remains a final-champion veto. The next sequential role is the
+Existing Macro Evidence and ALFRED Salvage Auditor; Roles 3–11 have not started.
+See `REGISTRY_CHRONOLOGY_RECONCILIATION.md` and `NEXT_TASK.md`.
+
 ## MLR Technical Economic Continuation - 2026-07-13
 
 The explicitly authorized `TECHNICAL_ONLY_ABLATION` is complete. Frozen detector
