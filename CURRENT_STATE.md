@@ -1,5 +1,41 @@
 # Current State
 
+## Macro Regime Program — Official Source and Coverage Audit (Role 3)
+
+Role 3 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with
+`PASS_BOUNDED_OFFICIAL_SOURCE_SET_FROZEN`.
+
+- The frozen census contains 34 candidate routes: 19 keyless official archive
+  routes approved for bounded collection, five retained ALFRED evidence routes,
+  two availability/version-unresolved routes, one current-revised-only route,
+  four key-or-license-review routes, and three rejected routes.
+- Verified evidence remains exactly the 1,730 Role 2 observation versions:
+  INFLATION 489, LABOUR 921, GROWTH 214, MONETARY_POLICY 106, and LIQUIDITY 0.
+  No prospective archive route contributes a fabricated row count.
+- The approved prospective set covers exactly five categories. Dated Federal
+  Reserve H.6 and H.4.1 archives provide the priority collection path for M2,
+  total assets, reserve balances, and TGA. The H.6 and H.4.1 candidate URLs now
+  point to dated-release indexes; current Data Download Program identities are
+  reconciliation references only.
+- Pre-2017 coverage and all LIQUIDITY coverage remain prospective metadata, not
+  collected or certified observations. DOL claims version semantics remain
+  unresolved, NY Fed RRP history remains current-revised-only, four optional
+  ALFRED routes require key/terms review, and no qualifying official national
+  services-diffusion source was identified.
+- The audit used 41 bounded official-documentation interactions and made zero
+  observation API calls, bulk collection requests, raw macro downloads, or
+  experiment trials. Protected/final-holdout access remains 0/0.
+- The deterministic generator and validator pass, eight focused tests pass, and
+  the complete research suite passes 198/198 tests. The source decision, exact
+  prospective routes, year/series/category coverage matrices, limitations, and
+  hashes are frozen in `MACRO_REGIME_SOURCE_AUDIT.md` and its three CSV outputs.
+
+The next sequential role is Smart MarketScope Macro Database Architect. It must
+first inspect and document reuse of existing Laravel macro structures, then bind
+the verified 1,730-row evidence contract and frozen 34-route decision to an
+immutable append-only schema. It must not collect observations, score regimes,
+join technical setups, inspect PnL, or start Roles 5–11. See `NEXT_TASK.md`.
+
 ## Macro Regime Program — Existing ALFRED Salvage (Role 2)
 
 Role 2 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with
@@ -29,11 +65,10 @@ Role 2 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with
   research suite passes 190/190 tests. Protected/final-holdout access remains
   0/0; Role 2 created no network request or experiment trial.
 
-The next sequential role is Official Macro Source and Coverage Auditor. It must
-reuse these 1,730 rows, audit defensible official coverage needed for missing
-history and categories—especially LIQUIDITY—and must not begin collection,
-database writes, scoring, technical joins, or economic backtests. See
-`ALFRED_MACRO_REGIME_SALVAGE_AUDIT.md` and `NEXT_TASK.md`.
+Role 3 has now accepted these 1,730 rows as the only verified observation
+evidence and frozen a bounded official collection plan. Role 4 is next; see
+`ALFRED_MACRO_REGIME_SALVAGE_AUDIT.md`, `MACRO_REGIME_SOURCE_AUDIT.md`, and
+`NEXT_TASK.md`.
 
 ## Macro Regime Program — Registry Chronology Reconciliation (R0)
 
@@ -62,8 +97,8 @@ status `INCONCLUSIVE / REGISTRY_CHRONOLOGY_UNRESOLVED`.
   setup/trade, broker, paper, or live path was touched in R0.
 
 This disclosed chronology defect does not block read-only macro dataset
-construction. It remains a final-champion veto. Role 2 has completed; Roles
-3–11 have not started. See `REGISTRY_CHRONOLOGY_RECONCILIATION.md` and
+construction. It remains a final-champion veto. Roles 1–3 have completed; Roles
+4–11 have not started. See `REGISTRY_CHRONOLOGY_RECONCILIATION.md` and
 `NEXT_TASK.md`.
 
 ## MLR Technical Economic Continuation - 2026-07-13

@@ -1,6 +1,6 @@
 # Next Task
 
-## Macro Regime Program — Role 3 Official Source and Coverage Audit
+## Macro Regime Program — Role 4 Smart MarketScope Macro Database Architecture
 
 Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
 
@@ -8,50 +8,53 @@ Current status: `REGISTRY_CHRONOLOGY_UNRESOLVED` with append-only disclosure.
 This caveat permits read-only macro dataset construction but prohibits any final
 champion claim.
 
-Role 2 is complete with `PASS_1730_VINTAGE_SAFE_WITH_DELAY`: all 1,730 retained
-ALFRED observation versions are eligible under J0 delayed daily-regime semantics,
-with zero ineligible rows. Existing coverage spans four categories and lacks
-LIQUIDITY and pre-2017 warm-up history.
+Roles 2 and 3 are complete. The only verified macro evidence is the retained
+1,730-version ALFRED batch under conservative J0 delay semantics. Role 3 froze
+34 source decisions, including 19 keyless official routes approved only for
+future bounded collection. LIQUIDITY still has zero verified observations and
+all pre-2017 coverage remains prospective.
 
-Run exactly one next sequential role: Official Macro Source and Coverage Auditor.
-Audit responsible official/public vintage-safe sources for the requested
-`2000-01-01` through `2026-06-28` period, using the frozen source hierarchy and
-candidate families in the active program directive. Reuse the existing 1,730
-ALFRED rows and do not recollect them merely because the superseded surprise
-protocol rejected them.
+Run exactly one next sequential role: Smart MarketScope Macro Database Architect.
+Inspect the sibling Laravel backend, its framework/dependencies, migrations,
+models, existing macro/calendar tables, tests, configuration, conventions,
+security boundaries, dirty state, and rollback path before proposing or making
+schema changes. Reuse existing structures where their contracts are sufficient;
+document every reuse, extension, adaptation, or new-table decision.
 
-Required Role 3 outputs:
+The architecture must support the program directive's immutable concepts:
 
-- `MACRO_REGIME_SOURCE_AUDIT.md`
-- `MACRO_REGIME_COVERAGE_BY_YEAR.csv`
-- `MACRO_REGIME_COVERAGE_BY_SERIES.csv`
-- `MACRO_REGIME_COVERAGE_BY_CATEGORY.csv`
+- `macro_source_providers`
+- append-only `macro_source_runs`
+- immutable `macro_raw_artifacts`
+- versioned, never-overwritten `macro_observations`
+- `macro_indicator_states`
+- `macro_release_bundle_states`
+- `macro_category_states`
+- `macro_regime_snapshots`
+- append-only `macro_event_update_ledger`
+- `macro_technical_links`
+- `macro_backtest_runs`
 
-For every candidate source/series, record official ownership, endpoint or file
-family, authentication requirement, access/usage constraints, vintage/version
-semantics, availability-date evidence, units/frequency, expected range, missing
-periods, revision behavior, raw-snapshot feasibility, category/release-bundle
-mapping, and one of:
+Bind the schema to the exact Role 2 and Role 3 contracts, including source and
+raw-body hashes, source-run lineage, observation supersession, reference/vintage/
+availability/conservative-effective timestamps, point-in-time classification,
+release bundles, five exact categories, scoring/config/code/registry hashes, and
+idempotent uniqueness rules. Preserve raw bodies rather than only DOM hashes.
+Define foreign keys, indexes, checks, append-only enforcement, transaction and
+retry semantics, resumable collection boundaries, access control, retention,
+rollback, and deterministic export/validation contracts.
 
-- `APPROVED_FOR_BOUNDED_COLLECTION`
-- `APPROVED_EXISTING_EVIDENCE_ONLY`
-- `REQUIRES_KEY_OR_LICENSE_REVIEW`
-- `CURRENT_REVISED_HISTORY_ONLY`
-- `AVAILABILITY_OR_VERSION_UNRESOLVED`
-- `REJECTED`
+Required Role 4 evidence includes a database inventory and reuse decision, the
+target schema/data-flow/contract specification, migration and rollback design,
+risk-appropriate schema tests or migration proof, exact commands and exit
+results, and the exact next permitted Role 5 collection action. Any executable
+migration/model work must be bounded to this architecture and remain compatible
+with the existing Laravel application.
 
-Prioritize the missing LIQUIDITY category and the pre-2017 warm-up gap, then
-audit broader inflation, labour, growth, and monetary-policy candidates without
-allowing duplicate releases to gain extra category voting power. Prefer official
-downloadable files or documented keyless/public endpoints. A free formal API may
-be used when appropriate; a paid provider is not required.
-
-Do not restart public Trading Economics scraping, bypass access controls, perform
-bulk collection, design or migrate the database, score macro states, align
-technical setups, inspect PnL, or start Roles 4–11 during this role. Small
-read-only metadata/coverage probes are permitted when necessary and must be
-counted and preserved as audit evidence. End with an explicit approved source
-set, uncovered gaps, collection constraints, and the exact next permitted action.
+Do not collect or download macro observations, populate production tables,
+modify raw `dataset/` files, calculate indicator/bundle/category/regime scores,
+join technical setups, inspect strategy PnL, run an economic backtest, connect a
+broker, deploy, or start Roles 5–11. Role 4 is architecture and schema only.
 
 ## Macro Liquidity Reversal Gate
 
