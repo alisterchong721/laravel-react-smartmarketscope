@@ -1,5 +1,47 @@
 # Current State
 
+## Macro Regime Program — Point-in-Time and Availability Validation (Role 7)
+
+Role 7 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with `PASS`
+and decision `ROLE7_POINT_IN_TIME_VALIDATED_ROLE8_ALIGNMENT_PERMITTED`.
+
+- Independent validation rehashed the three frozen inputs, four Role 6
+  registry/config files, scoring code, manifest, every named Role 6 output, and
+  2,236 unique raw artifacts totaling 334,666,627 bytes.
+- All 10,273 event-ledger rows are semantically identical across CSV, JSONL,
+  and Parquet. Independent prior-only reconstruction reconciles all 5,216
+  indicator states, 5,111 bundle states, 1,840 category states, and 1,718
+  snapshots with zero errors.
+- Every one of the 10,273 observations activates exactly 36 hours after local
+  midnight on its recorded `America/New_York` availability date. UTC and
+  `Asia/Kuala_Lumpur` conversions reconcile under both EST and EDT.
+- All 9,676 daily as-of rows and 51,361 active-input rows use only states whose
+  effective timestamp is at or before the as-of timestamp. Revision replacement
+  is confined to the same indicator/reference period; same-time updates are
+  atomic; no-decay and unscorable replacement semantics pass.
+- `J0` is ready for Role 8. `J1` and `J2` semantics are frozen but fail closed
+  until Role 8 binds a hash-locked NAS100 source trading-date calendar; neither
+  sensitivity may be selected from PnL.
+- Frozen category capacity remains `1/1/1/1/4` bundles for inflation, labour,
+  growth, policy, and liquidity against minima `2/2/2/1/1`. Maximum valid
+  categories are two, so all 9,676 biases are independently confirmed
+  `UNKNOWN` with `NO_TRADE` permission.
+- One upstream metadata warning is preserved: Role 5 H.4.1 labels all weekly
+  observations with its release-level balance-sheet bundle. The frozen Role 6
+  taxonomy correctly maps reserves and TGA to distinct bundles on all outputs;
+  2,456 conflicting input fields were disclosed and not rewritten.
+- Focused positive, boundary, negative, future-timestamp, revision-order, and
+  tamper tests pass 12/12; the complete research suite passes 244/244. No
+  technical setup, trade outcome, PnL, experiment, protected/final-holdout path,
+  broker, deployment, or paper/live action was accessed.
+
+The next sequential role is Role 8 Technical-Macro Alignment only. It must bind
+the frozen technical baseline and exact source trading-date calendar, link each
+setup under J0/J1/J2 without changing any technical field or outcome, and retain
+`UNKNOWN` as `FILTERED_UNKNOWN`. It must not run economic PnL comparisons or
+start Roles 9–11. See `NEXT_TASK.md` and
+`research/artifacts/macro_regime/role7/MACRO_REGIME_POINT_IN_TIME_AUDIT.md`.
+
 ## Macro Regime Program — Deterministic Taxonomy and Scoring (Role 6)
 
 Role 6 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with `PASS`

@@ -1,50 +1,51 @@
 # Next Task
 
-## Macro Regime Program — Role 7 Point-in-Time and Availability Validation
+## Macro Regime Program — Role 8 Technical-Macro Alignment
 
 Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
 
-Role 6 is complete. The hash-locked deterministic scoring engine reconciles all
-10,273 eligible observations and materializes 5,216 indicator states, 5,111
-bundle states, 1,840 category states, 1,718 event-time snapshots, 9,676 daily
-as-of rows, 51,361 active-input rows, and 10,273 event-ledger rows. Focused tests
-pass 9/9 and the full research suite passes 232/232.
+Role 7 is complete. Independent validation rehashed all three frozen inputs,
+2,236 raw artifacts, every Role 6 registry/config/code/output, and reconciled all
+10,273 observations and ledger rows, all state layers, and all daily as-of rows.
+J0 is ready. J1/J2 semantics are frozen pending an exact source-calendar hash.
+All 9,676 daily biases remain `UNKNOWN` and technical permission is `NO_TRADE`.
 
-The frozen evidence supports at most two valid categories: policy and liquidity.
-Inflation, labour, and growth each have one eligible bundle against a minimum of
-two. The engine therefore returns `UNKNOWN` on all daily rows rather than
-imputing, renormalizing, relaxing coverage, or carrying an invalid vote.
+Run exactly one next sequential role: Technical-Macro Alignment Engineer.
 
-Run exactly one next sequential role: Point-in-Time and Availability Validation
-Engineer.
+1. Locate and hash-lock the exact completed MLR technical baseline. Reconcile
+   454 setups, 306 medium-cost fills, 148 no-fills, zero invalid-data cases, and
+   the frozen detector/config/data/artifact lineage without regenerating or
+   changing the strategy.
+2. Freeze the exact NAS100-labelled source trading-date calendar used by the
+   technical evidence. Record source timezone, day-boundary semantics, DST-aware
+   `America/New_York`/UTC/`Asia/Kuala_Lumpur` conversions, date range, row count,
+   and SHA-256. Do not infer missing weekdays or holidays.
+3. For every frozen setup, preserve setup ID, D1/H4 IDs, direction, actionable
+   source timestamp, entry timeframe, confluence family, entry, stop, targets,
+   expiry, fill/outcome fields, detector version, and all technical hashes
+   byte-for-byte.
+4. Apply the frozen Role 7 timing policy: J0 headline, J1 first frozen source
+   trading date after availability, and J2 second frozen source trading date.
+   At each actionable timestamp choose only the latest macro snapshot effective
+   at or before that timestamp; exact equality is eligible.
+5. Record snapshot ID/effective time, all five category scores, base score,
+   interactions, final score, bias, valid-category count, direction relation,
+   join rule, and scoring/code/registry hashes. Prove no future macro state enters
+   any link and no setup receives a replacement trade.
+6. Map `UNKNOWN` to `FILTERED_UNKNOWN`, `NEUTRAL` to `FILTERED_NEUTRAL`, opposite
+   direction to `FILTERED_OPPOSITE_DIRECTION`, and matching direction to
+   `PERMITTED_DIRECTION_MATCH`. Do not relax coverage or reinterpret UNKNOWN.
+7. Produce the immutable technical registry/freeze artifacts when not already
+   present, `MACRO_TECHNICAL_LINKS.parquet`, a J0/J1/J2 alignment census,
+   `MACRO_TECHNICAL_ALIGNMENT_REPORT.md`, hashes, manifest, deterministic tests,
+   limitations, and the exact Role 9 handoff or a fail-closed terminal result.
 
-1. Independently rehash the three frozen inputs, all Role 6 registries/config,
-   scoring code, manifest, and every named output.
-2. Prove that every observation version is excluded before its effective time,
-   later revisions replace only their own reference version, and no current-
-   revised or future vintage enters an earlier indicator state.
-3. Independently recompute one-release, three-release, six-release, year-over-
-   year, prior-only median/MAD, zero-MAD fallback, percentile, score-boundary,
-   no-decay, and unscorable-replacement examples across all source families.
-4. Verify exact atomic same-effective-time batching, observation-to-indicator-to-
-   bundle-to-category-to-snapshot lineage, 10,273 ledger-row parity across CSV,
-   JSONL and Parquet, and daily as-of nonanticipation.
-5. Verify date-aware `America/New_York`, UTC, and `Asia/Kuala_Lumpur` availability
-   semantics and assess J0 readiness. J1/J2 source-trading-day rules may be
-   specified for later sensitivity but must not be selected from PnL.
-6. Confirm independently that the frozen minimum-bundle and minimum-category
-   rules imply `INSUFFICIENT_CATEGORY_COVERAGE`, all 9,676 daily biases are
-   `UNKNOWN`, and no technical alignment is permitted under that state.
-7. Produce a point-in-time audit, availability audit, lineage/error census,
-   deterministic validation artifact, exact test evidence, limitations, and the
-   next permitted action. Preserve failures rather than repairing Role 6 in place.
-
-Do not join technical setups, inspect trade outcomes or PnL, run an economic
-backtest, tune transformations/thresholds/weights, access protected/final-
-holdout paths, add public write routes, deploy, connect a broker, or start Roles
-8–11. A material Role 6 defect must fail closed and return to a prospective
-scoring amendment; it must not be silently corrected during independent
-validation.
+Do not calculate macro-filter PnL, compare economic variants, inspect outcomes
+for parameter selection, tune delays/thresholds/weights, access protected/final-
+holdout paths, change any technical outcome, add public write routes, deploy,
+connect a broker, or start Roles 9–11. If the technical baseline or source
+calendar cannot be reconciled exactly, stop with
+`TECHNICAL_BASELINE_RECONCILIATION_FAILED`; do not construct a substitute.
 
 ## Macro Liquidity Reversal Gate
 

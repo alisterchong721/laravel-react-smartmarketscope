@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "MACRO_REGIME_ROLE7_AVAILABILITY_V1",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "request_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001-ROLE7-001",
+  "created_at_utc": "2026-07-14T03:00:00Z",
+  "created_by": "Point-in-Time and Availability Validation Engineer",
+  "starting_commit": "b3757ecf57aac093fd063cfe284950f92a1771e9",
+  "decision_timezone": "Asia/Kuala_Lumpur",
+  "instrument_scope": "NAS100_SOURCE_LABEL_ONLY_NOT_NDX_NQ_MNQ_OR_CONFIRMED_CFD",
+  "headline_join": "J0_CONSERVATIVE_36H",
+  "eligibility_boundary": "OBSERVATION_EFFECTIVE_AT_LESS_THAN_OR_EQUAL_TO_DECISION_TIME",
+  "joins": {
+    "J0": {
+      "rule": "AVAILABILITY_DATE_START_AMERICA_NEW_YORK_PLUS_36_HOURS",
+      "calendar_dependency": null,
+      "activation_timezone": "America/New_York",
+      "status": "READY_FOR_ROLE8_ASOF_JOIN"
+    },
+    "J1": {
+      "rule": "START_OF_FIRST_FROZEN_SOURCE_TRADING_DATE_STRICTLY_AFTER_AVAILABILITY_DATE",
+      "calendar_dependency": "ROLE8_FROZEN_NAS100_SOURCE_TRADING_DATE_CALENDAR_WITH_SHA256",
+      "activation_local_time": "00:00:00",
+      "activation_timezone": "America/New_York",
+      "missing_calendar_action": "FAIL_CLOSED_DO_NOT_INFER_WEEKDAYS_OR_HOLIDAYS",
+      "status": "SEMANTICS_FROZEN_PENDING_ROLE8_CALENDAR_BINDING"
+    },
+    "J2": {
+      "rule": "START_OF_SECOND_FROZEN_SOURCE_TRADING_DATE_STRICTLY_AFTER_AVAILABILITY_DATE",
+      "calendar_dependency": "ROLE8_FROZEN_NAS100_SOURCE_TRADING_DATE_CALENDAR_WITH_SHA256",
+      "activation_local_time": "00:00:00",
+      "activation_timezone": "America/New_York",
+      "missing_calendar_action": "FAIL_CLOSED_DO_NOT_INFER_WEEKDAYS_OR_HOLIDAYS",
+      "status": "SEMANTICS_FROZEN_PENDING_ROLE8_CALENDAR_BINDING"
+    }
+  },
+  "timezone_outputs": [
+    "America/New_York",
+    "UTC",
+    "Asia/Kuala_Lumpur"
+  ],
+  "same_effective_time_policy": "ATOMIC_BATCH_NO_WITHIN_BATCH_PUBLIC_STATE",
+  "revision_policy": "LATEST_AVAILABLE_VERSION_REPLACES_ONLY_SAME_INDICATOR_AND_REFERENCE_DATE",
+  "no_decay_policy": "LATEST_INDICATOR_STATE_REMAINS_ACTIVE_UNTIL_NEXT_INDICATOR_UPDATE",
+  "unscorable_replacement_policy": "NEW_UNSCORABLE_STATE_REPLACES_OLD_VALID_STATE_WITH_UNKNOWN",
+  "selection_policy": "J1_AND_J2_ARE_SENSITIVITIES_ONLY_AND_MUST_NOT_BE_SELECTED_FROM_PNL",
+  "technical_or_pnl_inputs_permitted": false,
+  "final_holdout_access_count": 0
+}
