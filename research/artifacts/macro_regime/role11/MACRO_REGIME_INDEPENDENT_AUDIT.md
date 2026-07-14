@@ -7,7 +7,7 @@ Created at UTC: `2026-07-14T08:00:00Z`
 Audit role: Independent Quantitative Auditor
 Quantitative decision: `NO_ACCEPTABLE_STRATEGY_FOUND`
 Candidate: `NONE`
-Full-program status: `BLOCKED_IN_APP_ROUTE_INTEGRATION`
+Full-program status: `PROGRAM_COMPLETE_NO_ACCEPTABLE_STRATEGY_FOUND`
 
 ## Audit opinion
 
@@ -23,12 +23,12 @@ therefore `UNKNOWN`; all 1,362 J0/J1/J2 technical links are
 `INSUFFICIENT_CATEGORY_COVERAGE` leading to `INSUFFICIENT_ALIGNED_TRADES`, not
 an improvement over the negative technical baseline.
 
-The offline Role 10 package is complete and reproducible, but the directive also
-requires an authenticated, authorized read-only Smart MarketScope page. No
-in-app route is active, authorization and negative-IDOR checks are not runnable,
-and Role 10 correctly failed closed rather than capture the user-owned dirty
-`src/App.js`. This is a bounded implementation completion blocker. It does not
-invalidate the offline tables, charts, or the no-candidate economic decision.
+The offline Role 10 package and the bounded authenticated, authorized read-only
+Smart MarketScope page are complete and reproducible. The active working-tree
+route requires server verification through protected `GET /me`, applies the
+explicit `VERIFIED_REGISTERED_USER_READ_ONLY` policy, denies query, fragment,
+and extra-path selectors, and exposes no mutation, unrestricted source URL,
+credential, broker, order, paper, deployment, live, or final-holdout control.
 
 ## Severity-ranked findings and vetoes
 
@@ -54,11 +54,13 @@ invalidate the offline tables, charts, or the no-candidate economic decision.
    and high costs reconcile, but spread, financing, depth, queue, partial-fill,
    contract, and broker terms are not independently established. No portability
    claim to NDX, NQ/MNQ, SPX, or ES/MES is permitted.
-5. **The required in-app page is incomplete.** The offline package and isolated
-   component pass, but no authenticated route exists. Authorization and negative
-   IDOR are `NOT_RUN_NO_ACTIVE_ROUTE` / `NOT_APPLICABLE_NO_ACTIVE_RESOURCE_ROUTE`.
-   Full program completion is blocked until a separately authorized clean route
-   integration and its security tests pass.
+5. **The required in-app page passes the bounded security re-audit.** The exact
+   active route hash is `233fd240...`; removal of only the declared import and
+   route reconstructs baseline `d702d1...`. A temporary-copy application of the
+   recorded inverse patch restores that baseline while leaving active `App.js`
+   unchanged and unstaged. Missing, rejected, malformed, aborted, and transport
+   authentication states fail closed; selector-negative IDOR cases make no
+   request; only verified identities render the read-only evidence.
 
 ### Medium
 
@@ -100,6 +102,12 @@ invalidate the offline tables, charts, or the no-candidate economic decision.
 - Reconciled six packaged CSV tables byte-for-byte to their upstream sources,
   11 valid PNG chart artifacts, and both offline HTML pages with no external
   URL, fetch, or axios dependency.
+- Rehashed all 11 A-K frontend chart copies against the frozen Role 10 source
+  files and verified exact byte equality, import names, and rendering order.
+- Reconciled the page's category/current/stress/interaction/bias evidence,
+  technical/timeframe separation, latest-indicator drill-downs, warnings,
+  semantic headings, alerts, table headers, image alternatives, and loading
+  accessibility state.
 
 ## Timing, leakage, execution, and governance opinion
 
@@ -121,19 +129,19 @@ deployment, or live path was used.
 - Roles 1-9 research evidence: accepted for the bounded negative conclusion,
   with the disclosed chronology, source, instrument, cost, and lineage limits.
 - Role 10 offline report: accepted.
-- Role 10 Smart MarketScope in-app page: blocked/incomplete.
+- Role 10 Smart MarketScope in-app page: accepted after independent
+  authentication, authorization, negative-IDOR, read-only, content, chart,
+  accessibility, ownership, and rollback verification.
 - Candidate promotion: vetoed.
 - Champion: none.
 - Final economic outcome: `NO_ACCEPTABLE_STRATEGY_FOUND`.
-- Full requested program: `BLOCKED_IN_APP_ROUTE_INTEGRATION`.
+- Full requested program: `PROGRAM_COMPLETE_NO_ACCEPTABLE_STRATEGY_FOUND`.
 
 ## Exact next permitted action
 
-Do not continue macro threshold, category, technical, or PnL research on the
-exposed history. In a separately authorized clean routing change, preserve the
-user-owned `src/App.js`, integrate the existing read-only component behind the
-application's authenticated and authorized route boundary, and pass route,
-authorization, negative-IDOR, no-write, no-source-URL, and no-secret tests. Then
-rerun Role 10/11 reporting-security validation only. Do not alter any frozen
-research artifact, activate collection, connect a broker, deploy, or place an
-order.
+The program is terminal. Preserve the negative result, immutable evidence,
+active unstaged route ownership record, and rollback patch. Do not continue
+macro threshold, category, technical, join, or PnL research on the exposed
+history. Any new research requires a prospectively governed program with new
+evidence; broker connection, paper trading, deployment, and order placement
+remain unauthorized.

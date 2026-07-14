@@ -8,30 +8,29 @@
     "VETO_LOW_EVIDENCE",
     "REGISTRY_CHRONOLOGY_UNRESOLVED",
     "INSUFFICIENT_CATEGORY_COVERAGE",
-    "INSUFFICIENT_ALIGNED_TRADES",
-    "FAIL_CLOSED_DIRTY_FILE_OWNERSHIP"
+    "INSUFFICIENT_ALIGNED_TRADES"
   ],
   "final_holdout_accesses": 0,
-  "full_program_status": "BLOCKED_IN_APP_ROUTE_INTEGRATION",
+  "full_program_status": "PROGRAM_COMPLETE_NO_ACCEPTABLE_STRATEGY_FOUND",
   "implementation_hashes": {
-    "research/src/smartmarketscope_quant/macro_regime/independent_audit.py": "ed94d5af6d5081da67aa0d7c558e4f8e54f8caba8b214d0671bb763eca2dfc97",
-    "research/tests/test_macro_regime_independent_audit.py": "3ca9f6738e9ab0beb6a2e92438319f007340bc0a1800cf8b3d9b38d76a09c72e"
+    "research/src/smartmarketscope_quant/macro_regime/independent_audit.py": "b9b3917f0ed392174795526903843340dbdc63d4e5013a1f9467f88ed4f55f80",
+    "research/tests/test_macro_regime_independent_audit.py": "ca2c813a8404866ac7f16c8ac7feb8d094359a33e351c5428e224fa6be368587"
   },
-  "next_permitted_action": "Separately authorize and isolate a clean authenticated/authorized read-only route integration, pass route/auth/authorization/negative-IDOR/no-write/no-secret tests, then rerun Role 10/11 reporting-security validation only; no research tuning or live action",
+  "next_permitted_action": "No next sequential role. Preserve terminal negative evidence and active unstaged route ownership; any future research requires a new prospectively governed program with new evidence; no broker, paper, deployment, or live action",
   "output_hashes": {
-    "research/artifacts/macro_regime/role11/MACRO_REGIME_COMPLETION_RESPONSE.md": "95c809f74cee5d7fb86514867a8f26361e5edfe20469501d78e3ab87061d1e38",
-    "research/artifacts/macro_regime/role11/MACRO_REGIME_INDEPENDENT_AUDIT.md": "cbac968a2607a449b501012ed1e38ea72cb5536113b96f968e355546c9f60991",
-    "research/artifacts/macro_regime/role11/ROLE11_REPRODUCTION_EVIDENCE.json": "535af7a016518efcb504b53d609683bfd0df97f2816a1188f2dd37fe03c29a57",
-    "research/artifacts/macro_regime/role11/ROLE11_TEST_RESULTS.json": "d692187fe43a69562fe3aa98dd106a40d9a12c5ec0aecb7ef717e3634af42792"
+    "research/artifacts/macro_regime/role11/MACRO_REGIME_COMPLETION_RESPONSE.md": "c05b7131145c59d19077681e00a0c5458b501d9ec3367ceeb2b4d3486a9ec3b4",
+    "research/artifacts/macro_regime/role11/MACRO_REGIME_INDEPENDENT_AUDIT.md": "882fcb734015e89dee3ecd5854ec9e863a9c06ecca77948fbe186d2c51a4b187",
+    "research/artifacts/macro_regime/role11/ROLE11_REPRODUCTION_EVIDENCE.json": "a01a1eb7a79ad965413adfcf29808170c1dc14bb1a2486cb86ffc9c9d13b9356",
+    "research/artifacts/macro_regime/role11/ROLE11_TEST_RESULTS.json": "924ab390a6de6b1b9feb4fdc83b5a00d8c2aed3d506ff97761a9d9111e8bc6ea"
   },
   "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
   "protected_data_accesses": 0,
   "research_state_hashes": {
-    "CURRENT_STATE.md": "364f4792f2950dd646e12f84c0eaac974cf2a6272f2d921a7c5db2baf3d50c29",
-    "NEXT_TASK.md": "a51c43b7781d170a93653b1958c741ccdc16c928a88a4085d777430b8a63cdd0"
+    "CURRENT_STATE.md": "5aea6474085ab6bdfa29d660efaf10b73bf64f116c8fd078362a84cfac27ff76",
+    "NEXT_TASK.md": "7ae7c566aeae25b131166bfec8d0974d71de1d20145c5e5e7e3bcb682d947cfe"
   },
   "schema_version": "1.0.0",
-  "status": "PASS_NEGATIVE_RESULT_REPRODUCED_WITH_IN_APP_COMPLETION_BLOCKER",
+  "status": "PASS_NEGATIVE_RESULT_AND_REPORTING_SECURITY_REAUDIT",
   "upstream_verification": {
     "raw_artifacts_rehashed": 2236,
     "raw_bytes_rehashed": 334666627,
@@ -48,7 +47,6 @@
     "NORMALIZED_COSTS_NOT_BROKER_FACT",
     "ROLE5_H41_RELEASE_LEVEL_BUNDLE_FIELD_CONFLICT",
     "ROLE8_DERIVED_H4_LINEAGE_ID",
-    "HISTORICAL_PERIOD_EXPOSURE_UNKNOWN",
-    "AUTHORIZATION_AND_NEGATIVE_IDOR_NOT_RUN_NO_ACTIVE_ROUTE"
+    "HISTORICAL_PERIOD_EXPOSURE_UNKNOWN"
   ]
 }

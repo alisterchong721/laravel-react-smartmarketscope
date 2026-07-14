@@ -5,6 +5,8 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
+import tempfile
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -13,6 +15,15 @@ import pandas as pd
 
 
 PROGRAM = "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001"
+APP_BASELINE_SHA256 = "d702d1ddeed2458842c2f420bb258913a1f1b93241bb8347099f63d0ab07f542"
+APP_ACTIVE_SHA256 = "233fd2401ffbe316aa6f14386ffe85f26a01ec5a430894b55789e2758579184f"
+APP_IMPORT = "import MacroRegimeResearchRoute from './components/research/macro-regime-research-route';\n"
+APP_ROUTE_BLOCK = '''        <Route
+          path="/research/macro-regime"
+          element={<MacroRegimeResearchRoute />}
+        />
+
+'''
 
 
 def sha256(path: Path) -> str:
@@ -60,6 +71,128 @@ def _family(source_run_id: str) -> str:
     if "h41" in source_run_id:
         return "H41"
     return "H6"
+
+
+def _verify_route_remediation(root: Path) -> dict[str, Any]:
+    remediation = root / "research/artifacts/macro_regime/role10/remediation"
+    ownership = json.loads((remediation / "APP_ROUTE_OWNERSHIP_BOUNDARY.json").read_text(encoding="utf-8"))
+    _assert(ownership["baseline_sha256"] == APP_BASELINE_SHA256, "AUDIT_APP_BASELINE_DECLARATION")
+    _assert(ownership["post_hunk_sha256"] == APP_ACTIVE_SHA256, "AUDIT_APP_ACTIVE_DECLARATION")
+    _assert(ownership["staged"] is False and ownership["committed"] is False, "AUDIT_APP_OWNERSHIP_DECLARATION")
+    _assert(ownership["authorization_policy"] == "VERIFIED_REGISTERED_USER_READ_ONLY", "AUDIT_AUTHORIZATION_DECLARATION")
+
+    app_path = root / "src/App.js"
+    app = app_path.read_text(encoding="utf-8")
+    _assert(sha256(app_path) == APP_ACTIVE_SHA256, "AUDIT_APP_ACTIVE_HASH")
+    _assert(app.count(APP_IMPORT) == 1, "AUDIT_APP_IMPORT_OWNERSHIP")
+    _assert(app.count(APP_ROUTE_BLOCK) == 1, "AUDIT_APP_ROUTE_OWNERSHIP")
+    reconstructed = app.replace(APP_IMPORT, "", 1).replace(APP_ROUTE_BLOCK, "", 1).encode("utf-8")
+    _assert(hashlib.sha256(reconstructed).hexdigest() == APP_BASELINE_SHA256, "AUDIT_APP_BASELINE_RECONSTRUCTION")
+
+    rollback_patch = remediation / "APP_ROUTE_ROLLBACK.patch"
+    _assert(sha256(rollback_patch) == ownership["rollback_patch_sha256"], "AUDIT_ROLLBACK_PATCH_HASH")
+    with tempfile.TemporaryDirectory(prefix="macro-regime-role11-rollback-") as directory:
+        temporary_root = Path(directory)
+        (temporary_root / "src").mkdir()
+        temporary_app = temporary_root / "src/App.js"
+        temporary_app.write_bytes(app_path.read_bytes())
+        result = subprocess.run(
+            ["git", "apply", "--unidiff-zero", str(rollback_patch)],
+            cwd=temporary_root,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        _assert(result.returncode == 0, f"AUDIT_ROLLBACK_APPLY:{result.stderr.strip()}")
+        _assert(sha256(temporary_app) == APP_BASELINE_SHA256, "AUDIT_ROLLBACK_BASELINE_HASH")
+    _assert(sha256(app_path) == APP_ACTIVE_SHA256, "AUDIT_ROLLBACK_CHANGED_ACTIVE_APP")
+
+    route_path = root / "src/components/research/macro-regime-research-route.js"
+    policy_path = root / "src/components/research/macro-regime-access-policy.js"
+    component_path = root / "src/components/research/macro-regime-research.js"
+    data_path = root / "src/components/research/macro-regime-research-data.js"
+    route = route_path.read_text(encoding="utf-8")
+    policy = policy_path.read_text(encoding="utf-8")
+    component = component_path.read_text(encoding="utf-8")
+    data = data_path.read_text(encoding="utf-8")
+    combined = "\n".join((route, policy, component, data)).lower()
+
+    # Authentication is server verified. Possession of a local bearer token alone never renders evidence.
+    for token in ("axios.get(apiPath('/me')", "Authorization: `Bearer ${token}`", "verifiedRegisteredUser(response)", "AbortController"):
+        _assert(token in route, f"AUDIT_AUTH_BOUNDARY:{token}")
+    _assert("axios.get" in route and not any(f"axios.{method}" in combined for method in ("post", "put", "patch", "delete")), "AUDIT_NETWORK_METHODS")
+    for state in ("unauthenticated", "identity-denied", "verification-error", "selector-denied"):
+        _assert(state in route, f"AUDIT_FAIL_CLOSED_STATE:{state}")
+    _assert("responseStatus === 401 || responseStatus === 403" in route, "AUDIT_REJECTED_TOKEN_STATE")
+    _assert("ERR_CANCELED" in route and "controller.abort()" in route, "AUDIT_ABORT_STATE")
+
+    # Authorization is explicit, selector-free, and fail closed for malformed identity payloads.
+    for token in ("VERIFIED_REGISTERED_USER_READ_ONLY", "Number.isInteger(id) && id > 0", "validEmail", "location.pathname !== MACRO_REGIME_RESEARCH_PATH", "Boolean(location.search)", "Boolean(location.hash)"):
+        _assert(token in policy, f"AUDIT_POLICY_CONTROL:{token}")
+    _assert("/:" not in APP_ROUTE_BLOCK and 'path="/research/macro-regime"' in APP_ROUTE_BLOCK, "AUDIT_ROUTE_RESOURCE_IDENTIFIER")
+
+    # The evidence component is static/read-only and contains all required negative-result content.
+    prohibited = (
+        "fetch(", "axios", ".post(", ".put(", ".patch(", ".delete(", "process.env",
+        "localstorage", "sessionstorage", "http://", "https://", "apikey", "api_key",
+        "password", "placeorder", "deploy button",
+    )
+    _assert(not any(token in component.lower() for token in prohibited), "AUDIT_COMPONENT_PROHIBITED_SURFACE")
+    _assert("secret, order button, broker integration, paper control, or live path" in component, "AUDIT_COMPONENT_NEGATIVE_SECURITY_DISCLOSURE")
+    required_content = (
+        "Candidate", "every bias is UNKNOWN", "Inactivity is not success",
+        "Coverage and source health", "Category capacity and current state", "Stress:", "Interaction:",
+        "Base/final: NOT_APPLICABLE", "Technical-only versus macro filters",
+        "Timeframes and confluence families remain separate", "Historical evidence charts A–K",
+        "Latest active indicator drill-down", "Raw observation / previous", "Transformation", "Scores",
+        "Reason / interaction", "Effective date / policy", "Raw artifact SHA-256", "Warnings and access boundary",
+    )
+    for token in required_content:
+        _assert(token in component, f"AUDIT_PAGE_CONTENT:{token}")
+    for token in ("decision: 'INSUFFICIENT_ALIGNED_TRADES'", "upstreamDecision: 'INSUFFICIENT_CATEGORY_COVERAGE'", "candidate: 'NONE'", "dailyRows: 9676", "observations: 10273", "mediumR: -173.4578703725847"):
+        _assert(token in data, f"AUDIT_PAGE_DATA:{token}")
+    for token in ('<main', '<h1>', '<h2>', 'role="alert"', '<th>', '<img', 'alt={`Macro regime research chart'):
+        _assert(token in component, f"AUDIT_ACCESSIBILITY:{token}")
+    _assert('aria-busy="true"' in route and 'aria-live="polite"' in route, "AUDIT_LOADING_ACCESSIBILITY")
+
+    chart_manifest = json.loads((remediation / "FRONTEND_CHART_HASHES.json").read_text(encoding="utf-8"))
+    _assert(chart_manifest["copy_policy"] == "source and target SHA-256 must be identical", "AUDIT_CHART_COPY_POLICY")
+    expected_names = [f"{letter}_{suffix}" for letter, suffix in zip(
+        "ABCDEFGHIJK",
+        (
+            "macro_category_timeline.png", "macro_regime_timeline.png", "macro_event_updates.png",
+            "equity_curves.png", "drawdown_curves.png", "annual_pnl.png", "timeframe_comparison.png",
+            "regime_performance.png", "category_contribution.png", "retention_analysis.png", "random_control.png",
+        ),
+    )]
+    _assert(list(chart_manifest["files"]) == expected_names, "AUDIT_CHART_AK_NAMES")
+    source_directory = root / chart_manifest["source_directory"]
+    target_directory = root / chart_manifest["target_directory"]
+    for index, (name, expected) in enumerate(chart_manifest["files"].items()):
+        source = source_directory / name
+        target = target_directory / name
+        _assert(sha256(source) == expected and sha256(target) == expected, f"AUDIT_CHART_HASH:{name}")
+        _assert(source.read_bytes() == target.read_bytes(), f"AUDIT_CHART_COPY:{name}")
+        _assert(f"import chart{chr(65 + index)} from './charts/{name}';" in component, f"AUDIT_CHART_IMPORT:{name}")
+    _assert("const charts = [chartA, chartB, chartC, chartD, chartE, chartF, chartG, chartH, chartI, chartJ, chartK];" in component, "AUDIT_CHART_RENDER_ORDER")
+
+    if root.joinpath(".git").exists():
+        staged = subprocess.run(["git", "diff", "--cached", "--quiet", "--", "src/App.js"], cwd=root, check=False)
+        _assert(staged.returncode == 0, "AUDIT_APP_ROUTE_STAGED")
+
+    return {
+        "app_active_sha256": APP_ACTIVE_SHA256,
+        "app_baseline_sha256": APP_BASELINE_SHA256,
+        "rollback": "PASS_TEMPORARY_COPY_ACTIVE_APP_UNCHANGED",
+        "authentication": "PASS_SERVER_VERIFIED_GET_ME_FAIL_CLOSED",
+        "authorization": "PASS_VERIFIED_REGISTERED_USER_READ_ONLY",
+        "negative_idor": "PASS_QUERY_FRAGMENT_EXTRA_PATH_DENIED",
+        "network_methods": ["GET"],
+        "mutation_methods": [],
+        "chart_hashes_verified": len(chart_manifest["files"]),
+        "page_content": "PASS_REQUIRED_NEGATIVE_RESULT_AND_DRILLDOWN_CONTENT",
+        "accessibility": "PASS_SEMANTIC_HEADINGS_ALERT_TABLE_ALT_LOADING_STATE",
+    }
 
 
 def audit(root: Path) -> dict[str, Any]:
@@ -144,7 +277,7 @@ def audit(root: Path) -> dict[str, Any]:
     _assert(not _truthy(folds.outer_reoptimization).any(), "AUDIT_OUTER_REOPTIMIZATION")
     _assert((folds[folds.variant.isin(macro_variants)].retained_filled_trades == 0).all(), "AUDIT_FOLD_MACRO_RETENTION")
 
-    # Presentation parity, offline behavior, and route fail-closed state.
+    # Presentation parity, offline behavior, and active route remediation.
     table_pairs = {
         "report/tables/MACRO_BACKTEST_METRICS.csv": "role9/MACRO_BACKTEST_METRICS.csv",
         "report/tables/MACRO_EVENT_UPDATE_LEDGER.csv": "role6/MACRO_EVENT_UPDATE_LEDGER.csv",
@@ -160,10 +293,7 @@ def audit(root: Path) -> dict[str, Any]:
     for name in ("index.html", "interactive.html"):
         text = (base / "report" / name).read_text(encoding="utf-8").lower()
         _assert(not any(token in text for token in ("http://", "https://", "fetch(", "axios")), f"AUDIT_EXTERNAL_FETCH:{name}")
-    app = (root / "src/App.js").read_text(encoding="utf-8")
-    component = (root / "src/components/research/macro-regime-research.js").read_text(encoding="utf-8").lower()
-    _assert('path="/research/macro-regime"' not in app, "AUDIT_UNEXPECTED_ACTIVE_ROUTE")
-    _assert(not any(token in component for token in ("fetch(", "axios", "post(", "put(", "delete(", "process.env")), "AUDIT_COMPONENT_WRITE_SURFACE")
+    route_remediation = _verify_route_remediation(root)
 
     # The initial registry defect remains disclosed and therefore a promotion veto.
     chronology = json.loads((root / "REGISTRY_CHRONOLOGY_VALIDATION.json").read_text())
@@ -174,9 +304,9 @@ def audit(root: Path) -> dict[str, Any]:
         "schema_version": "1.0.0",
         "artifact_id": "MACRO-REGIME-ROLE11-INDEPENDENT-REPRODUCTION-001",
         "program_id": PROGRAM,
-        "status": "PASS_NEGATIVE_RESULT_REPRODUCED",
+        "status": "PASS_NEGATIVE_RESULT_AND_REPORTING_SECURITY_REAUDIT",
         "decision": "NO_ACCEPTABLE_STRATEGY_FOUND",
-        "full_program_status": "BLOCKED_IN_APP_ROUTE_INTEGRATION",
+        "full_program_status": "PROGRAM_COMPLETE_NO_ACCEPTABLE_STRATEGY_FOUND",
         "candidate": "NONE",
         "counts": {
             "upstream_hash_inventory_entries": upstream_hash_counts,
@@ -208,14 +338,14 @@ def audit(root: Path) -> dict[str, Any]:
         "macro_retained_fills": 0,
         "random_control_status": "NOT_APPLICABLE_ZERO_RETENTION",
         "chronology": "REGISTRY_CHRONOLOGY_UNRESOLVED",
-        "route": "BLOCKED_FAIL_CLOSED_DIRTY_FILE_OWNERSHIP",
+        "route": "PASS_ACTIVE_AUTHENTICATED_AUTHORIZED_READ_ONLY",
+        "route_remediation": route_remediation,
         "failure_codes": [
             "INDEPENDENT_QUANT_AUDITOR_EVIDENCE_INSUFFICIENT",
             "VETO_LOW_EVIDENCE",
             "REGISTRY_CHRONOLOGY_UNRESOLVED",
             "INSUFFICIENT_CATEGORY_COVERAGE",
             "INSUFFICIENT_ALIGNED_TRADES",
-            "FAIL_CLOSED_DIRTY_FILE_OWNERSHIP",
         ],
     }
 

@@ -39,16 +39,30 @@
     "VETO_LOW_EVIDENCE",
     "REGISTRY_CHRONOLOGY_UNRESOLVED",
     "INSUFFICIENT_CATEGORY_COVERAGE",
-    "INSUFFICIENT_ALIGNED_TRADES",
-    "FAIL_CLOSED_DIRTY_FILE_OWNERSHIP"
+    "INSUFFICIENT_ALIGNED_TRADES"
   ],
-  "full_program_status": "BLOCKED_IN_APP_ROUTE_INTEGRATION",
+  "full_program_status": "PROGRAM_COMPLETE_NO_ACCEPTABLE_STRATEGY_FOUND",
   "macro_retained_fills": 0,
   "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
   "random_control_status": "NOT_APPLICABLE_ZERO_RETENTION",
-  "route": "BLOCKED_FAIL_CLOSED_DIRTY_FILE_OWNERSHIP",
+  "route": "PASS_ACTIVE_AUTHENTICATED_AUTHORIZED_READ_ONLY",
+  "route_remediation": {
+    "accessibility": "PASS_SEMANTIC_HEADINGS_ALERT_TABLE_ALT_LOADING_STATE",
+    "app_active_sha256": "233fd2401ffbe316aa6f14386ffe85f26a01ec5a430894b55789e2758579184f",
+    "app_baseline_sha256": "d702d1ddeed2458842c2f420bb258913a1f1b93241bb8347099f63d0ab07f542",
+    "authentication": "PASS_SERVER_VERIFIED_GET_ME_FAIL_CLOSED",
+    "authorization": "PASS_VERIFIED_REGISTERED_USER_READ_ONLY",
+    "chart_hashes_verified": 11,
+    "mutation_methods": [],
+    "negative_idor": "PASS_QUERY_FRAGMENT_EXTRA_PATH_DENIED",
+    "network_methods": [
+      "GET"
+    ],
+    "page_content": "PASS_REQUIRED_NEGATIVE_RESULT_AND_DRILLDOWN_CONTENT",
+    "rollback": "PASS_TEMPORARY_COPY_ACTIVE_APP_UNCHANGED"
+  },
   "schema_version": "1.0.0",
-  "status": "PASS_NEGATIVE_RESULT_REPRODUCED",
+  "status": "PASS_NEGATIVE_RESULT_AND_REPORTING_SECURITY_REAUDIT",
   "t0": {
     "fills": 306,
     "net_r": {

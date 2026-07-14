@@ -1,10 +1,11 @@
 # Current State
 
-## Macro Regime Program — Bounded In-App Route Remediation (Role 10)
+## Macro Regime Program — Terminal Role 11 Reporting/Security Re-Audit
 
-The separately authorized Role 10 reporting remediation is implemented with
-status `IN_APP_ROUTE_ACTIVE_PENDING_ROLE11_SECURITY_REAUDIT`. The quantitative
-decision remains `NO_ACCEPTABLE_STRATEGY_FOUND`; candidate remains `NONE`.
+Program `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with full
+requested-program status `PROGRAM_COMPLETE_NO_ACCEPTABLE_STRATEGY_FOUND`.
+The quantitative decision remains `NO_ACCEPTABLE_STRATEGY_FOUND`; candidate
+and champion remain `NONE`.
 
 - The exact working-tree route `/research/macro-regime` is active. Its wrapper
   accepts no resource identifier and denies all query, fragment, and extra-path
@@ -25,53 +26,40 @@ decision remains `NO_ACCEPTABLE_STRATEGY_FOUND`; candidate remains `NONE`.
   the two-hunk active working-tree version is
   `233fd2401ffbe316aa6f14386ffe85f26a01ec5a430894b55789e2758579184f`.
   The recorded inverse patch restores the exact baseline hash.
-- Focused React tests pass 13/13, the full frontend passes 19/19, focused Python
-  reporting/security tests pass 9/9, and the production build exits 0. Role 10
-  validation passes twice with 71 inputs, 53 outputs, and 11 charts. The full
-  research run correctly exposes three stale Role 11 route-absence assertions;
-  the other 278 tests pass. Those assertions are reserved for the independent
-  reporting/security re-audit and were not rewritten by Role 10.
+- Role 11 independently reconstructed the baseline hash from only the declared
+  import/route hunks and applied the recorded rollback to a temporary copy. The
+  temporary copy rehashed to the exact baseline while active `src/App.js`
+  remained at the exact post-hunk hash and unstaged.
+- Missing credentials cause no request; rejected 401/403 credentials redirect;
+  malformed identity and transport errors deny; aborted verification renders no
+  evidence. A bearer token alone is insufficient: only protected `GET /me`
+  server verification and `VERIFIED_REGISTERED_USER_READ_ONLY` authorization
+  render the page. Query, fragment, and extra-path selector cases are denied
+  before any request.
+- Role 11 rehashed all 11 A-K source/target images byte-for-byte and reconciled
+  required category/current/stress/interaction/bias, technical/timeframe,
+  latest-indicator, warning, UNKNOWN/NOT_APPLICABLE, error, and accessibility
+  content. No mutation, unrestricted source URL, credential disclosure,
+  resource identifier, broker, order, paper, deployment, live, or final-holdout
+  path exists in the bounded surface.
+- Focused Role 11 tests pass 8/8; full research passes 286/286; full frontend
+  passes 19/19; the production build exits 0 with disclosed pre-existing
+  warnings. Role 10 validation passes twice with 71 inputs, 53 outputs, and 11
+  charts.
 
 No frozen research artifact, score, join, trade outcome, cost, candidate gate,
-registry event, raw dataset, final holdout, broker, order, paper, deployment, or
-live path changed. The only next action is Role 11 reporting/security re-audit
-of this active working-tree route and ownership evidence; see `NEXT_TASK.md` and
-`research/artifacts/macro_regime/role10/remediation/ROLE10_REMEDIATION_REPORT.md`.
-
-## Macro Regime Program — Independent Quantitative Audit (Role 11)
-
-Role 11 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` independently accepts
-the bounded quantitative conclusion `NO_ACCEPTABLE_STRATEGY_FOUND`; candidate
-remains `NONE`. Full requested-program status is
-`BLOCKED_IN_APP_ROUTE_INTEGRATION` because the directive's authenticated,
-authorized read-only Smart MarketScope page has no active route.
-
-- Independent code rehashed the Role 6-9 inventories, all 71 Role 10 upstream
-  hashes, all 53 Role 10 output hashes, and 2,236 observation-contributing raw
-  artifacts totaling 334,666,627 bytes.
-- It reproduced 10,273 observations, 9,676 UNKNOWN daily biases, 454 setups,
-  1,362 J0/J1/J2 FILTERED_UNKNOWN links, and zero macro-retained fills.
-- T0 independently remains 306 medium fills and -173.4578703725847R. All macro
-  expectancy, win-rate, fold-median, random-control, and stability evidence is
-  NOT_APPLICABLE at zero retention, not improved performance.
-- Critical vetoes are insufficient category/aligned-trade evidence and the
-  unresolved registry chronology. High limitations are unresolved NAS100
-  product/feed timezone, normalized-not-broker costs, and the inactive route.
-- The Role 10 offline package is accepted. The isolated React component remains
-  untouched and unrouted; authorization and negative-IDOR cannot pass without
-  an active resource route. `src/App.js` remains user-owned and was not staged.
-- No final holdout, future macro vintage, threshold/weight change, replacement
-  trade, broker, order, paper, deployment, or live path affected the result.
-
-No further strategy research is permitted on the exposed history. The only
-bounded next action is a separately authorized clean authenticated/authorized
-route integration and reporting-security re-audit; see `NEXT_TASK.md` and
+registry event, raw dataset, or exposed-history result changed. T0 remains 306
+medium fills and -173.4578703725847R; all macro variants retain zero fills and
+zero-retention statistics remain NOT_APPLICABLE. No further strategy research
+is permitted on the exposed history. Preserve this terminal state and see
+`NEXT_TASK.md` and
 `research/artifacts/macro_regime/role11/MACRO_REGIME_INDEPENDENT_AUDIT.md`.
 
-## Macro Regime Program — Reporting and Visualization (Role 10)
+## Macro Regime Program — Historical Pre-Remediation Role 10 Record
 
-Role 10 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete for the
-offline reporting surface with status
+At its initial pre-remediation completion, Role 10 of
+`SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` completed the offline reporting
+surface with historical status
 `PASS_OFFLINE_REPORTING_IN_APP_ROUTE_BLOCKED`. The economic decision remains
 `INSUFFICIENT_ALIGNED_TRADES`; candidate remains `NONE`.
 
