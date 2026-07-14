@@ -1,0 +1,68 @@
+{
+  "artifact_id": "MACRO-REGIME-ROLE11-INDEPENDENT-REPRODUCTION-001",
+  "candidate": "NONE",
+  "category_observation_counts": {
+    "GROWTH": 214,
+    "INFLATION": 489,
+    "LABOUR": 921,
+    "LIQUIDITY": 8543,
+    "MONETARY_POLICY": 106
+  },
+  "chronology": "REGISTRY_CHRONOLOGY_UNRESOLVED",
+  "counts": {
+    "bundle_states": 5111,
+    "category_states": 1840,
+    "charts": 11,
+    "daily_rows": 9676,
+    "indicator_states": 5216,
+    "observations": 10273,
+    "raw_artifacts": 2236,
+    "raw_bytes": 334666627,
+    "role10_output_hashes": 53,
+    "role10_source_hashes": 71,
+    "role9_metric_rows": 14553,
+    "role9_walk_forward_rows": 114,
+    "snapshots": 1718,
+    "technical_links": 1362,
+    "technical_setups": 454,
+    "unknown_daily_rows": 9676,
+    "upstream_hash_inventory_entries": {
+      "role6": 21,
+      "role7": 5,
+      "role8": 11,
+      "role9": 22
+    }
+  },
+  "decision": "NO_ACCEPTABLE_STRATEGY_FOUND",
+  "failure_codes": [
+    "INDEPENDENT_QUANT_AUDITOR_EVIDENCE_INSUFFICIENT",
+    "VETO_LOW_EVIDENCE",
+    "REGISTRY_CHRONOLOGY_UNRESOLVED",
+    "INSUFFICIENT_CATEGORY_COVERAGE",
+    "INSUFFICIENT_ALIGNED_TRADES",
+    "FAIL_CLOSED_DIRTY_FILE_OWNERSHIP"
+  ],
+  "full_program_status": "BLOCKED_IN_APP_ROUTE_INTEGRATION",
+  "macro_retained_fills": 0,
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "random_control_status": "NOT_APPLICABLE_ZERO_RETENTION",
+  "route": "BLOCKED_FAIL_CLOSED_DIRTY_FILE_OWNERSHIP",
+  "schema_version": "1.0.0",
+  "status": "PASS_NEGATIVE_RESULT_REPRODUCED",
+  "t0": {
+    "fills": 306,
+    "net_r": {
+      "NORMALIZED_HIGH_COST": "-203.4249441630429119971801230",
+      "NORMALIZED_LOW_COST": "-164.1786324250423398531950171",
+      "NORMALIZED_MEDIUM_COST": "-173.4578703725847018773361587"
+    },
+    "no_fills": 148,
+    "outcomes": {
+      "AMBIGUOUS_ADVERSE_FIRST": 6,
+      "LOSS_1R": 246,
+      "TIMEOUT": 2,
+      "WIN_2R": 52
+    },
+    "setups": 454
+  }
+}

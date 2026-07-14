@@ -1,0 +1,54 @@
+{
+  "artifact_id": "MACRO-REGIME-ROLE11-AUDIT-MANIFEST-001",
+  "candidate": "NONE",
+  "created_at_utc": "2026-07-14T08:00:00Z",
+  "decision": "NO_ACCEPTABLE_STRATEGY_FOUND",
+  "failure_codes": [
+    "INDEPENDENT_QUANT_AUDITOR_EVIDENCE_INSUFFICIENT",
+    "VETO_LOW_EVIDENCE",
+    "REGISTRY_CHRONOLOGY_UNRESOLVED",
+    "INSUFFICIENT_CATEGORY_COVERAGE",
+    "INSUFFICIENT_ALIGNED_TRADES",
+    "FAIL_CLOSED_DIRTY_FILE_OWNERSHIP"
+  ],
+  "final_holdout_accesses": 0,
+  "full_program_status": "BLOCKED_IN_APP_ROUTE_INTEGRATION",
+  "implementation_hashes": {
+    "research/src/smartmarketscope_quant/macro_regime/independent_audit.py": "ed94d5af6d5081da67aa0d7c558e4f8e54f8caba8b214d0671bb763eca2dfc97",
+    "research/tests/test_macro_regime_independent_audit.py": "3ca9f6738e9ab0beb6a2e92438319f007340bc0a1800cf8b3d9b38d76a09c72e"
+  },
+  "next_permitted_action": "Separately authorize and isolate a clean authenticated/authorized read-only route integration, pass route/auth/authorization/negative-IDOR/no-write/no-secret tests, then rerun Role 10/11 reporting-security validation only; no research tuning or live action",
+  "output_hashes": {
+    "research/artifacts/macro_regime/role11/MACRO_REGIME_COMPLETION_RESPONSE.md": "95c809f74cee5d7fb86514867a8f26361e5edfe20469501d78e3ab87061d1e38",
+    "research/artifacts/macro_regime/role11/MACRO_REGIME_INDEPENDENT_AUDIT.md": "cbac968a2607a449b501012ed1e38ea72cb5536113b96f968e355546c9f60991",
+    "research/artifacts/macro_regime/role11/ROLE11_REPRODUCTION_EVIDENCE.json": "535af7a016518efcb504b53d609683bfd0df97f2816a1188f2dd37fe03c29a57",
+    "research/artifacts/macro_regime/role11/ROLE11_TEST_RESULTS.json": "d692187fe43a69562fe3aa98dd106a40d9a12c5ec0aecb7ef717e3634af42792"
+  },
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "protected_data_accesses": 0,
+  "research_state_hashes": {
+    "CURRENT_STATE.md": "364f4792f2950dd646e12f84c0eaac974cf2a6272f2d921a7c5db2baf3d50c29",
+    "NEXT_TASK.md": "a51c43b7781d170a93653b1958c741ccdc16c928a88a4085d777430b8a63cdd0"
+  },
+  "schema_version": "1.0.0",
+  "status": "PASS_NEGATIVE_RESULT_REPRODUCED_WITH_IN_APP_COMPLETION_BLOCKER",
+  "upstream_verification": {
+    "raw_artifacts_rehashed": 2236,
+    "raw_bytes_rehashed": 334666627,
+    "role10_output_hashes": 53,
+    "role10_source_hashes": 71,
+    "role6_output_entries": 21,
+    "role7_output_entries": 5,
+    "role8_output_entries": 11,
+    "role9_output_entries": 22
+  },
+  "warnings": [
+    "TECHNICAL_SOURCE_TIMEZONE_UNRESOLVED",
+    "NAS100_SOURCE_LABEL_NOT_BROKER_CONFIRMED",
+    "NORMALIZED_COSTS_NOT_BROKER_FACT",
+    "ROLE5_H41_RELEASE_LEVEL_BUNDLE_FIELD_CONFLICT",
+    "ROLE8_DERIVED_H4_LINEAGE_ID",
+    "HISTORICAL_PERIOD_EXPOSURE_UNKNOWN",
+    "AUTHORIZATION_AND_NEGATIVE_IDOR_NOT_RUN_NO_ACTIVE_ROUTE"
+  ]
+}

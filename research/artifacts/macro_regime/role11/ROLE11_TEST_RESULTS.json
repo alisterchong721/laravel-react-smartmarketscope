@@ -1,0 +1,88 @@
+{
+  "artifact_id": "MACRO-REGIME-ROLE11-TEST-EVIDENCE-001",
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m unittest research.tests.test_macro_regime_independent_audit -v",
+      "duration_seconds": 0.935,
+      "exit_code": 0,
+      "failed": 0,
+      "passed": 5
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m unittest discover -s research/tests -p 'test_*.py' -v",
+      "duration_seconds": 45.501,
+      "exit_code": 0,
+      "failed": 0,
+      "passed": 280
+    },
+    {
+      "command": "CI=true npm test -- --runInBand",
+      "duration_seconds": 0.882,
+      "exit_code": 0,
+      "failed": 0,
+      "passed": 7,
+      "test_suites": 2
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "result": "PASS_WITH_PRE_EXISTING_WARNINGS",
+      "warnings": [
+        "STALE_BROWSER_DATABASES",
+        "THIRD_PARTY_SOURCE_MAPS_MISSING",
+        "PRE_EXISTING_UNRELATED_LINT_WARNINGS",
+        "BUNDLE_SIZE_WARNING"
+      ]
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m smartmarketscope_quant.macro_regime.reporting --validate-only",
+      "exit_code": 0,
+      "outputs_verified": 53,
+      "status": "PASS",
+      "upstream_hashes_verified": 71
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m smartmarketscope_quant.macro_regime.independent_audit",
+      "exit_code": 0,
+      "raw_artifacts_rehashed": 2236,
+      "raw_bytes_rehashed": 334666627,
+      "status": "PASS_NEGATIVE_RESULT_REPRODUCED"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m py_compile research/src/smartmarketscope_quant/macro_regime/independent_audit.py research/tests/test_macro_regime_independent_audit.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "created_at_utc": "2026-07-14T08:00:00Z",
+  "failed_first_evidence": [
+    {
+      "cause": "Role 10 source hash inventory is a metadata envelope with hashes under the sources field.",
+      "failure": "FileNotFoundError: artifact_id",
+      "resolution": "Read the declared sources map explicitly; no upstream artifact changed."
+    },
+    {
+      "cause": "Parquet persisted boolean evidence as canonical strings and the first audit cast non-empty 'false' strings to true.",
+      "failure": "AUDIT_FUTURE_STATE",
+      "resolution": "Use an explicit true-token parser for string/bool evidence; no link changed."
+    },
+    {
+      "cause": "The independent Decimal sum retains more precision than the frozen presentation totals.",
+      "failure": "AUDIT_T0_TOTALS",
+      "resolution": "Compare independently summed totals at 1e-12R tolerance to the published full-precision values; no result changed."
+    }
+  ],
+  "schema_version": "1.0.0",
+  "security": {
+    "authenticated_route": "BLOCKED_FAIL_CLOSED_DIRTY_FILE_OWNERSHIP",
+    "authorization": "NOT_RUN_NO_ACTIVE_ROUTE",
+    "negative_idor": "NOT_APPLICABLE_NO_ACTIVE_RESOURCE_ROUTE",
+    "offline_external_fetches": 0,
+    "sensitive_configuration": "ABSENT_IN_ROLE10_SURFACE",
+    "write_or_live_surface": "ABSENT"
+  },
+  "status": "VERIFIED_WITH_IN_APP_COMPLETION_BLOCKER"
+}

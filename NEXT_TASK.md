@@ -1,5 +1,34 @@
 # Next Task
 
+## Macro Regime Program — Bounded In-App Reporting Completion Blocker
+
+Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
+
+Role 11 is terminal for quantitative research. Its decision is
+`NO_ACCEPTABLE_STRATEGY_FOUND`, candidate `NONE`; no further macro, technical,
+threshold, weight, join, or PnL search is permitted on the exposed history.
+
+Full requested-program status remains `BLOCKED_IN_APP_ROUTE_INTEGRATION`.
+The directive requires an authenticated and authorized read-only Smart
+MarketScope page, but no route is active because `src/App.js` contains a large
+pre-existing user-owned uncommitted rewrite. Role 10 correctly failed closed,
+and Role 11 did not alter or stage that file.
+
+The exact next permitted action requires separate authorization and a clean file
+ownership boundary:
+
+1. Preserve the user's `src/App.js` changes or place them on an explicit user
+   commit/branch before integration.
+2. Add only the minimal authenticated and policy-authorized read-only route for
+   the existing isolated macro-regime component.
+3. Add and pass route authentication, authorization, negative-IDOR, no-write,
+   no-unrestricted-source-URL, and no-secret tests.
+4. Rerun Role 10 and Role 11 reporting/security validation only.
+
+Do not change any frozen research input/output, access a protected/final holdout,
+start a new strategy cycle, connect a broker, place an order, deploy, or add
+paper/live controls.
+
 ## Macro Regime Program — Role 11 Independent Quantitative Audit
 
 Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
