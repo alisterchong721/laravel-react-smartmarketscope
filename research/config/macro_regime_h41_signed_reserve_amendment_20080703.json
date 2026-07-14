@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-H41-SIGNED-RESERVE-AMENDMENT-20080703-001",
+  "created_at_utc": "2026-07-14T00:16:55Z",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "parent_parser_amendment_sha256": "97d8dd5da0074edf9bc5cd2ce97087333b5691050b4750231826a6994e5d2dba",
+  "parent_stopped_checkpoint_sha256": "8567210ce13fb1e93043c5e6da04ec16b8225c91ae1e40e53aa105ecf029557b",
+  "parent_collector_code_sha256": "6913e799ec66f371f608fe16b10946a954a262b9b5b60e11a7bd029f05990e57",
+  "amended_collector_code_sha256": "149f5a4b8b804561a9b0b4454c17674cb74a87acbbeea7b6684a1296f3783c33",
+  "parent_parser_code_sha256": "a2f1e1808e4627f5c6a0316e7e69ace56e7c4b936cc5cef89a38d36848b8b194",
+  "amended_parser_code_sha256": "44ca70b79bf48430b1ed93f648f35adaa70390132c34ab280b9406d640c11c19",
+  "parser_test_code_sha256": "486d56e2c77d248095542f7b275cfb52b15beb11ef5ebeafff948a019997c937",
+  "source_identity": "20080703",
+  "source_run_id": "role5-h41-full-0298-20080703-a1",
+  "attempt_sha256": "61040647b7df54e2c7a6e349a42328473b0312c7b8994cc4ff92a46bfbe5eb71",
+  "body_sha256": "4e4c3227346b11fb75c103ec5edb2c19e26a92a27cec0f1353c2a8468e928fbc",
+  "release_date": "2008-07-03",
+  "reference_date": "2008-07-02",
+  "parsed_values_millions": {
+    "total_assets": 905739,
+    "reserve_balances": -6962,
+    "treasury_general_account": 4139
+  },
+  "accounting_identity": {
+    "supplying": 923755,
+    "absorbing": 930717,
+    "operation": "SUPPLYING_MINUS_ABSORBING_EQUALS_RESERVE_BALANCE",
+    "result": -6962
+  },
+  "classification": "VALID_SIGNED_LEGACY_RESERVE_BALANCE_ACCOUNTING_IDENTITY",
+  "parser_change": "ALLOW_SIGNED_LEGACY_RESERVE_BALANCE_WITH_ABSOLUTE_MAGNITUDE_BOUNDED_BY_TOTAL_ASSETS",
+  "cached_only_reparse": true,
+  "next_network_request_ordinal_unchanged": 299,
+  "network_request_consumed_by_amendment": false,
+  "identity_generalization": false,
+  "hard_total_h41_request_ceiling_unchanged": 1260,
+  "scope_boundary": "CACHED_SEMANTIC_REPAIR_THEN_RESUME_RAW_H41_NO_SCORING_NO_JOIN_NO_PNL"
+}

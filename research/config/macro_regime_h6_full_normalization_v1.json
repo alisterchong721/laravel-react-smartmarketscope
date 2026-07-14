@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-H6-FULL-NORMALIZATION-CONTRACT-001",
+  "created_at_utc": "2026-07-13T09:22:00Z",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "parent_full_traversal_config_sha256": "59596c1b304f93d9a29d3c00a6b81f49ab2b68eb4e4d60d7b6d7b87f7a52e098",
+  "terminal_raw_checkpoint_sha256": "015f0274c0e98653bbbe42860f97bc697f38710e7cd54b2269294719dc9489ea",
+  "terminal_raw_checkpoint_status_required": "COMPLETE_RAW_SEQUENCE",
+  "expected_release_identity_count": 1167,
+  "requested_reference_date_start": "2000-01-01",
+  "availability_cutoff_date": "2026-06-28",
+  "series": "M2",
+  "unit": "BILLIONS_OF_DOLLARS",
+  "frequency": "MONTHLY",
+  "seasonal_adjustment": "SEASONALLY_ADJUSTED",
+  "accepted_parser_formats": [
+    "LEGACY_PRE",
+    "MODERN_HTML_TABLE"
+  ],
+  "accepted_body_policy": {
+    "normal_identity": "THE_SINGLE_HASH_VERIFIED_SUCCESS_BODY",
+    "pilot_cache_identity": "THE_FROZEN_HASH_VERIFIED_PILOT_BODY",
+    "20050305": "ROOT_HTML_BODY_WITH_CANONICAL_DECLARED_DATE_2005-03-03_AFTER_EXACT_ALIAS_RECONCILIATION",
+    "20130405": "CANONICAL_20130404_BODY_AFTER_EXACT_OFFICIAL_YEAR_INDEX_CORRECTION",
+    "20161118": "ROOT_HTML_BODY_WITH_CANONICAL_DECLARED_DATE_2016-11-17_AFTER_EXACT_PDF_CORROBORATION",
+    "20171123": "ROOT_HTML_BODY_WITH_CANONICAL_DECLARED_DATE_2017-11-24_AFTER_EXACT_HOLIDAY_AND_PDF_CORROBORATION"
+  },
+  "canonical_availability_overrides": {
+    "20050305": {
+      "availability_date": "2005-03-03",
+      "classification": "OFFICIAL_ARCHIVE_ALIAS_RECONCILED"
+    },
+    "20130405": {
+      "availability_date": "2013-04-04",
+      "classification": "OFFICIAL_RELEASEDATES_JSON_IDENTITY_CORRECTED_BY_OFFICIAL_YEAR_INDEX"
+    },
+    "20161118": {
+      "availability_date": "2016-11-17",
+      "classification": "OFFICIAL_ARCHIVE_DIRECTORY_DATE_BODY_DATE_DIVERGENCE"
+    },
+    "20171123": {
+      "availability_date": "2017-11-24",
+      "classification": "OFFICIAL_FEDERAL_HOLIDAY_RELEASE_SHIFT_DIRECTORY_DATE_DIVERGENCE"
+    }
+  },
+  "chronology_policy": {
+    "primary_order": "CANONICAL_AVAILABILITY_DATE_ASCENDING",
+    "tie_breaker": "SOURCE_INDEX_IDENTITY_ASCENDING",
+    "canonical_availability_dates_must_be_strictly_increasing": true,
+    "canonical_availability_date_must_equal_accepted_body_declared_release_date": true,
+    "post_cutoff_releases_forbidden": true
+  },
+  "measurement_version_policy": {
+    "numeric_comparison": "EXACT_DECIMAL_VALUE_AFTER_COMMA_REMOVAL",
+    "first_value_for_reference_date": "FIRST_PRINT",
+    "later_changed_value_for_reference_date": "REVISION",
+    "later_unchanged_value_for_reference_date": "UNCHANGED_SNAPSHOT_NO_NEW_VERSION",
+    "source_identity_repair_is_measurement_revision": false,
+    "source_identity_repair_has_separate_lineage_classification": true,
+    "every_parsed_release_snapshot_is_preserved": true,
+    "supersedes_links_required_for_measurement_revisions": true,
+    "version_numbers_start_at_one": true,
+    "first_appearance_must_be_newest_reference_month_in_release": true,
+    "monthly_reference_dates_must_be_contiguous_after_first_appearance": true
+  },
+  "availability_policy": {
+    "availability_date": "CANONICAL_DATED_RELEASE_DATE",
+    "effective_at_rule": "CANONICAL_RELEASE_DATE_START_AMERICA_NEW_YORK_PLUS_36_HOURS",
+    "effective_at_utc_required": true,
+    "effective_at_asia_kuala_lumpur_required": true
+  },
+  "point_in_time_policy": {
+    "eligible_classification": "PIT_CERTIFIED_OFFICIAL_DATED_RELEASE_CHAIN",
+    "eligible_protocol_status": "ELIGIBLE_COMPLETE_H6_REVISION_CHAIN",
+    "fail_closed_on_any_missing_identity_or_hash_mismatch": true,
+    "fail_closed_on_any_parser_failure_or_duplicate_reference_within_release": true,
+    "fail_closed_on_non_monotone_chronology_or_broken_supersedes_chain": true,
+    "h41_started": false,
+    "role6_scoring_started": false
+  },
+  "method_break_policy": {
+    "outcome_aware_detection_forbidden": true,
+    "preserve_release_body_notes_and_parser_format_transitions": true,
+    "do_not_infer_a_definition_break_from_a_value_change_alone": true
+  },
+  "raw_evidence_policy": {
+    "preserve_all_1168_full_attempt_records_and_bodies": true,
+    "preserve_all_7_reused_pilot_bodies": true,
+    "preserve_failed_attempts_and_superseded_validator_evidence": true,
+    "private_raw_paths_exported_as_relative_paths_only": true
+  },
+  "experiment_trials": 0,
+  "final_holdout_accesses": 0,
+  "scope_boundary": "NORMALIZE_AND_VALIDATE_H6_ONLY_NO_H41_NO_SCORING_NO_TECHNICAL_JOIN_NO_PNL"
+}

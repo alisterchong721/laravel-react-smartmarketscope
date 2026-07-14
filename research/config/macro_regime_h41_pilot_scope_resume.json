@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-H41-PILOT-SCOPE-RESUME-001",
+  "created_at_utc": "2026-07-14T00:15:00Z",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "parent_scope_reconciliation_sha256": "52ae787ba4aeeced674dc915b12927d942bc062757b631d6714b061b7c430bea",
+  "initial_collector_code_sha256": "e7479abfc4898b6fce6fecbb32315e62729e68b9ebb0bca767f4bd6d80b1a280",
+  "resume_code_sha256": "4f82341f22718bd50e4889e847306bba478bbcda6848bd4119780fb5ddb6aaaa",
+  "required_parent_status": "PILOT_RAW_COMPLETE",
+  "required_parent_request_count": 7,
+  "next_request_ordinal": 8,
+  "next_request_url": "https://www.federalreserve.gov/releases/h41/20021219/",
+  "required_release_date": "December 19, 2002",
+  "required_reference_date": "2002-12-18",
+  "hard_request_ceiling_unchanged": 15,
+  "scope_boundary": "ONE_EXACT_SCOPE_CORRECTION_REQUEST_NO_ELIGIBILITY_NO_SCORING_NO_JOIN_NO_PNL"
+}

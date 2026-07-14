@@ -1,0 +1,1 @@
+{"dead_letter":[{"error":"HTTP_404_ROBOTS_METADATA","ordinal":1,"retryable":false}],"full_traversal_started":false,"h41_started":false,"last_release_date":"2026-06-23","last_request_ordinal":10,"resume_policy":"New append-only source run; verify cached raw hashes; traverse remaining dated identities in chronological order","status":"STOPPED_AT_FROZEN_PILOT_CEILING"}

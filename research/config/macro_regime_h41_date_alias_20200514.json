@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-H41-DATE-ALIAS-20200514-001",
+  "created_at_utc": "2026-07-14T00:42:00Z",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "parent_date_alias_sha256": "108f267e848f430cd56cb05ce900327580f74153498f230f030e031fc16c86dc",
+  "parent_stopped_checkpoint_sha256": "fa0b4cc7dda5355f28e4f358182335dfe864e79c7f5062b28de529027445645b",
+  "parent_collector_code_sha256": "e266f4cfaf2d779e82650324326bbee19db4c128aef1cd3ce2083622d8e79562",
+  "amended_collector_code_sha256": "42c55efd240b7aee7084a9f1671f4de211d89ffd02ff08da65781e48fd0a4d55",
+  "parent_parser_code_sha256": "44ca70b79bf48430b1ed93f648f35adaa70390132c34ab280b9406d640c11c19",
+  "amended_parser_code_sha256": "44ca70b79bf48430b1ed93f648f35adaa70390132c34ab280b9406d640c11c19",
+  "source_identity": "20200514",
+  "source_run_id": "role5-h41-full-0914-20200514-a1",
+  "attempt_sha256": "34e9bf39d36662efee493d4c3eeac60373ef3b4e678e1388d2e758b75806f7d6",
+  "body_sha256": "6f1ee1dd6c076974cde0245ff302ca81fe28adadf4ede45ce0839b99a10328ad",
+  "canonical_release_date": "2020-05-15",
+  "reference_date": "2020-05-13",
+  "parsed_values_millions": {
+    "total_assets": 6934227,
+    "reserve_balances": 3263431,
+    "treasury_general_account": 1138172
+  },
+  "classification": "OFFICIAL_ARCHIVE_DIRECTORY_DATE_BODY_DATE_DIVERGENCE",
+  "cached_only_reconciliation": true,
+  "availability_date_for_j0": "2020-05-15",
+  "next_network_request_ordinal_unchanged": 915,
+  "network_request_consumed_by_amendment": false,
+  "applicability": "EXACT_ONLY_H41_20200514_NO_PATTERN_OR_GENERALIZATION",
+  "hard_total_h41_request_ceiling_unchanged": 1260,
+  "scope_boundary": "CACHED_DATE_IDENTITY_REPAIR_THEN_RESUME_RAW_H41_NO_SCORING_NO_JOIN_NO_PNL"
+}

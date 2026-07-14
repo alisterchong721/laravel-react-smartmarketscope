@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "ROLE5-LARAVEL-CHANGE-MANIFEST-001",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "target_driver": "MariaDB 10.4.28 from XAMPP executable metadata",
+  "files": {
+    "database/migrations/2026_07_13_090000_create_macro_regime_research_tables.php": "c49be1dd6c9d140a57362dce9718bedb91dcc73d339543fce919c66d7d379080",
+    "database/schema/macro_regime_schema_v1.mariadb.sql": "8bee6114ea6546889d9e8e2286ff2b4edda174d3149b43e079a9ced2919687b1",
+    "tests/Feature/MacroRegimeMigrationTest.php": "671862bfd029cb35dba83c9ab78b4bfdfa0a217079668e3715d2885772f51526"
+  },
+  "contract": {
+    "table_count": 11,
+    "trigger_count": 28,
+    "append_only_trigger_count": 22,
+    "lineage_trigger_count": 6,
+    "empty_only_rollback": true,
+    "public_http_write_routes_added": 0
+  },
+  "latest_default_driver_test": {
+    "command": "/Applications/XAMPP/xamppfiles/bin/php artisan test",
+    "exit_code": 0,
+    "passed": 67,
+    "skipped_target_driver_only": 3,
+    "assertions": 263
+  },
+  "target_driver_evidence": {
+    "status": "PASS_RECORDED_DURING_ROLE5_PREFLIGHT",
+    "tests": 70,
+    "trigger_assertions_executed": true,
+    "database": "DISPOSABLE_ONLY",
+    "user_or_production_database_inspected": false
+  },
+  "rollback": "Verify these three hashes, require all 11 macro tables empty, then run the guarded down migration and remove only these three files. Populated schemas require a versioned forward fix.",
+  "status": "PASS_SCOPED_SIBLING_PATCH_HASH_LOCKED"
+}

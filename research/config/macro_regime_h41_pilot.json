@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-H41-DISCOVERY-PILOT-001",
+  "created_at_utc": "2026-07-14T00:00:00Z",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "decision": "BOUNDED_H41_OFFICIAL_ARCHIVE_DISCOVERY_PILOT",
+  "parent_h6_normalized_manifest_sha256": "31b25f4db39c2ca319cbbc7c5dabbd3b27eabf20b68a2c59b37aad1f7555a029",
+  "required_parent_h6_decision": "H6_FULL_POINT_IN_TIME_REVISION_CHAIN_VALIDATED",
+  "approved_route_ids": [
+    "FED_H41_ARCHIVE_TOTAL_ASSETS",
+    "FED_H41_ARCHIVE_RESERVE_BALANCES",
+    "FED_H41_ARCHIVE_TGA"
+  ],
+  "official_scheme": "https",
+  "official_host": "www.federalreserve.gov",
+  "allowed_paths": [
+    "/releases/h41/default.htm",
+    "/releases/h41/releaseDates.json",
+    "/releases/h41/YYYYMMDD/",
+    "/releases/h41/YYYYMMDD/h41.txt",
+    "/releases/h41/YYYYMMDD/h41.htm"
+  ],
+  "requested_reference_date_start": "2002-12-18",
+  "availability_cutoff_date": "2026-06-28",
+  "target_concepts": [
+    {
+      "internal_indicator_id": "US_FED_TOTAL_ASSETS_WEDNESDAY",
+      "source_series_id": "H41/H41/RESPPA_N.WW / WALCL",
+      "unit": "MILLIONS_OF_DOLLARS",
+      "frequency": "WEEKLY_WEDNESDAY_LEVEL"
+    },
+    {
+      "internal_indicator_id": "US_RESERVE_BALANCES_WITH_FEDERAL_RESERVE_BANKS",
+      "source_series_id": "WRESBAL / H41_TABLE_1_RESERVE_BALANCES",
+      "unit": "MILLIONS_OR_BILLIONS_BY_RELEASE_VERSION",
+      "frequency": "WEEKLY"
+    },
+    {
+      "internal_indicator_id": "US_TREASURY_GENERAL_ACCOUNT_BALANCE",
+      "source_series_id": "WTREGEN / H41_TREASURY_GENERAL_ACCOUNT_ROW",
+      "unit": "MILLIONS_OF_DOLLARS",
+      "frequency": "WEEKLY_WEDNESDAY_LEVEL"
+    }
+  ],
+  "request_ceiling": 15,
+  "concurrency": 1,
+  "minimum_pacing_seconds": 1.0,
+  "retry_policy": {
+    "retryable_http_statuses": [429, 500, 502, 503, 504],
+    "maximum_attempts_per_url": 2,
+    "fallback_backoff_seconds": 5
+  },
+  "stop_conditions": [
+    "HTTP_403",
+    "CAPTCHA",
+    "EXPLICIT_AUTOMATED_ACCESS_BLOCK",
+    "REDIRECT_OUTSIDE_FROZEN_HOST",
+    "REQUEST_CEILING_REACHED",
+    "UNRESOLVED_SOURCE_IDENTITY",
+    "UNRESOLVED_UNIT_OR_CONCEPT"
+  ],
+  "pilot_sampling_policy": {
+    "first_requests": [
+      "ARCHIVE_INDEX",
+      "RELEASE_DATE_INDEX"
+    ],
+    "dated_release_eras": [
+      "EARLIEST_AVAILABLE",
+      "GLOBAL_FINANCIAL_CRISIS",
+      "POST_2013_FORMAT",
+      "PANDEMIC_BALANCE_SHEET",
+      "LATEST_PRE_CUTOFF"
+    ],
+    "pilot_rows_are_eligible": false,
+    "full_chain_required_before_eligibility": true
+  },
+  "storage_policy": {
+    "private_raw_root": "/Applications/XAMPP/xamppfiles/htdocs/laravel-smartmarketscope/storage/app/private/macro_raw/provider=federal_reserve/series=H41",
+    "pilot_namespace": "pilot=H41_DISCOVERY_V1",
+    "atomic_write_hash_rename": true,
+    "preserve_safe_headers_only": true,
+    "preserve_failed_attempts": true,
+    "checkpoint_every_request": true
+  },
+  "scope_boundary": "H41_DISCOVERY_AND_PARSE_FEASIBILITY_ONLY_NO_ELIGIBLE_OBSERVATIONS_NO_SCORING_NO_JOIN_NO_PNL",
+  "experiment_trials": 0,
+  "final_holdout_accesses": 0
+}

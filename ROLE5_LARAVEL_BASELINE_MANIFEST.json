@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "ROLE5-LARAVEL-BASELINE-001",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "created_at_utc": "2026-07-13T08:13:43Z",
+  "react_repository": {
+    "root": "/Applications/XAMPP/xamppfiles/htdocs/react-smart_marketscope/react-smartmarketscope",
+    "branch": "codex/public-macro-bias-001",
+    "starting_commit": "f96bbc0690ee359d8697c58559de419f59112da0",
+    "worktree_state": "MATERIALLY_DIRTY_PRE_EXISTING_USER_CHANGES_PRESERVED"
+  },
+  "laravel_repository": {
+    "root": "/Applications/XAMPP/xamppfiles/htdocs/laravel-smartmarketscope",
+    "version_control": "NONE",
+    "framework": "Laravel 12.39.0",
+    "php": "8.2.4",
+    "target_driver": "MariaDB 10.4.28 from XAMPP executable metadata",
+    "user_or_production_database_inspected": false
+  },
+  "reviewed_existing_files": {
+    "composer.json": "11633119b6a3e550555601f10f392e85d4eb316ecdd20cb2412bdb9b7620b92a",
+    "composer.lock": "8837d67b8b9cfddfd337f7a0f9eab2754708778cc70a8ba6d586e035710e9002",
+    "artisan": "f91a517c0c5d3a904c3f390933964a5e08ec1fc68146882730daac4aca4ffcec",
+    "config/database.php": "ad95fa3896a34f8e8f3ff8f0857ba1e64e56828d42cde8d8819a3c1fa34bdae6",
+    "routes/api.php": "0760fefe2788d60c151b5031c4185c371c5b8481e432d17bd3a41730b15e0ff9",
+    "routes/console.php": "4cf596b37781570fa502c737f318fbeb709bb48225b278bd00ea79f3a1d79a70",
+    "database/migrations/2026_07_13_010000_create_research_news_lineage_tables.php": "c44facdf8dac093e7c2c590f7bd3aafdfcb13d2e619a97d9b098251c2026ffbe",
+    "app/Http/Service/ResearchNewsLineageService.php": "6a26e1c78f029e77bc28a5a5df05215fcd1a00f8538585315f361fa8fd4d1567",
+    "tests/Feature/ResearchNewsLineageTest.php": "a90aba776915c30f132978bce4a57cf10425ac9e2c212ac62da2914faab60e8f"
+  },
+  "planned_laravel_files": {
+    "database/migrations/2026_07_13_090000_create_macro_regime_research_tables.php": "ABSENT_AT_BASELINE",
+    "database/schema/macro_regime_schema_v1.mariadb.sql": "ABSENT_AT_BASELINE",
+    "tests/Feature/MacroRegimeMigrationTest.php": "ABSENT_AT_BASELINE"
+  },
+  "baseline_test": {
+    "command": "/Applications/XAMPP/xamppfiles/bin/php artisan test",
+    "working_directory": "/Applications/XAMPP/xamppfiles/htdocs/laravel-smartmarketscope",
+    "exit_code": 0,
+    "tests": 65,
+    "assertions": 257,
+    "duration_seconds": 1.23
+  },
+  "rollback": {
+    "precondition": "Rehash every reviewed existing file and prove it still matches this manifest.",
+    "new_file_restore": "Delete only the three planned Laravel files after verifying each post-change SHA-256 against ROLE5_LARAVEL_CHANGE_MANIFEST.json.",
+    "database_restore": "The down migration may run only when every macro table is empty; otherwise destructive rollback is prohibited and a versioned forward-fix/copy migration is required.",
+    "unrelated_files": "Never modify, delete, reset, or attribute any other sibling file to Role 5."
+  },
+  "forward_fix": "If any populated macro schema defect is found, quiesce Role 5 writers, export and hash all rows/raw bytes, append a replacement schema version, copy-verify-switch readers, and retain the old schema read-only.",
+  "status": "BASELINE_ESTABLISHED_BEFORE_ANY_LARAVEL_EDIT"
+}

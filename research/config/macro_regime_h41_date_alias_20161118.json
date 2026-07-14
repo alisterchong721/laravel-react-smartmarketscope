@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-H41-DATE-ALIAS-20161118-001",
+  "created_at_utc": "2026-07-14T00:28:00Z",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "parent_signed_reserve_amendment_sha256": "509f73210615d5345b83beaa6e8d4f9fba694c90677862eec30aaa3a5dfb92ee",
+  "parent_stopped_checkpoint_sha256": "fee31a021d609d56b6e96377bc3f5e80a703abb2e7d53a070460ab89f216010b",
+  "parent_collector_code_sha256": "149f5a4b8b804561a9b0b4454c17674cb74a87acbbeea7b6684a1296f3783c33",
+  "amended_collector_code_sha256": "9c06c48bf44e4f870d8ca7796293d7becee4184ff768314ea0041288fe11b35b",
+  "parent_parser_code_sha256": "44ca70b79bf48430b1ed93f648f35adaa70390132c34ab280b9406d640c11c19",
+  "amended_parser_code_sha256": "44ca70b79bf48430b1ed93f648f35adaa70390132c34ab280b9406d640c11c19",
+  "source_identity": "20161118",
+  "source_run_id": "role5-h41-full-0733-20161118-a1",
+  "attempt_sha256": "5d3a94b6e3ee931473c418edb6c09b3f5bb363c85a9006382cb1978d16451e13",
+  "body_sha256": "efacb2cd307ebee75ef8cb5e00dbcd410e708f9bd0a429a0c923781560ed33a6",
+  "canonical_release_date": "2016-11-17",
+  "reference_date": "2016-11-16",
+  "parsed_values_millions": {
+    "total_assets": 4453633,
+    "reserve_balances": 2177585,
+    "treasury_general_account": 375908
+  },
+  "classification": "OFFICIAL_ARCHIVE_DIRECTORY_DATE_BODY_DATE_DIVERGENCE",
+  "cross_series_corroboration": {
+    "series": "H6",
+    "same_source_identity": "20161118",
+    "same_canonical_release_date": "2016-11-17",
+    "pdf_corroboration_config_sha256": "fdb90d5970cb03851a1288a482f27c9d11e0a4b545f4b7513cf8cea6027b13b5",
+    "cached_pdf_validator_amendment_sha256": "85704a6315a574d08a33855f6c81a018f4e65f54b5a06c31a3adbf3f73fc5c18"
+  },
+  "cached_only_reconciliation": true,
+  "availability_date_for_j0": "2016-11-17",
+  "next_network_request_ordinal_unchanged": 734,
+  "network_request_consumed_by_amendment": false,
+  "applicability": "EXACT_ONLY_H41_20161118_NO_PATTERN_OR_GENERALIZATION",
+  "hard_total_h41_request_ceiling_unchanged": 1260,
+  "scope_boundary": "CACHED_DATE_IDENTITY_REPAIR_THEN_RESUME_RAW_H41_NO_SCORING_NO_JOIN_NO_PNL"
+}

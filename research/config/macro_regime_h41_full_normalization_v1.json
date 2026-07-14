@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-H41-FULL-NORMALIZATION-V1",
+  "created_at_utc": "2026-07-14T00:58:00Z",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "parent_full_traversal_config_sha256": "4d2ec9f009c61efa8bdb74acec7611f77e7f57bef9271be39f5ee2221d51a8b8",
+  "terminal_raw_checkpoint_sha256": "06daaf777e29fd9e46bc20a26cb9fa6d492acd9b1df2403a73076402f158abcf",
+  "terminal_raw_checkpoint_status_required": "COMPLETE_RAW_SEQUENCE",
+  "expected_release_identity_count": 1228,
+  "expected_observation_count": 3684,
+  "first_reference_date": "2002-12-18",
+  "last_reference_date": "2026-06-24",
+  "availability_cutoff_date": "2026-06-28",
+  "availability_rule": "J0_CONSERVATIVE_36H_FROM_CANONICAL_DATED_RELEASE_DATE_START_AMERICA_NEW_YORK",
+  "canonical_availability_overrides": {
+    "20050305": {"availability_date": "2005-03-03", "classification": "OFFICIAL_ARCHIVE_ALIAS_RECONCILED"},
+    "20161118": {"availability_date": "2016-11-17", "classification": "OFFICIAL_ARCHIVE_DIRECTORY_DATE_BODY_DATE_DIVERGENCE"},
+    "20191128": {"availability_date": "2019-11-29", "classification": "OFFICIAL_FEDERAL_HOLIDAY_RELEASE_SHIFT_DIRECTORY_DATE_DIVERGENCE"},
+    "20200514": {"availability_date": "2020-05-15", "classification": "OFFICIAL_ARCHIVE_DIRECTORY_DATE_BODY_DATE_DIVERGENCE"}
+  },
+  "semantic_exception": {
+    "20080703": "VALID_SIGNED_LEGACY_RESERVE_BALANCE_ACCOUNTING_IDENTITY"
+  },
+  "series": [
+    {"source_series_id": "H41/TOTAL_ASSETS", "internal_indicator_id": "US_FED_TOTAL_ASSETS", "field": "total_assets_millions", "unit": "MILLIONS_OF_DOLLARS"},
+    {"source_series_id": "H41/RESERVE_BALANCES", "internal_indicator_id": "US_FED_RESERVE_BALANCES", "field": "reserve_balances_millions", "unit": "MILLIONS_OF_DOLLARS"},
+    {"source_series_id": "H41/TGA", "internal_indicator_id": "US_TREASURY_GENERAL_ACCOUNT", "field": "treasury_general_account_millions", "unit": "MILLIONS_OF_DOLLARS"}
+  ],
+  "accepted_parser_formats": ["LEGACY_PRE", "MODERN_HTML_TABLE"],
+  "frequency": "WEEKLY_AS_PUBLISHED_REFERENCE_WEDNESDAY",
+  "seasonal_adjustment": "NOT_SEASONALLY_ADJUSTED",
+  "category": "LIQUIDITY",
+  "release_bundle": "FED_BALANCE_SHEET_BUNDLE",
+  "negative_reserve_values_allowed_only_when_source_exact_and_magnitude_bounded": true,
+  "no_scoring": true,
+  "no_technical_join": true,
+  "no_pnl_inspection": true
+}

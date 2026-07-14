@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-H41-DATE-ALIAS-20191128-001",
+  "created_at_utc": "2026-07-14T00:36:00Z",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "parent_date_alias_sha256": "c35b7aacc85f478dfbe4299a9d838297aa6c91b2e52f32ccb7e65bfc3464bac8",
+  "parent_stopped_checkpoint_sha256": "be8af88ff02fd8087e0c1b6193652b4062164d10e04723e11954b940c944687e",
+  "parent_collector_code_sha256": "9c06c48bf44e4f870d8ca7796293d7becee4184ff768314ea0041288fe11b35b",
+  "amended_collector_code_sha256": "e266f4cfaf2d779e82650324326bbee19db4c128aef1cd3ce2083622d8e79562",
+  "parent_parser_code_sha256": "44ca70b79bf48430b1ed93f648f35adaa70390132c34ab280b9406d640c11c19",
+  "amended_parser_code_sha256": "44ca70b79bf48430b1ed93f648f35adaa70390132c34ab280b9406d640c11c19",
+  "source_identity": "20191128",
+  "source_run_id": "role5-h41-full-0891-20191128-a1",
+  "attempt_sha256": "a1bacc82db1dc602a26c26bafbcb8ee65a32eabd5c086ce03d7fbb812271c444",
+  "body_sha256": "e1e57d37176d65bd982843294e4e68213b976491c0eaac063418391b8383e184",
+  "canonical_release_date": "2019-11-29",
+  "reference_date": "2019-11-27",
+  "parsed_values_millions": {
+    "total_assets": 4052875,
+    "reserve_balances": 1559719,
+    "treasury_general_account": 358896
+  },
+  "classification": "OFFICIAL_FEDERAL_HOLIDAY_RELEASE_SHIFT_DIRECTORY_DATE_DIVERGENCE",
+  "holiday_evidence": {
+    "directory_date": "2019-11-28",
+    "holiday": "THANKSGIVING_DAY",
+    "canonical_next_weekday": "2019-11-29",
+    "official_body_title_and_release_date_agree": true,
+    "official_body_reference_date": "2019-11-27"
+  },
+  "cached_only_reconciliation": true,
+  "availability_date_for_j0": "2019-11-29",
+  "next_network_request_ordinal_unchanged": 892,
+  "network_request_consumed_by_amendment": false,
+  "applicability": "EXACT_ONLY_H41_20191128_NO_GENERAL_HOLIDAY_RULE",
+  "hard_total_h41_request_ceiling_unchanged": 1260,
+  "scope_boundary": "CACHED_DATE_IDENTITY_REPAIR_THEN_RESUME_RAW_H41_NO_SCORING_NO_JOIN_NO_PNL"
+}

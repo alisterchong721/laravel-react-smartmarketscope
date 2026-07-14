@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-H41-PILOT-SCOPE-RECONCILIATION-001",
+  "created_at_utc": "2026-07-14T00:10:00Z",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "parent_pilot_config_sha256": "38b7014030b85ee82d926b925ff8c8d9046f6feb48f384aaee7e3f5b11782b0f",
+  "parent_terminal_checkpoint_sha256": "2c975ca42d33dfc173ac3121879c6235bb5918503b2d86968ae27755c011364d",
+  "defect_code": "RELEASE_IDENTITY_LOWER_BOUND_NOT_APPLIED",
+  "defective_request_ordinal": 3,
+  "defective_source_identity": "19960627",
+  "defective_body_sha256": "8a76584b2102486549e5708dab0e28f6ab98ebab1fd3ab0c75297e1aa669fad2",
+  "defective_evidence_policy": "PRESERVE_RAW_AND_ATTEMPT_EXCLUDE_FROM_REQUESTED_PERIOD_AND_ELIGIBILITY",
+  "requested_reference_date_start": "2002-12-18",
+  "corrected_first_release_identity": "20021219",
+  "corrected_first_expected_reference_date": "2002-12-18",
+  "release_date_index_contains_corrected_identity": true,
+  "preceding_release_identities_preserved_but_out_of_scope": true,
+  "cached_valid_pilot_identities": [
+    "20080918",
+    "20140102",
+    "20200319",
+    "20260625"
+  ],
+  "next_network_request_ordinal": 8,
+  "next_network_request_url": "https://www.federalreserve.gov/releases/h41/20021219/",
+  "hard_request_ceiling_unchanged": 15,
+  "classification": "FAILED_FIRST_SCOPE_FILTER_PRESERVED_PROSPECTIVELY_CORRECTED",
+  "future_identity_policy": "FILTER_RELEASE_IDENTITIES_AT_OR_AFTER_20021219_AND_AT_OR_BEFORE_20260628",
+  "scope_boundary": "EXACT_CORRECTED_EARLIEST_H41_PILOT_ONLY_NO_ELIGIBILITY_NO_SCORING_NO_JOIN_NO_PNL"
+}

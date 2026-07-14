@@ -1,5 +1,43 @@
 # Current State
 
+## Macro Regime Program — Historical Macro Data Collection (Role 5)
+
+Role 5 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with `PASS`
+and decision `H41_FULL_POINT_IN_TIME_CHAIN_VALIDATED`.
+
+- The Laravel sibling change is restricted to three hash-locked files: one
+  migration, one MariaDB contract, and one feature test. The contract retains 11
+  append-only tables and 28 triggers, guarded empty-only rollback, and no public
+  macro write route. The latest default-driver suite passes 67 tests with 263
+  assertions and three target-driver-only skips; the Role 5 disposable MariaDB
+  run executed all 70 tests.
+- H.6 reconciles all 1,167 dated release identities using 1,178 requests including
+  the pilot and zero retries. It yields 4,859 eligible M2 measurement versions:
+  317 first prints and 4,542 revisions over 317 contiguous reference months.
+- H.4.1 reconciles all 1,228 dated release identities using 1,232 requests
+  including the pilot, zero retries, and 28 requests of hard-ceiling headroom. It
+  yields 3,684 immutable observations: one weekly as-published observation each
+  for total assets, reserve balances, and TGA per accepted release.
+- Six H.4.1 stopped attempts remain preserved. Exact repairs cover the 2005-03-05
+  archive alias, the legitimate -6,962 reserve balance for 2008-07-02, and
+  directory/body date divergences at 2016-11-18, 2019-11-28, and 2020-05-14.
+  The failed-first out-of-scope 1996 pilot body also remains preserved and
+  excluded.
+- The combined verified macro evidence is 10,273 rows: 1,730 retained Role 2
+  ALFRED versions, 4,859 H.6 versions, and 3,684 H.4.1 observations. LIQUIDITY is
+  no longer empty. Exact availability uses the conservative J0 +36-hour rule in
+  date-aware `America/New_York`, UTC, and `Asia/Kuala_Lumpur`.
+- The full research suite passes 223/223 tests. Sixteen focused H.6/H.4.1 parser
+  and finalizer tests pass. No score, technical join, PnL, experiment trial,
+  protected/final-holdout access, broker connection, deployment, or paper/live
+  action occurred.
+
+The next sequential role is Role 6, deterministic macro taxonomy and scoring.
+It may consume only the frozen eligible observation exports, must preserve
+release-bundle deduplication and `UNKNOWN` when category sufficiency fails, and
+must not join technical setups or inspect PnL. See `NEXT_TASK.md` and
+`research/artifacts/macro_regime/role5/MACRO_REGIME_ROLE5_COLLECTION_REPORT.md`.
+
 ## Macro Regime Program — Database Architecture (Role 4)
 
 Role 4 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with an

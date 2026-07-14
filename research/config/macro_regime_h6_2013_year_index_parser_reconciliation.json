@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-H6-2013-YEAR-INDEX-PARSER-RECONCILIATION-001",
+  "created_at_utc": "2026-07-13T08:55:00Z",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": 5,
+  "identity_correction_config_sha256": "bade4fd087447307b576c03826fe9a952ea9d8a90dcc4d7a65cbffc0d541f07f",
+  "prior_validator_stop_checkpoint_sha256": "5e40afe86db389e07a21632ff048f7a367ce5765c5bf22e6a243b39486875a2e",
+  "failed_validator_source_run_id": "role5-h6-correction-0702-year-index",
+  "failed_validator_body_sha256": "89676c02cc67d1f5508e810a475bec7aeed3684f9872e70c821573d3b4785219",
+  "failed_validator_reason": "TEXT_FLATTENING_EXPECTED_FULL_DATES_BUT_OFFICIAL_YEAR_TABLE_SPLITS_MONTH_DAY_AND_LINK",
+  "required_structural_proof": {
+    "march_row_href_20130328_display_day": "28",
+    "april_row_href_20130405_display_day": "04",
+    "april_row_href_20130411_display_day": "11",
+    "april_row_display_day_05": false
+  },
+  "interpretation": "OFFICIAL_YEAR_INDEX_DISPLAYS_APRIL_04_WHILE_LINKING_LEGACY_DIRECTORY_20130405",
+  "network_rerequest_2013_year_index": false,
+  "preserve_failed_validator_attempt": true,
+  "preserve_failed_validator_checkpoint": true,
+  "next_network_request_ordinal": 703,
+  "next_network_request_url": "https://www.federalreserve.gov/releases/h6/20130404/",
+  "stop_if_structural_or_canonical_body_proof_fails": true,
+  "applicability": "EXACT_ONLY_2013_YEAR_INDEX_CACHED_BODY_NO_GENERALIZATION",
+  "hard_total_role5_network_request_ceiling_unchanged": 1200,
+  "h41_started": false,
+  "scoring_started": false,
+  "technical_join_started": false,
+  "pnl_inspection_started": false
+}

@@ -1,66 +1,34 @@
 # Next Task
 
-## Macro Regime Program — Role 5 Historical Macro Data Collection
+## Macro Regime Program — Role 6 Deterministic Taxonomy and Scoring
 
 Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
 
-Current status: `REGISTRY_CHRONOLOGY_UNRESOLVED` with append-only disclosure.
-This caveat permits read-only macro dataset construction but prohibits any final
-champion claim.
+Role 5 is complete. Frozen eligible inputs are 1,730 retained ALFRED versions,
+4,859 H.6 M2 versions, and 3,684 H.4.1 weekly observations, for 10,273 verified
+rows. H.6 and H.4.1 acquisition passed exact hash, chronology, availability,
+revision/identity, parser, and request-ceiling gates. The registry chronology
+caveat remains a final-champion veto but does not block deterministic scoring.
 
-Roles 2–4 are complete. The only verified observations remain the 1,730 retained
-ALFRED versions; Role 3 froze 19 keyless official routes for bounded collection;
-Role 4 froze an 11-table, 28-trigger append-only contract and proved the full
-25-run/25-artifact/1,730-observation import in disposable SQLite. LIQUIDITY still
-has zero verified observations and all pre-2017 coverage remains prospective.
+Run exactly one next sequential role: Macro Taxonomy and Scoring Engineer.
 
-Run exactly one next sequential role: Historical Macro Data Collector.
+1. Freeze the exact indicator direction, transformation, lookback, threshold,
+   and missingness rule before materializing any score.
+2. Use only point-in-time observation versions effective at or before each state
+   time. Never use current-revised values or future revisions.
+3. Deduplicate related indicators by frozen release bundle so one release cannot
+   cast multiple category votes. Preserve exact observation and bundle lineage.
+4. Materialize immutable indicator states, release-bundle states, category
+   states, and regime snapshots with config/code/input/output hashes.
+5. Use all five named categories: INFLATION, LABOUR, GROWTH, MONETARY_POLICY,
+   and LIQUIDITY. Return `UNKNOWN` rather than imputing or renormalizing when the
+   frozen minimum category/bundle sufficiency gate is not met.
+6. Keep scoring deterministic, rule-based, versioned, free of ML/LLM/news
+   sentiment, and free of score decay. Record all boundary and negative tests.
 
-Before any network collection or non-disposable database write:
-
-1. Establish a versioned patch and rollback baseline for the non-Git Laravel
-   sibling without changing unrelated user files.
-2. Identify the actual local target database driver/version using non-secret
-   configuration and executable metadata only; do not display credentials or
-   inspect a user/production database.
-3. Translate the frozen 11-table schema, 22 append-only triggers, and six lineage
-   triggers into a reviewed Laravel/target-driver migration contract.
-4. Pass clean disposable target-driver migration, empty-only rollback,
-   authorization, idempotency, full supersession identity, snapshot lineage,
-   event lineage, technical copied-value, timing, hash, and append-only tests.
-5. Approve a private raw-storage namespace, capacity/checkpoint policy, atomic
-   write/hash/rename protocol, orphan quarantine, and deterministic manifest.
-
-If those preconditions cannot be proved, stop Role 5 as `BLOCKED` with the exact
-missing evidence; do not weaken the contract or collect into an ungoverned store.
-
-Collection may then use only routes frozen as
-`APPROVED_FOR_BOUNDED_COLLECTION`. Begin with a bounded, resumable H.6 M2 dated-
-release traversal to establish LIQUIDITY from 2000. Preserve each permitted raw
-HTML/PDF/ASCII body, source URL/reference, release and retrieval timestamps,
-HTTP/file metadata, bytes, SHA-256, request/parser/config/code versions, source
-run, checkpoint, and every parsed immutable observation version. Validate format,
-units, definitions, release dates, revision behavior, exact coverage, and J0
-availability semantics before expanding to H.4.1 total assets, reserve balances,
-and TGA. Stop on unresolved source identity, methodology, unit, timestamp,
-licensing, parser, or revision semantics.
-
-Reuse the 25 retained Role 2 source runs/raw artifacts and 1,730 observations by
-exact identity and hash; do not download them again or collapse identical payload
-hashes into one artifact. Current-revised, unresolved, key-review, and rejected
-routes remain non-collectible. Record every failed or partial attempt, gaps,
-format transitions, discontinued concepts, and exact commands/exit results.
-
-Required Role 5 outputs include the versioned migration/rollback patch, private
-raw and normalized manifests, append-only source-run/raw-artifact/observation
-registries or deterministic exports, coverage by route/series/category/year,
-collection and parser validation reports, tests, hashes, request counts, failures,
-and the exact next permitted Role 6 scoring action.
-
-Do not calculate indicator, bundle, category, interaction, regime, or bias
-scores; do not join technical setups; do not inspect PnL or run an economic
-backtest; do not add public write routes; do not deploy or connect a broker; do
-not access protected/final-holdout paths; and do not start Roles 6–11.
+Do not join technical setups, inspect trade outcomes or PnL, run an economic
+backtest, tune thresholds from outcomes, access protected/final-holdout paths,
+add public write routes, deploy, connect a broker, or start Roles 7–11.
 
 ## Macro Liquidity Reversal Gate
 
