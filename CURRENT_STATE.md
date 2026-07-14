@@ -1,5 +1,37 @@
 # Current State
 
+## Macro Regime Program — Deterministic Taxonomy and Scoring (Role 6)
+
+Role 6 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with `PASS`
+and decision `INSUFFICIENT_CATEGORY_COVERAGE`.
+
+- The prospective V1 freeze defines nine enabled indicators, exact aliases,
+  eight release bundles, five equal categories, prior-only transformations,
+  no-decay state replacement, discrete boundaries, stress rules, minimum
+  coverage, Goldilocks/overheating/recession/emergency-easing interactions,
+  interaction cap, final clamp, and bias mapping. Config SHA-256 is
+  `dbbe0d01ac22bbc05aef8b7d3c44867ecf265fddf9e427a94bb4488d9e643f2d`.
+- All 10,273 frozen eligible observation versions reconcile to 10,273 immutable
+  event-ledger rows in CSV, JSONL, and Parquet. Materialized history contains
+  5,216 indicator states, 5,111 release-bundle states, 1,840 category states,
+  1,718 event-time regime snapshots, 9,676 daily as-of rows, and 51,361 active
+  indicator-by-day rows.
+- Inflation, labour, and growth each have one eligible release bundle but require
+  two. Monetary policy and liquidity can become valid, so the maximum valid
+  category count is two, below the frozen overall minimum of three. No category
+  was imputed or renormalized; all 9,676 daily biases are correctly `UNKNOWN`
+  and technical permission is `NO_TRADE`.
+- Focused boundary, negative, tamper, replacement/no-decay, and two-run byte
+  determinism tests pass 9/9. The complete research suite passes 232/232.
+- No technical setup, trade outcome, PnL, ML/LLM/news input, experiment trial,
+  protected/final-holdout access, broker connection, deployment, or paper/live
+  action occurred. Registry chronology remains a final-champion veto.
+
+The next sequential role is Role 7, independent point-in-time and availability
+validation. It may audit only the frozen Role 6 construction and J0 readiness;
+it must not join technical setups or start Roles 8–11. See `NEXT_TASK.md` and
+`research/artifacts/macro_regime/role6/MACRO_REGIME_ROLE6_SCORING_REPORT.md`.
+
 ## Macro Regime Program — Historical Macro Data Collection (Role 5)
 
 Role 5 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with `PASS`

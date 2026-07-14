@@ -1,34 +1,50 @@
 # Next Task
 
-## Macro Regime Program — Role 6 Deterministic Taxonomy and Scoring
+## Macro Regime Program — Role 7 Point-in-Time and Availability Validation
 
 Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
 
-Role 5 is complete. Frozen eligible inputs are 1,730 retained ALFRED versions,
-4,859 H.6 M2 versions, and 3,684 H.4.1 weekly observations, for 10,273 verified
-rows. H.6 and H.4.1 acquisition passed exact hash, chronology, availability,
-revision/identity, parser, and request-ceiling gates. The registry chronology
-caveat remains a final-champion veto but does not block deterministic scoring.
+Role 6 is complete. The hash-locked deterministic scoring engine reconciles all
+10,273 eligible observations and materializes 5,216 indicator states, 5,111
+bundle states, 1,840 category states, 1,718 event-time snapshots, 9,676 daily
+as-of rows, 51,361 active-input rows, and 10,273 event-ledger rows. Focused tests
+pass 9/9 and the full research suite passes 232/232.
 
-Run exactly one next sequential role: Macro Taxonomy and Scoring Engineer.
+The frozen evidence supports at most two valid categories: policy and liquidity.
+Inflation, labour, and growth each have one eligible bundle against a minimum of
+two. The engine therefore returns `UNKNOWN` on all daily rows rather than
+imputing, renormalizing, relaxing coverage, or carrying an invalid vote.
 
-1. Freeze the exact indicator direction, transformation, lookback, threshold,
-   and missingness rule before materializing any score.
-2. Use only point-in-time observation versions effective at or before each state
-   time. Never use current-revised values or future revisions.
-3. Deduplicate related indicators by frozen release bundle so one release cannot
-   cast multiple category votes. Preserve exact observation and bundle lineage.
-4. Materialize immutable indicator states, release-bundle states, category
-   states, and regime snapshots with config/code/input/output hashes.
-5. Use all five named categories: INFLATION, LABOUR, GROWTH, MONETARY_POLICY,
-   and LIQUIDITY. Return `UNKNOWN` rather than imputing or renormalizing when the
-   frozen minimum category/bundle sufficiency gate is not met.
-6. Keep scoring deterministic, rule-based, versioned, free of ML/LLM/news
-   sentiment, and free of score decay. Record all boundary and negative tests.
+Run exactly one next sequential role: Point-in-Time and Availability Validation
+Engineer.
+
+1. Independently rehash the three frozen inputs, all Role 6 registries/config,
+   scoring code, manifest, and every named output.
+2. Prove that every observation version is excluded before its effective time,
+   later revisions replace only their own reference version, and no current-
+   revised or future vintage enters an earlier indicator state.
+3. Independently recompute one-release, three-release, six-release, year-over-
+   year, prior-only median/MAD, zero-MAD fallback, percentile, score-boundary,
+   no-decay, and unscorable-replacement examples across all source families.
+4. Verify exact atomic same-effective-time batching, observation-to-indicator-to-
+   bundle-to-category-to-snapshot lineage, 10,273 ledger-row parity across CSV,
+   JSONL and Parquet, and daily as-of nonanticipation.
+5. Verify date-aware `America/New_York`, UTC, and `Asia/Kuala_Lumpur` availability
+   semantics and assess J0 readiness. J1/J2 source-trading-day rules may be
+   specified for later sensitivity but must not be selected from PnL.
+6. Confirm independently that the frozen minimum-bundle and minimum-category
+   rules imply `INSUFFICIENT_CATEGORY_COVERAGE`, all 9,676 daily biases are
+   `UNKNOWN`, and no technical alignment is permitted under that state.
+7. Produce a point-in-time audit, availability audit, lineage/error census,
+   deterministic validation artifact, exact test evidence, limitations, and the
+   next permitted action. Preserve failures rather than repairing Role 6 in place.
 
 Do not join technical setups, inspect trade outcomes or PnL, run an economic
-backtest, tune thresholds from outcomes, access protected/final-holdout paths,
-add public write routes, deploy, connect a broker, or start Roles 7–11.
+backtest, tune transformations/thresholds/weights, access protected/final-
+holdout paths, add public write routes, deploy, connect a broker, or start Roles
+8–11. A material Role 6 defect must fail closed and return to a prospective
+scoring amendment; it must not be silently corrected during independent
+validation.
 
 ## Macro Liquidity Reversal Gate
 

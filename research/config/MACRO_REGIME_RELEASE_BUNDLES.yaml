@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "registry_version": "MACRO_REGIME_RELEASE_BUNDLES_V1",
+  "aggregation": "EQUAL_COMPONENT_MEAN_NO_DECAY",
+  "discrete_thresholds": {"strong_bullish_min": 1.25, "bullish_min": 0.25, "neutral_lower_exclusive": -0.25, "bearish_lower_exclusive": -1.25},
+  "bundles": [
+    {"bundle_id": "CPI_BUNDLE", "category": "INFLATION", "components": ["US_CPI_ALL_ITEMS_SA"], "minimum_valid_components": 1},
+    {"bundle_id": "EMPLOYMENT_REPORT_BUNDLE", "category": "LABOUR", "components": ["US_TOTAL_NONFARM_PAYROLLS", "US_UNEMPLOYMENT_RATE"], "minimum_valid_components": 1},
+    {"bundle_id": "GDP_BUNDLE", "category": "GROWTH", "components": ["US_REAL_GDP"], "minimum_valid_components": 1},
+    {"bundle_id": "POLICY_RATE_BUNDLE", "category": "MONETARY_POLICY", "components": ["US_EFFECTIVE_FEDERAL_FUNDS_RATE"], "minimum_valid_components": 1},
+    {"bundle_id": "MONEY_SUPPLY_BUNDLE", "category": "LIQUIDITY", "components": ["US_M2_MONEY_STOCK_SA"], "minimum_valid_components": 1},
+    {"bundle_id": "FED_BALANCE_SHEET_BUNDLE", "category": "LIQUIDITY", "components": ["US_FED_TOTAL_ASSETS"], "minimum_valid_components": 1},
+    {"bundle_id": "BANK_RESERVES_BUNDLE", "category": "LIQUIDITY", "components": ["US_RESERVE_BALANCES"], "minimum_valid_components": 1},
+    {"bundle_id": "LIQUIDITY_DRAINS_BUNDLE", "category": "LIQUIDITY", "components": ["US_TREASURY_GENERAL_ACCOUNT"], "minimum_valid_components": 1}
+  ]
+}
