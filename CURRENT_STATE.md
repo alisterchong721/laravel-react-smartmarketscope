@@ -1,5 +1,43 @@
 # Current State
 
+## Macro Regime Program — Bounded In-App Route Remediation (Role 10)
+
+The separately authorized Role 10 reporting remediation is implemented with
+status `IN_APP_ROUTE_ACTIVE_PENDING_ROLE11_SECURITY_REAUDIT`. The quantitative
+decision remains `NO_ACCEPTABLE_STRATEGY_FOUND`; candidate remains `NONE`.
+
+- The exact working-tree route `/research/macro-regime` is active. Its wrapper
+  accepts no resource identifier and denies all query, fragment, and extra-path
+  selectors before making a request.
+- A locally present bearer credential is not authorization. The wrapper first
+  calls the existing protected Smart MarketScope `GET /me` boundary and permits
+  only a well-formed server-verified registered-user identity. Missing,
+  rejected, malformed, aborted, and transport-error states fail closed.
+- The page is read-only and contains no mutation method, source collector URL,
+  secret, broker, order, paper, deployment, or live control. It displays the
+  frozen current/category/stress/interaction/score/bias evidence, latest ledger
+  drill-downs, separate technical/timeframe evidence, and all historical A-K
+  charts. The 11 chart copies rehash byte-for-byte to the accepted offline
+  package.
+- `src/App.js` remains user-owned and intentionally unstaged/uncommitted. Its
+  authorized baseline SHA-256 was
+  `d702d1ddeed2458842c2f420bb258913a1f1b93241bb8347099f63d0ab07f542`;
+  the two-hunk active working-tree version is
+  `233fd2401ffbe316aa6f14386ffe85f26a01ec5a430894b55789e2758579184f`.
+  The recorded inverse patch restores the exact baseline hash.
+- Focused React tests pass 13/13, the full frontend passes 19/19, focused Python
+  reporting/security tests pass 9/9, and the production build exits 0. Role 10
+  validation passes twice with 71 inputs, 53 outputs, and 11 charts. The full
+  research run correctly exposes three stale Role 11 route-absence assertions;
+  the other 278 tests pass. Those assertions are reserved for the independent
+  reporting/security re-audit and were not rewritten by Role 10.
+
+No frozen research artifact, score, join, trade outcome, cost, candidate gate,
+registry event, raw dataset, final holdout, broker, order, paper, deployment, or
+live path changed. The only next action is Role 11 reporting/security re-audit
+of this active working-tree route and ownership evidence; see `NEXT_TASK.md` and
+`research/artifacts/macro_regime/role10/remediation/ROLE10_REMEDIATION_REPORT.md`.
+
 ## Macro Regime Program — Independent Quantitative Audit (Role 11)
 
 Role 11 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` independently accepts

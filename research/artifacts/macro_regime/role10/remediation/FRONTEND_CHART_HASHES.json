@@ -1,0 +1,18 @@
+{
+  "source_directory": "research/artifacts/macro_regime/report/charts",
+  "target_directory": "src/components/research/charts",
+  "copy_policy": "source and target SHA-256 must be identical",
+  "files": {
+    "A_macro_category_timeline.png": "3297be7b52ebd7b35f8f3d46e3ee481adaf2c3f2075f3078f8cb32ba670c1dde",
+    "B_macro_regime_timeline.png": "28050e6b8618644ba2cdd900e5d1bd86c105a65577cdce3acbe0b2e5e720da88",
+    "C_macro_event_updates.png": "88a2bb0a529074625175c1a06b1137b0c2973f9aba5026108de13f700996f310",
+    "D_equity_curves.png": "b7579c36e4e25d5dcffd365e092b264f16286974bba2ad88a7c090233a208685",
+    "E_drawdown_curves.png": "02fd742c8e1566a7b867261aa4c57d939027c284581cc4f7e53db3ef44387488",
+    "F_annual_pnl.png": "28f01e8941472b9a06a4d67c7dcddf2b0216729b40914c05377ce8306423e319",
+    "G_timeframe_comparison.png": "58c7a0cf409e36fa08024925a0c6b67dbe3e6a918438c841953b81f00ee09073",
+    "H_regime_performance.png": "ac09c9196a67813f8a15d643f2d2868a329d2326d3f5778c36436d24a6687423",
+    "I_category_contribution.png": "0a188819df1f0aedb301ca6f4a5e6534a3320711e68ac365dda37e96cafad502",
+    "J_retention_analysis.png": "70e82af4520504646ef385c8249929b4a37c726f32cac9103c227fa72efeeac5",
+    "K_random_control.png": "e875d8cbedb2ecb1495665be5c3214b37ad45bcc823263c9e9a6c6338e41d9a7"
+  }
+}

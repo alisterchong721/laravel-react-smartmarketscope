@@ -1,5 +1,43 @@
 # Next Task
 
+## Macro Regime Program — Role 11 Reporting/Security Re-Audit Only
+
+Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
+
+Role 10's separately authorized bounded route remediation is active in the
+working tree with status `IN_APP_ROUTE_ACTIVE_PENDING_ROLE11_SECURITY_REAUDIT`.
+The quantitative audit remains terminal at `NO_ACCEPTABLE_STRATEGY_FOUND` and
+candidate `NONE`; no strategy research may resume.
+
+Run exactly one next sequential role: Role 11 independent reporting/security
+re-audit of the remediation only.
+
+1. Rehash the authorized `src/App.js` baseline/post-hunk ownership record, prove
+   that only the import and exact route are remediation-owned, and independently
+   apply the inverse patch to recover the exact baseline hash. Do not stage or
+   commit the user's `src/App.js` rewrite.
+2. Independently test missing, stale, rejected, malformed, aborted, and
+   transport-error authentication states; verify that a bearer token alone is
+   insufficient and that protected `GET /me` server verification is required.
+3. Verify the explicit `VERIFIED_REGISTERED_USER_READ_ONLY` authorization
+   policy fails closed, and test query, fragment, and extra-path negative-IDOR
+   cases without inventing role claims absent from the current identity
+   contract.
+4. Reconcile all page values and all 11 A-K image hashes to frozen Role 10
+   evidence. Audit accessibility, null/UNKNOWN/NOT_APPLICABLE semantics,
+   malformed/empty/error states, and negative-result prominence.
+5. Prove there is no mutation endpoint, unrestricted research-source URL,
+   credential disclosure, resource identifier, broker, order, paper,
+   deployment, live control, or final-holdout access.
+6. Update only Role 11 audit/test/hash evidence and the final current/next-state
+   handoff. Resolve the three now-stale route-absence assertions prospectively;
+   do not alter the terminal quantitative conclusion.
+
+Do not change frozen research inputs/outputs, macro thresholds or weights,
+technical joins, costs, outcomes, registry history, or candidate gates. Do not
+start a new research cycle, connect a broker, place an order, deploy, or add
+paper/live controls.
+
 ## Macro Regime Program — Bounded In-App Reporting Completion Blocker
 
 Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`

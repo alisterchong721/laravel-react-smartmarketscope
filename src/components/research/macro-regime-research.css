@@ -19,4 +19,8 @@
 .macro-research__fill { height: 100%; background: #d92d20; }
 .macro-research details { margin: 8px 0; padding: 12px; border: 1px solid #eaecf0; border-radius: 10px; }
 .macro-research code { word-break: break-all; }
+.macro-research__charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; }
+.macro-research__charts figure { margin: 0; padding: 10px; border: 1px solid #eaecf0; border-radius: 10px; }
+.macro-research__charts img { display: block; width: 100%; height: auto; }
+.macro-research__charts figcaption { padding-top: 6px; font-weight: 700; }
 @media (max-width: 640px) { .macro-research { padding: 14px; } .macro-research__bar { grid-template-columns: 1fr; } }

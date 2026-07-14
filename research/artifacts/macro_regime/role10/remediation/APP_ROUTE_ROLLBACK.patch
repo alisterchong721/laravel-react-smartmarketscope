@@ -1,0 +1,10 @@
+--- a/src/App.js
++++ b/src/App.js
+@@ -26 +25,0 @@
+-import MacroRegimeResearchRoute from './components/research/macro-regime-research-route';
+@@ -205,5 +203,0 @@
+-        <Route
+-          path="/research/macro-regime"
+-          element={<MacroRegimeResearchRoute />}
+-        />
+-

@@ -1,0 +1,20 @@
+{
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "role": "Role 10 bounded in-app reporting completion remediation",
+  "status": "IN_APP_ROUTE_ACTIVE_PENDING_ROLE11_SECURITY_REAUDIT",
+  "quantitative_decision": "NO_ACCEPTABLE_STRATEGY_FOUND",
+  "candidate": "NONE",
+  "exact_route": "/research/macro-regime",
+  "authentication": "bearer token verified by protected GET /me",
+  "authorization": "VERIFIED_REGISTERED_USER_READ_ONLY",
+  "negative_idor": "query, fragment, and extra path selectors denied",
+  "network_methods": ["GET"],
+  "mutation_methods": [],
+  "external_research_source_urls": [],
+  "broker_order_paper_live_controls": [],
+  "final_holdout_accessed": false,
+  "chart_count": 11,
+  "chart_copy_policy": "byte-identical Role 10 offline assets",
+  "app_hunks_staged_or_committed": false,
+  "next_permitted_role": "Role 11 reporting/security re-audit only"
+}

@@ -1,0 +1,57 @@
+{
+  "status": "PASS_ROLE10_PENDING_ROLE11_SECURITY_REAUDIT",
+  "commands": [
+    {
+      "scope": "focused_frontend",
+      "command": "CI=true npm test -- --watchAll=false --runInBand src/components/research/macro-regime-research.test.js src/components/research/macro-regime-research-route.test.js",
+      "result": "13/13 PASS",
+      "exit_code": 0
+    },
+    {
+      "scope": "full_frontend",
+      "command": "CI=true npm test -- --watchAll=false --runInBand",
+      "result": "19/19 PASS",
+      "exit_code": 0
+    },
+    {
+      "scope": "focused_python_reporting_security",
+      "command": "PYTHONPATH=research/src python3 -m unittest research.tests.test_macro_regime_reporting -v",
+      "result": "9/9 PASS",
+      "exit_code": 0
+    },
+    {
+      "scope": "production_build",
+      "command": "npm run build",
+      "result": "PASS_WITH_PRE_EXISTING_WARNINGS",
+      "exit_code": 0
+    },
+    {
+      "scope": "role10_validate_only_run_1",
+      "command": "PYTHONPATH=research/src python3 -m smartmarketscope_quant.macro_regime.reporting --validate-only",
+      "result": "71 inputs, 53 outputs, 11 charts, PASS",
+      "exit_code": 0
+    },
+    {
+      "scope": "role10_validate_only_run_2",
+      "command": "PYTHONPATH=research/src python3 -m smartmarketscope_quant.macro_regime.reporting --validate-only",
+      "result": "71 inputs, 53 outputs, 11 charts, PASS",
+      "exit_code": 0
+    },
+    {
+      "scope": "research_excluding_pending_role11_reaudit_module",
+      "command": "PYTHONPATH=research/src python3 -m unittest $(find research/tests -name 'test_*.py' ! -name 'test_macro_regime_independent_audit.py' -print)",
+      "result": "278/278 PASS",
+      "exit_code": 0
+    },
+    {
+      "scope": "full_research_including_stale_role11_route_absence_assertions",
+      "command": "PYTHONPATH=research/src python3 -m unittest discover -s research/tests -p 'test_*.py'",
+      "result": "280 pass, 1 failure, 2 errors; expected pending Role 11 re-audit",
+      "exit_code": 1
+    }
+  ],
+  "role10_output_inventory_sha256": "b592fa285cf0aae2fca096992694627cbef755e94dd5050ac84fb29c54c18148",
+  "rollback_restored_sha256": "d702d1ddeed2458842c2f420bb258913a1f1b93241bb8347099f63d0ab07f542",
+  "final_holdout_accesses": 0,
+  "mutation_requests": 0
+}

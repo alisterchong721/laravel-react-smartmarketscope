@@ -1,0 +1,18 @@
+{
+  "file": "src/App.js",
+  "baseline_sha256": "d702d1ddeed2458842c2f420bb258913a1f1b93241bb8347099f63d0ab07f542",
+  "post_hunk_sha256": "233fd2401ffbe316aa6f14386ffe85f26a01ec5a430894b55789e2758579184f",
+  "owned_hunks": [
+    "import MacroRegimeResearchRoute from './components/research/macro-regime-research-route';",
+    "<Route path=\"/research/macro-regime\" element={<MacroRegimeResearchRoute />} />"
+  ],
+  "route": "/research/macro-regime",
+  "route_has_resource_identifier": false,
+  "authorization_policy": "VERIFIED_REGISTERED_USER_READ_ONLY",
+  "identity_verification_endpoint": "GET /me via existing Smart MarketScope API boundary",
+  "staged": false,
+  "committed": false,
+  "rollback_patch": "research/artifacts/macro_regime/role10/remediation/APP_ROUTE_ROLLBACK.patch",
+  "rollback_patch_sha256": "475060a61033219b5fa97ade4f04eb06a7b2cc8bc78557b64ddf5726c2a5d6b0",
+  "rollback_verified_sha256": "d702d1ddeed2458842c2f420bb258913a1f1b93241bb8347099f63d0ab07f542"
+}

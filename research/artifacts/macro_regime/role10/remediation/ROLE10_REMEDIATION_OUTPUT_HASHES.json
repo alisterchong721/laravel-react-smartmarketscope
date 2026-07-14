@@ -1,0 +1,18 @@
+{
+  "CURRENT_STATE.md": "ab8d35760a51ae650044940a4c9754663128a78dfe4ba1de74f9cf7b3acb2d1b",
+  "NEXT_TASK.md": "50e9c9a58944d4ef64573442875cfac7285948daec313317b2b3584087a0cf7a",
+  "research/artifacts/macro_regime/role10/remediation/APP_ROUTE_OWNERSHIP_BOUNDARY.json": "52ae4a0242b339d0af007041cf359ec6d23e4377f2c06bf94cf887acc8858eb1",
+  "research/artifacts/macro_regime/role10/remediation/APP_ROUTE_ROLLBACK.patch": "475060a61033219b5fa97ade4f04eb06a7b2cc8bc78557b64ddf5726c2a5d6b0",
+  "research/artifacts/macro_regime/role10/remediation/FRONTEND_CHART_HASHES.json": "d44e8466c890d363f76bb32261b1deee4d8345e13d20f6b869c800bb86022cd2",
+  "research/artifacts/macro_regime/role10/remediation/ROLE10_REMEDIATION_MANIFEST.json": "5b045236e669e2ee4003d972f242a75a2597a3b2d6842b53d9473c0b1b8f01a0",
+  "research/artifacts/macro_regime/role10/remediation/ROLE10_REMEDIATION_REPORT.md": "ca63f4127817dae719c629f39bcd1994d870d6d69fe66192de53892e67bbe0b2",
+  "research/artifacts/macro_regime/role10/remediation/ROLE10_REMEDIATION_TEST_RESULTS.json": "7685c4f0f3c830ea659e6c6c6e7547e0b52d7415a1c6f76f0bf7e3b6d6e2e3c4",
+  "research/tests/test_macro_regime_reporting.py": "6548982007d3a4d3e0426ca23da30322059662d442955f193f00d924b6cf0467",
+  "src/components/research/macro-regime-access-policy.js": "c23120c8903083aea68a4c796ea9d5fb1f2161f3f60be33bfa9fa02a5668470a",
+  "src/components/research/macro-regime-research-data.js": "76435678925eab263790dd6ef323a8f6277897f91a2ba2728564f79602df04d0",
+  "src/components/research/macro-regime-research-route.js": "22ead82c9da03728c6e76346908b864d23146fecf0dd9ab1a4be5dd397e46e37",
+  "src/components/research/macro-regime-research-route.test.js": "180bcca86a5feff8e0b5b342709cb90faf1e6a8486ffd0d8467c1b6766fc05d1",
+  "src/components/research/macro-regime-research.css": "2c5eab8a4b43169fa601b300303567d69625d2c1b1de83328be4d839bb15df2c",
+  "src/components/research/macro-regime-research.js": "06c53de681f83960c32d376336c3208afbfdbac18e2ec3f4a8cfbb531d1ddc87",
+  "src/components/research/macro-regime-research.test.js": "416b6993f5a2036f056a6ef0459256f4ba9572c468d2b26f532bf9e3087f59a9"
+}
