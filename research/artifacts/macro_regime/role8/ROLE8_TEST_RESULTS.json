@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "command": "PYTHONPATH=research/src python3 -m unittest discover -s research/tests -p 'test_macro_regime_technical_alignment.py' -v",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "tests_run": 12
+    },
+    {
+      "command": "PYTHONPATH=research/src python3 -m unittest discover -s research/tests -q",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "tests_run": 256
+    },
+    {
+      "command": "PYTHONPATH=research/src python3 -m smartmarketscope_quant.macro_regime.technical_alignment --repo-root . --validate-only",
+      "exit_code": 0,
+      "status": "PASS"
+    }
+  ],
+  "determinism": "TWO_CONSECUTIVE_GENERATIONS_PRODUCED_IDENTICAL_ROLE8_SHA256_LIST",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "recorded_at_utc": "2026-07-14T04:00:00Z",
+  "schema_version": "1.0.0",
+  "status": "PASS"
+}

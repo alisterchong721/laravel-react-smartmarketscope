@@ -1,0 +1,13 @@
+{
+  "research/artifacts/macro_regime/role8/MACRO_REGIME_TECHNICAL_BASELINE_FREEZE.md": "55b1a1f80403c09d7cd038f46ddf497bc5c9119876a1ace4f4be180168454a5b",
+  "research/artifacts/macro_regime/role8/MACRO_REGIME_TECHNICAL_BASELINE_HASHES.txt": "06797c748a195830e6940159ef4f32d9dfa1bda0a11b25316f022c7921d0c141",
+  "research/artifacts/macro_regime/role8/MACRO_REGIME_TECHNICAL_BASELINE_MANIFEST.json": "281baa769b93b1abcd0d26f8ca7f00297e9db00e287d8bf396e134915a7cad6a",
+  "research/artifacts/macro_regime/role8/MACRO_REGIME_TECHNICAL_TRADE_REGISTRY.parquet": "4a7abd50906d5084bba5b0f37cba748be5dea57bf58c16ee4e54d4182b6d025b",
+  "research/artifacts/macro_regime/role8/MACRO_TECHNICAL_ALIGNMENT_CENSUS.csv": "3c3733592daeab790b8ca69eecd8cc904e58bc62a469f658074dc446939f88d0",
+  "research/artifacts/macro_regime/role8/MACRO_TECHNICAL_ALIGNMENT_REPORT.md": "f370cc98bc12098d2bc5516bd432f0af55950f378c212d30ceaa4c1928343c09",
+  "research/artifacts/macro_regime/role8/MACRO_TECHNICAL_LINKS.parquet": "27677d6bfb451bef74556f70cbf660256da862eda992b42392d55d970b59aad9",
+  "research/artifacts/macro_regime/role8/NAS100_SOURCE_TRADING_DATE_CALENDAR.csv": "83f49b04412de1e8ccb1cac1eb97a0e6adc05acc28b36cd55e50ceff834b28e7",
+  "research/artifacts/macro_regime/role8/NAS100_SOURCE_TRADING_DATE_CALENDAR_MANIFEST.json": "b85814cb46c0549df00f7f9e303c8583c06f873d32aa532d94b74a981e78ca74",
+  "research/artifacts/macro_regime/role8/ROLE8_ALIGNMENT_MANIFEST.json": "82e9d1346f0ebc2b48dd5be7ff614a6be7f58782a708354429ec1da69ae797ab",
+  "research/artifacts/macro_regime/role8/ROLE8_TEST_RESULTS.json": "d7a5a1d47350afbdbfb88a3607bce08195abb561a1a0db691c11c69cd1093f27"
+}

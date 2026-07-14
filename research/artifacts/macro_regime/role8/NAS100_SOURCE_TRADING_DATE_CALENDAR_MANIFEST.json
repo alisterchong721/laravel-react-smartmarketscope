@@ -1,0 +1,30 @@
+{
+  "artifact_id": "ROLE8-NAS100-SOURCE-CALENDAR-001",
+  "calendar_sha256": "83f49b04412de1e8ccb1cac1eb97a0e6adc05acc28b36cd55e50ceff834b28e7",
+  "created_at_utc": "2026-07-14T04:00:00Z",
+  "first_source_trading_date": "2017-07-17",
+  "inference": {
+    "dates_added": 0,
+    "holidays_invented": 0,
+    "weekdays_added": 0
+  },
+  "last_source_trading_date": "2026-06-25",
+  "ny_offset_counts": {
+    "-1 day, 19:00:00": 796,
+    "-1 day, 20:00:00": 1513
+  },
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "row_count": 2309,
+  "schema_version": "1.0.0",
+  "source_date_sha256": "28ce7813e3291c6108153e6369d9d28af76f06c1e31681f6908d241bf7d4e3da",
+  "source_relative_path": "research/artifacts/processed_data/v1/NAS100_Daily_completed_v1.csv.gz",
+  "source_sha256": "45123acab32679cb426e283ddaae560c6d3b86ca04ba71599d207c14a8ad2bff",
+  "source_timezone": "UNRESOLVED",
+  "status": "PASS_EXACT_SOURCE_DATE_CALENDAR_FROZEN",
+  "timezone_semantics": {
+    "role7_activation_timezone": "America/New_York",
+    "source_dates": "EXACT_ELIGIBLE_D1_BAR_START_LABELS_ONLY",
+    "source_timezone": "UNRESOLVED",
+    "utc_and_kuala_lumpur": "DATE_AWARE_ZONEINFO_CONVERSIONS_OF_ROLE7_ACTIVATION_NOT_SOURCE_BAR_CONVERSIONS"
+  }
+}

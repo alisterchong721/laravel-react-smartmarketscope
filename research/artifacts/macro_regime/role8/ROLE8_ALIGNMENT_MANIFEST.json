@@ -1,0 +1,78 @@
+{
+  "alignment_code_sha256": "f00b3afa82199ebbf232a97a27997377f73112d10e7bd5fe4d2716b04b606217",
+  "alignment_test_sha256": "62cac89820f4fb3fa92a6f718489587732a03b30ca94761a134b6d10a8aef8d6",
+  "artifact_id": "MACRO-REGIME-ROLE8-ALIGNMENT-MANIFEST-001",
+  "counts": {
+    "calendar_dates": 2309,
+    "filtered_unknown": 1362,
+    "future_state_violations_in_declared_comparison_coordinate": 0,
+    "links_per_mode": 454,
+    "macro_links": 1362,
+    "replacement_trades": 0,
+    "technical_setups": 454,
+    "technical_trade_rows": 1362
+  },
+  "created_at_utc": "2026-07-14T04:00:00Z",
+  "decision": "ROLE8_ALIGNMENT_COMPLETE_ROLE9_BACKTEST_ONLY_PERMITTED",
+  "exact_next_permitted_action": "Role 9 M15/M5/M1 Economic Backtest Researcher only: consume the frozen Role 8 registry and J0/J1/J2 links, reconcile T0 exactly, and run preregistered economic comparisons without changing technical or macro inputs. Do not start Roles 10-11.",
+  "final_holdout_accesses": 0,
+  "inputs": {
+    "dataset/NAS100_Daily_200808060000_202606260000.csv": "2de323fa640b3afef2f32c4aad69309e6583848ab938e3920619bd1242510a75",
+    "dataset/NAS100_H4_200808060000_202606262000.csv": "ec22ae4610645f87c1e2cbe32a35f0e4a1f1ed9b4973cce01004c2c713180a91",
+    "dataset/NAS100_M15_200808060000_202606262345.csv": "17d03a842464b2fbd774ad653a882a45e1ee0593bdf1ce0594784e14721d8bbe",
+    "dataset/NAS100_M1_200808060000_202606262354.csv": "9ca414716a7c30b20006052af651d1f06f77ce23f62e7072feebd79896567f65",
+    "dataset/NAS100_M5_200808060000_202606262350.csv": "e1adb261b67c1150eced5ac180146b2df4804bec8a93e8b00a5b779353c196a3",
+    "research/artifacts/macro_liquidity_reversal/MLR_EVENT_REGISTRY.csv": "f44f50ec7ade6ad2aaf951bc9fce9ed0259d09cba4d4251b0989b71c73f57996",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_ECONOMIC_EXPERIMENT_REGISTRY.jsonl": "b8a77b09af65c97ac0bf413c75391dc5aa42fc05fb74fc11e5f4e5f4f1b276ee",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_FINAL_MANIFEST.json": "2a4b06cbfea9cc2a222670269f82e628e9e629dcb85046403a19ec190f96127c",
+    "research/artifacts/macro_liquidity_reversal/MLR_TECHNICAL_PRIMARY_TRADES.csv": "a9cf589273faed4bd965a1a84162c1c33288265b8634b7f8f5984b50cb66d8dd",
+    "research/artifacts/macro_liquidity_reversal/artifact_manifest.json": "88cfe9a0c601a7211b344aa939cb6ebfac915d15f0ed1db8af54fe683c2e1c95",
+    "research/artifacts/macro_liquidity_reversal/governance/MLR_FREQUENCY_CHECKPOINT_20260713T123112+0800.json": "258d64f800dc863644977e7e143734c4c4a1521845a7da136153c94d326920f9",
+    "research/artifacts/macro_regime/role6/MACRO_EVENT_UPDATE_LEDGER.parquet": "26512e4d04322007b3f8e0063a9e22ea24a1c027a0740342a43c0b1c11faccb7",
+    "research/artifacts/macro_regime/role6/MACRO_REGIME_SNAPSHOT_HISTORY.parquet": "561a3de26fa6b04a8189dacc3bddb52958a35d7aaa82da56fd0c1f5fdad74aaf",
+    "research/artifacts/macro_regime/role6/ROLE6_SCORING_MANIFEST.json": "7f3060d9c60c1c8d0457897e1497d3d4d84bae47f5e49f1b30fd4fb2c5fcddfd",
+    "research/artifacts/macro_regime/role7/ROLE7_VALIDATION_MANIFEST.json": "6b4692acca4285276a77c634cd75fa1814058ef7e33a318e73b99b937e5a67a7",
+    "research/artifacts/processed_data/v1/NAS100_Daily_completed_v1.csv.gz": "45123acab32679cb426e283ddaae560c6d3b86ca04ba71599d207c14a8ad2bff",
+    "research/artifacts/processed_data/v1/NAS100_H4_completed_v1.csv.gz": "e96b16aab5a3c6209d9c8e27a494f29abd98b2a438d651dff02821210c95b013",
+    "research/artifacts/processed_data/v1/NAS100_M15_completed_v1.csv.gz": "910f29bfa08733a95832ee42c6903f2c23d647de9adea2ada905d541508c5ee7",
+    "research/artifacts/processed_data/v1/NAS100_M5_canonical_v1.csv.gz": "13463d5e890e60c3b07e8b2946aa40a3327e79fd5d8892978ea83500f41b9f17",
+    "research/config/MACRO_REGIME_ROLE7_AVAILABILITY_POLICY.json": "eaa5c88b11fbec7d039c2701ff84d72c40725ad2f9bb1ec1cc901e07c448622b",
+    "research/config/execution_scenarios.json": "52ccc8167142e34e17ab2e140d3870398a6bfe86e2131e6d417337e5ee1c251d",
+    "research/config/macro_liquidity_reversal_primary.json": "800b6fe27da064ad952d87b8fee4e7bad96a28dba67176e7597e852540808124",
+    "research/src/smartmarketscope_quant/macro_liquidity_reversal/detectors.py": "0e5af7d33c09f76e72802fd17cb9421bce03cb3d9aaea16b6dcc917ce523d297",
+    "research/src/smartmarketscope_quant/macro_liquidity_reversal/technical_economic.py": "d52897249424484f83aea9fbd9ed0fac9a6d33208d6682c37406ecd066c8bee3"
+  },
+  "join_modes": {
+    "headline": "J0",
+    "selection_from_pnl": false,
+    "sensitivities": [
+      "J1",
+      "J2"
+    ]
+  },
+  "limitations": [
+    "TECHNICAL_SOURCE_TIMEZONE_UNRESOLVED",
+    "NONANTICIPATION_PROOF_IS_ROLE7_ACTIVATION_WALL_CLOCK_COORDINATE_NOT_UTC_EQUIVALENCE",
+    "NAS100_SOURCE_LABEL_NOT_CONFIRMED_BROKER_OR_EXCHANGE_PRODUCT",
+    "ROLE8_DERIVED_H4_LINEAGE_ID_BECAUSE_UPSTREAM_ID_ABSENT",
+    "REGISTRY_CHRONOLOGY_CAVEAT_REMAINS_FINAL_CHAMPION_VETO"
+  ],
+  "outputs": {
+    "research/artifacts/macro_regime/role8/MACRO_REGIME_TECHNICAL_BASELINE_FREEZE.md": "55b1a1f80403c09d7cd038f46ddf497bc5c9119876a1ace4f4be180168454a5b",
+    "research/artifacts/macro_regime/role8/MACRO_REGIME_TECHNICAL_BASELINE_HASHES.txt": "06797c748a195830e6940159ef4f32d9dfa1bda0a11b25316f022c7921d0c141",
+    "research/artifacts/macro_regime/role8/MACRO_REGIME_TECHNICAL_BASELINE_MANIFEST.json": "281baa769b93b1abcd0d26f8ca7f00297e9db00e287d8bf396e134915a7cad6a",
+    "research/artifacts/macro_regime/role8/MACRO_REGIME_TECHNICAL_TRADE_REGISTRY.parquet": "4a7abd50906d5084bba5b0f37cba748be5dea57bf58c16ee4e54d4182b6d025b",
+    "research/artifacts/macro_regime/role8/MACRO_TECHNICAL_ALIGNMENT_CENSUS.csv": "3c3733592daeab790b8ca69eecd8cc904e58bc62a469f658074dc446939f88d0",
+    "research/artifacts/macro_regime/role8/MACRO_TECHNICAL_ALIGNMENT_REPORT.md": "f370cc98bc12098d2bc5516bd432f0af55950f378c212d30ceaa4c1928343c09",
+    "research/artifacts/macro_regime/role8/MACRO_TECHNICAL_LINKS.parquet": "27677d6bfb451bef74556f70cbf660256da862eda992b42392d55d970b59aad9",
+    "research/artifacts/macro_regime/role8/NAS100_SOURCE_TRADING_DATE_CALENDAR.csv": "83f49b04412de1e8ccb1cac1eb97a0e6adc05acc28b36cd55e50ceff834b28e7",
+    "research/artifacts/macro_regime/role8/NAS100_SOURCE_TRADING_DATE_CALENDAR_MANIFEST.json": "b85814cb46c0549df00f7f9e303c8583c06f873d32aa532d94b74a981e78ca74",
+    "research/artifacts/macro_regime/role8/ROLE8_TEST_RESULTS.json": "d7a5a1d47350afbdbfb88a3607bce08195abb561a1a0db691c11c69cd1093f27"
+  },
+  "pnl_calculated": false,
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "protected_data_accesses": 0,
+  "schema_version": "1.0.0",
+  "starting_commit": "1e6f83f94118b97ffb3b462ae965fdb213222ad1",
+  "status": "PASS_ROLE8_ALIGNMENT_COMPLETE_ROLE9_PERMITTED"
+}

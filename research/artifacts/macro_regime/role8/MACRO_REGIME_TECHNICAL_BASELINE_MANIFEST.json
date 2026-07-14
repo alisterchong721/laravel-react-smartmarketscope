@@ -1,0 +1,65 @@
+{
+  "artifact_id": "MACRO-REGIME-TECHNICAL-BASELINE-001",
+  "created_at_utc": "2026-07-14T04:00:00Z",
+  "final_holdout_accesses": 0,
+  "h4_identity_limitation": "UPSTREAM_FROZEN_REGISTRY_HAS_NO_STANDALONE_H4_ID; ROLE8 ID IS HASH_DERIVED_FROM_FROZEN_EVENT_ID_DIRECTION_CONFIRMATION_TIME",
+  "historical_exposure": "PREVIOUSLY_EXPOSED_WINDOW",
+  "instrument": "NAS100_SOURCE_LABEL_ONLY_NOT_CONFIRMED_BROKER_OR_EXCHANGE_PRODUCT",
+  "mutation": {
+    "replacement_trades": 0,
+    "technical_rows_regenerated": 0,
+    "technical_source_files_changed": 0
+  },
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "protected_data_accesses": 0,
+  "schema_version": "1.0.0",
+  "source_timezone": "UNRESOLVED",
+  "status": "PASS_TECHNICAL_BASELINE_RECONCILED_AND_FROZEN",
+  "technical_baseline": {
+    "adverse_first_ambiguities": 6,
+    "detector_sha256": "0e5af7d33c09f76e72802fd17cb9421bce03cb3d9aaea16b6dcc917ce523d297",
+    "expected_post_terminal_governance_changes": {
+      "CURRENT_STATE.md": {
+        "current_hash": "1972f4c4fb0cfcf3d50b09469ed01dccd3eee6c09c23a3cdb05e563f3f43d082",
+        "technical_terminal_hash": "bfdf30ac7388da850c8793a2c254981edc33f83812fa355cfb70821f742ea39d"
+      },
+      "EXPERIMENT_REGISTRY.csv": {
+        "current_hash": "eaa310a101f02fbd0682a1864a77665f1ef15338c809baedfffff198a383d57a",
+        "technical_terminal_hash": "222ea6b2e81896a0b0ac8b9c5facb70de7273823ceced5ff7bdd7602d7739faa"
+      },
+      "NEXT_TASK.md": {
+        "current_hash": "caf74ab7c2b23856fde2776992f08c9625539c1f9bae71355d1aa6ed12180228",
+        "technical_terminal_hash": "abe4145f1ce8cc8171e2f5893e21cc765b31cc0d0b16be575bda75d134b8d127"
+      }
+    },
+    "invalid_data": 0,
+    "losses": 246,
+    "medium_cost_fills": 306,
+    "medium_cost_no_fills": 148,
+    "setup_count": 454,
+    "source_data_sha256": "9ce37678ee3ed6cae3800735d043da891b0920c8f3f7f520aa5926d29291ff59",
+    "source_hashes": {
+      "D1": "2de323fa640b3afef2f32c4aad69309e6583848ab938e3920619bd1242510a75",
+      "H4": "ec22ae4610645f87c1e2cbe32a35f0e4a1f1ed9b4973cce01004c2c713180a91",
+      "M1": "9ca414716a7c30b20006052af651d1f06f77ce23f62e7072feebd79896567f65",
+      "M15": "17d03a842464b2fbd774ad653a882a45e1ee0593bdf1ce0594784e14721d8bbe",
+      "M5": "e1adb261b67c1150eced5ac180146b2df4804bec8a93e8b00a5b779353c196a3",
+      "canonical_D1": "45123acab32679cb426e283ddaae560c6d3b86ca04ba71599d207c14a8ad2bff",
+      "canonical_H4": "e96b16aab5a3c6209d9c8e27a494f29abd98b2a438d651dff02821210c95b013",
+      "canonical_M15": "910f29bfa08733a95832ee42c6903f2c23d647de9adea2ada905d541508c5ee7",
+      "canonical_M5": "13463d5e890e60c3b07e8b2946aa40a3327e79fd5d8892978ea83500f41b9f17"
+    },
+    "strategy_config_sha256": "800b6fe27da064ad952d87b8fee4e7bad96a28dba67176e7597e852540808124",
+    "technical_artifact_sha256": "a9cf589273faed4bd965a1a84162c1c33288265b8634b7f8f5984b50cb66d8dd",
+    "technical_final_manifest_sha256": "2a4b06cbfea9cc2a222670269f82e628e9e629dcb85046403a19ec190f96127c",
+    "technical_registry_head": "b725575b0759a9f91cc9708ffab345335b8c753e5ee0e388c51838679a13ed76",
+    "timeouts": 2,
+    "trade_row_count": 1362,
+    "wins": 52
+  },
+  "trade_registry": {
+    "path": "research/artifacts/macro_regime/role8/MACRO_REGIME_TECHNICAL_TRADE_REGISTRY.parquet",
+    "rows": 1362,
+    "sha256": "4a7abd50906d5084bba5b0f37cba748be5dea57bf58c16ee4e54d4182b6d025b"
+  }
+}

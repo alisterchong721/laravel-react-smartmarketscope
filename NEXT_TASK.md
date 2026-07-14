@@ -1,51 +1,54 @@
 # Next Task
 
-## Macro Regime Program — Role 8 Technical-Macro Alignment
+## Macro Regime Program — Role 9 M15/M5/M1 Economic Backtest
 
 Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
 
-Role 7 is complete. Independent validation rehashed all three frozen inputs,
-2,236 raw artifacts, every Role 6 registry/config/code/output, and reconciled all
-10,273 observations and ledger rows, all state layers, and all daily as-of rows.
-J0 is ready. J1/J2 semantics are frozen pending an exact source-calendar hash.
-All 9,676 daily biases remain `UNKNOWN` and technical permission is `NO_TRADE`.
+Role 8 is complete. The exact technical baseline reconciles 454 setups, 1,362
+setup/scenario rows, 306 medium-cost fills, 148 no-fills, zero invalid cases, and
+all frozen detector/config/data/artifact lineage. The exact 2,309-date
+NAS100-labelled source calendar is hash-locked with source timezone unresolved.
+All 454 setups are linked once under each of J0/J1/J2 with zero future states and
+zero replacement trades. Every one of the 1,362 links is `FILTERED_UNKNOWN`.
 
-Run exactly one next sequential role: Technical-Macro Alignment Engineer.
+Run exactly one next sequential role: M15/M5/M1 Economic Backtest Researcher.
 
-1. Locate and hash-lock the exact completed MLR technical baseline. Reconcile
-   454 setups, 306 medium-cost fills, 148 no-fills, zero invalid-data cases, and
-   the frozen detector/config/data/artifact lineage without regenerating or
-   changing the strategy.
-2. Freeze the exact NAS100-labelled source trading-date calendar used by the
-   technical evidence. Record source timezone, day-boundary semantics, DST-aware
-   `America/New_York`/UTC/`Asia/Kuala_Lumpur` conversions, date range, row count,
-   and SHA-256. Do not infer missing weekdays or holidays.
-3. For every frozen setup, preserve setup ID, D1/H4 IDs, direction, actionable
-   source timestamp, entry timeframe, confluence family, entry, stop, targets,
-   expiry, fill/outcome fields, detector version, and all technical hashes
-   byte-for-byte.
-4. Apply the frozen Role 7 timing policy: J0 headline, J1 first frozen source
-   trading date after availability, and J2 second frozen source trading date.
-   At each actionable timestamp choose only the latest macro snapshot effective
-   at or before that timestamp; exact equality is eligible.
-5. Record snapshot ID/effective time, all five category scores, base score,
-   interactions, final score, bias, valid-category count, direction relation,
-   join rule, and scoring/code/registry hashes. Prove no future macro state enters
-   any link and no setup receives a replacement trade.
-6. Map `UNKNOWN` to `FILTERED_UNKNOWN`, `NEUTRAL` to `FILTERED_NEUTRAL`, opposite
-   direction to `FILTERED_OPPOSITE_DIRECTION`, and matching direction to
-   `PERMITTED_DIRECTION_MATCH`. Do not relax coverage or reinterpret UNKNOWN.
-7. Produce the immutable technical registry/freeze artifacts when not already
-   present, `MACRO_TECHNICAL_LINKS.parquet`, a J0/J1/J2 alignment census,
-   `MACRO_TECHNICAL_ALIGNMENT_REPORT.md`, hashes, manifest, deterministic tests,
-   limitations, and the exact Role 9 handoff or a fail-closed terminal result.
+1. Rehash and validate every Role 8 input before economic calculation. Reconcile
+   T0 exactly from the immutable registry: 454 setups, 306 medium-cost fills,
+   148 no-fills, zero invalid-data cases, and the frozen outcome/cost partitions.
+   Stop on any technical, macro, calendar, or link hash mismatch.
+2. Evaluate the exact frozen variants separately: T0, M1_LOOSE, M2_PRIMARY,
+   M3_STRONG_ONLY, and M4_HIGH_COVERAGE. Run J0 as headline and J1/J2 only as
+   sensitivities. Do not select a join or threshold from its result.
+3. Keep M15/M5/M1 standalone C1 OB+FVG and C2 FVG+breaker strategies separate,
+   and keep the hierarchical M15→M5→M1 strategy separate. Preserve each frozen
+   setup, fill, barrier, expiry, outcome, and low/medium/high cost value.
+4. Run the frozen controls: long-only, short-only, opposite-macro, one frozen
+   completed-D1 trend control, and deterministic retention-matched random
+   filtering where its prerequisites are met. Do not add or tune a control.
+5. Report every required count, return, expectancy, profit-factor, drawdown,
+   duration, streak, holding-time, year, direction, cost, retention, and
+   inactivity metric for each applicable configuration. Reconcile overall totals
+   to year/timeframe/family partitions and retain zero-trade results explicitly.
+6. Use expanding chronological outer evaluation with setup-interval purging and
+   the frozen embargo where applicable. Do not train ML, redefine the macro
+   taxonomy, alter technical rules, or call any exposed period a pristine
+   holdout.
+7. Apply the candidate gates exactly. With every Role 8 link currently
+   `FILTERED_UNKNOWN`, do not relax coverage to obtain trades. Return
+   `INSUFFICIENT_ALIGNED_TRADES` when fewer than 30 aligned fills remain.
+8. Produce separate M15, M5, M1, hierarchical, timeframe-comparison,
+   random-control, walk-forward, annual, category-contribution, and candidate
+   decision artifacts, plus manifests, hashes, deterministic tests, limitations,
+   and the exact Role 10 handoff or terminal next action.
 
-Do not calculate macro-filter PnL, compare economic variants, inspect outcomes
-for parameter selection, tune delays/thresholds/weights, access protected/final-
-holdout paths, change any technical outcome, add public write routes, deploy,
-connect a broker, or start Roles 9–11. If the technical baseline or source
-calendar cannot be reconciled exactly, stop with
-`TECHNICAL_BASELINE_RECONCILIATION_FAILED`; do not construct a substitute.
+Do not tune delays, thresholds, weights, categories, technical rules, fills,
+costs, or random seeds after outcome access. Do not pool standalone timeframes,
+search for replacement trades, access protected/final-holdout paths, add public
+write routes, deploy, connect a broker, or start Roles 10–11. A less-negative
+result is not success. Preserve the valid terminal result
+`INSUFFICIENT_ALIGNED_TRADES` when the frozen UNKNOWN gate retains fewer than 30
+filled trades.
 
 ## Macro Liquidity Reversal Gate
 

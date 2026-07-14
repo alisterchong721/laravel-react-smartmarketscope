@@ -1,5 +1,45 @@
 # Current State
 
+## Macro Regime Program — Technical-Macro Alignment (Role 8)
+
+Role 8 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with `PASS`
+and decision `ROLE8_ALIGNMENT_COMPLETE_ROLE9_BACKTEST_ONLY_PERMITTED`.
+
+- The exact completed MLR evidence reconciles 454 setups and 1,362
+  setup/scenario rows. The medium-cost partition remains 306 fills, 148
+  no-fills, zero invalid-data cases, 52 wins, 246 losses, two timeouts, and six
+  adverse-first ambiguities. All original CSV field strings round-trip
+  byte-for-byte through the immutable Role 8 Parquet registry.
+- Detector, strategy configuration, five technical source/canonical datasets,
+  terminal technical manifest, frequency checkpoint, and hash-linked technical
+  registry are frozen. The three expected post-terminal governance-file changes
+  are disclosed separately and do not alter technical evidence.
+- The exact NAS100-labelled source calendar contains 2,309 eligible D1 bar-start
+  dates from 2017-07-17 through 2026-06-25. No weekday or holiday was inserted.
+  The source timezone remains unresolved; date-aware New York, UTC, and Kuala
+  Lumpur columns describe Role 7 activation times, not source-feed conversions.
+- Every setup is linked exactly once under J0, J1, and J2: 1,362 links total,
+  454 per mode. Snapshot eligibility is inclusive at exact equality. Future
+  state violations and replacement trades are both zero.
+- Every linked bias is `UNKNOWN`, so all 1,362 decisions remain
+  `FILTERED_UNKNOWN`. Category coverage was not relaxed and neither J1 nor J2
+  was selected from PnL.
+- The upstream technical registry did not emit a standalone H4 event ID. Role 8
+  records a deterministic lineage ID derived solely from the frozen D1 event
+  ID, direction, and H4 confirmation time, and labels that origin explicitly.
+- Focused positive, boundary, DST, equality, future-state, exact-census,
+  byte-preservation, cardinality, and hash tests pass 12/12. No macro-filter
+  PnL, experiment selection, protected/final-holdout access, broker connection,
+  deployment, or paper/live action occurred. The complete research suite passes
+  256/256.
+
+The next sequential role is Role 9 M15/M5/M1 Economic Backtest Researcher only.
+It must consume the frozen Role 8 technical registry and J0/J1/J2 links,
+reconcile T0 exactly, and run only the preregistered economic comparisons. It
+must not alter technical or macro inputs or start Roles 10–11. See
+`NEXT_TASK.md` and
+`research/artifacts/macro_regime/role8/MACRO_TECHNICAL_ALIGNMENT_REPORT.md`.
+
 ## Macro Regime Program — Point-in-Time and Availability Validation (Role 7)
 
 Role 7 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with `PASS`
