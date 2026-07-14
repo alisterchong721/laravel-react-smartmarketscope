@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "SMMS-MACRO-REGIME-R9-001",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "objective": "Evaluate only the frozen Role 9 technical-only, macro-filter, and control comparisons without threshold, delay, taxonomy, technical-rule, cost, or outcome changes.",
+  "frozen_before_role9_calculation": true,
+  "source_contract": "Role 8 immutable technical registry, J0/J1/J2 links, manifest, hashes, and exact T0 census",
+  "config_path": "research/config/MACRO_REGIME_ROLE9_BACKTEST_CONFIG.json",
+  "primary_variant": "M2_PRIMARY",
+  "primary_join": "J0",
+  "primary_cost": "NORMALIZED_MEDIUM_COST",
+  "controls": ["C1_LONG_ONLY", "C2_SHORT_ONLY", "C3_OPPOSITE_MACRO", "C4_SIMPLE_D1_TREND", "C5_RETENTION_MATCHED_RANDOM"],
+  "candidate_decision_order": ["INSUFFICIENT_ALIGNED_TRADES", "MACRO_REGIME_ADDED_NO_VALUE", "MACRO_REGIME_IMPROVED_BUT_REMAINS_UNPROFITABLE", "MACRO_REGIME_RESULT_INCONCLUSIVE", "HISTORICAL_MACRO_REGIME_CANDIDATE_FOUND"],
+  "selection_prohibitions": ["NO_JOIN_SELECTION_FROM_PNL", "NO_THRESHOLD_TUNING", "NO_COVERAGE_RELAXATION", "NO_REPLACEMENT_TRADES", "NO_FINAL_HOLDOUT", "NO_LIVE_ACTION"],
+  "random_seed": 2026071409,
+  "random_draws": 1000
+}

@@ -1,0 +1,239 @@
+{
+  "artifact_id": "MACRO-REGIME-ROLE9-BACKTEST-MANIFEST-001",
+  "assumptions": [
+    "FROZEN_TECHNICAL_OUTCOMES_UNCHANGED",
+    "FROZEN_D1_EMA20_EMA50_CONTROL_ALREADY_EMBEDDED_IN_T0",
+    "NO_MODEL_TRAINING"
+  ],
+  "code_version": "2176f157be02ba0faabca94ae6e796084822dbdd60efeba2cfd69bda143652f7",
+  "config": {
+    "candidate_gates": {
+      "high_cost_improvement_required": true,
+      "j0_improvement_required": true,
+      "median_outer_fold_net_r_must_be_positive": true,
+      "medium_average_net_r_must_be_positive": true,
+      "medium_total_net_r_must_be_positive": true,
+      "minimum_retained_filled_trades": 30,
+      "must_beat_long_only": true,
+      "must_beat_opposite_macro": true,
+      "must_beat_random": true,
+      "year_direction_concentration_veto": true
+    },
+    "controls": {
+      "C1_LONG_ONLY": "BULLISH_TECHNICAL_DIRECTION_ONLY",
+      "C2_SHORT_ONLY": "BEARISH_TECHNICAL_DIRECTION_ONLY",
+      "C3_OPPOSITE_MACRO": "OPPOSITE_OF_M2_PRIMARY_DIRECTION",
+      "C4_SIMPLE_D1_TREND": "FROZEN_D1_EMA20_EMA50_TREND_CONTEXT_ALREADY_REQUIRED_BY_T0",
+      "C5_RETENTION_MATCHED_RANDOM": "1000_DRAWS_WHEN_TARGET_RETAINED_FILLED_COUNT_IS_POSITIVE"
+    },
+    "cost_scenarios": [
+      "NORMALIZED_LOW_COST",
+      "NORMALIZED_MEDIUM_COST",
+      "NORMALIZED_HIGH_COST"
+    ],
+    "experiment_id": "SMMS-MACRO-REGIME-R9-001",
+    "final_holdout_access": "PROHIBITED",
+    "headline_join": "J0",
+    "instrument_identity": "NAS100_LABELED_PROBABLE_CFD_POST_2017_NOT_BROKER_CONFIRMED",
+    "live_deployment": "PROHIBITED",
+    "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+    "random_control": {
+      "base_seed": 2026071409,
+      "draws": 1000,
+      "preserve_direction_counts_where_possible": true,
+      "sampling_unit": "SETUP_ID"
+    },
+    "schema_version": "1.0.0",
+    "sensitivity_joins": [
+      "J1",
+      "J2"
+    ],
+    "source_timezone": "UNRESOLVED",
+    "variants": {
+      "M1_LOOSE": {
+        "long_min": 1,
+        "minimum_valid_categories": 3,
+        "short_max": -1
+      },
+      "M2_PRIMARY": {
+        "long_min": 2,
+        "minimum_valid_categories": 3,
+        "short_max": -2
+      },
+      "M3_STRONG_ONLY": {
+        "long_min": 5,
+        "minimum_valid_categories": 3,
+        "short_max": -5
+      },
+      "M4_HIGH_COVERAGE": {
+        "long_min": 2,
+        "minimum_valid_categories": 4,
+        "short_max": -2
+      },
+      "T0": {
+        "rule": "TECHNICAL_ONLY"
+      }
+    },
+    "walk_forward": {
+      "embargo_source_trading_days": 1,
+      "minimum_train_calendar_years": 2,
+      "outer_reoptimization": false,
+      "purge": "REMOVE_TRAIN_SETUP_INTERVALS_OVERLAPPING_TEST_INTERVAL",
+      "test_year_blocks": [
+        [
+          2020
+        ],
+        [
+          2021
+        ],
+        [
+          2022
+        ],
+        [
+          2023
+        ],
+        [
+          2024
+        ],
+        [
+          2025,
+          2026
+        ]
+      ],
+      "type": "EXPANDING_CHRONOLOGICAL_OUTER"
+    }
+  },
+  "config_checksum": "a679ede01ccd0eac45f71ffb66220ea65bc130a3ea5e2608553d3d3ecfd2dedc",
+  "counts": {
+    "backtest_run_rows": 21,
+    "category_contribution_rows": 42,
+    "comparison_rows": 12474,
+    "curve_input_rows": 4590,
+    "macro_retained_fills_all_variants_all_joins": 0,
+    "medium_fills": 306,
+    "medium_no_fills": 148,
+    "metric_rows": 14553,
+    "random_control_rows": 12,
+    "selection_rows": 9534,
+    "technical_setups": 454,
+    "technical_trade_rows": 1362,
+    "walk_forward_rows": 114
+  },
+  "created_at_utc": "2026-07-14T06:00:00Z",
+  "created_by": "M15/M5/M1 Economic Backtest Researcher",
+  "decision": "INSUFFICIENT_ALIGNED_TRADES",
+  "deployment": "NOT_RUN_PROHIBITED",
+  "exact_next_permitted_action": "Role 10 Reporting and Visualization Engineer only; report and chart the frozen negative/zero evidence without changing inputs or starting audit/deployment.",
+  "experiment_id": "SMMS-MACRO-REGIME-R9-001",
+  "final_holdout_accesses": 0,
+  "git_commit": "WORKING_TREE_FROM_7ecf69f0849aa17d825f68a482431e2d08a45672",
+  "inputs": {
+    "config_sha256": "a679ede01ccd0eac45f71ffb66220ea65bc130a3ea5e2608553d3d3ecfd2dedc",
+    "experiment_registry_head": "29e88a1577792dd450732bf53b5fcf35a5fc319a2bed978b97282569e6680e69",
+    "experiment_registry_role9_policy": "UNCHANGED_BECAUSE_ROLE3_ROLE4_HASH_LOCK_WHOLE_FILE; ROLE9_USES_DEDICATED_APPEND_ONLY_MACRO_BACKTEST_RUN_REGISTRY",
+    "macro_links_sha256": "27677d6bfb451bef74556f70cbf660256da862eda992b42392d55d970b59aad9",
+    "preregistration_sha256": "99a60cb3437dcc1197f0f86ea9c4c5cb5d6af6cf2106d41c1c9149d9d9a3119f",
+    "role8_manifest_sha256": "82e9d1346f0ebc2b48dd5be7ff614a6be7f58782a708354429ec1da69ae797ab",
+    "role8_output_hashes_sha256": "940187dac1dbd475d4e1a52626290b2d47f8bd89f608f4cbc7fe7db3eeeb82bb",
+    "technical_registry_sha256": "4a7abd50906d5084bba5b0f37cba748be5dea57bf58c16ee4e54d4182b6d025b"
+  },
+  "limitations": [
+    "TECHNICAL_SOURCE_TIMEZONE_UNRESOLVED",
+    "NAS100_SOURCE_LABEL_NOT_BROKER_CONFIRMED",
+    "NORMALIZED_COSTS_NOT_BROKER_FACT",
+    "REGISTRY_CHRONOLOGY_CAVEAT_FINAL_CHAMPION_VETO"
+  ],
+  "outputs": {
+    "research/artifacts/macro_regime/role9/MACRO_ANNUAL_PERFORMANCE_REPORT.md": "270565135eb6b09c520e5df52e8eaadc376780cb7e5b1df65f3ca20ab948e6f7",
+    "research/artifacts/macro_regime/role9/MACRO_BACKTEST_METRICS.csv": "af785cb0d7de642580943985fdf21aec352867076b06246ba0054d3bfdea18be",
+    "research/artifacts/macro_regime/role9/MACRO_BACKTEST_METRICS.parquet": "b8c1ddfcff29b1b3500a1de1680e39bc0e06cdf64a215274ad2fe3871013837f",
+    "research/artifacts/macro_regime/role9/MACRO_BACKTEST_RUN_REGISTRY.jsonl": "485d7813cf0ce0a142bc9ece403ac8623611dee6ff7735b3148a19ca6cc6b0a4",
+    "research/artifacts/macro_regime/role9/MACRO_BACKTEST_RUN_REGISTRY.parquet": "a312f7d55c08d2aa94154a359bcbc62a8fc73cfc2c011cb472a8643225900024",
+    "research/artifacts/macro_regime/role9/MACRO_BACKTEST_SELECTIONS.parquet": "218f030843589ada31f0f57040d665eaccd45a57696eef0843098877dd490920",
+    "research/artifacts/macro_regime/role9/MACRO_CATEGORY_CONTRIBUTION.csv": "aae5ab6ca41981b7b37ea427c8dda8c56b79b73710fc02990a9db93c9984d509",
+    "research/artifacts/macro_regime/role9/MACRO_CATEGORY_CONTRIBUTION_REPORT.md": "1baa4c1e352a6b1fe7b7655c1ee16140d457779726090c020e4817c1b2fc2f16",
+    "research/artifacts/macro_regime/role9/MACRO_EQUITY_DRAWDOWN_CURVE_INPUTS.parquet": "65854d00f44c35175b77211ce4f960226a7d5aebc148f2f7c9784320550d95d5",
+    "research/artifacts/macro_regime/role9/MACRO_EQUITY_DRAWDOWN_INPUTS.md": "13088c05da71a83586c67065b671117af5b7209a2672e250d689107d369e90b2",
+    "research/artifacts/macro_regime/role9/MACRO_HIERARCHICAL_RESULT_REPORT.md": "2c315d61aff3f5989490efcfc14f43dbbf6540879fd025961bcedabcc81727cc",
+    "research/artifacts/macro_regime/role9/MACRO_M15_RESULT_REPORT.md": "4e69ba82bc342a48584a4680ddeaf3a1f74fbe066c94a4479d832123914cee6d",
+    "research/artifacts/macro_regime/role9/MACRO_M1_RESULT_REPORT.md": "209cfd949564d38b41854fc1834a34c5ea10896c09397829b124bebfb3213720",
+    "research/artifacts/macro_regime/role9/MACRO_M5_RESULT_REPORT.md": "c7130260360bed8ae598c1a636d38133e00990f33eb046e50d0c5e64a88c304c",
+    "research/artifacts/macro_regime/role9/MACRO_RANDOM_CONTROL_REPORT.md": "701474b33780d00b13538c0b274bf7def3f61da7ad52454ab1f7355ee6622986",
+    "research/artifacts/macro_regime/role9/MACRO_RANDOM_CONTROL_RESULTS.csv": "e69a1386dec930d28aeb6d97e6114eba33a56030cd7f5bcac0530717d96aab48",
+    "research/artifacts/macro_regime/role9/MACRO_REGIME_CANDIDATE_DECISION.json": "9ac647767108f712766410ea27be208b36913b026ce3bb7075d66c0b6e40f97f",
+    "research/artifacts/macro_regime/role9/MACRO_REGIME_CANDIDATE_DECISION.md": "14f86c6bb0386e285c8a5655123bef6cf1049b4bd8b1b495f4f86eae400dfa7f",
+    "research/artifacts/macro_regime/role9/MACRO_TIMEFRAME_COMPARISON.md": "a5487d17f581da5ec2b92f0c9ed8a0c75361263a45c3782132a55e4e4e5ee140",
+    "research/artifacts/macro_regime/role9/MACRO_VARIANT_DELTAS.csv": "784b8e924b155253386b07f03e8f48f1838fe91f87607d6d918ec81bebc02172",
+    "research/artifacts/macro_regime/role9/MACRO_WALK_FORWARD_REPORT.md": "4b29bf59190d7b0a9a5dff327bfb71bdc082948e7b1f0e658023e62aeac5c07d",
+    "research/artifacts/macro_regime/role9/MACRO_WALK_FORWARD_RESULTS.csv": "71b08bb52352ef99758a1e8b47f7a1af4563ba9e3d97a7898f80c5fd1aaa9cd8"
+  },
+  "primary_result": {
+    "candidate": "NONE",
+    "controls_medium": {
+      "C1_LONG_ONLY": {
+        "permitted_trades": 53,
+        "total_net_r": -16.043269436235654
+      },
+      "C2_SHORT_ONLY": {
+        "permitted_trades": 253,
+        "total_net_r": -157.41460093634905
+      },
+      "C3_OPPOSITE_MACRO": {
+        "permitted_trades": 0,
+        "total_net_r": 0
+      },
+      "C4_SIMPLE_D1_TREND": {
+        "permitted_trades": 306,
+        "total_net_r": -173.4578703725847
+      }
+    },
+    "decision": "INSUFFICIENT_ALIGNED_TRADES",
+    "exact_next_permitted_action": "Role 10 Reporting and Visualization Engineer only; report and chart the frozen negative/zero evidence without changing inputs or starting audit/deployment.",
+    "failure_codes": [
+      "BACKTEST_ENGINE_BUILDER_EVIDENCE_INSUFFICIENT",
+      "INSUFFICIENT_CATEGORY_COVERAGE",
+      "INSUFFICIENT_ALIGNED_TRADES"
+    ],
+    "final_holdout_accesses": 0,
+    "gate_results": {
+      "beats_long_only": "FAIL_ZERO_TRADES",
+      "beats_opposite_macro": "NOT_DEMONSTRATED_BOTH_ZERO",
+      "beats_retention_random": "NOT_APPLICABLE_ZERO_RETENTION",
+      "exact_t0_reconciliation": "PASS",
+      "high_cost_improvement": "NOT_APPLICABLE_ZERO_TRADES",
+      "j0_improvement": "FAIL_NO_ACTIVE_FILTER",
+      "minimum_retained_fills": "FAIL_0_LT_30",
+      "positive_medium_average_net_r": "NOT_APPLICABLE_ZERO_TRADES",
+      "positive_medium_total_net_r": "FAIL_ZERO_NOT_POSITIVE",
+      "positive_outer_fold_median": "NOT_APPLICABLE_ZERO_TRADES",
+      "vintage_safe_daily_evidence": "PASS_WITH_CATEGORY_COVERAGE_LIMIT",
+      "year_direction_concentration": "NOT_APPLICABLE_ZERO_TRADES"
+    },
+    "minimum_required": 30,
+    "primary_join": "J0",
+    "primary_variant": "M2_PRIMARY",
+    "protected_data_accesses": 0,
+    "retained_filled_trades": 0,
+    "status": "INCONCLUSIVE",
+    "t0_medium": {
+      "permitted_trades": 306,
+      "total_net_r": -173.4578703725847
+    },
+    "warnings": [
+      "TECHNICAL_SOURCE_TIMEZONE_UNRESOLVED",
+      "NAS100_SOURCE_LABEL_NOT_BROKER_CONFIRMED",
+      "NORMALIZED_COSTS_NOT_BROKER_FACT",
+      "REGISTRY_CHRONOLOGY_CAVEAT_FINAL_CHAMPION_VETO"
+    ]
+  },
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "protected_data_accesses": 0,
+  "random_seed": 2026071409,
+  "registry_update": "Dedicated append-only MACRO_BACKTEST_RUN_REGISTRY JSONL/Parquet created; global experiment registry remains frozen to preserve Role 3/4 whole-file input hashes.",
+  "request_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001-ROLE9",
+  "rollback": "Delete only Role 9 outputs/code/test/config/preregistration and append a cancellation/reconciliation event; never rewrite registry history.",
+  "schema_version": "1.0.0",
+  "starting_commit": "7ecf69f0849aa17d825f68a482431e2d08a45672",
+  "status": "INCONCLUSIVE",
+  "test_version": "6e636f85aff6bb85c2e4335c237f0acc95e2a4decc2e96add85fb1d4cc24f3bf"
+}

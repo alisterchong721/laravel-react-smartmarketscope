@@ -1,5 +1,49 @@
 # Current State
 
+## Macro Regime Program — Economic Backtest (Role 9)
+
+Role 9 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with
+`INCONCLUSIVE` and decision `INSUFFICIENT_ALIGNED_TRADES`.
+
+- Every frozen Role 8 input and output rehashes. T0 exactly reconciles 454
+  setups, 306 medium-cost fills, 148 no-fills, zero invalid cases, and
+  -173.4578703725847R medium-cost net. Low and high totals remain
+  -164.17863242504234R and -203.4249441630429R.
+- M1 Loose, M2 Primary, M3 Strong Only, and M4 High Coverage retain zero
+  filled trades under each of J0/J1/J2. Opposite-macro also retains zero.
+  Every macro link is UNKNOWN because at most two categories can be valid;
+  coverage was not relaxed and no replacement trade was created.
+- Long-only retains 53 fills for -16.043269436235654R medium; short-only
+  retains 253 for -157.41460093634905R. The frozen completed-D1 EMA20/EMA50
+  trend control is already a T0 prerequisite and therefore exactly equals T0.
+  Retention-matched random filtering is `NOT_APPLICABLE_ZERO_RETENTION`, not
+  a favorable zero distribution.
+- M15 C1/C2, M5 C1/C2, M1 C1/C2, and hierarchical evidence remain separate.
+  The immutable outputs contain 14,553 metric rows, 12,474 deltas, 114
+  expanding-outer-fold rows, 9,534 setup selections, 4,590 curve-input rows,
+  42 category rows, 12 random-control rows, and 21 dedicated append-only run
+  records.
+- Candidate gates fail at the first decisive threshold: 0 retained fills is
+  below 30. Zero-trade average/median expectancy, fold median, random control,
+  and year/direction concentration are NOT_APPLICABLE, not successful.
+- Focused tests pass 13/13, the complete research suite passes 269/269, and
+  validation-only passes 14,553 metric rows and 22 output hashes. Failed-first
+  assertion and global-registry compatibility evidence is preserved in the
+  Role 9 test artifact.
+- The global experiment registry remains unchanged because Role 3/4 froze its
+  whole-file hash as an input. The prospectively frozen Role 9 specification
+  and all 21 economic runs are preserved in the dedicated append-only macro
+  backtest registry. No final holdout, broker, deployment, paper, or live path
+  was accessed.
+
+The next sequential role is Role 10 Reporting and Visualization Engineer only.
+It must consume the frozen Role 6–9 artifacts, produce exact static/interactive
+offline reports and the authorized read-only Smart MarketScope page, reconcile
+every chart to tables, and preserve negative and zero-trade evidence. It must
+not alter research inputs, claim a candidate, deploy, or start Role 11. See
+`NEXT_TASK.md` and
+`research/artifacts/macro_regime/role9/MACRO_REGIME_CANDIDATE_DECISION.md`.
+
 ## Macro Regime Program — Technical-Macro Alignment (Role 8)
 
 Role 8 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with `PASS`

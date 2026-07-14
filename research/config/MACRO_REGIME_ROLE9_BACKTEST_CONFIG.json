@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "experiment_id": "SMMS-MACRO-REGIME-R9-001",
+  "headline_join": "J0",
+  "sensitivity_joins": ["J1", "J2"],
+  "variants": {
+    "T0": {"rule": "TECHNICAL_ONLY"},
+    "M1_LOOSE": {"long_min": 1, "short_max": -1, "minimum_valid_categories": 3},
+    "M2_PRIMARY": {"long_min": 2, "short_max": -2, "minimum_valid_categories": 3},
+    "M3_STRONG_ONLY": {"long_min": 5, "short_max": -5, "minimum_valid_categories": 3},
+    "M4_HIGH_COVERAGE": {"long_min": 2, "short_max": -2, "minimum_valid_categories": 4}
+  },
+  "controls": {
+    "C1_LONG_ONLY": "BULLISH_TECHNICAL_DIRECTION_ONLY",
+    "C2_SHORT_ONLY": "BEARISH_TECHNICAL_DIRECTION_ONLY",
+    "C3_OPPOSITE_MACRO": "OPPOSITE_OF_M2_PRIMARY_DIRECTION",
+    "C4_SIMPLE_D1_TREND": "FROZEN_D1_EMA20_EMA50_TREND_CONTEXT_ALREADY_REQUIRED_BY_T0",
+    "C5_RETENTION_MATCHED_RANDOM": "1000_DRAWS_WHEN_TARGET_RETAINED_FILLED_COUNT_IS_POSITIVE"
+  },
+  "random_control": {
+    "draws": 1000,
+    "base_seed": 2026071409,
+    "sampling_unit": "SETUP_ID",
+    "preserve_direction_counts_where_possible": true
+  },
+  "walk_forward": {
+    "type": "EXPANDING_CHRONOLOGICAL_OUTER",
+    "minimum_train_calendar_years": 2,
+    "test_year_blocks": [[2020], [2021], [2022], [2023], [2024], [2025, 2026]],
+    "purge": "REMOVE_TRAIN_SETUP_INTERVALS_OVERLAPPING_TEST_INTERVAL",
+    "embargo_source_trading_days": 1,
+    "outer_reoptimization": false
+  },
+  "candidate_gates": {
+    "minimum_retained_filled_trades": 30,
+    "medium_average_net_r_must_be_positive": true,
+    "medium_total_net_r_must_be_positive": true,
+    "median_outer_fold_net_r_must_be_positive": true,
+    "high_cost_improvement_required": true,
+    "j0_improvement_required": true,
+    "year_direction_concentration_veto": true,
+    "must_beat_long_only": true,
+    "must_beat_random": true,
+    "must_beat_opposite_macro": true
+  },
+  "instrument_identity": "NAS100_LABELED_PROBABLE_CFD_POST_2017_NOT_BROKER_CONFIRMED",
+  "source_timezone": "UNRESOLVED",
+  "cost_scenarios": ["NORMALIZED_LOW_COST", "NORMALIZED_MEDIUM_COST", "NORMALIZED_HIGH_COST"],
+  "final_holdout_access": "PROHIBITED",
+  "live_deployment": "PROHIBITED"
+}

@@ -1,0 +1,59 @@
+{
+  "candidate": "NONE",
+  "controls_medium": {
+    "C1_LONG_ONLY": {
+      "permitted_trades": 53,
+      "total_net_r": -16.043269436235654
+    },
+    "C2_SHORT_ONLY": {
+      "permitted_trades": 253,
+      "total_net_r": -157.41460093634905
+    },
+    "C3_OPPOSITE_MACRO": {
+      "permitted_trades": 0,
+      "total_net_r": 0
+    },
+    "C4_SIMPLE_D1_TREND": {
+      "permitted_trades": 306,
+      "total_net_r": -173.4578703725847
+    }
+  },
+  "decision": "INSUFFICIENT_ALIGNED_TRADES",
+  "exact_next_permitted_action": "Role 10 Reporting and Visualization Engineer only; report and chart the frozen negative/zero evidence without changing inputs or starting audit/deployment.",
+  "failure_codes": [
+    "BACKTEST_ENGINE_BUILDER_EVIDENCE_INSUFFICIENT",
+    "INSUFFICIENT_CATEGORY_COVERAGE",
+    "INSUFFICIENT_ALIGNED_TRADES"
+  ],
+  "final_holdout_accesses": 0,
+  "gate_results": {
+    "beats_long_only": "FAIL_ZERO_TRADES",
+    "beats_opposite_macro": "NOT_DEMONSTRATED_BOTH_ZERO",
+    "beats_retention_random": "NOT_APPLICABLE_ZERO_RETENTION",
+    "exact_t0_reconciliation": "PASS",
+    "high_cost_improvement": "NOT_APPLICABLE_ZERO_TRADES",
+    "j0_improvement": "FAIL_NO_ACTIVE_FILTER",
+    "minimum_retained_fills": "FAIL_0_LT_30",
+    "positive_medium_average_net_r": "NOT_APPLICABLE_ZERO_TRADES",
+    "positive_medium_total_net_r": "FAIL_ZERO_NOT_POSITIVE",
+    "positive_outer_fold_median": "NOT_APPLICABLE_ZERO_TRADES",
+    "vintage_safe_daily_evidence": "PASS_WITH_CATEGORY_COVERAGE_LIMIT",
+    "year_direction_concentration": "NOT_APPLICABLE_ZERO_TRADES"
+  },
+  "minimum_required": 30,
+  "primary_join": "J0",
+  "primary_variant": "M2_PRIMARY",
+  "protected_data_accesses": 0,
+  "retained_filled_trades": 0,
+  "status": "INCONCLUSIVE",
+  "t0_medium": {
+    "permitted_trades": 306,
+    "total_net_r": -173.4578703725847
+  },
+  "warnings": [
+    "TECHNICAL_SOURCE_TIMEZONE_UNRESOLVED",
+    "NAS100_SOURCE_LABEL_NOT_BROKER_CONFIRMED",
+    "NORMALIZED_COSTS_NOT_BROKER_FACT",
+    "REGISTRY_CHRONOLOGY_CAVEAT_FINAL_CHAMPION_VETO"
+  ]
+}

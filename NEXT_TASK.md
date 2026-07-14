@@ -1,54 +1,51 @@
 # Next Task
 
-## Macro Regime Program — Role 9 M15/M5/M1 Economic Backtest
+## Macro Regime Program — Role 10 Reporting and Visualization
 
 Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
 
-Role 8 is complete. The exact technical baseline reconciles 454 setups, 1,362
-setup/scenario rows, 306 medium-cost fills, 148 no-fills, zero invalid cases, and
-all frozen detector/config/data/artifact lineage. The exact 2,309-date
-NAS100-labelled source calendar is hash-locked with source timezone unresolved.
-All 454 setups are linked once under each of J0/J1/J2 with zero future states and
-zero replacement trades. Every one of the 1,362 links is `FILTERED_UNKNOWN`.
+Role 9 is complete. T0 reconciles 306 medium-cost fills and
+-173.4578703725847R. Every M1/M2/M3/M4 macro variant and opposite-macro control
+retains zero fills under J0/J1/J2, so the frozen decision is
+`INSUFFICIENT_ALIGNED_TRADES`; candidate is `NONE`.
 
-Run exactly one next sequential role: M15/M5/M1 Economic Backtest Researcher.
+Run exactly one next sequential role: Reporting and Visualization Engineer.
 
-1. Rehash and validate every Role 8 input before economic calculation. Reconcile
-   T0 exactly from the immutable registry: 454 setups, 306 medium-cost fills,
-   148 no-fills, zero invalid-data cases, and the frozen outcome/cost partitions.
-   Stop on any technical, macro, calendar, or link hash mismatch.
-2. Evaluate the exact frozen variants separately: T0, M1_LOOSE, M2_PRIMARY,
-   M3_STRONG_ONLY, and M4_HIGH_COVERAGE. Run J0 as headline and J1/J2 only as
-   sensitivities. Do not select a join or threshold from its result.
-3. Keep M15/M5/M1 standalone C1 OB+FVG and C2 FVG+breaker strategies separate,
-   and keep the hierarchical M15→M5→M1 strategy separate. Preserve each frozen
-   setup, fill, barrier, expiry, outcome, and low/medium/high cost value.
-4. Run the frozen controls: long-only, short-only, opposite-macro, one frozen
-   completed-D1 trend control, and deterministic retention-matched random
-   filtering where its prerequisites are met. Do not add or tune a control.
-5. Report every required count, return, expectancy, profit-factor, drawdown,
-   duration, streak, holding-time, year, direction, cost, retention, and
-   inactivity metric for each applicable configuration. Reconcile overall totals
-   to year/timeframe/family partitions and retain zero-trade results explicitly.
-6. Use expanding chronological outer evaluation with setup-interval purging and
-   the frozen embargo where applicable. Do not train ML, redefine the macro
-   taxonomy, alter technical rules, or call any exposed period a pristine
-   holdout.
-7. Apply the candidate gates exactly. With every Role 8 link currently
-   `FILTERED_UNKNOWN`, do not relax coverage to obtain trades. Return
-   `INSUFFICIENT_ALIGNED_TRADES` when fewer than 30 aligned fills remain.
-8. Produce separate M15, M5, M1, hierarchical, timeframe-comparison,
-   random-control, walk-forward, annual, category-contribution, and candidate
-   decision artifacts, plus manifests, hashes, deterministic tests, limitations,
-   and the exact Role 10 handoff or terminal next action.
+1. Rehash every Role 6–9 source, manifest, table, selection, and curve-input
+   artifact before reporting. Stop on any mismatch; do not recalculate a new
+   strategy, join, macro score, trade outcome, or candidate decision.
+2. Produce the required publication-quality static and practical interactive
+   graphs A–K from the master directive: category and regime timelines,
+   event/update graph, separate equity/drawdown histories, annual PnL,
+   timeframe comparison, regime performance, category contribution, retention,
+   and random-control status. Negative T0 curves and inactive zero-trade macro
+   curves must remain visible and clearly distinguished.
+3. Keep M15 C1/C2, M5 C1/C2, M1 C1/C2, and hierarchical results separate.
+   J0 is headline; J1/J2 are labeled sensitivities only. Zero must remain
+   distinct from `NOT_APPLICABLE` and missing/UNKNOWN.
+4. Complete and reconcile every required named program report. Build the fully
+   offline package under `research/artifacts/macro_regime/report/` with local
+   data, tables, charts, manifests, and no external fetches. Every displayed
+   number and chart input must hash/reconcile to Role 6–9 tables.
+5. After inspecting current React/Laravel architecture and passing authentication,
+   authorization, negative-IDOR, source-URL, configuration-exposure, dependency,
+   and rollback gates, implement only the authorized read-only Smart MarketScope
+   research page. It must support score drill-down and contain no collector
+   writes, order buttons, broker integration, paper/live controls, or unrestricted
+   source URLs. If a required security gate cannot pass, fail the page closed and
+   still complete the offline reporting package with the block disclosed.
+6. Add deterministic reporting, reconciliation, offline, accessibility, build,
+   security, and regression tests. Record exact commands, exits, counts, runtime,
+   warnings, and failed-first evidence.
+7. Preserve `INSUFFICIENT_ALIGNED_TRADES`, `INSUFFICIENT_CATEGORY_COVERAGE`,
+   `TECHNICAL_EDGE_NOT_FOUND`, candidate `NONE`, and the final-champion chronology
+   veto. Do not market inactivity as success or suppress failed evidence.
+8. Update current state and next task only after acceptance. Handoff only to Role
+   11 Independent Quantitative Auditor; do not perform or pre-empt the audit.
 
-Do not tune delays, thresholds, weights, categories, technical rules, fills,
-costs, or random seeds after outcome access. Do not pool standalone timeframes,
-search for replacement trades, access protected/final-holdout paths, add public
-write routes, deploy, connect a broker, or start Roles 10–11. A less-negative
-result is not success. Preserve the valid terminal result
-`INSUFFICIENT_ALIGNED_TRADES` when the frozen UNKNOWN gate retains fewer than 30
-filled trades.
+Do not tune, create replacement trades, access protected/final-holdout paths,
+deploy, connect a broker, place orders, or start Role 11. The report page is
+research-only and read-only.
 
 ## Macro Liquidity Reversal Gate
 

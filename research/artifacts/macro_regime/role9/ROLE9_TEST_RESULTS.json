@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "MACRO-REGIME-ROLE9-TEST-EVIDENCE-001",
+  "tested_working_tree_base": "7ecf69f0849aa17d825f68a482431e2d08a45672",
+  "runtime": "Python 3.11.7",
+  "status": "VERIFIED",
+  "commands": [
+    {
+      "command": "PYTHONPATH=research/src python3 -m unittest research.tests.test_macro_regime_economic_backtest",
+      "working_directory": "/Applications/XAMPP/xamppfiles/htdocs/react-smart_marketscope/react-smartmarketscope",
+      "result": "PASS",
+      "exit_code": 0,
+      "passed": 13,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 0.822
+    },
+    {
+      "command": "PYTHONPATH=research/src python3 -m unittest discover -s research/tests -p 'test_*.py'",
+      "working_directory": "/Applications/XAMPP/xamppfiles/htdocs/react-smart_marketscope/react-smartmarketscope",
+      "result": "PASS",
+      "exit_code": 0,
+      "passed": 269,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 42.904
+    },
+    {
+      "command": "PYTHONPATH=research/src python3 -m smartmarketscope_quant.macro_regime.economic_backtest --validate-only",
+      "working_directory": "/Applications/XAMPP/xamppfiles/htdocs/react-smart_marketscope/react-smartmarketscope",
+      "result": "PASS",
+      "exit_code": 0,
+      "metric_rows": 14553,
+      "output_hashes": 22,
+      "decision": "INSUFFICIENT_ALIGNED_TRADES"
+    },
+    {
+      "command": "Generate into isolated role9_determinism_probe and compare every non-self-describing output SHA-256",
+      "result": "PASS",
+      "exit_code": 0,
+      "deterministic_outputs": 22
+    },
+    {
+      "command": "PYTHONPATH=research/src python3 -m py_compile research/src/smartmarketscope_quant/macro_regime/economic_backtest.py research/tests/test_macro_regime_economic_backtest.py",
+      "result": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --cached --check",
+      "result": "PASS",
+      "exit_code": 0
+    }
+  ],
+  "failed_first_evidence": [
+    {
+      "command": "PYTHONPATH=research/src python3 -m unittest research.tests.test_macro_regime_economic_backtest",
+      "result": "FAILED",
+      "passed": 10,
+      "failed": 1,
+      "errors": 0,
+      "cause": "The first assertion treated the directive's approximately -173.458R value as exact instead of reconciling the frozen full-precision -173.4578703725847R value.",
+      "resolution": "The assertion now binds the immutable full-precision source total; no strategy output changed."
+    },
+    {
+      "command": "PYTHONPATH=research/src python3 -m unittest discover -s research/tests -p 'test_*.py'",
+      "result": "FAILED",
+      "passed_or_executed": 252,
+      "errors": 2,
+      "cause": "A provisional attempt to append Role 9 lifecycle events to the global experiment registry changed whole-file hashes frozen as Role 3/4 inputs.",
+      "resolution": "The provisional uncommitted Role 9 additions were removed before handoff; no historical record was changed. Role 9 uses the required dedicated append-only macro backtest run registry, and the final full suite passes 269/269."
+    }
+  ],
+  "acceptance_mapping": {
+    "exact_t0_and_source_hashes": "PASS",
+    "unknown_fail_closed_and_zero_trade_nulls": "PASS",
+    "same_bar_adverse_preserved": "PASS",
+    "j0_j1_j2_separate": "PASS",
+    "m15_m5_m1_hierarchical_separate": "PASS",
+    "annual_reconciliation": "PASS",
+    "random_zero_retention_not_applicable": "PASS",
+    "walk_forward_no_reoptimization": "PASS",
+    "output_hash_validation": "PASS",
+    "no_holdout_or_live_action": "PASS"
+  },
+  "warnings": [
+    "No broker-specific security/dependency/deployment check is applicable because Role 9 is offline research only and adds no route, dependency, schema, collector, broker, or deployment component.",
+    "The global experiment registry remains frozen because Role 3 and Role 4 declared its whole-file hash as an immutable input; the dedicated macro backtest run registry records all 21 Role 9 runs."
+  ]
+}
