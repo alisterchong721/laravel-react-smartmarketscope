@@ -1,0 +1,11 @@
+<!-- Exact Role 10 reporting copy. Source: research/artifacts/macro_regime/role9/MACRO_M1_RESULT_REPORT.md; SHA-256: 209cfd949564d38b41854fc1834a34c5ea10896c09397829b124bebfb3213720. -->
+# Macro M1 Result Report
+
+Decision evidence: `FACT` for frozen counts and `CALCULATION` for metrics. All monetary costs are hypothetical normalized scenarios, not broker facts.
+
+| Strategy | T0 fills | T0 medium net R | M2 J0 fills | M2 J0 medium net R | Decision |
+| --- | ---: | ---: | ---: | ---: | --- |
+| M1_C1_OB_FVG | 49 | -32.157511 | 0 | 0.000000 | INSUFFICIENT_ALIGNED_TRADES |
+| M1_C2_FVG_BREAKER | 89 | -52.724350 | 0 | 0.000000 | INSUFFICIENT_ALIGNED_TRADES |
+
+Every M1/M2/M3/M4 macro row is an explicit zero-trade result under J0/J1/J2 because every frozen link is UNKNOWN. Coverage was not relaxed and no replacement trade was created.

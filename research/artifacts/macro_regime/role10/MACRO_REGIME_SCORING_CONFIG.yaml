@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0.0",
+  "config_version": "MACRO_REGIME_SCORING_V1",
+  "program_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001",
+  "request_id": "SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001-ROLE6-001",
+  "created_at_utc": "2026-07-14T02:00:00Z",
+  "created_by": "Macro Regime Taxonomy and Scoring Engineer",
+  "starting_commit": "81d8f89caa04872731b11f293172b319631b6218",
+  "instrument_interpretation": "EXPECTED_IMPACT_ON_NAS100_NOT_GENERIC_US_HEALTH",
+  "experiment_trial_count": 0,
+  "final_holdout_access_count": 0,
+  "technical_or_pnl_inputs_permitted": false,
+  "random_seed": null,
+  "inputs": [
+    {"path": "ALFRED_REGIME_ELIGIBLE_OBSERVATIONS.csv", "sha256": "9240a65211b8efc2954adace8ef8a17150bc370ad8677b7db4295d2f5aa38f31", "eligible_rows": 1730},
+    {"path": "research/artifacts/macro_regime/role5/ROLE5_H6_OBSERVATION_VERSIONS.csv", "sha256": "121b422a3438120295f9f4fd01b722c9817e47a3a6d01e71632162245a3cf13b", "eligible_rows": 4859},
+    {"path": "research/artifacts/macro_regime/role5/ROLE5_H41_OBSERVATIONS.csv", "sha256": "d3213ba60ae56e3d39242038f47524d6837193734474d478fba43432b3e8f672", "eligible_rows": 3684}
+  ],
+  "registries": {
+    "indicator_registry": {"path": "research/config/MACRO_REGIME_INDICATOR_REGISTRY.yaml", "sha256": "db67f0a6177262b7e9ed2c67ca7968f1306b355e4f421d430ae9a787955c24ba"},
+    "alias_map": {"path": "research/config/MACRO_REGIME_ALIAS_MAP.yaml", "sha256": "3c58c7d578c3849e19af6827cb9835b0a705aa31b73f49c42681923d79f16872"},
+    "release_bundles": {"path": "research/config/MACRO_REGIME_RELEASE_BUNDLES.yaml", "sha256": "fcdaef2ece50e78b5a59b9e13772a19470d029a02cb5f4cdcb3736cf483f2e6b"}
+  },
+  "availability": {
+    "headline_rule": "J0_CONSERVATIVE_36H",
+    "state_event_policy": "ATOMIC_EXACT_EFFECTIVE_TIME_BATCH",
+    "same_time_order": "SOURCE_SERIES_ID_REFERENCE_DATE_REVISION_OBSERVATION_ID_ASC",
+    "daily_asof_time_utc": "23:59:59",
+    "daily_start": "2000-01-01",
+    "daily_end": "2026-06-28",
+    "daily_calendar": "ALL_CALENDAR_DAYS_FOR_READ_ONLY_ASOF_HISTORY",
+    "future_versions": "EXCLUDED",
+    "revision_policy": "LATEST_VERSION_AVAILABLE_FOR_EACH_REFERENCE_PERIOD_AT_STATE_TIME",
+    "historical_reconstruction": "RETAINED_AND_DISCLOSED"
+  },
+  "no_decay": {
+    "enabled": true,
+    "rule": "LATEST_VALID_INDICATOR_STATE_REMAINS_ACTIVE_UNTIL_NEXT_OBSERVATION_FOR_THAT_INDICATOR",
+    "unscorable_update_rule": "REPLACE_WITH_UNKNOWN_DO_NOT_CARRY_OLD_SCORE"
+  },
+  "prior_only_robust_standardization": {
+    "minimum_prior_valid_changes": 12,
+    "center": "MEDIAN_OF_STRICTLY_EARLIER_REFERENCE_CHANGES_AS_KNOWN_AT_STATE_TIME",
+    "scale": "1.4826_TIMES_MEDIAN_ABSOLUTE_DEVIATION",
+    "zero_mad_fallback": "POPULATION_STANDARD_DEVIATION_OF_STRICTLY_EARLIER_CHANGES",
+    "zero_fallback_result": "INSUFFICIENT_HISTORY",
+    "future_observations_allowed": false
+  },
+  "indicator_mapping": {
+    "z_boundaries": {"strong_positive_min": 1.0, "moderate_positive_min": 0.25, "neutral_lower_exclusive": -0.25, "strong_negative_max": -1.0},
+    "US_CPI_ALL_ITEMS_SA": "NEGATE_Z_BUCKET",
+    "US_TOTAL_NONFARM_PAYROLLS": {"three_release_sum_below_zero": -2, "one_release_change_below_zero": -1, "z_at_least_1_5": 0, "positive_and_z_at_least_minus_0_5": 1, "otherwise": 0},
+    "US_UNEMPLOYMENT_RATE": {"three_release_increase_at_least_1_pp": -2, "three_release_increase_at_least_0_25_pp": -1, "rate_at_most_5_and_three_release_increase_at_most_0_25_pp": 1, "otherwise": 0},
+    "US_REAL_GDP": {"qoq_annualized_below_minus_2": -2, "qoq_annualized_below_zero": -1, "qoq_annualized_at_most_3": 1, "qoq_annualized_above_3": 2},
+    "US_EFFECTIVE_FEDERAL_FUNDS_RATE": {"one_change_at_least_0_5_or_three_change_at_least_1": -2, "one_change_above_0_01_or_three_change_at_least_0_25": -1, "one_change_at_most_minus_0_5_or_three_change_at_most_minus_1": 2, "one_change_below_minus_0_01_or_three_change_at_most_minus_0_25": 1, "otherwise": 0},
+    "US_M2_MONEY_STOCK_SA": "DIRECT_Z_BUCKET",
+    "US_FED_TOTAL_ASSETS": "DIRECT_Z_BUCKET",
+    "US_RESERVE_BALANCES": "DIRECT_Z_BUCKET",
+    "US_TREASURY_GENERAL_ACCOUNT": "NEGATE_Z_BUCKET"
+  },
+  "stress_rules": {
+    "LABOUR_STRESS": "UNEMPLOYMENT_THREE_RELEASE_INCREASE_GE_0_5_PP_OR_PAYROLL_THREE_RELEASE_SUM_LT_0_OR_TWO_MAJOR_LABOUR_BUNDLES_AT_MINUS_2_OR_CLAIMS_Z_GE_1_5",
+    "PAYROLL_DETERIORATION": "PAYROLL_THREE_RELEASE_SUM_LT_0",
+    "CLAIMS_STRESS": "FALSE_NO_ELIGIBLE_CLAIMS_SERIES",
+    "UNEMPLOYMENT_STRESS": "UNEMPLOYMENT_THREE_RELEASE_INCREASE_GE_0_5_PP",
+    "GROWTH_STRESS": "GDP_QOQ_ANNUALIZED_LT_0_OR_TWO_GROWTH_BUNDLES_AT_MINUS_2",
+    "SERVICES_OR_MANUFACTURING_CONTRACTION": "FALSE_NO_ELIGIBLE_SERVICES_OR_MANUFACTURING_SERIES",
+    "WAGE_OR_LABOUR_OVERHEATING_PRESSURE": "PAYROLL_PRIOR_ONLY_Z_GE_1_5"
+  },
+  "bundle_aggregation": {
+    "component_weight": "EQUAL",
+    "continuous_score": "MEAN_VALID_COMPONENT_DISCRETE_SCORES",
+    "minimum_valid_components": "FROM_RELEASE_BUNDLE_REGISTRY",
+    "thresholds": {"plus_2_min": 1.25, "plus_1_min": 0.25, "zero_lower_exclusive": -0.25, "minus_2_max": -1.25},
+    "missingness": "UNKNOWN_WHEN_MINIMUM_COMPONENTS_NOT_MET"
+  },
+  "category_aggregation": {
+    "categories": ["INFLATION", "LABOUR", "GROWTH", "MONETARY_POLICY", "LIQUIDITY"],
+    "bundle_weight": "EQUAL",
+    "continuous_score": "MEAN_ACTIVE_VALID_BUNDLE_DISCRETE_SCORES",
+    "thresholds": {"plus_2_min": 1.25, "plus_1_min": 0.25, "zero_lower_exclusive": -0.25, "minus_2_max": -1.25},
+    "minimum_valid_bundles": {"INFLATION": 2, "LABOUR": 2, "GROWTH": 2, "MONETARY_POLICY": 1, "LIQUIDITY": 1},
+    "insufficient_bundle_status": "PARTIAL",
+    "zero_bundle_status": "UNKNOWN",
+    "conflict_rule": "CONFLICTING_WHEN_AT_LEAST_ONE_POSITIVE_AND_ONE_NEGATIVE_VALID_BUNDLE",
+    "stress_status_priority": true
+  },
+  "overall": {
+    "equal_category_weights": true,
+    "base_score": "SUM_FIVE_VALID_DISCRETE_CATEGORY_SCORES",
+    "minimum_valid_categories": 3,
+    "insufficient_result": "UNKNOWN",
+    "base_range": [-10, 10]
+  },
+  "interactions": {
+    "GOLDILOCKS": {"condition": "INFLATION_GE_1_AND_GROWTH_GE_0_AND_LABOUR_IN_0_1_AND_NO_LABOUR_STRESS_AND_NO_GROWTH_STRESS_AND_POLICY_GE_0", "adjustment": 1},
+    "OVERHEATING": {"condition": "INFLATION_LE_MINUS_1_AND_(WAGE_OR_LABOUR_OVERHEATING_OR_GROWTH_GE_1)_AND_POLICY_LE_0", "adjustment": -1},
+    "RECESSION_RISK": {"condition": "GROWTH_LE_MINUS_1_AND_LABOUR_STRESS_AND_(PAYROLL_DETERIORATION_OR_CLAIMS_STRESS_OR_UNEMPLOYMENT_STRESS_OR_SERVICES_OR_MANUFACTURING_CONTRACTION)", "adjustment": -2},
+    "EMERGENCY_EASING": {"condition": "POLICY_GE_1_AND_RECESSION_RISK", "adjustment": -1},
+    "LIQUIDITY_SUPPORT": {"condition": "NO_AUTOMATIC_BONUS", "adjustment": 0},
+    "interaction_min": -2,
+    "interaction_max": 2,
+    "application_order": ["GOLDILOCKS", "OVERHEATING", "RECESSION_RISK", "EMERGENCY_EASING"]
+  },
+  "final": {
+    "score_formula": "CLAMP_BASE_PLUS_INTERACTION_TO_MINUS_10_PLUS_10",
+    "bias_ranges": {"STRONG_BULLISH": [5, 10], "BULLISH": [2, 4], "NEUTRAL": [-1, 1], "BEARISH": [-4, -2], "STRONG_BEARISH": [-10, -5]},
+    "unknown_precedence": "VALID_CATEGORY_COUNT_BELOW_3",
+    "technical_permission": {"STRONG_BULLISH": "LONG_ONLY", "BULLISH": "LONG_ONLY", "NEUTRAL": "NO_TRADE", "BEARISH": "SHORT_ONLY", "STRONG_BEARISH": "SHORT_ONLY", "UNKNOWN": "NO_TRADE"}
+  },
+  "prohibited": ["ML", "LLM_INTERPRETATION", "NEWS_SENTIMENT", "SCORE_DECAY", "PNL_OPTIMIZED_WEIGHTS", "TECHNICAL_JOIN", "TRADE_OUTCOME_ACCESS", "FINAL_HOLDOUT_ACCESS"]
+}

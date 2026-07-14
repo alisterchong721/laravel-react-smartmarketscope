@@ -1,5 +1,47 @@
 # Current State
 
+## Macro Regime Program — Reporting and Visualization (Role 10)
+
+Role 10 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete for the
+offline reporting surface with status
+`PASS_OFFLINE_REPORTING_IN_APP_ROUTE_BLOCKED`. The economic decision remains
+`INSUFFICIENT_ALIGNED_TRADES`; candidate remains `NONE`.
+
+- All 71 declared Role 6-9 and key source artifacts rehash. Two complete Role 10
+  generations produce byte-identical inventories of 53 output hashes.
+- The fully local package under `research/artifacts/macro_regime/report/`
+  contains 11 static A-K charts, one self-contained interactive category
+  explorer, exact tables, redacted local data views, and source/output manifests.
+  It makes zero external fetches.
+- T0 remains plainly negative: 306 medium-cost fills and
+  -173.4578703725847R. M1/M2/M3/M4 and opposite-macro retain zero fills under
+  J0/J1/J2 because all macro biases are UNKNOWN. Random retention is
+  `NOT_APPLICABLE_ZERO_RETENTION`; inactivity is not reported as improvement.
+- M15 C1/C2, M5 C1/C2, M1 C1/C2, and hierarchical curves/results remain
+  separate. J0 is headline and J1/J2 remain sensitivities. Missing, UNKNOWN,
+  numeric zero, and NOT_APPLICABLE are visually and numerically distinct.
+- The isolated React component, static evidence module, CSS, and component test
+  contain no network call, resource identifier, mutation, source URL, secret,
+  order, paper, broker, or live control. Authenticated in-app route integration
+  is fail-closed with `FAIL_CLOSED_DIRTY_FILE_OWNERSHIP`: `src/App.js` is a large
+  pre-existing uncommitted user rewrite, and Git cannot commit only the two
+  proposed route lines without capturing unrelated user work. Those provisional
+  lines were removed; no in-app route is active.
+- Focused reporting/security tests pass 6/6, the frontend passes 7/7, the full
+  research suite passes 275/275, validation-only verifies 71 inputs and 53
+  outputs, and the production build exits 0 with disclosed pre-existing
+  browser-data, third-party source-map, bundle-size, and unrelated lint warnings.
+- No registry experiment, macro score, technical join, trade outcome, cost,
+  candidate gate, raw dataset, final holdout, broker, deployment, paper, or live
+  state changed.
+
+The next sequential role is Role 11 Independent Quantitative Auditor only. It
+must attempt to invalidate Roles 1-10, independently reconcile the reports and
+charts, and determine whether the blocked in-app route prevents full Role 10 or
+program acceptance. It must not tune, repair, market, deploy, or create a
+candidate. See `NEXT_TASK.md` and
+`research/artifacts/macro_regime/role10/MACRO_REGIME_ROLE10_REPORT.md`.
+
 ## Macro Regime Program — Economic Backtest (Role 9)
 
 Role 9 of `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with

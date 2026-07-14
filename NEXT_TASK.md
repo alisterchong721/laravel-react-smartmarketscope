@@ -1,51 +1,44 @@
 # Next Task
 
-## Macro Regime Program — Role 10 Reporting and Visualization
+## Macro Regime Program — Role 11 Independent Quantitative Audit
 
 Program: `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001`
 
-Role 9 is complete. T0 reconciles 306 medium-cost fills and
--173.4578703725847R. Every M1/M2/M3/M4 macro variant and opposite-macro control
-retains zero fills under J0/J1/J2, so the frozen decision is
-`INSUFFICIENT_ALIGNED_TRADES`; candidate is `NONE`.
+Role 10 completed the fully offline report package with 71 verified upstream
+hashes, 53 deterministic output hashes, 11 static A-K charts, and a local
+interactive explorer. T0 remains 306 medium-cost fills and -173.4578703725847R;
+all macro variants retain zero. Authenticated in-app integration is explicitly
+`BLOCKED/FAIL_CLOSED_DIRTY_FILE_OWNERSHIP`, so no route is active.
 
-Run exactly one next sequential role: Reporting and Visualization Engineer.
+Run exactly one next sequential role: Independent Quantitative Auditor.
 
-1. Rehash every Role 6–9 source, manifest, table, selection, and curve-input
-   artifact before reporting. Stop on any mismatch; do not recalculate a new
-   strategy, join, macro score, trade outcome, or candidate decision.
-2. Produce the required publication-quality static and practical interactive
-   graphs A–K from the master directive: category and regime timelines,
-   event/update graph, separate equity/drawdown histories, annual PnL,
-   timeframe comparison, regime performance, category contribution, retention,
-   and random-control status. Negative T0 curves and inactive zero-trade macro
-   curves must remain visible and clearly distinguished.
-3. Keep M15 C1/C2, M5 C1/C2, M1 C1/C2, and hierarchical results separate.
-   J0 is headline; J1/J2 are labeled sensitivities only. Zero must remain
-   distinct from `NOT_APPLICABLE` and missing/UNKNOWN.
-4. Complete and reconcile every required named program report. Build the fully
-   offline package under `research/artifacts/macro_regime/report/` with local
-   data, tables, charts, manifests, and no external fetches. Every displayed
-   number and chart input must hash/reconcile to Role 6–9 tables.
-5. After inspecting current React/Laravel architecture and passing authentication,
-   authorization, negative-IDOR, source-URL, configuration-exposure, dependency,
-   and rollback gates, implement only the authorized read-only Smart MarketScope
-   research page. It must support score drill-down and contain no collector
-   writes, order buttons, broker integration, paper/live controls, or unrestricted
-   source URLs. If a required security gate cannot pass, fail the page closed and
-   still complete the offline reporting package with the block disclosed.
-6. Add deterministic reporting, reconciliation, offline, accessibility, build,
-   security, and regression tests. Record exact commands, exits, counts, runtime,
-   warnings, and failed-first evidence.
-7. Preserve `INSUFFICIENT_ALIGNED_TRADES`, `INSUFFICIENT_CATEGORY_COVERAGE`,
-   `TECHNICAL_EDGE_NOT_FOUND`, candidate `NONE`, and the final-champion chronology
-   veto. Do not market inactivity as success or suppress failed evidence.
-8. Update current state and next task only after acceptance. Handoff only to Role
-   11 Independent Quantitative Auditor; do not perform or pre-empt the audit.
+1. Rehash and independently reproduce every Role 1-10 input, transformation,
+   join, comparison, table, chart input, generated chart, report, manifest, and
+   test claim. Do not reuse Role 10 validation as independent proof.
+2. Attempt to invalidate chronology repair, source classification, immutable
+   storage, prior-only transformations, category coverage, J0/J1/J2 timing,
+   exact T0, zero-retention semantics, walk-forward, cost accounting, annual
+   reconciliation, chart/table parity, and candidate gates.
+3. Verify that no final-holdout path, future macro vintage, replacement trade,
+   favorable ambiguity, hidden trial, PnL-derived threshold, or live/broker path
+   affected the result.
+4. Audit the offline package for external dependencies, missing/malformed/empty
+   states, accessibility, sensitive values, unrestricted source URLs, and write
+   controls. Independently assess `FAIL_CLOSED_DIRTY_FILE_OWNERSHIP` and decide
+   whether the missing authenticated Smart MarketScope route blocks full Role 10
+   or final program acceptance.
+5. Preserve the causal chain: `INSUFFICIENT_CATEGORY_COVERAGE` led to UNKNOWN
+   macro bias, which led to zero aligned trades and
+   `INSUFFICIENT_ALIGNED_TRADES`. Do not call zero-trade inactivity improvement.
+6. Produce `MACRO_REGIME_INDEPENDENT_AUDIT.md`, final artifact/hash census,
+   severity-ranked findings, exact verification commands/results, the 55-item
+   completion response, and the exact next permitted action.
+7. Candidate must remain `NONE` unless every frozen gate is independently met.
+   Registry chronology remains a final-champion veto. The auditor must not
+   improve, tune, repair, market, deploy, or start new research.
 
-Do not tune, create replacement trades, access protected/final-holdout paths,
-deploy, connect a broker, place orders, or start Role 11. The report page is
-research-only and read-only.
+Do not access protected/final-holdout paths, modify raw data, change any frozen
+research input, connect a broker, place an order, deploy, or start another role.
 
 ## Macro Liquidity Reversal Gate
 

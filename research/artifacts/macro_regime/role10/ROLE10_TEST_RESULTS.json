@@ -1,0 +1,84 @@
+{
+  "artifact_id": "MACRO-REGIME-ROLE10-TEST-EVIDENCE-001",
+  "commands": [
+    {
+      "command": "PYTHONPATH=research/src python3 -m unittest research.tests.test_macro_regime_reporting -v",
+      "duration_seconds": 0.041,
+      "exit_code": 0,
+      "failed": 0,
+      "passed": 6
+    },
+    {
+      "command": "CI=true npm test -- --runInBand src/components/research/macro-regime-research.test.js",
+      "duration_seconds": 1.078,
+      "exit_code": 0,
+      "failed": 0,
+      "passed": 1
+    },
+    {
+      "command": "CI=true npm test -- --runInBand",
+      "duration_seconds": 0.526,
+      "exit_code": 0,
+      "failed": 0,
+      "passed": 7
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "result": "PASS_WITH_PRE_EXISTING_WARNINGS",
+      "warnings": "stale browser data, third-party source maps, bundle size, unrelated lint"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=research/src python3 -m unittest discover -s research/tests -p 'test_*.py' -v",
+      "duration_seconds": 44.017,
+      "exit_code": 0,
+      "failed": 0,
+      "passed": 275
+    },
+    {
+      "charts": 11,
+      "command": "PYTHONPATH=research/src python3 -m smartmarketscope_quant.macro_regime.reporting --validate-only",
+      "exit_code": 0,
+      "output_hashes": 53,
+      "upstream_hashes": 71
+    },
+    {
+      "command": "Two full generator runs plus cmp ROLE10_OUTPUT_HASHES.json",
+      "deterministic_outputs": 53,
+      "exit_code": 0
+    },
+    {
+      "command": "PYTHONPATH=research/src python3 -m py_compile reporting.py test_macro_regime_reporting.py",
+      "exit_code": 0
+    }
+  ],
+  "created_at_utc": "2026-07-14T07:00:00Z",
+  "failed_first_evidence": [
+    {
+      "cause": "Role 6 hash inventory uses basename keys while later roles use repository-relative keys.",
+      "failure": "ROLE10_REQUIRED_SOURCE_MISSING:MACRO_ACTIVE_INPUTS_BY_DAY.parquet",
+      "resolution": "Resolve basename keys relative to the declaring role directory; no upstream file changed."
+    },
+    {
+      "cause": "A generic date-column heuristic selected the timeframe column.",
+      "failure": "DateParseError: unable to parse Daily",
+      "resolution": "Bind the already frozen bar_start_source contract explicitly; no research value changed."
+    }
+  ],
+  "schema_version": "1.0.0",
+  "security": {
+    "authenticated_route": "BLOCKED_FAIL_CLOSED_DIRTY_FILE_OWNERSHIP",
+    "authorization": "NOT_RUN_NO_ACTIVE_ROUTE",
+    "negative_idor": "NOT_APPLICABLE_NO_ACTIVE_RESOURCE_ROUTE",
+    "sensitive_configuration": "ABSENT",
+    "unrestricted_source_url": "ABSENT",
+    "write_or_live_surface": "ABSENT"
+  },
+  "status": "VERIFIED",
+  "warnings": [
+    "DEPENDENCY_DATABASES_STALE",
+    "THIRD_PARTY_SOURCE_MAPS_MISSING",
+    "PRE_EXISTING_UNRELATED_LINT_WARNINGS",
+    "BUNDLE_SIZE_WARNING"
+  ]
+}
