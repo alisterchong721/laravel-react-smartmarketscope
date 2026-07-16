@@ -1,0 +1,55 @@
+.historical-candle-card {
+  background: #ffffff;
+  border: 1px solid #dfe6ef;
+  border-radius: 16px;
+  margin: 0;
+  min-width: 0;
+  padding: 12px;
+}
+
+.historical-candle-card figcaption {
+  align-items: flex-end;
+  color: #647086;
+  display: flex;
+  font-size: 12px;
+  gap: 10px;
+  justify-content: space-between;
+  margin: 2px 5px 10px;
+}
+
+.historical-candle-card figcaption > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.historical-candle-card figcaption strong {
+  color: #1f2b3d;
+  font-size: 14px;
+}
+
+.historical-candle-card svg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.historical-chart-empty {
+  align-items: flex-start;
+  background: #f7f9fc;
+  border: 1px dashed #cdd6e4;
+  border-radius: 14px;
+  color: #6b778c;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 180px;
+  padding: 24px;
+}
+
+@media (max-width: 620px) {
+  .historical-candle-card figcaption {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

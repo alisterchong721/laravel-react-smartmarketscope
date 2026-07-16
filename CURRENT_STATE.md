@@ -1,5 +1,657 @@
 # Current State
 
+## NAS100 Multi-Timeframe Chart Context — Complete
+
+On 2026-07-16 the read-only `Backtesting → NAS100 Candle` detail charts were
+given explicit parent-window context without changing the detector. Filled and
+formed M1 breaker/FVG charts now use the complete owning H4 interval and label
+that area `Owning H4 window`, while retaining the frozen setup roles, zones,
+entry, stop, and target. The H4 chart labels the active D1 window. Every D1
+chart contains exactly five candles: three earlier native Daily context bars
+plus the frozen C1/C2 swing pair.
+
+All 658 events reconcile to five D1 candles, non-empty M1 windows, and zero new
+trials. The display projection regenerated deterministically. Full React passes
+17 suites/80 tests; full Laravel passes 106 tests/571 assertions with 3 existing
+target-driver skips; the production build succeeds with pre-existing warnings.
+The frozen result remains `TECHNICAL_EDGE_NOT_FOUND`. See
+`M1_H4_WINDOW_REVIEW_AUDIT.md`.
+
+## M1 Setup-State Filter and No-Setup H4 Window Charts — Complete
+
+On 2026-07-16 `Backtesting → NAS100 Candle` gained a setup-state filter for
+filled, any formed, formed-but-unfilled, and not-formed M1 breaker/FVG states.
+The frozen 658-event result reconciles to 31 filled events, 32 formed events
+including one unfilled event, and 626 not-formed events.
+
+Every event now also has a separate display-only M1 projection covering its
+complete owning H4 interval. The 658 projections contain 140,356 source M1
+candles and zero empty windows. For `0 filled / 0 formed` rows, the detail modal
+shows that raw M1 chart and marks H4 activation, but creates no zone, entry,
+stop, target, fill, outcome, or execution. The activation marker uses the M1
+bar's availability time rather than including the still-forming minute. The
+frozen experiment and its two trials were not changed. Full React passes 78 tests, full Laravel passes 106
+tests and 569 assertions with 3 existing target-driver skips, and the
+production build succeeds with pre-existing warnings. See
+`M1_H4_WINDOW_REVIEW_AUDIT.md`.
+
+## NAS100 Intrabar D1 → H4 → M1 Timing Correction — Complete, No Cost-Robust Edge
+
+On 2026-07-16 the hierarchy was corrected to match the user's intended clock.
+Neither D1 nor H4 waits for its native candle close: completed M1 closes observe
+the developing D1 sweep, then the developing same-direction H4 sweep inside
+that D1 candle. M1 breaker + displacement-FVG detection begins strictly after
+H4 activation and expires at that same H4 candle's interval end.
+
+The corrected census contains 1,168 provisional D1 activations and 658 nested
+H4 activations; 510 D1 activations never produce a qualifying H4 child. Across
+the 658 H4-bounded M1 windows, both frozen variants found 32 candidates and 31
+fills. The 2R variant has +0.064516R gross expectancy; the 2.5R variant has
++0.224078R. Both are negative under every frozen normalized cost scenario, so
+candidate and champion remain `NONE` and the decision is
+`TECHNICAL_EDGE_NOT_FOUND`.
+
+All 1,316 event/configuration timing records have zero violations of the H4
+boundary. Focused Python, React, and Laravel tests pass; regeneration is byte
+identical; and the production build succeeds with pre-existing warnings. The
+active NAS100 Candle API and UI now use this corrected projection. The prior
+close-confirmed results remain archived as invalid for this intrabar strategy.
+See `M1_INTRABAR_H4_BREAKER_FVG_AUDIT.md`.
+
+## NAS100 D1 → H4 → M1 Full-Wick Breaker + FVG — Complete, No Edge
+
+On 2026-07-16 the prospectively frozen M1 full-wick breaker + displacement-FVG
+challenger was evaluated on the existing 330 H4-confirmed D1 sweep windows. It
+found 240 valid candidates and 231 proven fills. The parallel target tests used
+the same entry and stop: 2R returned 67 wins, 161 stop/adverse-first losses, 3
+timeouts, and -0.114149R gross expectancy; 2.5R returned 54 wins, 172
+stop/adverse-first losses, 5 timeouts, and -0.142485R gross expectancy. Both are
+more negative after every normalized cost scenario.
+
+The decision is `TECHNICAL_EDGE_NOT_FOUND`; candidate and champion remain
+`NONE`. The active `Backtesting → NAS100 Candle` view retains D1 and H4 but now
+shows only the two new M1 tests. A selected setup marks the full-wick breaker,
+displacement FVG, proximal-edge entry, distal-wick stop, and selected 2R/2.5R
+target. The previous nine M15/M5/M1 results remain preserved in their artifacts
+and cumulative trial history but are no longer active in the UI.
+
+Focused Python tests pass 9/9, the full React suite passes 76/76, the full
+Laravel suite passes 106 tests and 549 assertions with 3 existing target-driver
+skips, deterministic regeneration is byte identical, and the production build
+succeeds with pre-existing warnings. The broad Python discovery suite has
+legacy frozen-hash/pytest failures documented in the audit. See
+`M1_FULL_WICK_BREAKER_FVG_AUDIT.md`.
+
+## NAS100 D1 → H4 → Lower-Timeframe 2R Comparison — Complete, No Edge
+
+On 2026-07-15 the 330 same-direction H4-confirmed children of the accepted D1
+immediate-candle sweeps were evaluated under nine prospectively frozen,
+standalone lower-timeframe configurations: OB + FVG, FVG + Breaker, and Sweep +
+MSS + FVG retrace on M15, M5, and M1. Every component must complete after H4
+confirmation and before the next D1 close; entries require strict subsequent M1
+penetration, use the outermost stop plus 0.1 source point, target exactly 2R,
+and resolve ambiguous paths adverse-first.
+
+All nine configurations are negative gross and under normalized costs. The
+closest is M15 Sweep + MSS + FVG at `-0.003R` gross expectancy and `-0.318R`
+medium-cost expectancy. Candidate/champion remain `NONE`/`NONE`; the terminal
+decision is `TECHNICAL_EDGE_NOT_FOUND`. No parameter was changed after results.
+
+`Backtesting → NAS100 Candle` now shows the nine aggregate results and, for
+each H4-confirmed parent, all nine entry states and an entry/stop/2R chart.
+React passes 75 tests, Laravel passes 106 tests and 547 assertions with 3
+existing target-driver skips, Python passes 84 tests plus 7 subtests, and the
+production build succeeds with pre-existing warnings. See
+`LTF_ICT_ENTRY_COMPARISON_AUDIT.md` and
+`LTF_ICT_ENTRY_INDEPENDENT_AUDIT.md`.
+
+## NAS100 Candle Technical Evidence Viewer — Complete
+
+On 2026-07-15 `Backtesting → NAS100 Candle` was added as a sibling of the
+existing `Backtesting → NAS100` macro page at `/backtesting/nas100-candle`.
+It is an authenticated, read-only visual audit surface over the 454 frozen
+first-confirmed technical setups from the prior NAS100 CFD research. It does
+not rerun the detector, add macro alignment, or create a new strategy result.
+
+The table supports search and filters for year, direction, entry timeframe,
+confluence family, and historical fill state. Each row exposes D1 sweep event,
+technical direction, D1+H4 confirmation, M15/M5/M1 or hierarchical entry
+architecture, OB+FVG or FVG+Breaker confluence, historical fill state, and the
+frozen outcome. Selecting a period opens the exact D1, H4, M15, M5, and M1
+candle windows with actionable-time, confluence-zone, entry, stop, and 2R
+overlays plus detector checklist and lineage/limitation details.
+
+Projection integrity reconciles 454 index rows to 454 detail files, with zero
+missing details and all five candle keys present in every detail. The setup
+census covers 2017–2026; supplied technical candles begin on 2008-08-06, so no
+2000–2008 candles or setups were fabricated. The frozen decision remains
+`TECHNICAL_EDGE_NOT_FOUND` (306 fills, 148 no fills; 52 wins, 246 losses, 2
+timeouts, and 6 adverse-first ambiguities).
+
+React passes 71/71 tests. The protected Laravel alignment-review API passes 4
+tests and 14 assertions. The production build succeeds with pre-existing
+dependency source-map, stale browsers-list, bundle-size, and unrelated lint
+warnings. Authenticated browser QA verified sibling navigation, the 454-row
+table, the 15-row hierarchical filter result, reset behavior, row selection,
+and all five timeframe charts. See `NAS100_CANDLE_EVIDENCE_VIEWER_AUDIT.md`.
+
+## NAS100 Weekly Macro Bias — Complete with Explicit Latest-As-Of State Carry
+
+On 2026-07-15 `Backtesting → NAS100` became an authenticated read-only weekly
+macro-bias table covering 2000-01-01 through 2026-05-31, with June 2026 excluded.
+It uses the existing 21-event U.S. contract and NAS100 event-direction logic,
+shows 1,379 weekly periods, and opens a 21-row event-state modal.
+
+On 2026-07-15 the original exact-observation-week reset was corrected. Every
+weekly cutoff now uses the latest eligible observation for each event whose
+stored date is on or before the week end. That state remains active until a
+newer observation replaces it. The modal preserves the original observation
+date and labels each populated row `Updated this week` or `Carried forward`.
+Only periods before an exact series begins may show `—`.
+
+All 21 series are simultaneously active from `26 Apr 2010 – 02 May 2010`
+onward. The following 840 weeks through 31 May 2026 contain zero empty event
+states. The latest week has 21 active series: 3 updated during the week and 18
+carried from their latest prior observation. Its recalculated result is
+Bullish, score +2.
+
+The weekly detail modal now also presents a compact four-card macro summary
+above the 21-event table. Policy, Growth, Labor, and Inflation reuse the exact
+historical `category_scores` returned for the selected week; each card shows
+its signed score, NAS100 Bullish/Bearish/Neutral interpretation, category read,
+and active-series reconciliation. No second scoring formula or data path was
+introduced. For 25–31 May 2026 the cards reconcile to Policy `0` (1/1), Growth
+`+2` (6/6), Labor `-1` (6/6), and Inflation `+1` (8/8), totaling all 21 active
+series.
+
+The source is 8,276 Trading Economics Public Chart current-vintage actual rows.
+Because historical consensus, previous-as-published, and authoritative release
+timestamps are absent, the page is explicitly labeled a current-vintage
+observation/reference-week diagnostic rather than a point-in-time backtest.
+No technical signal, price, trade, PnL, candidate, or champion was added.
+
+Laravel passes 98 tests with 3 target-driver skips and 504 assertions. React
+passes 72/72 tests, and the production build completes with pre-existing
+warnings. Authenticated browser QA verified all 21 populated latest-week rows,
+the explicit update/carry labels, and the four category cards and counts. See
+`NAS100_WEEKLY_MACRO_BIAS_BACKTESTING_TASK.md` and
+`NAS100_WEEKLY_MACRO_ASOF_STATE_AUDIT.md`.
+
+## Backtesting Sidebar Module — Expanded
+
+On 2026-07-15 the primary sidebar gained a top-level `Backtesting` module with
+two sibling children: `NAS100` for the display-only weekly macro reconstruction
+and `NAS100 Candle` for frozen technical evidence inspection. Neither surface
+is a validated backtest, strategy candidate, or execution workflow.
+
+## U.S. Macro 2000–2026 Full Refresh — Complete for Published Actuals
+
+On 2026-07-15 all 21 approved United States Trading Economics Public Chart
+histories were fetched again across 42 live requests. The provider returned
+19,291 total source points and the same 8,295 eligible 2000–2026 observations
+already stored. All 8,295 were exact duplicates, zero were invalid, and no
+database row was overwritten.
+
+The application database is complete for every Actual observation officially
+published under the exact 21 event definitions. Five apparent 2025 gaps are
+official non-observations caused by the lapse in appropriations, and four
+series are complete from their official inception rather than January 2000.
+Those periods must not be fabricated or filled with differently defined
+predecessor series. Historical TE forecasts and exact release timestamps remain
+absent, so the layer is still display-only rather than point-in-time surprise
+history. See `US_MACRO_2000_2026_COVERAGE_AUDIT.md`.
+
+Investing.com was independently refetched for CPI m/m, CPI y/y, Core CPI m/m,
+Core CPI y/y, and Unemployment Rate. Its reference-period histories contain the
+same official absences; the displayed October 24 CPI row is September data, not
+an October observation. No database value was fabricated. A separate live
+fallback configuration defect was corrected: U.S. CPI m/m now uses Investing
+event page `69` instead of the CPI y/y page `733`. The focused Laravel test
+passes 6 tests and 50 assertions.
+
+## NAS100 Earnings Backdrop Terminology — Updated
+
+On 2026-07-15 the `Earnings Backdrop` subtitle was changed from
+`Activity + Labor's growth contribution` to
+`Growth + Labor's growth contribution`. Its help tooltip now uses the same
+`Growth + Labor` terminology. This is a copy-only change; score arithmetic,
+events, APIs, and all other scorecard behavior remain unchanged.
+
+## NAS100 Composite Score Help — Complete
+
+On 2026-07-15 the `Earnings Backdrop` and `Fed Path Bias` cards gained
+keyboard-focusable question-mark help controls. Each tooltip explains whether
+the live score is supportive, neutral, or a headwind for NAS100, describes the
+specific economy or valuation channel, and states that each included release
+contributes `+1`, `0`, or `-1` to the net channel score.
+
+The help text explicitly says these values are not percentages, probabilities,
+or trade signals and that the two channel scores must not be added together.
+No score arithmetic, event selection, API, database, category modal, currency
+scorecard, or trading behavior changed.
+
+React passes 61/61 tests and the production build completes with only
+pre-existing warnings. See `NAS100_COMPOSITE_SCORE_TOOLTIP_AUDIT.md`.
+
+## Alignment Research Sidebar Entry — Removed
+
+On 2026-07-15 the `Alignment Research` item was removed from Currency Pairs →
+Fundamental Analysis. This is a navigation-only removal: the historical route
+and research artifacts remain preserved and no scorecard, data, or calculation
+changed. React passes 60/60 tests and the production build completes with only
+pre-existing warnings. See `ALIGNMENT_RESEARCH_NAVIGATION_REMOVAL_AUDIT.md`.
+
+## NAS100 Scorecard Information Hierarchy — Redesigned
+
+On 2026-07-15 the NAS100 Macro Scorecard was reorganized into two explicit
+levels without changing any score calculation:
+
+1. `Category reads` contains the clickable Policy, Growth, Labor, and Inflation
+   boxes. Each now uses category-specific language and displays a visible
+   `View releases →` affordance.
+2. `Blended NAS100 outlook` contains non-clickable cross-category summaries.
+   `Growth resilience` is presented as `Earnings Backdrop`, while
+   `Rate-path support` is presented as `Fed Path Bias`; each card shows its
+   contributing formula.
+
+Labor now exposes separate `Economy` and `Rates` badges. The former third card
+was replaced by a compact `No overall score` explanation so it is not mistaken
+for another calculated total. Scores, backend keys, event data, modal behavior,
+and currency-scorecard logic remain unchanged.
+
+React passes 60/60 tests and the production build completes with only
+pre-existing warnings. See `NAS100_SCORECARD_HIERARCHY_REDESIGN_AUDIT.md`.
+
+## Persistent Sidebar Navigation and Native New-Tab Links — Complete
+
+On 2026-07-15 expanded sidebar modules became a persisted browser UI
+preference. Navigating from a scorecard or any other submodule no longer resets
+the open drawer hierarchy, and a direct or newly opened route automatically
+opens its required parent modules without closing other user-opened sections.
+
+Every route-bearing sidebar item is now a real internal link. Normal click
+continues in the current tab; Cmd/Ctrl-click, middle-click, and the browser's
+Open Link in New Tab action work natively. Logout remains an action rather than
+a link. No routes, permissions, page data, scorecards, or calculations changed.
+
+React passes 59/59 tests and the production build completes with only
+pre-existing warnings. See `SIDEBAR_NAVIGATION_PERSISTENCE_AUDIT.md`.
+
+## Currency Fundamental Countries UI — Restored
+
+On 2026-07-15 the Currency Pairs → Fundamental Analysis → Countries navigation
+was restored to United States, United Kingdom, Eurozone, Australia, Canada,
+and Japan. The visible `Source` column was removed from both the selected
+country table and its event-history table.
+
+Source and field-lineage values remain in the API/Redux data contract for
+auditability; this change only removes their display from the Countries UI.
+The economic fields, impact labels, event graph, filters, refresh behavior,
+macro scorecards, and Stock Markets country navigation were not changed.
+
+React passes 55/55 tests and the production build completes with only
+pre-existing warnings. See `FUNDAMENTAL_COUNTRIES_UI_RESTORATION_AUDIT.md`.
+
+## US Stock Unified Category Search — Complete
+
+On 2026-07-15 the existing U.S. Stock Markets search was extended without
+adding a second control. It now matches ticker, company, historical ticker
+alias, sector, theme/category, and nuclear subcategory text case-insensitively.
+
+- Searching `Semiconductors` or a partial value such as `semi` directly shows
+  the Semiconductors card and its stocks in theme view.
+- The same category query returns all category members in table view.
+- When a query matches a category name, theme view is restricted to the
+  matching category instead of duplicating its stocks across every overlapping
+  theme.
+- Existing sector and multi-theme filters remain intersected with search.
+- Symbol and company behavior remains unchanged.
+
+The placeholder now reads `Search symbol, company or category`. React passes
+53/53 tests and the production build completes with only pre-existing warnings.
+
+See `STOCK_MARKET_CATEGORY_SEARCH_AUDIT.md`.
+
+## US Stock Session-Aware Extended Prices — Complete
+
+On 2026-07-15 the U.S. Stock Markets theme cards and table stopped displaying
+stale premarket values outside the premarket session. The provider-reported
+Moomoo `market_us` state now selects exactly one optional secondary quote row:
+
+- `PRE_MARKET_BEGIN`, `PRE_MARKET_END`, or the pre-open waiting states show
+  only `Pre` data.
+- `MORNING` and `AFTERNOON` show only the prominent current/regular price; all
+  extended-session rows and table columns are removed.
+- `AFTER_HOURS_BEGIN` shows only `Post` data.
+- `OVERNIGHT` and closed-after-hours states prefer `Overnight`, falling back
+  to the latest post-market value only when no overnight quote exists.
+- Unknown states fail closed and show no potentially stale extended quote.
+- Extended-session strips use a fixed single-line minimum height; long labels
+  and prices such as LRCX no longer wrap into a taller border.
+
+The REST snapshot and WebSocket schemas now preserve distinct premarket,
+post-market, and overnight values. Moomoo WebSocket subscriptions do not stream
+overnight quotes, so overnight is explicitly marked incomplete and remains on
+the automatic 15-second REST fallback. The current live snapshot reported
+`AFTER_HOURS_END` and returned an NVDA overnight value, validating the active
+overnight path. React passes 53/53 tests, the worker passes 9/9 Python tests,
+Laravel passes 91 tests with 3 target-driver skips, and the production build
+completes with only pre-existing warnings.
+
+See `STOCK_MARKET_SESSION_DISPLAY_AUDIT.md`.
+
+## US Stock Quote WebSocket Stream With Polling Fallback — Active
+
+On 2026-07-15 the U.S. Stock Markets dashboard gained an additive local
+WebSocket path from Moomoo OpenD quote pushes to React. The existing REST
+snapshot contract remains the initial load and automatic 15-second fallback.
+
+- A persistent Python worker subscribes to Moomoo `QUOTE` pushes, normalizes
+  regular and extended-hours fields, deduplicates provider updates, broadcasts
+  UTC receipt timestamps, emits five-second health heartbeats, and retries
+  OpenD with bounded exponential backoff.
+- The browser accepts a stream only after a healthy upstream status message.
+  Disconnects, two failed upstream health checks, malformed payloads, or a
+  missing 15-second heartbeat close the stream and re-enable REST polling.
+- The local Moomoo entitlement permits 100 simultaneous stock subscriptions
+  for 239 tracked symbols. The worker therefore discloses partial coverage and
+  the UI displays `Live + 15s fallback`; polling remains active for complete
+  dashboard coverage. It does not mislabel the remaining 139 stocks as live.
+- The server is enforced loopback-only and checks an explicit browser-origin
+  allowlist. No public WebSocket, credential, trading connection, order action,
+  database migration, or production deployment was introduced.
+- Live smoke verification received a healthy status and a 100-quote batch.
+  React passes 40/40 tests, the Python worker passes 8/8 tests, Laravel passes
+  91 tests with 3 target-driver skips and 454 assertions, and the production
+  React build completes with only the pre-existing warnings.
+
+See `STOCK_MARKET_REALTIME_STREAM_AUDIT.md`.
+
+## US Stock Theme Category Performance Filter — Complete
+
+On 2026-07-15 the display-only U.S. Stock Markets theme view gained a category
+performance order control. Users can retain the curated default order or rank
+theme cards best-first or worst-first using the arithmetic mean of the visible
+stocks' selected 1D, 1W, or 1M percentage changes.
+
+- Missing timeframe history is excluded from the category mean and is never
+  treated as a zero return; categories with no usable history remain last.
+- Sector, theme, and search filters continue to define the visible stock set,
+  so the displayed category mean and order reconcile to the cards on screen.
+- This is current dashboard organization only. It does not change source
+  prices, theme membership, market-data collection, scoring, or trading logic.
+- Four focused ranking tests pass and the production build completes with the
+  pre-existing AntV source-map and unrelated lint warnings.
+
+See `STOCK_THEME_CATEGORY_PERFORMANCE_FILTER_AUDIT.md`.
+
+## June 2026 NFP Mixed-Vintage Incident — Fixed
+
+On 2026-07-15 the country and NAS100 tables were selecting the July 2
+Unemployment Rate and Average Hourly Earnings releases but retaining the June 5
+NFP release. Investing.com's `US Nonfarm Payrolls (Jun)` spelling was not
+recognized by the country-card canonical key, which only matched `non-farm`.
+
+- `Nonfarm Payrolls` and `Non-Farm Employment Change` now share the canonical
+  `non_farm_payrolls` identity without changing the separate currency and
+  NAS100 scoring models.
+- Both current tables now show the July 2 release: Actual `57K`, Forecast
+  `114K`, Previous `129K`, USD impact `Bearish`.
+- The recovered release is calendar-linked: Forex Factory owns event identity,
+  date/time, Forecast, and Previous; Investing.com owns Actual.
+- NAS100 retains a `-1` growth signal and `+1` rate-path signal for this NFP
+  observation, while the currency scorecard retains the USD `-1` signal.
+- Targeted Laravel verification passed: 7 tests and 57 assertions.
+
+## US Calendar-to-Country-to-Scorecard Contract — Final Audit
+
+On 2026-07-15 the complete 21-event United States contract was regression
+checked across Forex Factory ingestion, due-actual updates, the country table,
+the currency-pair macro scorecard, and the separate NAS100 scorecard.
+
+- Event identity, release time, Forecast, and Previous remain owned by Forex
+  Factory. Actual-provider updates cannot overwrite FF consensus fields.
+- The Trading Economics actual request now includes all importance levels; it
+  no longer excludes Medium/Low tracked releases such as Claims, Retail Sales,
+  and Industrial Production.
+- The current July 14-17 FF feed was cross-checked directly. Four CPI rows, two
+  PPI rows, Retail Sales, Unemployment Claims, and Industrial Production match
+  the stored FF Forecast/Previous values and importance levels.
+- The country table, currency macro card, and NAS100 macro card each consume all
+  21 approved event identities. Currency scoring remains category-summed and
+  capped to `[-2,+2]`; NAS100 retains uncapped Growth Resilience and Rate-Path
+  Support channels with policy/inflation translation.
+- Authenticated Trading Economics live Actual remains blocked because the local
+  API key is not configured. Current linked Actual values therefore remain from
+  Investing.com. This limitation is visible in field provenance and is not
+  silently represented as Trading Economics.
+- Nine rows are currently linked to FF releases, three have an upcoming FF link,
+  and nine older display fallbacks have no current/recent local FF release. All
+  future matching FF releases will link automatically; missing historical FF
+  consensus is not fabricated.
+- Two of the 21 cards have a confirmed FF-source exception: the current feed and
+  88 stored U.S. FF rows contain no separate headline PCE m/m or Continuing
+  Jobless Claims release. Those cards remain available from display history,
+  but FF Forecast/Previous cannot be claimed unless FF publishes a matching row.
+
+See `research/artifacts/macro_regime/US_CALENDAR_COUNTRY_LINKAGE_MANIFEST.json`.
+
+## Four United States CPI Series — Country Cards and 2000–2026 History Complete
+
+On 2026-07-15 the United States country surface was expanded from two CPI
+slots to four separate frequency contracts: Core CPI m/m, Core CPI y/y, CPI
+m/m, and CPI y/y. The canonical mapping, authenticated Trading Economics
+normalizer, history options, scorecard category mapping, and public-chart
+collector now preserve all four identities without mixing frequencies.
+
+- The country API returns all four July 14, 2026 Forex Factory releases with
+  their own Actual, Forecast, Previous, impact, and field-source lineage.
+- Trading Economics public chart coverage is present from 2000-01-01 through
+  the latest available June 2026 reference month: 316 Core CPI m/m rows, 317
+  Core CPI y/y rows, 316 CPI m/m rows, and 317 CPI y/y rows.
+- The bounded import inserted 633 missing rows and recognized all 7,662 prior
+  provider versions as duplicates; zero invalid observations were accepted.
+- Public-chart histories remain current-vintage and display-only. They are not
+  as-published release snapshots and do not supply historical consensus.
+
+See `research/artifacts/macro_regime/US_FOUR_CPI_COVERAGE_MANIFEST.json`.
+
+## Country Cards Linked to the Economic Calendar — TE Authentication Blocked
+
+On 2026-07-15 the current-country and NAS100 macro surfaces were linked to the
+same scheduled-release contract used by the Economic Calendar.
+
+- Forex Factory owns event identity, scheduled date/time, Forecast, and
+  Previous. An actual-value provider may update Actual and `actual_source` but
+  cannot overwrite FF Forecast or Previous.
+- Authenticated Trading Economics is now the first-choice U.S. actual provider
+  when configured; Investing.com remains the fallback and cannot overwrite a
+  Trading Economics actual.
+- The local `TRADING_ECONOMICS_API_KEY` is not configured. Therefore live TE
+  calendar actuals are currently blocked and the existing linked releases show
+  `Investing.com` as their actual source. The public TE chart history is not
+  substituted because its reference dates are not authoritative release clocks.
+- Tracked numeric releases are now ingested even when FF classifies them below
+  High impact. The current FF feed added pending U.S. links for Initial Jobless
+  Claims and Retail Sales (Medium) and Industrial Production (Low), alongside
+  the pending PPI releases.
+- Current U.S. table status: 7 releases are fully calendar-linked, 3 older
+  display rows have a newer FF link pending, and 9 are display-history fallbacks
+  with no current/recent FF row. Future FF appearances will link automatically.
+- The UI now shows separate field provenance and the next linked FF release.
+  Economic Calendar no longer filters the stored numeric rows to High only.
+
+See `research/artifacts/macro_regime/US_CALENDAR_COUNTRY_LINKAGE_MANIFEST.json`.
+
+## Narrative Economic Calendar Events — Permanently Excluded
+
+On 2026-07-15 the Forex Factory calendar contract was narrowed to structured
+numeric fundamental releases. Event titles containing the whole words
+`testifies`, `speaks`, `report`, or `statement` are now rejected before storage
+and filtered from API display as defense in depth.
+
+- The cleanup migration removed 18 existing Forex Factory rows matching those
+  narrative types. A post-migration database check returns zero matches.
+- A live weekly calendar API check returns zero narrative matches while numeric
+  releases, including PPI and policy rates, remain eligible.
+- Forex Factory JSON synchronization, CSV import, and Trading Economics actual
+  fallback all reject these narrative event types. Meeting minutes, nomination
+  votes, official-rate vote rows, and press conferences are also excluded as
+  non-numeric calendar events.
+- These exclusions do not delete or alter numeric country-history series and do
+  not affect the separate current-vintage Trading Economics chart history.
+
+See `research/artifacts/macro_regime/NARRATIVE_CALENDAR_EVENT_EXCLUSION_MANIFEST.json`.
+
+## NAS100 Macro Scorecard — Interpretive UI Complete
+
+On 2026-07-15 a separate United States NAS100 macro scorecard was added under
+Stock Markets without changing the existing six-country currency scorecard.
+
+- The NAS100 scorecard translates calendar labels into two non-fungible
+  channels: `Growth Resilience` and `Rate-Path Support`. It does not publish a
+  flat overall total.
+- Policy and inflation USD-impact signs are inverted for Nasdaq-100 rate
+  sensitivity. Growth retains its economy-support sign. Labor contributes to
+  both channels, so strong labor can support growth while pressuring rates.
+- Scores are uncapped. The current labor inputs therefore display `+3` growth
+  support and `-3` rate-path pressure; the former currency scorecard displayed
+  `+2` because its service deliberately clamps each category to `[-2,+2]`.
+- The current live projection is Growth Resilience `+3` and Rate-Path Support
+  `-2`. These values describe the current data mapping only; they are not a
+  validated forecast, strategy score, or trade-entry signal.
+- `/markets/scorecard` provides the scorecard and category drill-downs;
+  `/markets/countries/us` provides the U.S. event table with the source USD
+  impact, NAS100 interpretation, and separate growth/rate contributions.
+- The instrument remains a generic Nasdaq-100 sensitivity reference because
+  no broker-specific NAS100 CFD contract/feed identity is configured.
+- The 2000-2026 Trading Economics history remains current-vintage,
+  display-only, and ineligible for point-in-time strategy research.
+
+See `NAS100_MACRO_SCORECARD_IMPLEMENTATION_DECISION.md`.
+
+## US CPI Frequency Incident — API Fixed, Second-Source Audit Complete
+
+On 2026-07-15 the United States latest-event card was confirmed to be selecting
+the correct stored `US CPI m/m` values and relabelling them as `US CPI y/y`.
+The database rows were not corrupted: the 2026-07-14 Forex Factory rows contain
+headline CPI y/y `3.5% / 3.8% / 4.2%`, headline CPI m/m
+`-0.4% / -0.1% / 0.5%`, and Core CPI m/m `0.0% / 0.2% / 0.2%`.
+
+- Root cause: latest-card canonical grouping collapsed CPI m/m and y/y before
+  applying the preferred y/y display name.
+- Resolution: the Laravel service now enforces the frequency encoded by each
+  card's preferred event contract. A same-day m/m row cannot occupy a y/y slot.
+- Regression/API verification passes and the live local API now returns the
+  correct y/y and Core m/m values.
+- A current-vintage second-source audit compares 14 of the 19 Trading Economics
+  public series with official-agency series distributed by FRED. Eleven series
+  match every comparable row; CPI has three 0.1-point rounding differences,
+  PCE m/m has four historical differences, and NFP has 122 current-vintage
+  differences consistent with revisions/benchmarking. Five definition-sensitive
+  series remain uncertified. No history was overwritten from this audit.
+- The Trading Economics chart history remains display-only and is not
+  point-in-time safe for Program 2.
+
+See `research/artifacts/macro_regime/US_MACRO_HISTORY_SECOND_SOURCE_AUDIT.json`.
+
+## Historical Macro/Technical Alignment Review — Complete
+
+UI program `SMART-MARKETSCOPE-HISTORICAL-ALIGNMENT-REVIEW-UI-001` completed
+with status `PASS_READ_ONLY_PROJECTION_WITH_FROZEN_UNKNOWN_MACRO`.
+
+- The authenticated route `/research/alignment-review` exposes 454 unique
+  setups from the frozen `NORMALIZED_MEDIUM_COST` registry and J0 macro links.
+- Simple and Detail modes, year/timeframe/family/outcome filters, checklist
+  comparison, historical fill/outcome/2R status, and D1/H4/M15/M5/M1 candle
+  panels are active. The 2026 filter returns 24 setups in browser verification.
+- The viewer never recomputes inclusion, fills, outcomes, scores, or PnL. It has
+  no live entry, order, paper-trade, deployment, or mutation control.
+- All 454 frozen point-in-time macro biases remain `UNKNOWN`; therefore every
+  headline “All aligned?” result remains `UNKNOWN`. The 7,662 public Trading
+  Economics rows are explicitly excluded from historical alignment.
+- Source candle timezone remains unresolved, so the viewer labels timestamps as
+  unconverted source wall-clock values.
+- Derived private payload verification passes for 454/454 setups, five candle
+  timeframes, and medium-cost scenario lineage. Laravel tests: 78 passed, 3
+  target-driver skips, 317 assertions. React tests: 24/24. Production build:
+  exit 0 with pre-existing dependency source-map and lint warnings. Browser QA
+  found five SVG candle charts, no console errors, no live-trade button, and
+  working Simple/Detail and 2026 filters.
+
+See `HISTORICAL_ALIGNMENT_REVIEW_UI_PREREGISTRATION.yaml` and
+`HISTORICAL_ALIGNMENT_REVIEW_AUDIT.md`.
+
+## US Trading Economics Public History — Display Backfill Complete
+
+Task `TE-US-MACRO-INGESTION-2000-2026-002` completed its bounded public-history
+projection with status `PASS_DISPLAY_ONLY_WITH_POINT_IN_TIME_LIMITATIONS`.
+
+- 7,662 US-only observations across the 19 approved indicators were inserted
+  from Trading Economics' public chart feed for 2000-01-01 through the latest
+  obtainable 2026 observation. All 3,553 pre-existing non-public rows remain.
+- Database checks find zero duplicate provider versions, zero non-US public
+  rows, and zero missing provider ID/update/hash/retrieval lineage fields.
+- The history APIs and both graph modals now request up to 5,000 observations
+  from 2000-01-01 through 2026-07-15, preserve year/month/release filters, show
+  the source, and label the horizontal axis as observation/release date.
+- The six-country macro scorecard remains intact with Policy, Growth, Labor,
+  and Inflation only. The removed liquidity indicators and column remain absent.
+- Trading Economics public charts are current-vintage reference-period series;
+  they do not contain historical consensus forecasts, authoritative release
+  clocks, or as-published revisions. Every new row is therefore explicitly
+  display-only and excluded from scoring, strategy research, and PnL selection.
+- PPI m/m begins 2009-12, Core PPI m/m begins 2010-05, Average Hourly Earnings
+  m/m begins 2006-04, and JOLTS begins 2000-12 in the public provider series.
+  Missing earlier years were not fabricated.
+- Full verification: Laravel 74 passed / 3 target-driver skips; React 22/22;
+  production build exit 0 with pre-existing warnings; browser rendering verified.
+
+See `TRADING_ECONOMICS_US_PUBLIC_HISTORY_REPORT.md` and
+`TE_PUBLIC_CHART_IMPORT_CORRECTION.md`.
+
+## Superseded API Attempt — Authentication Was Blocked
+
+Task `TE-US-MACRO-INGESTION-2020-2026-001` is prospectively frozen for United
+States releases from 2020-01-01 through 2026-06-30. It is separate from the
+terminal macro-regime strategy and does not alter any frozen score, join, trade,
+PnL, candidate, or champion artifact.
+
+- The United States Economic Data API now returns a fixed 24-event template,
+  including the previously absent PCE/PPI, claims, industrial production,
+  durable goods, and liquidity families. Missing observations render as
+  awaiting Trading Economics rather than being fabricated.
+- The Macro Scorecard is US-only and uses policy, growth, labour, inflation,
+  and liquidity. Manufacturing and services PMI are classified under growth;
+  liquidity replaces the former sentiment column for this bounded US surface.
+- Both history modals request up to 1,000 releases inside the frozen range and
+  support every-release, monthly, yearly, and explicit-year views. Monthly and
+  yearly chart points use the last available release in each period; the table
+  is filtered to the selected year.
+- The Laravel database migration adds Trading Economics event/version lineage,
+  raw payload hashes, UTC release time, provider update time, reference period,
+  revision, unit, ticker, retrieval time, and point-in-time classification to
+  `fundamental_data`. The migration is applied to the local application DB.
+- The importer is US-only, monthly-windowed, raw-payload-cached, append-only by
+  provider event/version, idempotent, and rejects dates outside the frozen
+  range. It preserves Actual, Forecast, Previous, Revised, source, and reference
+  fields. Missing Forecast remains missing and is never replaced by Previous.
+- The exact live import command failed closed with
+  `BLOCKED_TRADING_ECONOMICS_AUTHENTICATION_REQUIRED`: no provider credential is
+  configured, zero requests were made by the importer, and zero Trading
+  Economics rows were inserted. A direct official API probe without a key also
+  returned HTTP 401. No access bypass was attempted.
+- Verification: Laravel 70 passed / 3 target-driver skips; React 22/22 passed;
+  production build exits 0 with pre-existing dependency source-map and lint
+  warnings. Live APIs return 24 US event cards, one US scorecard row with five
+  required categories, and 50 Federal Funds releases inside the requested
+  cutoff.
+
+This earlier API-key path is retained as failure evidence, not as the current
+next task. The later permitted public-chart projection completed the user's
+display-history requirement without bypassing access controls; its rows remain
+display-only for the point-in-time reasons documented above.
+
 ## Macro Regime Program — Terminal Role 11 Reporting/Security Re-Audit
 
 Program `SMART-MARKETSCOPE-MACRO-REGIME-NAS100-001` is complete with full
@@ -839,3 +1491,38 @@ Execute `SMART-MARKETSCOPE-SECURITY-PIT-REMEDIATION-001` from
 `FINAL_NEXT_TASK.md`: fix the two critical application security findings and
 design immutable point-in-time source-run/observation contracts. Do not begin a
 new strategy search, paper dashboard, broker adapter, or holdout evaluation.
+
+## D1 Immediate-Wick Sweep Correction - 2026-07-15
+
+The user-defined D1 sweep was prospectively corrected without overwriting the
+legacy MLR artifacts. Candle 1 is the immediately previous completed daily
+candle; Candle 2 must be directional, contain a genuine wick through Candle 1's
+extreme, and close strictly back inside. The rule is trend-agnostic and has no
+body-ratio threshold.
+
+The technical-only census found 614 D1 sweeps across 2,308 eligible adjacent
+pairs (272 bullish, 342 bearish). Eight detector tests, ten focused React tests,
+and 17 Laravel API assertions passed. The Backtesting NAS100 Candle page now
+shows the corrected D1-only table and chart. No H4, lower-timeframe, macro,
+outcome, or PnL work was performed. Candidate/champion remain `NONE` and the
+legacy `TECHNICAL_EDGE_NOT_FOUND` decision remains preserved.
+
+## H4 Immediate-Wick Confirmation - 2026-07-15
+
+After the user accepted the corrected D1 logic, one prospective H4 child
+experiment froze the exact post-D1 window before counting confirmations. Both
+H4 candles must close strictly after D1 Candle 2, the H4 direction must match
+D1, the same immediate-candle wick-and-reclaim rule applies, and the first
+qualifying H4 pair must complete no later than the next D1 close.
+
+All 614 accepted D1 sweeps remain in the child projection. Of 613 complete H4
+windows, 330 confirmed and 283 expired without confirmation. One terminal
+source-edge window is incomplete because no next D1 close exists. The counts
+split into 136 bullish and 194 bearish H4 confirmations. The application now
+shows both D1 and H4 charts and the exact validity window through a separate
+read-only API; the D1-only artifacts and API remain unchanged.
+
+No lower-timeframe entry, macro, price outcome, PnL, parameter search, candidate,
+or champion work was performed. Candidate/champion remain `NONE`, final-holdout
+accesses remain 0, and the legacy `TECHNICAL_EDGE_NOT_FOUND` decision remains
+preserved.
